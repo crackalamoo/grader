@@ -248,6 +248,9 @@ function updateCategories() {
     categoryP.innerHTML += "No category is currently selected";
   else
     categoryP.innerHTML += "Score so far in " + currentCategory.name + ": " + roundDecimal(categoryScore, 2) + "%";
+  if (isNaN(totalScore))
+    categoryP.innerHTML += "<br><b>You have a denominator of zero or another error in at least one category." +
+      " Try adding some assignments.</b>";
 }
 function createCategory() {
   currentCategory = new Category(document.category.name.value, new Number(document.category.percent.value));
