@@ -199,6 +199,17 @@ class Category {
     return (this.total/this.possible)*100.0;
   }
 }
+function roundDecimal(num, places) {
+  var n = Math.round(num*Math.pow(10.0, places))/Math.pow(10.0, places);
+  n = n.toString();
+  var decimals = n.slice(n.indexOf(".") + 1).length;
+  if (n.indexOf(".") == -1) {
+    decimals = 0;
+    n += ".";
+  }
+  for (var i = 0; i < places-decimals; i++) n += "0";
+  return n;
+}
 function updateCategories() {
   var categoryP = document.getElementById("manualCategory");
   var categoryList = document.getElementById("manualCategories");
@@ -223,13 +234,13 @@ function updateCategories() {
     totalScore += categories[i].score()*categories[i].percentage/100.0;
   }
   totalScore /= (totalPercent/100.0);
-  categoryP.innerHTML = "Score so far in this class: " + Math.round(totalScore*100.0)/100.0 +
-    "% (Unweighted GPA: " + Math.round((totalScore/20.0 - 1)*100.0)/100.0 + ")" +
-    "<br>Sum of all categories: " + Math.round(totalPercent*100.0)/100.0 + "% (Should be 100%)<br>";
+  categoryP.innerHTML = "Score so far in this class: " + roundDecimal(totalScore, 2) +
+    "% (Unweighted GPA: " + roundDecimal(totalScore/20.0 - 1, 2) + ")" +
+    "<br>Sum of all categories: " + Math.round(totalPercent) + "% (Should be 100%)<br>";
   if (currentCategory == null)
     categoryP.innerHTML += "No category is currently selected";
   else
-    categoryP.innerHTML += "Score so far in " + currentCategory.name + ": " + Math.round(categoryScore*100.0)/100.0
+    categoryP.innerHTML += "Score so far in " + currentCategory.name + ": " + roundDecimal(categoryScore, 2) + "%";
 }
 function createCategory() {
   currentCategory = new Category(document.category.name.value, document.category.percent.value);
