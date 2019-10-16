@@ -247,7 +247,7 @@ function updateCategories() {
     categoryP.innerHTML += "Score so far in " + currentCategory.name + ": " + roundDecimal(categoryScore, 2) + "%";
 }
 function createCategory() {
-  currentCategory = new Category(document.category.name.value, document.category.percent.value);
+  currentCategory = new Category(document.category.name.value, new Number(document.category.percent.value));
   document.category.name.value = "";
   document.category.percent.value = "";
   updateCategories();
