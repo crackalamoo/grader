@@ -87,7 +87,7 @@ document.getElementById("javascript").innerHTML = "If you're reading this messag
     <div class="button" onclick="changeMode('auto');">Automatic calculation</div>
   </div>
   <p>Automatic is recommended but manual may be more accurate in case I programmed this wrong. (I'm pretty sure I programmed
-    it right, I have tested it extensively including handling missing assignments, letter grades, pending grades, and excused.)</p>
+    it right. I have tested it extensively including handling point system, missing assignments, letter grades, pending, and excused.)</p>
 </div>
 <div class="main" id="manual">
   <div class="button" onclick="changeMode('start')">Back</div><br>
@@ -223,14 +223,13 @@ function updateCategories() {
     totalScore += categories[i].score()*categories[i].percentage/100.0;
   }
   totalScore /= (totalPercent/100.0);
-  categoryP.innerHTML = "Score so far in this category: " + Math.round(categoryScore*100.0)/100.0 +
-    "%<br>Score so far in this class: " + Math.round(totalScore*100.0)/100.0 +
+  categoryP.innerHTML = "Score so far in this class: " + Math.round(totalScore*100.0)/100.0 +
     "% (Unweighted GPA: " + Math.round((totalScore/20.0 - 1)*100.0)/100.0 + ")" +
     "<br>Sum of all categories: " + Math.round(totalPercent*100.0)/100.0 + "% (Should be 100%)<br>";
   if (currentCategory == null)
     categoryP.innerHTML += "No category is currently selected";
   else
-    categoryP.innerHTML += "Current category: " + currentCategory.name;
+    categoryP.innerHTML += "Score so far in " + currentCategory.name + ": " + Math.round(categoryScore*100.0)/100.0
 }
 function createCategory() {
   currentCategory = new Category(document.category.name.value, document.category.percent.value);
@@ -268,6 +267,7 @@ function autoGrade() {
   var temp = [];
   var temp2 = [];
   autoCalc = document.getElementById("inputGrades").value.split("\n");
+  document.getElementById("inputGrades").value = "";
   for (var i = 1; i < autoCalc.length; i += 2) {
     autoCalc[i] = autoCalc[i].trim();
     let splitArray = autoCalc[i].split("\t");
@@ -292,6 +292,7 @@ function autoGrade() {
 function autoCats() {
   var form = document.autoCategories;
   var cats = findCategories(autoCalc);
+  form.innerHTML = "";
   for (var i = 0; i < cats.length; i++) {
     form.innerHTML += cats[i] + ": <input name='" + i + "' type='number'></input>%<br>";
   }
