@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    background-color: #DDF0FF;
+    font-family: "Baskerville", "Times New Roman";
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 30px;
+    padding-bottom: 70px;
+  }
+  h1,h2,h3 {
+    margin-left: 30%;
+  }
+  p#javascript {
+    margin-left: 40px;
+    font-weight: bold;
+    color: #0088AA;
+  }
+  div.button {
+    color: #FFFFFF;
+    background-color: #0088AA;
+    border: 1px solid #99AAFF;
+    min-width: 70px;
+    max-width: 200px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+  div.button:hover {
+    background-color: #0099CC;
+  }
+  div.button.selected {
+    background-color: #00AADD;
+  }
+  div.button.selected:hover {
+    background-color: #00BBEE;
+  }
+  div.centerButtons {
+    display: flex;
+    margin-left: 20%;
+    margin-right: 20%;
+    justify-content: center;
+  }
+  textarea {
+    width: 80%;
+    background-color: #CCCDCE;
+    padding: 5px;
+    min-height: 500px;
+    font: "Courier New", "Courier", monospace!important;
+  }
+  img {
+    width: 100%;
+  }
+  div#ahsDiv {
+    text-align: center;
+  }
+  img#ahs {
+    max-width: 200px;
+  }
+</style>
+</head>
+<body>
+
+<h3>Harys Dalvi's Aesthetically Pleasing</h3>
+<h1>AHS Grade Calculator</h1>
+<div id="ahsDiv"><img id="ahs" src="https://www.ahschool.com/data/news/thumbs/1579.full.jpg"></div>
+<p>Welcome to the grade calculator. First, you need to make sure you have
+JavaScript. If you don't know what that is, don't worry. I'll do it for you:</p>
+<p id="javascript">If you're reading this message, you do not have JavaScript.
+  Unfortunately, you cannot use this page. If you're on a mobile device,
+  try opening this with a computer.</p>
+
+<script>
+document.getElementById("javascript").innerHTML = "If you're reading this message, you have JavaScript and can use this page.";
+</script>
+<hr>
+<br><br><br>
+<div class="main" id="start">
+  Begin by selecting how you will input your grades:<br>
+  <div class="centerButtons">
+    <div class="button" onclick="changeMode('manual');">Manual input</div>
+    <div class="button" onclick="changeMode('auto');">Automatic calculation</div>
+  </div>
+  <p>Automatic is recommended but manual may be more accurate in case I programmed this wrong.</p>
+</div>
+<div class="main" id="manual">
+  <div class="button" onclick="changeMode('start')">Back</div><br>
+  <p>Begin by creating categories for grades. If the class is based on point system, make a category
+    called something like "Total" and consider it 100% of your grade.</p>
+  <p id="manualCategory"></p>
+  <div id="manualCategories"></div><br>
+  <div class="button" onclick="changeMode('category')">New Category</div>
+</div>
+<div class="main" id="category">
+  <div class="button" onclick="changeMode('manual')">Back</div><br>
+  <p>If the class is based on point system, make a category
+    called something like "Total" and consider it 100% of your grade.
+    Please don't make a category with an existing name, as I am too
+    lazy to make sure you don't do so.</p>
+  <form name="category" action = "javascript:void(0)">
+    Name: <input name="name" type="text" size="15"></input><br>
+    Percentage: <input name="percent" type="number" size="5"></input>%<br><br>
+    <div class="button" onclick="createCategory();">Create category</div>
+  </form>
+</div>
+<div class="main" id="editCategory">
+  <div class="button" onclick="updateCategories(); changeMode('manual');">Done</div><br>
+  <p>Enter Score/Possible. Examples: 8.5/9, B+/100<br>To delete an assignment, enter its score in
+    the same way and click "Delete Assignment".</p>
+  <form name="editCategory" action = "javascript:void(0)">
+    <input name="score" type="number" size="5"></input>/<input name="possible" type="number" size="5"></input>
+    <br><div class="button" onclick="addAssignment()">Add Assignment</div>
+    <div class="button" onclick="deleteAssignment()">Delete Assignment</div>
+  </form>
+</div>
+<div class="main" id="auto">
+  <div class="button" onclick="changeMode('start')">Back</div>
+  <p>Congratulations on trying to be cool with automatic grade calculation. Simply copy your grades
+  from MyBackpack in the following manner:</p>
+  <img src="auto.png">
+  <p>And paste them into the box below:</p>
+  <textarea id="inputGrades"></textarea><br>
+  <div class="button" onclick="autoGrade();">Next</div>
+</div>
+<div class="main" id="finalAuto">
+  <p>My super cool algorithm simplified your grades to the following (Category, Score/Possible):</p>
+  <p id="autoResult"></p><br><br>
+  <p>Should I continue?</p>
+  <div class="centerButtons">
+    <div class="button" onclick="changeMode('manual')">No, let me manually enter grades.</div>
+    <div class="button" onclick="autoCats(); changeMode('autoCategories');">Yes, continue.</div>
+  </div>
+</div>
+<div class="main" id="autoCategories">
+  <p>Please enter a percentage for each category or say that this class is point system:</p>
+  <form name="autoCategories" action="javascript:void(0)"></form>
+</div>
+
+<script>
+var mode = "start";
+var categories = [];
+var currentCategory = null;
+var divs = document.getElementsByClassName("main");
+var autoCalc = [];
+function changeMode(mode) {
+  for (var i = 0; i < divs.length; i++) {
+    if (divs[i].id != mode)
+      divs[i].style.display = "none";
+    else
+      divs[i].style.display = "block";
+  }
+}
+changeMode("start");
+function makeNumber(grade) {
+  switch(grade) {
+    case "A+": grade=98.5; break;
+    case "A": grade=95; break;
+    case "A-": grade=92.5; break;
+    case "B+": grade=88.5; break;
+    case "B": grade=85; break;
+    case "B-": grade=82.5; break;
+    case "C+": grade=78.5; break;
+    case "C": grade=75; break;
+    case "C-": grade=72.5; break;
+    case "D+": grade=68.5; break;
+    case "D": grade=65; break;
+    case "D-": grade=62.5; break;
+    case "F+": grade=58.5; break;
+    case "F": grade=30; break;
+    case "F-": grade=0; break;
+    default: break;
+  }
+  return new Number(grade);
+}
+class Category {
+  constructor(name, percentage) {
+    this.name = name;
+    this.percentage = percentage;
+    this.total = 0.0;
+    this.possible = 0.0;
+    categories.push(this);
+  }
+  add(total, possible) {
+    this.total += makeNumber(total);
+    this.possible += makeNumber(possible);
+  }
+  remove (total, possible) {
+    this.total -= makeNumber(total);
+    this.possible -= makeNumber(possible);
+  }
+  score() {
+    return (this.total/this.possible)*100.0;
+  }
+}
+function updateCategories() {
+  var categoryP = document.getElementById("manualCategory");
+  var categoryList = document.getElementById("manualCategories");
+  categoryList.innerHTML = "Please click a category to edit it.<br><br>Categories:<br>";
+  var totalPercent = 0;
+  var categoryScore = 0;
+  var totalScore = 0;
+  for (var i = 0; i < categories.length; i++) {
+    let newCategory = document.createElement("div");
+    categoryList.appendChild(newCategory);
+    newCategory.innerHTML = categories[i].name + " (" + categories[i].percentage + "%)";
+    newCategory.className = "button";
+    newCategory.onclick = function(cat) { return function() {
+      currentCategory = cat;
+      changeMode("editCategory");
+    }}(categories[i]);
+    if (currentCategory != null && categories[i].name == currentCategory.name) {
+      newCategory.className = "button selected";
+      categoryScore = categories[i].score();
+    }
+    totalPercent += categories[i].percentage;
+    totalScore += categories[i].score()*categories[i].percentage/100.0;
+  }
+  totalScore /= (totalPercent/100.0);
+  categoryP.innerHTML = "Score so far in this category: " + Math.round(categoryScore*100.0)/100.0 +
+    "%<br>Score so far in this class: " + Math.round(totalScore*100.0)/100.0 +
+    "% (Unweighted GPA: " + Math.round((totalScore/20.0 - 1)*100.0)/100.0 + ")" +
+    "<br>Sum of all categories: " + Math.round(totalPercent*100.0)/100.0 + "% (Should be 100%)<br>";
+  if (currentCategory == null)
+    categoryP.innerHTML += "No category is currently selected";
+  else
+    categoryP.innerHTML += "Current category: " + currentCategory.name;
+}
+function createCategory() {
+  currentCategory = new Category(document.category.name.value, document.category.percent.value);
+  document.category.name.value = "";
+  document.category.percent.value = "";
+  updateCategories();
+  changeMode("manual");
+}
+function addAssignment() {
+  currentCategory.add(document.editCategory.score.value, document.editCategory.possible.value);
+  document.editCategory.score.value = "";
+  document.editCategory.possible.value = "";
+}
+function deleteAssignment() {
+  currentCategory.remove(document.editCategory.score.value, document.editCategory.possible.value);
+  document.editCategory.score.value = "";
+  document.editCategory.possible.value = "";
+}
+function findCategories(autoResult) {
+  var cats = [];
+  for (var i = 0; i < autoResult.length; i++) {
+    if (cats.indexOf(autoResult[i][0]) == -1)
+      cats.push(autoResult[i][0]);
+  }
+  return cats;
+}
+if(typeof(String.prototype.trim) === "undefined")
+{
+    String.prototype.trim = function()
+    {
+        return String(this).replace(/^\s+|\s+$/g, '');
+    };
+}
+function autoGrade() {
+  var temp = [];
+  var temp2 = [];
+  autoCalc = document.getElementById("inputGrades").value.split("\n");
+  for (var i = 1; i < autoCalc.length; i += 2) {
+    autoCalc[i] = autoCalc[i].trim();
+    let splitArray = autoCalc[i].split("\t");
+    temp = [];
+    temp.push(splitArray[0]);
+    temp.push(splitArray[1]);
+    temp.push(splitArray[2]);
+    temp2.push(temp);
+  }
+  autoCalc = temp2;
+  document.getElementById("autoResult").innerHTML = "";
+  for (var i = 0; i < temp2.length; i++) {
+    document.getElementById("autoResult").innerHTML += temp2[i][0] + ", " +
+      temp2[i][1] + "/" + temp2[i][2] + "<br>";
+  }
+  document.getElementById("autoResult").innerHTML += "<br>" + findCategories(autoCalc).length +
+    " categories found: ";
+  document.getElementById("autoResult").innerHTML += findCategories(autoCalc);
+  changeMode("finalAuto");
+}
+function autoCats() {
+  var form = document.autoCategories;
+  var cats = findCategories(autoCalc);
+  for (var i = 0; i < cats.length; i++) {
+    form.innerHTML += cats[i] + ": <input name='" + i + "' type='number'></input>%<br>";
+  }
+  form.innerHTML += '<input type="checkbox" name="point"></input> This class is point system<br>'
+  form.innerHTML += '<div class="button" onclick="autoCalc2();">Next</div>';
+}
+function categoryByName(name) {
+  for (var i = 0; i < categories.length; i++) {
+    if (categories[i].name == name) return categories[i];
+  }
+  return null;
+}
+function autoCalc2() {
+  var cats = findCategories(autoCalc);
+  categories = [];
+  if (document.autoCategories.point.checked) {
+    currentCategory = new Category("Total", 100);
+    for (var i = 0; i < autoCalc.length; i++) {
+      categories[0].add(autoCalc[i][1], autoCalc[i][2]);
+    }
+  } else {
+    for (var i = 0; i < cats.length; i++) {
+      new Category(cats[i], new Number(document.autoCategories[new Number(i).toString()].value));
+    }
+    for (var i = 0; i < autoCalc.length; i++) {
+      categoryByName(autoCalc[i][0]).add(autoCalc[i][1], autoCalc[i][2]);
+    }
+    currentCategory = null;
+  }
+  updateCategories();
+  changeMode("manual");
+}
+</script>
+<br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
