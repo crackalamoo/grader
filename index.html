@@ -2,6 +2,9 @@
 <html>
 <head>
   <title>AHS Grade Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Harys Dalvi">
+  <meta name="description" content="Free Grade Calculator">
 <style>
   body {
     background-color: #DDF0FF;
@@ -49,10 +52,11 @@
   }
   textarea {
     width: 80%;
-    background-color: #CCCDCE;
+    background-color: #DDDEDF;
     padding: 5px;
     min-height: 500px;
-    font: "Courier New", "Courier", monospace!important;
+    font-family: "Courier New", "Courier", monospace;
+    resize: none;
   }
   img {
     width: 100%;
@@ -74,7 +78,8 @@
 JavaScript. If you don't know what that is, don't worry. I'll do it for you:</p>
 <p id="javascript">If you're reading this message, you do not have JavaScript.
   Unfortunately, you cannot use this page. If you're on a mobile device,
-  try opening this with a computer.</p>
+  try opening this with a computer. Check your browser settings to make sure
+  JavaScript is on.</p>
 
 <script>
 document.getElementById("javascript").innerHTML = "If you're reading this message, you have JavaScript and can use this page.";
@@ -82,20 +87,20 @@ document.getElementById("javascript").innerHTML = "If you're reading this messag
 <hr>
 <br><br><br>
 <div class="main" id="start">
-  Begin by selecting how you will input your grades:<br>
+  Begin by selecting how you will input your grades:<br><br>
   <div class="centerButtons">
     <div class="button" onclick="changeMode('manual');">Manual input</div>
     <div class="button" onclick="changeMode('auto');">Automatic calculation</div>
   </div>
-  <p>Automatic is recommended but manual may be more accurate in case I programmed this wrong. (I'm pretty sure I programmed
-    it right. I have tested it extensively including handling point system, missing assignments, letter grades, pending, and excused.)</p>
+  <p><strong>Automatic is recommended</strong> but manual may be more accurate in case I programmed this wrong. (I'm pretty sure I programmed
+    it right. I have tested it extensively including point system, missing assignments, letter grades, pending, and excused.)</p>
   <p>I will <strong>never</strong> use the information you give here to make fun of you. In fact, I don't know how to. I have
     no way of knowing what you type here because I am not good at programming in PHP. JavaScript is considered a &ldquo;client side&rdquo;
     programming language, which means all the code runs on your computer without transferring data anywhere else.</p>
 </div>
 <div class="main" id="manual">
   <div class="button" onclick="changeMode('start')">Back</div><br>
-  <p>Begin by creating categories for grades. If the class is based on point system, make a category
+  <p id="beginCategories">Begin by creating categories for grades. If the class is based on point system, make a category
     called something like "Total" and consider it 100% of your grade.</p>
   <p id="manualCategory"></p>
   <div id="manualCategories"></div><br>
@@ -115,29 +120,31 @@ document.getElementById("javascript").innerHTML = "If you're reading this messag
 </div>
 <div class="main" id="editCategory">
   <div class="button" onclick="updateCategories(); changeMode('manual');">Done</div><br>
-  <p>Enter Score/Possible. Examples: 8.5/9, B+/100<br>To delete an assignment, enter its score in
-    the same way and click "Delete Assignment".</p>
+  <p>Enter Score/Possible. Examples: 8.5/9, B+/100<br>To delete an assignment, enter its score <strong>in
+    the same way</strong> and click "Delete Assignment".</p>
   <form name="editCategory" action = "javascript:void(0)">
     <input name="score" type="number" size="5"></input>/<input name="possible" type="number" size="5"></input>
-    <br><div class="button" onclick="addAssignment()">Add Assignment</div>
+    <br><br><div class="button" onclick="addAssignment()">Add Assignment</div>
     <div class="button" onclick="deleteAssignment()">Delete Assignment</div>
   </form>
 </div>
 <div class="main" id="auto">
   <div class="button" onclick="changeMode('start')">Back</div>
   <p>Congratulations on trying to be cool with automatic grade calculation. Simply copy your grades
-  from MyBackpack in the following manner:</p>
+  from MyBackpack as shown in the image below. <strong>Skip the row that says <i>Assignment</i>.</strong></p>
+  <p>(If you are on a <strong>mobile device</strong>, including iPads, you should select <i>Assignment</i>,
+    then select all the grades, and finally deselect the row that says <i>Assignment</i>)</p>
   <img src="auto.png">
-  <p>And paste them into the box below:</p>
+  <p>Now paste them into the box below and click <strong>Next</strong> under the box:</p>
   <textarea id="inputGrades"></textarea><br>
   <div class="button" onclick="autoGrade();">Next</div>
 </div>
 <div class="main" id="finalAuto">
   <p>My super cool algorithm simplified your grades to the following (Category, Score/Possible):</p>
   <p id="autoResult"></p>
-  <p>If no grades have been entered yet for a category, that category may be missing from the above list.
+  <p><strong>If no grades have been entered yet</strong> for a category, that category may be missing from the above list.
     Don't worry, you can manually add that category after the calculation. Also don't worry if this class
-    is based on point system rather than categories.</p><br><br>
+    is based on <strong>point system</strong> rather than categories.</p><br>
   <p>Should I continue?</p>
   <div class="centerButtons">
     <div class="button" onclick="changeMode('manual')">No, let me manually enter grades.</div>
@@ -145,7 +152,7 @@ document.getElementById("javascript").innerHTML = "If you're reading this messag
   </div>
 </div>
 <div class="main" id="autoCategories">
-  <p>Please enter a percentage for each category or say that this class is point system:</p>
+  <p>Please enter a percentage for each category <strong><i>or</i></strong> check that this class is point system:</p>
   <form name="autoCategories" action="javascript:void(0)"></form>
 </div>
 
@@ -207,6 +214,7 @@ class Category {
   }
 }
 function roundDecimal(num, places) {
+  if (isNaN(num)) return "ERROR";
   var n = Math.round(num*Math.pow(10.0, places))/Math.pow(10.0, places);
   n = n.toString();
   var decimals = n.slice(n.indexOf(".") + 1).length;
@@ -220,7 +228,9 @@ function roundDecimal(num, places) {
 function updateCategories() {
   var categoryP = document.getElementById("manualCategory");
   var categoryList = document.getElementById("manualCategories");
-  categoryList.innerHTML = "Please click a category to edit it.<br><br>Categories:<br>";
+  document.getElementById("beginCategories").innerHTML = categories.length > 0 ? "" :
+    "Begin by creating categories for grades. If the class is based on point system, make a category called something like \"Total\" and consider it 100% of your grade.";
+  categoryList.innerHTML = "Please <strong>click a category</strong> to add or remove assignments and to see that category's score.<br><br>Categories:<br>";
   var totalPercent = 0;
   var categoryScore = 0;
   var totalScore = 0;
@@ -318,7 +328,7 @@ function autoCats() {
     form.innerHTML += cats[i] + ": <input name='" + i + "' type='number'></input>%<br>";
   }
   form.innerHTML += '<input type="checkbox" name="point"></input> This class is point system<br>'
-  form.innerHTML += '<div class="button" onclick="autoCalc2();">Next</div>';
+  form.innerHTML += '<br><div class="button" onclick="autoCalc2();">Next</div>';
 }
 function categoryByName(name) {
   for (var i = 0; i < categories.length; i++) {
