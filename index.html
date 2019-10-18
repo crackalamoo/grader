@@ -82,19 +82,18 @@
   to usurp power and administer American Heritage School or any of its affiliates.
 </p>
 <div id="ahsDiv"><img id="ahs" src="https://www.ahschool.com/data/news/thumbs/1579.full.jpg"></div>
-<p>Welcome to the grade calculator. First, you need to make sure you have
-JavaScript. If you don't know what that is, don't worry. I'll do it for you:</p>
-<p id="javascript">If you're reading this message, you do not have JavaScript.
-  Unfortunately, you cannot use this page. If you're on a mobile device,
-  try opening this with a computer. Check your browser settings to make sure
-  JavaScript is on.</p>
 
-<script>
-document.getElementById("javascript").innerHTML = "If you're reading this message, you have JavaScript and can use this page.";
-</script>
 <hr>
-<br><br><br>
 <div class="main" id="start">
+  <p>Welcome to the grade calculator. First, you need to make sure you have
+  JavaScript. If you don't know what that is, don't worry. I'll do it for you:</p>
+  <p id="javascript">If you're reading this message, you do not have JavaScript.
+    Unfortunately, you cannot use this page. If you're on a mobile device,
+    try opening this with a computer. Check your browser settings to make sure
+    JavaScript is on.</p><br><br>
+  <script>
+  document.getElementById("javascript").innerHTML = "If you're reading this message, you have JavaScript and can use this page.";
+  </script>
   Begin by selecting how you will input your grades:<br><br>
   <div class="centerButtons">
     <div class="button" onclick="changeMode('manual');">Manual input</div>
@@ -128,12 +127,15 @@ document.getElementById("javascript").innerHTML = "If you're reading this messag
 </div>
 <div class="main" id="editCategory">
   <div class="button" onclick="updateCategories(); changeMode('manual');">Done</div><br>
-  <p>Enter Score/Possible. Examples: 8.5/9, B+/100<br>To delete an assignment, enter its score <strong>in
-    the same way</strong> and click "Delete Assignment".</p>
+  <p>Enter Score/Possible. Examples: 5/6.0, 8.5/9, B+/50.0, NTI/10.00<br>To delete an assignment, enter its score <strong>in
+    the same way</strong> and click "Delete Assignment".<br>
+    To <strong>change the grade on an assignment</strong>, add or remove an assignment out of 0 points (ex: 5/0).</p>
   <form name="editCategory" action = "javascript:void(0)">
-    <input name="score" type="number" size="5"></input>/<input name="possible" type="number" size="5"></input>
+    <input name="score" type="text" size="5"></input>/<input name="possible" type="number" size="5"></input>
     <br><br><div class="button" onclick="addAssignment()">Add Assignment</div>
-    <div class="button" onclick="deleteAssignment()">Delete Assignment</div>
+    <div class="button" onclick="deleteAssignment()">Delete Assignment</div><br>
+    <input name="percent" type="number" size="5"></input>%<br>
+    <div class="button" onclick="changePercent()">Change Percentage</div>
   </form>
 </div>
 <div class="main" id="auto">
@@ -179,7 +181,7 @@ function changeMode(mode) {
   }
 }
 changeMode("start");
-function makeNumber(grade) {
+function makeNumber(grade, possible=100.0) {
   switch(grade) {
     case "A+": grade=98.5; break;
     case "A": grade=95; break;
@@ -197,9 +199,9 @@ function makeNumber(grade) {
     case "F": grade=30; break;
     case "F-": grade=0; break;
     case "NTI": grade = 0; break;
-    default: break;
+    default: return new Number(grade);
   }
-  return new Number(grade);
+  return new Number(grade*possible/100.0);
 }
 class Category {
   constructor(name, percentage) {
@@ -210,11 +212,11 @@ class Category {
     categories.push(this);
   }
   add(total, possible) {
-    this.total += makeNumber(total);
+    this.total += makeNumber(total, possible);
     this.possible += makeNumber(possible);
   }
   remove (total, possible) {
-    this.total -= makeNumber(total);
+    this.total -= makeNumber(total, possible);
     this.possible -= makeNumber(possible);
   }
   score() {
@@ -249,6 +251,7 @@ function updateCategories() {
     newCategory.className = "button";
     newCategory.onclick = function(cat) { return function() {
       currentCategory = cat;
+      document.editCategory.percent.value = currentCategory.percentage;
       changeMode("editCategory");
     }}(categories[i]);
     if (currentCategory != null && categories[i].name == currentCategory.name) {
@@ -286,6 +289,9 @@ function deleteAssignment() {
   currentCategory.remove(document.editCategory.score.value, document.editCategory.possible.value);
   document.editCategory.score.value = "";
   document.editCategory.possible.value = "";
+}
+function changePercent() {
+  currentCategory.percentage = new Number(document.editCategory.percent.value);
 }
 function findCategories(autoResult) {
   var cats = [];
