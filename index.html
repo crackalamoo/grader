@@ -162,6 +162,16 @@
   </div>
 </div>
 <div class="main" id="autoCategories">
+  <p><strong>Select a core class</strong> to automatically fill in percentages/weighting.</p>
+  <form name="classes" action="javascript:void(0)"><select name="class" onchange="setclass();">
+    <option value="">-- Select a class -- </option>
+    <option value="apush">American History (AP)</option>
+    <option value="ap bio">Biology (AP)</option>
+    <option value="ap chem">Chemistry (AP)</option>
+    <option value="ap lang">English Language & Composition (AP)</option>
+    <option value="ap enviro">Environmental Science (AP)</option>
+    <option value="ap physics 1">Physics 1 (AP)</option>
+  </select></form>
   <p>Please enter a percentage for each category <strong><i>or</i></strong> check that this class is point system:</p>
   <form name="autoCategories" action="javascript:void(0)"></form>
 </div>
@@ -299,6 +309,7 @@ function findCategories(autoResult) {
     if (cats.indexOf(autoResult[i][0]) == -1)
       cats.push(autoResult[i][0]);
   }
+  cats.sort();
   return cats;
 }
 if(typeof(String.prototype.trim) === "undefined")
@@ -322,7 +333,7 @@ function autoGrade() {
     temp.push(splitArray[0]);
     temp.push(splitArray[1]);
     temp.push(splitArray[2]);
-    if (["", " ", "P", "EXC"].indexOf(splitArray[1]) == -1)
+    if (["", " ", "P", "EXC", "EX"].indexOf(splitArray[1]) == -1)
       temp2.push(temp);
   }
   autoCalc = temp2;
@@ -371,6 +382,23 @@ function autoCalc2() {
   }
   updateCategories();
   changeMode("manual");
+}
+var classes = {"ap lang": [false, 20, 5, 25, 50],
+  "apush": [false, 20, 20, 20, 40],
+  "ap chem": [false, 10, 25, 15, 50],
+  "ap bio": [true, 100],
+  "ap enviro": [true, 100],
+  "ap physics 1": [false, 20, 20, 60],
+  "spanish 4": [false, 10, 30, 25, 35],
+  "apcsa": [false, 25, 75]};
+function setclass() {
+  var classData = classes[document.classes.class.value];
+  document.autoCategories.point.checked = classData[0];
+  for (var i = 0; i < findCategories(autoCalc).length; i++) {
+    try { document.autoCategories[i].value = classData[i+1]; }
+    catch (err) {}
+  }
+  document.classes.class.value = "";
 }
 </script>
 <br><br><br><br><br><br><br><br><br><br>
