@@ -172,6 +172,7 @@
       <option value="ap lang">English Language & Composition (AP)</option>
       <option value="ap enviro">Environmental Science (AP)</option>
       <option value="ap physics 1">Physics 1 (AP)</option>
+      <option value="precalc">Pre-Calculus (H)</option>
     </optgroup>
     <optgroup label="Electives">
       <option value="research">Scientific/Summer Research</option>
@@ -396,7 +397,8 @@ var classes = {"ap lang": [false, 20, 5, 25, 50],
   "ap physics 1": [false, 20, 20, 60],
   "spanish 4": [false, 10, 30, 25, 35],
   "apcsa": [false, 25, 75],
-  "research": [true]};
+  "research": [true],
+  "precalc": [true]};
 function setclass() {
   var classData = classes[document.classes.class.value];
   document.autoCategories.point.checked = classData[0];
