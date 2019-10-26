@@ -162,15 +162,20 @@
   </div>
 </div>
 <div class="main" id="autoCategories">
-  <p><strong>Select a core class</strong> to automatically fill in percentages/weighting.</p>
+  <p><strong>Select a class</strong> to automatically fill in percentages/weighting. (Credit to Adin Groper for this idea)</p>
   <form name="classes" action="javascript:void(0)"><select name="class" onchange="setclass();">
     <option value="">-- Select a class -- </option>
-    <option value="apush">American History (AP)</option>
-    <option value="ap bio">Biology (AP)</option>
-    <option value="ap chem">Chemistry (AP)</option>
-    <option value="ap lang">English Language & Composition (AP)</option>
-    <option value="ap enviro">Environmental Science (AP)</option>
-    <option value="ap physics 1">Physics 1 (AP)</option>
+    <optgroup label="Core Classes">
+      <option value="apush">American History (AP)</option>
+      <option value="ap bio">Biology (AP)</option>
+      <option value="ap chem">Chemistry (AP)</option>
+      <option value="ap lang">English Language & Composition (AP)</option>
+      <option value="ap enviro">Environmental Science (AP)</option>
+      <option value="ap physics 1">Physics 1 (AP)</option>
+    </optgroup>
+    <optgroup label="Electives">
+      <option value="research">Scientific/Summer Research</option>
+    </optgroup>
   </select></form>
   <p>Please enter a percentage for each category <strong><i>or</i></strong> check that this class is point system:</p>
   <form name="autoCategories" action="javascript:void(0)"></form>
@@ -386,11 +391,12 @@ function autoCalc2() {
 var classes = {"ap lang": [false, 20, 5, 25, 50],
   "apush": [false, 20, 20, 20, 40],
   "ap chem": [false, 10, 25, 15, 50],
-  "ap bio": [true, 100],
-  "ap enviro": [true, 100],
+  "ap bio": [true],
+  "ap enviro": [true],
   "ap physics 1": [false, 20, 20, 60],
   "spanish 4": [false, 10, 30, 25, 35],
-  "apcsa": [false, 25, 75]};
+  "apcsa": [false, 25, 75],
+  "research": [true]};
 function setclass() {
   var classData = classes[document.classes.class.value];
   document.autoCategories.point.checked = classData[0];
