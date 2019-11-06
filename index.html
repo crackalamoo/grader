@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Harys Dalvi">
   <meta name="description" content="Free Grade Calculator">
+  <meta charset="utf-8">
+  <link rel="icon" href="favicon.ico">
 <style>
   body {
     background-color: #DDF0FF;
@@ -67,6 +69,9 @@
   img#ahs {
     max-width: 200px;
   }
+  ul.faq li {
+    font-weight: bold;
+  }
 </style>
 </head>
 <body>
@@ -94,6 +99,7 @@
   <script>
   document.getElementById("javascript").innerHTML = "If you're reading this message, you have JavaScript and can use this page.";
   </script>
+  <div class="button" onclick="changeMode('FAQs')">FAQs</div>
   Begin by selecting how you will input your grades:<br><br>
   <div class="centerButtons">
     <div class="button" onclick="changeMode('manual');">Manual input</div>
@@ -173,6 +179,8 @@
       <option value="ap enviro">Environmental Science (AP)</option>
       <option value="ap physics 1">Physics 1 (AP)</option>
       <option value="precalc">Pre-Calculus (H)</option>
+      <option value="stats">Statistics (AP)</option>
+      <option value="mandarin 3">中文三</option>
     </optgroup>
     <optgroup label="Electives">
       <option value="research">Scientific/Summer Research</option>
@@ -180,6 +188,33 @@
   </select></form>
   <p>Please enter a percentage for each category <strong><i>or</i></strong> check that this class is point system:</p>
   <form name="autoCategories" action="javascript:void(0)"></form>
+</div>
+<div class="main" id="FAQs">
+  <div class="button" onclick="changeMode('start')">Back</div>
+  <h3>Frequently Asked Questions</h3>
+  <ul class="faq">
+    <li>Q: Why doesn't it work?</li>
+    <b>A:</b> Because you are a monkey. This algorithm is definitely foolproof and if it doesn't work you did something wrong.
+    Make sure to <strong>read all instructions</strong> carefully.
+    The exception is my boy <strong>Mr. Rampal</strong> (AP Calculus), who should be Dr. Rampal and whose grading system breaks this website.
+    For his class, one option is to <strong>manually add assignments multiple times</strong> as appropriate. To figure out how many times to include
+    an assignment, click on it in MyBackpack and see "<strong>Count As</strong>". Automatic grading will include it once, but you may
+    have to add it more times.
+    <li>Q: What if a category is missing?</li>
+    <b>A:</b> If a category is missing, <strong>enter its normal percentage</strong> and everything will be ok. For example, if there is no test grade in for AP Lang,
+    enter 5% for MC Quizzes, 25% for Quizzes, and 20% for Homework. Note that selecting a class from the menu may not work if a
+    category is missing.
+    <li>Q: Can you add my class?</li>
+    <b>A:</b> Yes. Contact me somehow and give me the grading scale for the class, the name of the class, and the exact names of the categories in MyBackpack.
+    <li>Q: Why did you make this?</li>
+    <b>A:</b> I noticed people taking too long to calculate their grades and decided to ease their pain using my mad skilz.
+    <li>Q: How did you make this?</li>
+    <b>A:</b> I used a combination of HTML (to make it exist), CSS (to make it aesthetically pleasing), and JavaScript (to make it work).
+    JavaScript is a superior language to Java, from which it is entirely separate. Anyone who says Java is better than JavaScript
+    without referencing Minecraft is wrong.
+    <li>Q: How are you so cool?</li>
+    <b>A:</b> I don't try to be cool, it's all natural. I would like to thank Fritz for being cool.
+  </ul>
 </div>
 
 <script>
@@ -398,7 +433,9 @@ var classes = {"ap lang": [false, 20, 5, 25, 50],
   "spanish 4": [false, 10, 30, 25, 35],
   "apcsa": [false, 25, 75],
   "research": [true],
-  "precalc": [true]};
+  "precalc": [true],
+  "mandarin 3": [false, 10, 30, 25, 35],
+  "stats": [false, 18, 20, 2, 60]};
 function setclass() {
   var classData = classes[document.classes.class.value];
   document.autoCategories.point.checked = classData[0];
