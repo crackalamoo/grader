@@ -105,6 +105,9 @@
     <div class="button" onclick="changeMode('manual');">Manual input</div>
     <div class="button" onclick="changeMode('auto');">Automatic calculation</div>
   </div>
+  <div class="centerButtons">
+    <div class="button" onclick="changeMode('semester')">Semester/Exam grades</div>
+  </div>
   <p><strong>Automatic is recommended</strong> but manual may be more accurate in case I programmed this wrong. (I'm pretty sure I programmed
     it right. I have tested it extensively including point system, missing assignments, letter grades, pending, and excused.)</p>
   <p>I will <strong>never</strong> use the information you give here to make fun of you. In fact, I don't know how to. I have
@@ -215,6 +218,55 @@
     <li>Q: How are you so cool?</li>
     <b>A:</b> I don't try to be cool, it's all natural. I would like to thank Fritz for being cool.
   </ul>
+</div>
+<div class="main" id="semester">
+  <br><br>
+  <form name="semester" action="javascript:void(0)">
+    Quarter 1/3 grade: <select name="q1">
+      <option value="98.5">A+</option>
+      <option value="95">A</option>
+      <option value="91.5">A-</option>
+      <option value="88.5">B+</option>
+      <option value="85">B</option>
+      <option value="81.5">B-</option>
+      <option value="78.5">C+</option>
+      <option value="75">C</option>
+      <option value="71.5">C-</option>
+      <option value="68.5">D+</option>
+      <option value="65">D</option>
+      <option value="61.5">D-</option>
+    </select><br>
+    Quarter 2/4 grade: <select name="q2">
+      <option value="98.5">A+</option>
+      <option value="95">A</option>
+      <option value="91.5">A-</option>
+      <option value="88.5">B+</option>
+      <option value="85">B</option>
+      <option value="81.5">B-</option>
+      <option value="78.5">C+</option>
+      <option value="75">C</option>
+      <option value="71.5">C-</option>
+      <option value="68.5">D+</option>
+      <option value="65">D</option>
+      <option value="61.5">D-</option>
+    </select><br>
+    I want at least: <select name="target">
+      <option value="96.5">A+</option>
+      <option value="92.5">A</option>
+      <option value="89.5">A-</option>
+      <option value="86.5">B+</option>
+      <option value="82.5">B</option>
+      <option value="79.5">B-</option>
+      <option value="76.5">C+</option>
+      <option value="72.5">C</option>
+      <option value="69.5">C-</option>
+      <option value="66.5">D+</option>
+      <option value="62.5">D</option>
+      <option value="59.5">D-</option>
+    </select><br>
+    <div class="button" onclick="calculateSemester();">Calculate</div>
+  </form>
+  <b><span id="semesterGrade"></span></b>
 </div>
 
 <script>
@@ -444,6 +496,34 @@ function setclass() {
     catch (err) {}
   }
   document.classes.class.value = "";
+}
+function calculateSemester() {
+  var target = new Number(document.semester.target.value);
+  var q1 = new Number(document.semester.q1.value);
+  var q2 = new Number(document.semester.q2.value);
+  var grade = q1*0.4 + q2*0.4;
+  var exam = 0;
+  var required = -1;
+  var grades = [61.5, 65, 68.5,
+                71.5, 75, 78.5,
+                81.5, 85, 88.5,
+                91.5, 95, 98.5];
+  var min = [59.5, 62.5, 66.5,
+             69.5, 72.5, 76.5,
+             79.5, 82.5, 86.5,
+             89.5, 92.5, 96.5];
+  for (var i = 0; i < 12; i++) {
+    exam = grades[i];
+    if (grade + exam*0.2 >= target) {
+      required = i;
+      break;
+    }
+  }
+  var gradeDisplay = document.getElementById("semesterGrade");
+  if (required == -1)
+    gradeDisplay.innerHTML = "Unfortunately this grade is not possible for you this semester. Good luck for next semester!";
+  else
+    gradeDisplay.innerHTML = "Minimum grade required on semester exam: " + min[required] + " (goes in as " + grades[required] + ")";
 }
 </script>
 <br><br><br><br><br><br><br><br><br><br>
