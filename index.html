@@ -523,7 +523,14 @@ function calculateSemester() {
   if (required == -1)
     gradeDisplay.innerHTML = "Unfortunately this grade is not possible for you this semester. Good luck for next semester!";
   else
-    gradeDisplay.innerHTML = "Minimum grade required on semester exam: " + min[required] + " (goes in as " + grades[required] + ")";
+    gradeDisplay.innerHTML = "Minimum grade required on semester exam: " + min[required] + "% (goes in as " + grades[required] + "%)";
+  var fail = -1;
+  for (var i = 59; i >= 0; i--) {
+    if (grade + i*0.2 >= target)
+      fail = i;
+  }
+  if (fail != -1)
+    gradeDisplay.innerHTML = "Minimum grade required on semester exam: " + fail + "% (I hope you don't Fritz the exam that badly)";
 }
 </script>
 <br><br><br><br><br><br><br><br><br><br>
