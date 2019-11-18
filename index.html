@@ -102,7 +102,7 @@
   <div class="button" onclick="changeMode('FAQs')">FAQs</div>
   Begin by selecting how you will input your grades:<br><br>
   <div class="centerButtons">
-    <div class="button" onclick="changeMode('manual');">Manual input</div>
+    <div class="button" onclick="changeMode('manual');" id="manualInput">Manual input</div>
     <div class="button" onclick="changeMode('auto');">Automatic calculation</div>
   </div>
   <div class="centerButtons">
@@ -178,7 +178,7 @@
       <option value="apush">American History (AP)</option>
       <option value="ap bio">Biology (AP)</option>
       <option value="ap chem">Chemistry (AP)</option>
-      <option value="ap lang">English Language & Composition (AP)</option>
+      <option value="ap lang">English Language & Composition (AP, Brown)</option>
       <option value="ap enviro">Environmental Science (AP)</option>
       <option value="ap physics 1">Physics 1 (AP)</option>
       <option value="precalc">Pre-Calculus (H)</option>
@@ -220,7 +220,7 @@
   </ul>
 </div>
 <div class="main" id="semester">
-  <br><br>
+  <br><div class="button" onclick="changeMode('start')">Back</div><br>
   <form name="semester" action="javascript:void(0)">
     Quarter 1/3 grade: <select name="q1">
       <option value="98.5">A+</option>
@@ -475,6 +475,7 @@ function autoCalc2() {
   }
   updateCategories();
   changeMode("manual");
+  document.getElementById("manualInput").innerHTML = "Edit grades";
 }
 var classes = {"ap lang": [false, 20, 5, 25, 50],
   "apush": [false, 20, 20, 20, 40],
