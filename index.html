@@ -99,12 +99,12 @@
   <script>
   document.getElementById("javascript").innerHTML = "If you're reading this message, you have JavaScript and can use this page.";
   </script>
-  <div class="button" onclick="changeMode('FAQs')">FAQs</div>
+  <div class="button" onclick="changeMode('FAQs')">FAQs</div><br>
   Begin by selecting how you will input your grades:<br><br>
   <div class="centerButtons">
-    <div class="button" onclick="changeMode('manual');" id="manualInput">Manual input</div>
-    <div class="button" onclick="changeMode('auto');">Automatic calculation</div>
-  </div>
+    <div class="button" onclick="changeMode('manual');" id="manualInput">Manual</div>
+    <div class="button" onclick="changeMode('auto');" id="autoCalculation">Automatic</div>
+  </div><br>
   <div class="centerButtons">
     <div class="button" onclick="changeMode('semester')">Semester/Exam grades</div>
   </div>
@@ -178,7 +178,8 @@
       <option value="apush">American History (AP)</option>
       <option value="ap bio">Biology (AP)</option>
       <option value="ap chem">Chemistry (AP)</option>
-      <option value="ap lang">English Language & Composition (AP, Brown)</option>
+      <option value="ap lang brown">English Language & Composition (AP, Brown)</option>
+      <option value="ap lang meyer">English Language & Composition (AP, Meyer)</option>
       <option value="ap enviro">Environmental Science (AP)</option>
       <option value="ap physics 1">Physics 1 (AP)</option>
       <option value="precalc">Pre-Calculus (H)</option>
@@ -221,6 +222,7 @@
 </div>
 <div class="main" id="semester">
   <br><div class="button" onclick="changeMode('start')">Back</div><br>
+  <b><p>Minimum exam grade</p></b>
   <form name="semester" action="javascript:void(0)">
     Quarter 1/3 grade: <select name="q1">
       <option value="98.5">A+</option>
@@ -266,7 +268,54 @@
     </select><br>
     <div class="button" onclick="calculateSemester();">Calculate</div>
   </form>
-  <b><span id="semesterGrade"></span></b>
+  <b><span id="semesterGrade"></span></b><br><br>
+  <b><p>Semester grade with exam</p></b>
+  <form name="exam" action="javascript:void(0)">
+    Quarter 1/3 grade: <select name="q1">
+      <option value="98.5">A+</option>
+      <option value="95">A</option>
+      <option value="91.5">A-</option>
+      <option value="88.5">B+</option>
+      <option value="85">B</option>
+      <option value="81.5">B-</option>
+      <option value="78.5">C+</option>
+      <option value="75">C</option>
+      <option value="71.5">C-</option>
+      <option value="68.5">D+</option>
+      <option value="65">D</option>
+      <option value="61.5">D-</option>
+    </select><br>
+    Quarter 2/4 grade: <select name="q2">
+      <option value="98.5">A+</option>
+      <option value="95">A</option>
+      <option value="91.5">A-</option>
+      <option value="88.5">B+</option>
+      <option value="85">B</option>
+      <option value="81.5">B-</option>
+      <option value="78.5">C+</option>
+      <option value="75">C</option>
+      <option value="71.5">C-</option>
+      <option value="68.5">D+</option>
+      <option value="65">D</option>
+      <option value="61.5">D-</option>
+    </select><br>
+    Exam grade: <select name="exam">
+      <option value="98.5">A+</option>
+      <option value="95">A</option>
+      <option value="91.5">A-</option>
+      <option value="88.5">B+</option>
+      <option value="85">B</option>
+      <option value="81.5">B-</option>
+      <option value="78.5">C+</option>
+      <option value="75">C</option>
+      <option value="71.5">C-</option>
+      <option value="68.5">D+</option>
+      <option value="65">D</option>
+      <option value="61.5">D-</option>
+    </select><br>
+    <div class="button" onclick="calculateExam();">Calculate</div>
+  </form>
+  <b><span id="examGrade"></span></b>
 </div>
 
 <script>
@@ -338,12 +387,27 @@ function roundDecimal(num, places) {
   for (var i = 0; i < places-decimals; i++) n += "0";
   return n;
 }
+function letterGrade(num) {
+  if (num >= 96.5) return "A+";
+  if (num >= 92.5) return "A";
+  if (num >= 89.5) return "A-";
+  if (num >= 86.5) return "B+";
+  if (num >= 82.5) return "B";
+  if (num >= 79.5) return "B-";
+  if (num >= 76.5) return "C+";
+  if (num >= 72.5) return "C";
+  if (num >= 69.5) return "C-";
+  if (num >= 66.5) return "D+";
+  if (num >= 62.5) return "D";
+  if (num >= 59.5) return "D-";
+  return "F";
+}
 function updateCategories() {
   var categoryP = document.getElementById("manualCategory");
   var categoryList = document.getElementById("manualCategories");
   document.getElementById("beginCategories").innerHTML = categories.length > 0 ? "" :
     "Begin by creating categories for grades. If the class is based on point system, make a category called something like \"Total\" and consider it 100% of your grade.";
-  categoryList.innerHTML = "Please <strong>click a category</strong> to add or remove assignments and to see that category's score.<br><br>Categories:<br>";
+  categoryList.innerHTML = "Please <strong>click a category to add or remove assignments</strong> and to see that category's score.<br><br>Categories:<br>";
   var totalPercent = 0;
   var categoryScore = 0;
   var totalScore = 0;
@@ -365,8 +429,8 @@ function updateCategories() {
     totalScore += categories[i].score()*categories[i].percentage/100.0;
   }
   totalScore /= (totalPercent/100.0);
-  categoryP.innerHTML = "Score so far in this class: " + roundDecimal(totalScore, 2) +
-    "% (Unweighted GPA: " + roundDecimal(totalScore/20.0 - 1, 2) + ")" +
+  categoryP.innerHTML = "Score so far in this class: " + roundDecimal(totalScore, 2) + "% (Letter grade: " + letterGrade(totalScore) + ")<br>" +
+    "Unweighted GPA: " + roundDecimal(totalScore/20.0 - 1, 2) +
     "<br>Sum of all categories: " + Math.round(totalPercent) + "% (Should be 100%)<br>";
   if (currentCategory == null)
     categoryP.innerHTML += "No category is currently selected";
@@ -476,8 +540,10 @@ function autoCalc2() {
   updateCategories();
   changeMode("manual");
   document.getElementById("manualInput").innerHTML = "Edit grades";
+  document.getElementById("autoCalculation").innerHTML = "New class (automatic)";
 }
-var classes = {"ap lang": [false, 20, 5, 25, 50],
+var classes = {"ap lang brown": [false, 20, 5, 25, 50],
+  "ap lang meyer": [false, 5, 20, 25, 50],
   "apush": [false, 20, 20, 20, 40],
   "ap chem": [false, 10, 25, 15, 50],
   "ap bio": [true],
@@ -532,6 +598,14 @@ function calculateSemester() {
   }
   if (fail != -1)
     gradeDisplay.innerHTML = "Minimum grade required on semester exam: " + fail + "% (I hope you don't Fritz the exam that badly)";
+}
+function calculateExam() {
+  var exam = new Number(document.exam.exam.value);
+  var q1 = new Number(document.exam.q1.value);
+  var q2 = new Number(document.exam.q2.value);
+  var grade = q1*0.4 + q2*0.4 + exam*0.2;
+  var gradeDisplay = document.getElementById("examGrade");
+  examGrade.innerHTML = "Grade for the semester: " + letterGrade(grade) + " (" + roundDecimal(grade, 2) + ")"
 }
 </script>
 <br><br><br><br><br><br><br><br><br><br>
