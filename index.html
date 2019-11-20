@@ -54,6 +54,7 @@
   }
   textarea {
     width: 80%;
+    margin-left: 10%;
     background-color: #DDDEDF;
     padding: 5px;
     min-height: 500px;
@@ -192,6 +193,7 @@
   </select></form>
   <p>Please enter a percentage for each category <strong><i>or</i></strong> check that this class is point system:</p>
   <form name="autoCategories" action="javascript:void(0)"></form>
+  <br><span id="classError"></span>
 </div>
 <div class="main" id="FAQs">
   <div class="button" onclick="changeMode('start')">Back</div>
@@ -512,7 +514,7 @@ function autoCats() {
     form.innerHTML += cats[i] + ": <input name='" + i + "' type='number'></input>%<br>";
   }
   form.innerHTML += '<input type="checkbox" name="point"></input> This class is point system<br>'
-  form.innerHTML += '<br><div class="button" onclick="autoCalc2();">Next</div>';
+  form.innerHTML += '<br><div class="button" onclick="autoCalc2();" id="continueClass">Next</div>';
 }
 function categoryByName(name) {
   for (var i = 0; i < categories.length; i++) {
@@ -561,6 +563,13 @@ function setclass() {
   for (var i = 0; i < findCategories(autoCalc).length; i++) {
     try { document.autoCategories[i].value = classData[i+1]; }
     catch (err) {}
+  }
+  if (findCategories(autoCalc).length != classData.length-1) {
+    document.getElementById("classError").innerHTML = "<b>I found a problem. Make sure this is correct.</b> There may be a missing category.";
+    document.getElementById("continueClass").style.backgroundColor = "#FF0000";
+  } else {
+    document.getElementById("continueClass").style.backgroundColor = "";
+    document.getElementById("classError").innerHTML = "";
   }
   document.classes.class.value = "";
 }
