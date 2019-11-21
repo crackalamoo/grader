@@ -101,6 +101,7 @@
   document.getElementById("javascript").innerHTML = "If you're reading this message, you have JavaScript and can use this page.";
   </script>
   <div class="button" onclick="changeMode('FAQs')">FAQs</div><br>
+  <p><strong>Announcement:</strong> Mr. Rampal's class now works!</p>
   Begin by selecting how you will input your grades:<br><br>
   <div class="centerButtons">
     <div class="button" onclick="changeMode('manual');" id="manualInput">Manual</div>
@@ -161,11 +162,14 @@
 </div>
 <div class="main" id="finalAuto">
   <p>My super cool algorithm simplified your grades to the following (Category, Score/Possible):</p>
-  <p id="autoResult"></p>
+  <form name="gradesList"></form>
   <p><strong>If no grades have been entered yet</strong> for a category, that category may be missing from the above list.
     Don't worry, you can manually add that category after the calculation. Also don't worry if this class
     is based on <strong>point system</strong> rather than categories.</p><br>
   <p>Should I continue?</p>
+  <div class="centerButtons">
+    <div class="button" id="rampalButton" onclick="autoGrade(rampal=true);">Wait, this is Mr. Rampal's class</div>
+  </div>
   <div class="centerButtons">
     <div class="button" onclick="changeMode('manual')">No, let me manually enter grades.</div>
     <div class="button" onclick="autoCats(); changeMode('autoCategories');">Yes, continue.</div>
@@ -202,10 +206,6 @@
     <li>Q: Why doesn't it work?</li>
     <b>A:</b> Because you are a monkey. This algorithm is definitely foolproof and if it doesn't work you did something wrong.
     Make sure to <strong>read all instructions</strong> carefully.
-    The exception is my boy <strong>Mr. Rampal</strong> (AP Calculus), who should be Dr. Rampal and whose grading system breaks this website.
-    For his class, one option is to <strong>manually add assignments multiple times</strong> as appropriate. To figure out how many times to include
-    an assignment, click on it in MyBackpack and see "<strong>Count As</strong>". Automatic grading will include it once, but you may
-    have to add it more times.
     <li>Q: What if a category is missing?</li>
     <b>A:</b> If a category is missing, <strong>enter its normal percentage</strong> and everything will be ok. For example, if there is no test grade in for AP Lang,
     enter 5% for MC Quizzes, 25% for Quizzes, and 20% for Homework. Note that selecting a class from the menu may not work if a
@@ -390,6 +390,7 @@ function roundDecimal(num, places) {
   return n;
 }
 function letterGrade(num) {
+  num = Math.round(num*100)/100.0;
   if (num >= 96.5) return "A+";
   if (num >= 92.5) return "A";
   if (num >= 89.5) return "A-";
@@ -478,9 +479,20 @@ if(typeof(String.prototype.trim) === "undefined")
         return String(this).replace(/^\s+|\s+$/g, '');
     };
 }
-function autoGrade() {
+var previousInput = "";
+var RAMPAL = false;
+function autoGrade(rampal=false) {
   var temp = [];
   var temp2 = [];
+  if (rampal) {
+    document.getElementById("inputGrades").value = previousInput;
+    document.getElementById("rampalButton").style.display = "none";
+    RAMPAL = true;
+  } else {
+    previousInput = document.getElementById("inputGrades").value;
+    document.getElementById("rampalButton").style.display = "block";
+    RAMPAL = false;
+  }
   autoCalc = document.getElementById("inputGrades").value.split("\n");
   document.getElementById("inputGrades").value = "";
   while (autoCalc.indexOf("Comment") != -1 || autoCalc.indexOf("Missing Assignment") != -1)
@@ -496,14 +508,23 @@ function autoGrade() {
       temp2.push(temp);
   }
   autoCalc = temp2;
-  document.getElementById("autoResult").innerHTML = "";
+  document.gradesList.innerHTML = "";
   for (var i = 0; i < temp2.length; i++) {
-    document.getElementById("autoResult").innerHTML += temp2[i][0] + ", " +
-      temp2[i][1] + "/" + temp2[i][2] + "<br>";
+    if (RAMPAL) {
+      document.gradesList.innerHTML += temp2[i][0] + ", " +
+        temp2[i][1] + "/" + temp2[i][2] + " (Count as <input name=\"" + i + "\" type=\"number\" value=\"1.0\">)<br>";
+    } else {
+      document.gradesList.innerHTML += temp2[i][0] + ", " +
+        temp2[i][1] + "/" + temp2[i][2] + "<br>";
+    }
   }
-  document.getElementById("autoResult").innerHTML += "<br>" + findCategories(autoCalc).length +
+  document.gradesList.innerHTML += "<br>" + findCategories(autoCalc).length +
     " categories found: ";
-  document.getElementById("autoResult").innerHTML += findCategories(autoCalc);
+  document.gradesList.innerHTML += findCategories(autoCalc);
+  if (RAMPAL) {
+    document.gradesList.innerHTML += "<br><br><b>Do the following for <em>each</em> assignment:</b><br>Click on the assignment<br>" +
+      "<img src=\"rampal1.png\"><br><img src=\"rampal2.png\"><br>Look at the <strong>\"Count as\"</strong> and enter it above";
+  }
   changeMode("finalAuto");
 }
 function autoCats() {
@@ -515,6 +536,17 @@ function autoCats() {
   }
   form.innerHTML += '<input type="checkbox" name="point"></input> This class is point system<br>'
   form.innerHTML += '<br><div class="button" onclick="autoCalc2();" id="continueClass">Next</div>';
+  if (RAMPAL) {
+    form.point.checked = false;
+    if (cats.length == 2) {
+      form[0].value = 10;
+      form[1].value = 90;
+    } if (cats.length == 3) {
+      form[0].value = 10;
+      form[1].value = 10;
+      form[2].value = 80;
+    }
+  }
 }
 function categoryByName(name) {
   for (var i = 0; i < categories.length; i++) {
@@ -535,7 +567,9 @@ function autoCalc2() {
       new Category(cats[i], new Number(document.autoCategories[new Number(i).toString()].value));
     }
     for (var i = 0; i < autoCalc.length; i++) {
-      categoryByName(autoCalc[i][0]).add(autoCalc[i][1], autoCalc[i][2]);
+      let countAs = 1.0;
+      if (RAMPAL) countAs = document.gradesList[i].value;
+      categoryByName(autoCalc[i][0]).add(autoCalc[i][1]*countAs, autoCalc[i][2]*countAs);
     }
     currentCategory = null;
   }
@@ -564,12 +598,12 @@ function setclass() {
     try { document.autoCategories[i].value = classData[i+1]; }
     catch (err) {}
   }
-  if (findCategories(autoCalc).length != classData.length-1) {
+  if (findCategories(autoCalc).length != classData.length-1 && !classData[0]) {
     document.getElementById("classError").innerHTML = "<b>I found a problem. Make sure this is correct.</b> There may be a missing category.";
     document.getElementById("continueClass").style.backgroundColor = "#FF0000";
   } else {
-    document.getElementById("continueClass").style.backgroundColor = "";
     document.getElementById("classError").innerHTML = "";
+    document.getElementById("continueClass").style.backgroundColor = "";
   }
   document.classes.class.value = "";
 }
