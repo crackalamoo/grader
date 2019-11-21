@@ -365,9 +365,9 @@ class Category {
     this.possible = 0.0;
     categories.push(this);
   }
-  add(total, possible) {
-    this.total += makeNumber(total, possible);
-    this.possible += makeNumber(possible);
+  add(total, possible, countAs=1.0) {
+    this.total += makeNumber(total, possible)*countAs;
+    this.possible += makeNumber(possible)*countAs;
   }
   remove (total, possible) {
     this.total -= makeNumber(total, possible);
@@ -485,7 +485,6 @@ function autoGrade(rampal=false) {
   var temp = [];
   var temp2 = [];
   if (rampal) {
-    document.getElementById("inputGrades").value = previousInput;
     document.getElementById("rampalButton").style.display = "none";
     RAMPAL = true;
   } else {
@@ -493,7 +492,7 @@ function autoGrade(rampal=false) {
     document.getElementById("rampalButton").style.display = "block";
     RAMPAL = false;
   }
-  autoCalc = document.getElementById("inputGrades").value.split("\n");
+  autoCalc = previousInput.split("\n");
   document.getElementById("inputGrades").value = "";
   while (autoCalc.indexOf("Comment") != -1 || autoCalc.indexOf("Missing Assignment") != -1)
     autoCalc.shift();
@@ -566,10 +565,11 @@ function autoCalc2() {
     for (var i = 0; i < cats.length; i++) {
       new Category(cats[i], new Number(document.autoCategories[new Number(i).toString()].value));
     }
+    var countAs = 1.0;
     for (var i = 0; i < autoCalc.length; i++) {
-      let countAs = 1.0;
-      if (RAMPAL) countAs = document.gradesList[i].value;
-      categoryByName(autoCalc[i][0]).add(autoCalc[i][1]*countAs, autoCalc[i][2]*countAs);
+      if (RAMPAL) countAs = new Number(document.gradesList[i].value);
+      else countAs = 1.0;
+      categoryByName(autoCalc[i][0]).add(autoCalc[i][1], autoCalc[i][2], countAs);
     }
     currentCategory = null;
   }
