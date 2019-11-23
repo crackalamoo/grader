@@ -192,6 +192,7 @@
       <option value="mandarin 3">中文三</option>
     </optgroup>
     <optgroup label="Electives">
+      <option value="alice">Alice Coding in Java (HH)</option>
       <option value="research">Scientific/Summer Research</option>
     </optgroup>
   </select></form>
@@ -590,7 +591,8 @@ var classes = {"ap lang brown": [false, 20, 5, 25, 50],
   "research": [true],
   "precalc": [true],
   "mandarin 3": [false, 10, 30, 25, 35],
-  "stats": [false, 18, 20, 2, 60]};
+  "stats": [false, 18, 20, 2, 60],
+  "alice": [false, 25, 20, 20, 35]};
 function setclass() {
   var classData = classes[document.classes.class.value];
   document.autoCategories.point.checked = classData[0];
