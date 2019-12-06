@@ -73,6 +73,10 @@
   ul.faq li {
     font-weight: bold;
   }
+  span#hoyesel {
+    font-weight: bold;
+    font-size: 36px;
+  }
 </style>
 </head>
 <body>
@@ -142,7 +146,7 @@
     the same way</strong> and click "Delete Assignment".<br>
     To <strong>change the grade on an assignment</strong>, add or remove an assignment out of 0 points (ex: 5/0).</p>
   <form name="editCategory" action = "javascript:void(0)">
-    <input name="score" type="text" size="5"></input>/<input name="possible" type="number" size="5"></input>
+    <input name="score" type="number" size="5"></input>/<input name="possible" type="number" size="5"></input>
     <br><br><div class="button" onclick="addAssignment()">Add Assignment</div>
     <div class="button" onclick="deleteAssignment()">Delete Assignment</div><br>
     <input name="percent" type="number" size="5"></input>%<br>
@@ -186,6 +190,7 @@
       <option value="ap lang brown">English Language & Composition (AP, Brown)</option>
       <option value="ap lang meyer">English Language & Composition (AP, Meyer)</option>
       <option value="ap enviro">Environmental Science (AP)</option>
+      <option value="spanish 4">Español IV (H)</option>
       <option value="ap physics 1">Physics 1 (AP)</option>
       <option value="precalc">Pre-Calculus (H)</option>
       <option value="stats">Statistics (AP)</option>
@@ -199,6 +204,7 @@
   <p>Please enter a percentage for each category <strong><i>or</i></strong> check that this class is point system:</p>
   <form name="autoCategories" action="javascript:void(0)"></form>
   <br><span id="classError"></span>
+  <br><span id="hoyesel"></span>
 </div>
 <div class="main" id="FAQs">
   <div class="button" onclick="changeMode('start')">Back</div>
@@ -592,7 +598,8 @@ var classes = {"ap lang brown": [false, 20, 5, 25, 50],
   "precalc": [true],
   "mandarin 3": [false, 10, 30, 25, 35],
   "stats": [false, 18, 20, 2, 60],
-  "alice": [false, 25, 20, 20, 35]};
+  "alice": [false, 25, 20, 20, 35],
+  "spanish 4": [false, 10, 30, 25, 35]};
 function setclass() {
   var classData = classes[document.classes.class.value];
   document.autoCategories.point.checked = classData[0];
@@ -606,6 +613,20 @@ function setclass() {
   } else {
     document.getElementById("classError").innerHTML = "";
     document.getElementById("continueClass").style.backgroundColor = "";
+  }
+  if (document.classes.class.value == "spanish 4") {
+    date = new Date();
+    document.getElementById("hoyesel").innerHTML = "HOY ES EL " +
+      ["PRIMERO", "DOS", "TRES", "CUATRO", "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE", "DIEZ",
+      "ONCE", "DOCE", "TRECE", "CATORCE", "QUINCE", "DIECISÉIS", "DIECISIETE", "DIECIOCHO",
+      "DIECINUEVE", "VEINTE", "VEINTIUNO", "VEINTIDÓS", "VEINTITRES", "VEINTICUATRO",
+      "VEINTICINCO", "VEINTISÉIS", "VEINTISIETE", "VEINTIOCHO", "VEINTINUEVE", "TREINTA",
+      "TREINTA Y UNO"][date.getDate() - 1] +
+      " DE " + ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO",
+      "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"][date.getMonth()] + " DE "
+      + date.getFullYear() + "!!!!!";
+  } else {
+    document.getElementById("hoyesel").innerHTML = "";
   }
   document.classes.class.value = "";
 }
