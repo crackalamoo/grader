@@ -77,6 +77,16 @@
     font-weight: bold;
     font-size: 36px;
   }
+  span#rampalmemes {
+    display: hidden;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  span#rampalmemes img {
+    width: 20%;
+    height: 20%;
+  }
 </style>
 </head>
 <body>
@@ -104,7 +114,7 @@
   <script>
   document.getElementById("javascript").innerHTML = "If you're reading this message, you have JavaScript and can use this page.";
   </script>
-  <div class="button" onclick="changeMode('FAQs')">FAQs</div><br>
+  <div class="button" onclick="changeMode('FAQs')">Help</div><br>
   Begin by selecting how you will input your grades:<br><br>
   <div class="centerButtons">
     <div class="button" onclick="changeMode('manual');" id="manualInput">Manual</div>
@@ -177,7 +187,7 @@
     is based on <strong>point system</strong> rather than categories.</p><br>
   <p>Should I continue?</p>
   <div class="centerButtons">
-    <div class="button" id="rampalButton" onclick="autoGrade(rampal=true);">This is Mr. Rampal's class</div>
+    <div class="button" id="rampalButton" onclick="autoGrade(rampal=true);">Click here for Mr. Rampal's class</div>
   </div>
   <div class="centerButtons">
     <div class="button" onclick="changeMode('manual')">Manually enter grades</div>
@@ -210,22 +220,28 @@
   <form name="autoCategories" action="javascript:void(0)"></form>
   <br><span id="classError"></span>
   <br><span id="hoyesel"></span>
+  <br><span id="rampalmemes">
+    <img src="rampal3.jpg"><br>
+    <img src="rampal4.jpg"><br>
+    <img src="rampal5.jpg"><br>
+    <img src="rampal6.png"><br>
+    <p>Credit to Gabriel Sun for "No." and Josh Doischen for "In loving memory"</p>
+  </span>
 </div>
 <div class="main" id="FAQs">
   <div class="button" onclick="changeMode('start')">Back</div>
   <h3>Frequently Asked Questions</h3>
   <ul class="faq">
     <li>Q: Why doesn't it work?</li>
-    <b>A:</b> Because you are a monkey. This algorithm is definitely foolproof and if it doesn't work you did something wrong.
-    Make sure to <strong>read all instructions</strong> carefully.
+    <b>A:</b> This algorithm is definitely foolproof and if it doesn't work something is wrong with the input.
+    Make sure to <strong>read all instructions <em>carefully</em></strong>.
     <li>Q: What if a category is missing?</li>
     <b>A:</b> If a category is missing, <strong>enter its normal percentage</strong> and everything will be ok. For example, if there is no test grade in for AP Lang,
-    enter 5% for MC Quizzes, 25% for Quizzes, and 20% for Homework. Note that selecting a class from the menu may not work if a
-    category is missing.
+    enter 5% for MC Quizzes, 25% for Quizzes, and 20% for Homework.
     <li>Q: Can you add my class?</li>
-    <b>A:</b> Yes. Contact me somehow and give me the grading scale for the class, the name of the class, and the exact names of the categories in MyBackpack.
+    <b>A:</b> Yes. Contact me somehow and give me the grading scale for the class, the name of the class, and the <u><em>exact</em></u> names of the categories in MyBackpack.
     <li>Q: Why did you make this?</li>
-    <b>A:</b> I noticed people taking too long to calculate their grades and decided to ease their pain using my mad skilz.
+    <b>A:</b> I noticed people taking too long to calculate their grades and decided to ease their pain using my mad skillz.
     <li>Q: How did you make this?</li>
     <b>A:</b> I used a combination of HTML (to make it exist), CSS (to make it aesthetically pleasing), and JavaScript (to make it work).
     JavaScript is a superior language to Java, from which it is entirely separate. Anyone who says Java is better than JavaScript
@@ -499,10 +515,12 @@ function autoGrade(rampal=false) {
   var temp2 = [];
   if (rampal) {
     document.getElementById("rampalButton").style.display = "none";
+    document.getElementById("rampalmemes").style.display = "flex";
     RAMPAL = true;
   } else {
     previousInput = document.getElementById("inputGrades").value;
     document.getElementById("rampalButton").style.display = "block";
+    document.getElementById("rampalmemes").style.display = "none";
     RAMPAL = false;
   }
   autoCalc = previousInput.split("\n");
