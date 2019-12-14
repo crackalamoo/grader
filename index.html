@@ -105,7 +105,6 @@
   document.getElementById("javascript").innerHTML = "If you're reading this message, you have JavaScript and can use this page.";
   </script>
   <div class="button" onclick="changeMode('FAQs')">FAQs</div><br>
-  <p><strong>Announcement:</strong> Mr. Rampal's class now works!</p>
   Begin by selecting how you will input your grades:<br><br>
   <div class="centerButtons">
     <div class="button" onclick="changeMode('manual');" id="manualInput">Manual</div>
@@ -172,11 +171,11 @@
     is based on <strong>point system</strong> rather than categories.</p><br>
   <p>Should I continue?</p>
   <div class="centerButtons">
-    <div class="button" id="rampalButton" onclick="autoGrade(rampal=true);">Wait, this is Mr. Rampal's class</div>
+    <div class="button" id="rampalButton" onclick="autoGrade(rampal=true);">This is Mr. Rampal's class</div>
   </div>
   <div class="centerButtons">
-    <div class="button" onclick="changeMode('manual')">No, let me manually enter grades.</div>
-    <div class="button" onclick="autoCats(); changeMode('autoCategories');">Yes, continue.</div>
+    <div class="button" onclick="changeMode('manual')">Manually enter grades</div>
+    <div class="button" onclick="autoCats(); changeMode('autoCategories');">Continue</div>
   </div>
 </div>
 <div class="main" id="autoCategories">
@@ -184,7 +183,7 @@
   <form name="classes" action="javascript:void(0)"><select name="class" onchange="setclass();">
     <option value="">-- Select a class -- </option>
     <optgroup label="Core Classes">
-      <option value="apush">American History (AP)</option>
+      <!-- <option value="apush">American History (AP)</option> -->
       <option value="ap bio">Biology (AP)</option>
       <option value="ap chem">Chemistry (AP)</option>
       <option value="ap lang brown">English Language & Composition (AP, Brown)</option>
@@ -231,7 +230,7 @@
 </div>
 <div class="main" id="semester">
   <br><div class="button" onclick="changeMode('start')">Back</div><br>
-  <b><p>Minimum exam grade</p></b>
+  <b><p>Minimum exam grade required</p></b>
   <form name="semester" action="javascript:void(0)">
     Quarter 1/3 grade: <select name="q1">
       <option value="98.5">A+</option>
@@ -360,6 +359,7 @@ function makeNumber(grade, possible=100.0) {
     case "F": grade=30; break;
     case "F-": grade=0; break;
     case "NTI": grade = 0; break;
+    case "LATE": grade = 50; break;
     default: return new Number(grade);
   }
   return new Number(grade*possible/100.0);
