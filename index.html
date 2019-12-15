@@ -554,6 +554,9 @@ if(typeof(String.prototype.trim) === "undefined")
 }
 var previousInput = "";
 var RAMPAL = false;
+function auto_filter(el) {
+  return el != "" && el != " ";
+}
 function autoGrade(rampal=false) {
   var temp = [];
   var temp2 = [];
@@ -571,8 +574,8 @@ function autoGrade(rampal=false) {
   document.getElementById("inputGrades").value = "";
   while (autoCalc.indexOf("Comment") != -1 || autoCalc.indexOf("Missing Assignment") != -1)
     autoCalc.shift();
-  firstItem = autoCalc[0].trim().split("\t").filter(function (el) { return el != "" && el != " "; });
-  secondItem = autoCalc[1].trim().split("\t").filter(function (el) { return el != "" && el != " "; });
+  firstItem = autoCalc[0].trim().split("\t").filter(auto_filter);
+  secondItem = autoCalc[1].trim().split("\t").filter(auto_filter);
   if (firstItem.length <= 2 && secondItem.length >= 3)
     lineSystem = 2;
   else
@@ -580,6 +583,8 @@ function autoGrade(rampal=false) {
   for (var i = 1; i < autoCalc.length; i += lineSystem) {
     autoCalc[i] = autoCalc[i].trim();
     let splitArray = autoCalc[i].split("\t");
+    if (splitArray[0] == "")
+      splitArray.shift();
     temp = [];
     temp.push(splitArray[2 - lineSystem]);
     temp.push(splitArray[3 - lineSystem]);
@@ -587,8 +592,6 @@ function autoGrade(rampal=false) {
     if (["", " ", "P", "EXC", "EX"].indexOf(splitArray[3 - lineSystem]) == -1)
       temp2.push(temp);
   }
-  console.log("Hi Cathy. What does it say below? Open the array.")
-  console.log(temp2);
   autoCalc = temp2;
   document.gradesList.innerHTML = "";
   for (var i = 0; i < temp2.length; i++) {
