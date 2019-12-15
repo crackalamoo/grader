@@ -583,7 +583,7 @@ function autoGrade(rampal=false) {
   for (var i = 1; i < autoCalc.length; i += lineSystem) {
     autoCalc[i] = autoCalc[i].trim();
     let splitArray = autoCalc[i].split("\t");
-    if (splitArray[0] == "")
+    while (splitArray[0] == "")
       splitArray.shift();
     temp = [];
     temp.push(splitArray[2 - lineSystem]);
@@ -593,6 +593,8 @@ function autoGrade(rampal=false) {
       temp2.push(temp);
   }
   autoCalc = temp2;
+  console.log("Here we go again");
+  console.log(autoCalc);
   document.gradesList.innerHTML = "";
   for (var i = 0; i < temp2.length; i++) {
     if (RAMPAL) {
