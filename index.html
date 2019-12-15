@@ -251,12 +251,16 @@
 </div>
 <div class="main" id="addClass">
   <div class="button" onclick="changeMode('autoCategories')">Back</div>
-  <iframe width="0" height="0" border="0" name="hidden_iframe" id="hidden_iframe"></iframe>
+  <iframe width="0" height="0" border="0" name="hidden_iframe" id="hidden_iframe"></iframe><br>
   <span id="mail_sent"></span><br>
-  <form name="add_class" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScQ5kMZk6A-iFj88TgNe8iPgKBQ6TwhIZH4dYZfHi7rreipSQ/formResponse" method="POST" onsubmit="submitted=!0" target="hidden_iframe">
+  <form name="add_class" autocomplete="off" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScQ5kMZk6A-iFj88TgNe8iPgKBQ6TwhIZH4dYZfHi7rreipSQ/formResponse" method="POST" onsubmit="submitted=!0" target="hidden_iframe">
+    <p>To figure out if a class is point system or categories, check how much quizzes, homework, and tests are worth.
+      If they are out of about the same number of points, it is categories. Otherwise, it may be point system.</p>
     Name of class: <input type="text" name="entry.1399913855" placeholder="ex: AP Chem" required><br>
-    EXACT names of categories as they appear in MyBackpack: <input type="text" name="entry.1953535029" placeholder="ex: Quizzez, Test, Labs, Homework/Classwork" required><br>
-    Weight of each category in above order: <input type="text" name="entry.1262923778" placeholder="ex: 15%, 50%, 25%, 10%" required><br>
+    <p>For <strong>point system</strong>, type &ldquo;point system&rdquo; for names and weights.</p>
+    EXACT names of categories as they appear in MyBackpack: <input type="text" name="entry.1953535029" placeholder="ex: Quizzez, Test, Labs, Homework/Classwork" size="50" required><br>
+    Weight of each category in above order: <input type="text" name="entry.1262923778" placeholder="ex: 15%, 50%, 25%, 10%" size="25" required><br>
+    Custom notes (optional): <input type="text" name="entry.1902727374"><br>
     <button class="button" type="submit" value="Send" onclick="mailSent();">Submit</button>
   </form>
 </div>
@@ -272,6 +276,7 @@
     enter 5% for MC Quizzes, 25% for Quizzes, and 20% for Homework.
     <li>Q: Can you add my class?</li>
     <b>A:</b> Yes. Contact me somehow and give me the grading scale for the class, the name of the class, and the <u><em>exact</em></u> names of the categories in MyBackpack.
+    You can also fill out a form when choosing a class.
     <li>Q: Why did you make this?</li>
     <b>A:</b> I noticed people taking too long to calculate their grades and decided to ease their pain using my mad skillz.
     <li>Q: How did you make this?</li>
@@ -732,6 +737,7 @@ function calculateSemester() {
 function mailSent() {
   document.getElementById("mail_sent").innerHTML = "Thank you! Your response was sent and the class should be available shortly.";
   document.add_class.style.display = "none";
+  document.classes.class.remove(1);
 }
 function calculateExam() {
   var exam = new Number(document.exam.exam.value);
