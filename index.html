@@ -221,7 +221,7 @@
     <option value="add class">Add a class to this list</option>
     <optgroup label="Core Classes">
       <!-- <option value="apush">American History (AP)</option> -->
-      <option value="ap bio">Biology (AP)</option>
+      <option value="ap bio">Biology (H/AP)</option>
       <option value="ap chem">Chemistry (AP)</option>
       <option value="ap lang brown">English Language & Composition (AP, Brown)</option>
       <option value="ap lang meyer">English Language & Composition (AP, Meyer)</option>
@@ -557,6 +557,9 @@ var RAMPAL = false;
 function auto_filter(el) {
   return el != "" && el != " ";
 }
+function isNotGrade(g) {
+  return (isNan(makeNumber(g, 100.0)));
+}
 function autoGrade(rampal=false) {
   var temp = [];
   var temp2 = [];
@@ -580,10 +583,10 @@ function autoGrade(rampal=false) {
     lineSystem = 2;
   else
     lineSystem = 1;
-  for (var i = 1; i < autoCalc.length; i += lineSystem) {
+  for (var i = lineSystem-1; i < autoCalc.length; i += lineSystem) {
     autoCalc[i] = autoCalc[i].trim();
     let splitArray = autoCalc[i].split("\t");
-    while (isNaN(new Number(splitArray[1])))
+    while (isNotGrade(splitArray[1]))
       splitArray.shift();
     temp = [];
     temp.push(splitArray[0]);
