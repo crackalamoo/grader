@@ -558,7 +558,7 @@ function auto_filter(el) {
   return el != "" && el != " ";
 }
 function isNotGrade(g) {
-  return (isNan(makeNumber(g, 100.0)));
+  return (isNaN(makeNumber(g, 100.0)));
 }
 function autoGrade(rampal=false) {
   var temp = [];
