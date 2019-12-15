@@ -19,15 +19,19 @@
   h1,h2,h3 {
     margin-left: 30%;
   }
+  iframe#hidden_iframe {
+    display: none;
+  }
   p#javascript {
     margin-left: 40px;
     font-weight: bold;
     color: #0088AA;
   }
-  div.button {
+  .button {
     color: #FFFFFF;
     background-color: #0088AA;
     border: 1px solid #99AAFF;
+    font-family: "Baskerville", "Times New Roman";
     min-width: 70px;
     max-width: 200px;
     padding-left: 20px;
@@ -37,13 +41,13 @@
     text-align: center;
     cursor: pointer;
   }
-  div.button:hover {
+  .button:hover {
     background-color: #0099CC;
   }
-  div.button.selected {
+  .button.selected {
     background-color: #00AADD;
   }
-  div.button.selected:hover {
+  .button.selected:hover {
     background-color: #00BBEE;
   }
   div.centerButtons {
@@ -214,6 +218,7 @@
   <p><strong>Select a class</strong> to automatically fill in percentages/weighting. (Credit to Adin Groper for this idea)</p>
   <form name="classes" action="javascript:void(0)"><select name="class" onchange="setclass();">
     <option value="">-- Select a class -- </option>
+    <option value="add class">Add a class to this list</option>
     <optgroup label="Core Classes">
       <!-- <option value="apush">American History (AP)</option> -->
       <option value="ap bio">Biology (AP)</option>
@@ -243,6 +248,17 @@
     <img src="rampal6.png"><br>
     <p>Credit to Gabriel Sun for "No." and Josh Doischen for "In loving memory"</p>
   </span>
+</div>
+<div class="main" id="addClass">
+  <div class="button" onclick="changeMode('autoCategories')">Back</div>
+  <iframe width="0" height="0" border="0" name="hidden_iframe" id="hidden_iframe"></iframe>
+  <span id="mail_sent"></span><br>
+  <form name="add_class" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScQ5kMZk6A-iFj88TgNe8iPgKBQ6TwhIZH4dYZfHi7rreipSQ/formResponse" method="POST" onsubmit="submitted=!0" target="hidden_iframe">
+    Name of class: <input type="text" name="entry.1399913855" placeholder="ex: AP Chem" required><br>
+    EXACT names of categories as they appear in MyBackpack: <input type="text" name="entry.1953535029" placeholder="ex: Quizzez, Test, Labs, Homework/Classwork" required><br>
+    Weight of each category in above order: <input type="text" name="entry.1262923778" placeholder="ex: 15%, 50%, 25%, 10%" required><br>
+    <button class="button" type="submit" value="Send" onclick="mailSent();">Submit</button>
+  </form>
 </div>
 <div class="main" id="FAQs">
   <div class="button" onclick="changeMode('start')">Back</div>
@@ -648,6 +664,10 @@ var classes = {
   "alice": [["a", "h", "ta", "te"], [false, 25, 20, 20, 35]],
 };
 function setclass() {
+  if (document.classes.class.value == "add class") {
+    document.classes.class.value = "";
+    changeMode('addClass');
+  }
   var catLetters = classes[document.classes.class.value][0];
   var catData = classes[document.classes.class.value][1];
   var classCats = findCategories(autoCalc);
@@ -708,6 +728,10 @@ function calculateSemester() {
   }
   if (fail != -1)
     gradeDisplay.innerHTML = "Minimum grade required on semester exam: " + fail + "% (I hope you don't Fritz the exam that badly)";
+}
+function mailSent() {
+  document.getElementById("mail_sent").innerHTML = "Thank you! Your response was sent and the class should be available shortly.";
+  document.add_class.style.display = "none";
 }
 function calculateExam() {
   var exam = new Number(document.exam.exam.value);
