@@ -78,7 +78,7 @@
     font-size: 36px;
   }
   span#rampalmemes {
-    display: hidden;
+    display: none;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
@@ -87,18 +87,35 @@
     width: 20%;
     height: 20%;
   }
+  div#manualInput {
+    display: none;
+  }
+  p#disclaimer {
+    font-size: 7px;
+  }
 </style>
 </head>
 <body>
 
 <h3>Harys Dalvi's Aesthetically Pleasing</h3>
 <h1>AHS* Grade Calculator</h1>
-<p style="font-size: 8px;">
-  *Disclaimer: &ldquo;Harys Dalvi's Aesthetically Pleasing AHS Grade Calculator&rdquo; is not endorsed by, directly
+<p id="disclaimer">
+  *IMPORTANT: PLEASE READ THE FOLLOWING DISCLAIMER: &ldquo;Harys Dalvi's Aesthetically Pleasing AHS Grade Calculator&rdquo; is not endorsed by, directly
   affiliated with, maintained, authorized, or sponsored by American Learning Systems, Inc.
   or any of its subsidiaries or its affiliates. The names American Heritage School and AHS
   as well as related names, marks, emblems, and images are registered trademarks of their
-  owners. This website should not be misconstrued as an attempt to usurp power and
+  owners.
+  Their use here does not imply that you may use them for any purpose other than for the same or a similar informational
+  use as contemplated by the original author of &ldquo;Harys Dalvi's Aesthetically Pleasing AHS Grade Calculator&rdquo;.
+  Your use of any such or similar incorporeal property is at your own risk.
+  &ldquo;Harys Dalvi's Aesthetically Pleasing AHS Grade Calculator&rdquo; contains material which may portray an identifiable
+  person (*cough cough* Mr. Rampal) affiliated with the American Heritage School of 6200 Linton Blvd, Delray Beach, Palm Beach County,
+  Miami metropolitan area, Florida, Adams-Onís Treaty Land,
+  United States Census Bureau Division 5 of Region 3, United States of America, North America, New World, Lithosphere, Planet Earth, Inner Planets, Solar System,
+  Orion-Cygnus Spiral Arm, Milky Way Galaxy, Local Group, Virgo Cluster, Laniakea Supercluster, Universe.
+  The use of images of living individuals is, in some jurisdictions, restricted by laws
+  pertaining to personality rights, independent from their copyright status.
+  &ldquo;Harys Dalvi's Aesthetically Pleasing AHS Grade Calculator&rdquo; should not be misconstrued as an attempt to usurp power and
   steal rights to administer American Heritage School or any of its affiliates.
 </p>
 <div id="ahsDiv"><img id="ahs" src="https://www.ahschool.com/data/news/thumbs/1579.full.jpg"></div>
@@ -115,16 +132,14 @@
   document.getElementById("javascript").innerHTML = "If you're reading this message, you have JavaScript and can use this page.";
   </script>
   <div class="button" onclick="changeMode('FAQs')">Help</div><br>
-  Begin by selecting how you will input your grades:<br><br>
+  Begin by selecting a calculation:<br><br>
   <div class="centerButtons">
-    <div class="button" onclick="changeMode('manual');" id="manualInput">Manual</div>
-    <div class="button" onclick="changeMode('auto');" id="autoCalculation">Automatic</div>
-  </div><br>
+    <div class="button" onclick="changeMode('manual');" id="manualInput">Manual Input</div>
+    <div class="button" onclick="changeMode('auto');" id="autoCalculation">Automatic Calculation</div>
+  </div>
   <div class="centerButtons">
     <div class="button" onclick="changeMode('semester')">Semester/Exam grades</div>
   </div>
-  <p><strong>Automatic is recommended</strong> but manual may be more accurate in case I programmed this wrong. (I'm pretty sure I programmed
-    it right. I have tested it extensively including point system, missing assignments, letter grades, pending, and excused.)</p>
   <p>I will <strong>never</strong> use the information you give here to make fun of you. In fact, I don't know how to. I have
     no way of knowing what you type here because I am not good at programming in PHP. JavaScript is considered a &ldquo;client side&rdquo;
     programming language, which means all the code runs on your computer without transferring data anywhere else.</p>
@@ -157,6 +172,7 @@
 </div>
 <div class="main" id="editCategory">
   <div class="button" onclick="updateCategories(); changeMode('manual');">Done</div><br>
+  <span id="editCategoryInfo"></span><br>
   <p>Enter Score/Possible. Examples: 5/6.0, 8.5/9, B+/50.0, NTI/10.00<br>To delete an assignment, enter its score <strong>in
     the same way</strong> and click "Delete Assignment".<br>
     To <strong>change the grade on an assignment</strong>, add or remove an assignment out of 0 points (ex: 5/0).</p>
@@ -439,7 +455,7 @@ function updateCategories() {
   var categoryList = document.getElementById("manualCategories");
   document.getElementById("beginCategories").innerHTML = categories.length > 0 ? "" :
     "Begin by creating categories for grades. If the class is based on point system, make a category called something like \"Total\" and consider it 100% of your grade.";
-  categoryList.innerHTML = "Please <strong>click a category to add or remove assignments</strong> and to see that category's score.<br><br>Categories:<br>";
+  categoryList.innerHTML = "<strong>Click a category</strong> to add or remove assignments and to see that category's score.<br><br>Categories:<br>";
   var totalPercent = 0;
   var categoryScore = 0;
   var totalScore = 0;
@@ -452,6 +468,8 @@ function updateCategories() {
       currentCategory = cat;
       document.editCategory.percent.value = currentCategory.percentage;
       changeMode("editCategory");
+      document.getElementById("editCategoryInfo").innerHTML = "Average in " + currentCategory.name +
+        ": " + roundDecimal(currentCategory.score(), 2) + "%";
     }}(categories[i]);
     if (currentCategory != null && categories[i].name == currentCategory.name) {
       newCategory.className = "button selected";
@@ -466,8 +484,9 @@ function updateCategories() {
     "<br>Sum of all categories: " + Math.round(totalPercent) + "% (Should be 100%)<br>";
   if (currentCategory == null)
     categoryP.innerHTML += "No category is currently selected";
-  else
+  else {
     categoryP.innerHTML += "Score so far in " + currentCategory.name + ": " + roundDecimal(categoryScore, 2) + "%";
+  }
   if (isNaN(totalScore))
     categoryP.innerHTML += "<br><b>You have a denominator of zero or another error in at least one category." +
       " Try adding some assignments.</b>";
@@ -483,11 +502,15 @@ function addAssignment() {
   currentCategory.add(document.editCategory.score.value, document.editCategory.possible.value);
   document.editCategory.score.value = "";
   document.editCategory.possible.value = "";
+  document.getElementById("editCategoryInfo").innerHTML = "Average in " + currentCategory.name +
+    ": " + roundDecimal(currentCategory.score(), 2) + "%";
 }
 function deleteAssignment() {
   currentCategory.remove(document.editCategory.score.value, document.editCategory.possible.value);
   document.editCategory.score.value = "";
   document.editCategory.possible.value = "";
+  document.getElementById("editCategoryInfo").innerHTML = "Average in " + currentCategory.name +
+    ": " + roundDecimal(currentCategory.score(), 2) + "%";
 }
 function changePercent() {
   currentCategory.percentage = new Number(document.editCategory.percent.value);
@@ -606,6 +629,7 @@ function autoCalc2() {
   }
   updateCategories();
   changeMode("manual");
+  document.getElementById("manualInput").style.display = "block";
   document.getElementById("manualInput").innerHTML = "Edit grades";
   document.getElementById("autoCalculation").innerHTML = "New class (automatic)";
 }
