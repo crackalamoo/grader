@@ -256,11 +256,11 @@
   <form name="add_class" autocomplete="off" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScQ5kMZk6A-iFj88TgNe8iPgKBQ6TwhIZH4dYZfHi7rreipSQ/formResponse" method="POST" onsubmit="submitted=!0" target="hidden_iframe">
     <p>To figure out if a class is point system or categories, check how much quizzes, homework, and tests are worth.
       If they are out of about the same number of points, it is categories. Otherwise, it may be point system.</p>
-    Name of class: <input type="text" name="entry.1399913855" placeholder="ex: AP Chem" required><br>
+    Name of class: <input type="text" name="entry.1399913855" placeholder="ex: AP Chem" required></input><br>
     <p>For <strong>point system</strong>, type &ldquo;point system&rdquo; for names and weights.</p>
-    EXACT names of categories as they appear in MyBackpack: <input type="text" name="entry.1953535029" placeholder="ex: Quizzez, Test, Labs, Homework/Classwork" size="50" required><br>
-    Weight of each category in above order: <input type="text" name="entry.1262923778" placeholder="ex: 15%, 50%, 25%, 10%" size="25" required><br>
-    Custom notes (optional): <input type="text" name="entry.1902727374"><br>
+    EXACT names of categories as they appear in MyBackpack: <input type="text" name="entry.1953535029" placeholder="ex: Quizzez, Test, Labs, Homework/Classwork" size="50" required></input><br>
+    Weight of each category in above order: <input type="text" name="entry.1262923778" placeholder="ex: 15%, 50%, 25%, 10%" size="25" required></input><br>
+    Custom notes (optional): <input type="text" name="entry.1902727374"></input><br>
     <button class="button" type="submit" value="Send" onclick="mailSent();">Submit</button>
   </form>
 </div>
@@ -686,34 +686,35 @@ function setclass() {
   if (document.classes.class.value == "add class") {
     document.classes.class.value = "";
     changeMode('addClass');
-  }
-  var catLetters = classes[document.classes.class.value][0];
-  var catData = classes[document.classes.class.value][1];
-  var classCats = findCategories(autoCalc);
-  document.autoCategories.point.checked = catData[0];
-  for (var i = 0; i < catLetters.length; i++) {
-    try {
-      for (var j = 0; j < classCats.length; j++) {
-        if (classCats[j].toLowerCase().startsWith(catLetters[i]))
-          document.autoCategories[j].value = catData[i+1];
-      }
-    } catch (err) {}
-  }
-  if (document.classes.class.value == "spanish 4") {
-    date = new Date();
-    document.getElementById("hoyesel").innerHTML = "HOY ES EL " +
-      ["PRIMERO", "DOS", "TRES", "CUATRO", "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE", "DIEZ",
-      "ONCE", "DOCE", "TRECE", "CATORCE", "QUINCE", "DIECISÉIS", "DIECISIETE", "DIECIOCHO",
-      "DIECINUEVE", "VEINTE", "VEINTIUNO", "VEINTIDÓS", "VEINTITRES", "VEINTICUATRO",
-      "VEINTICINCO", "VEINTISÉIS", "VEINTISIETE", "VEINTIOCHO", "VEINTINUEVE", "TREINTA",
-      "TREINTA Y UNO"][date.getDate() - 1] +
-      " DE " + ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO",
-      "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"][date.getMonth()] + " DE "
-      + date.getFullYear() + "!!!!!";
   } else {
-    document.getElementById("hoyesel").innerHTML = "";
+    var catLetters = classes[document.classes.class.value][0];
+    var catData = classes[document.classes.class.value][1];
+    var classCats = findCategories(autoCalc);
+    document.autoCategories.point.checked = catData[0];
+    for (var i = 0; i < catLetters.length; i++) {
+      try {
+        for (var j = 0; j < classCats.length; j++) {
+          if (classCats[j].toLowerCase().startsWith(catLetters[i]))
+            document.autoCategories[j].value = catData[i+1];
+        }
+      } catch (err) {}
+    }
+    if (document.classes.class.value == "spanish 4") {
+      date = new Date();
+      document.getElementById("hoyesel").innerHTML = "HOY ES EL " +
+        ["PRIMERO", "DOS", "TRES", "CUATRO", "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE", "DIEZ",
+        "ONCE", "DOCE", "TRECE", "CATORCE", "QUINCE", "DIECISÉIS", "DIECISIETE", "DIECIOCHO",
+        "DIECINUEVE", "VEINTE", "VEINTIUNO", "VEINTIDÓS", "VEINTITRES", "VEINTICUATRO",
+        "VEINTICINCO", "VEINTISÉIS", "VEINTISIETE", "VEINTIOCHO", "VEINTINUEVE", "TREINTA",
+        "TREINTA Y UNO"][date.getDate() - 1] +
+        " DE " + ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO",
+        "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"][date.getMonth()] + " DE "
+        + date.getFullYear() + "!!!!!";
+    } else {
+      document.getElementById("hoyesel").innerHTML = "";
+    }
+    document.classes.class.value = "";
   }
-  document.classes.class.value = "";
 }
 function calculateSemester() {
   var target = new Number(document.semester.target.value);
@@ -751,9 +752,15 @@ function calculateSemester() {
     gradeDisplay.innerHTML = "Minimum grade required on semester exam: " + fail + "% (I hope you don't Fritz the exam that badly)";
 }
 function mailSent() {
-  document.getElementById("mail_sent").innerHTML = "Thank you! Your response was sent and the class should be available shortly.";
-  document.add_class.style.display = "none";
-  document.classes.class.remove(1);
+  if (document.add_class["entry.1399913855"].value == "" ||
+    document.add_class["entry.1953535029"].value == "" ||
+    document.add_class["entry.1262923778"].value == "")
+      document.getElementById("mail_sent").innerHTML = "Please enter valid data.";
+  else {
+    document.getElementById("mail_sent").innerHTML = "Thank you! Your response was sent and the class should be available shortly.";
+    document.add_class.style.display = "none";
+    document.classes.class.remove(1);
+  }
 }
 function calculateExam() {
   var exam = new Number(document.exam.exam.value);
