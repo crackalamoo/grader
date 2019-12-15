@@ -587,6 +587,8 @@ function autoGrade(rampal=false) {
     if (["", " ", "P", "EXC", "EX"].indexOf(splitArray[3 - lineSystem]) == -1)
       temp2.push(temp);
   }
+  console.log("Hi Cathy. What does it say below? Open the array.")
+  console.log(temp2);
   autoCalc = temp2;
   document.gradesList.innerHTML = "";
   for (var i = 0; i < temp2.length; i++) {
@@ -685,8 +687,10 @@ function setclass() {
   document.autoCategories.point.checked = catData[0];
   for (var i = 0; i < catLetters.length; i++) {
     try {
-      if (classCats[i].toLowerCase().startsWith(catLetters[i]))
-        document.autoCategories[i].value = catData[i+1];
+      for (var j = 0; j < classCats.length; j++) {
+        if (classCats[j].toLowerCase().startsWith(catLetters[i]))
+          document.autoCategories[j].value = catData[i+1];
+      }
     } catch (err) {}
   }
   if (document.classes.class.value == "spanish 4") {
