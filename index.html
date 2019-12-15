@@ -571,14 +571,20 @@ function autoGrade(rampal=false) {
   document.getElementById("inputGrades").value = "";
   while (autoCalc.indexOf("Comment") != -1 || autoCalc.indexOf("Missing Assignment") != -1)
     autoCalc.shift();
-  for (var i = 1; i < autoCalc.length; i += 2) {
+  firstItem = autoCalc[0].trim().split("\t").filter(function (el) { return el != "" && el != " "; });
+  secondItem = autoCalc[1].trim().split("\t").filter(function (el) { return el != "" && el != " "; });
+  if (firstItem.length <= 2 && secondItem.length >= 3)
+    lineSystem = 2;
+  else
+    lineSystem = 1;
+  for (var i = 1; i < autoCalc.length; i += lineSystem) {
     autoCalc[i] = autoCalc[i].trim();
     let splitArray = autoCalc[i].split("\t");
     temp = [];
-    temp.push(splitArray[0]);
-    temp.push(splitArray[1]);
-    temp.push(splitArray[2]);
-    if (["", " ", "P", "EXC", "EX"].indexOf(splitArray[1]) == -1)
+    temp.push(splitArray[2 - lineSystem]);
+    temp.push(splitArray[3 - lineSystem]);
+    temp.push(splitArray[4 - lineSystem]);
+    if (["", " ", "P", "EXC", "EX"].indexOf(splitArray[3 - lineSystem]) == -1)
       temp2.push(temp);
   }
   autoCalc = temp2;
