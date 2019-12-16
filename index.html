@@ -217,7 +217,7 @@
 <div class="main" id="autoCategories">
   <p><strong>Select a class</strong> to automatically fill in percentages/weighting. (Credit to Adin Groper for this idea)</p>
   <form name="classes" action="javascript:void(0)"><select name="class" onchange="setclass();">
-    <option value="">-- Select a class -- </option>
+    <option value="">-- Select a class --</option>
     <option value="add class">Add a class to this list</option>
     <optgroup label="Core Classes">
       <option value="apush">American History (AP)</option>
@@ -292,7 +292,7 @@
   <br><div class="button" onclick="changeMode('start')">Back</div><br>
   <b><p>Minimum exam grade required</p></b>
   <form name="semester" action="javascript:void(0)">
-    Quarter 1/3 grade: <select name="q1">
+    Quarter 1/3 grade: <select name="q1" onchange="calculateSemester();">
       <option value="98.5">A+</option>
       <option value="95">A</option>
       <option value="91.5">A-</option>
@@ -306,7 +306,7 @@
       <option value="65">D</option>
       <option value="61.5">D-</option>
     </select><br>
-    Quarter 2/4 grade: <select name="q2">
+    Quarter 2/4 grade: <select name="q2" onchange="calculateSemester();">
       <option value="98.5">A+</option>
       <option value="95">A</option>
       <option value="91.5">A-</option>
@@ -320,7 +320,7 @@
       <option value="65">D</option>
       <option value="61.5">D-</option>
     </select><br>
-    I want at least: <select name="target">
+    I want at least: <select name="target" onchange="calculateSemester();">
       <option value="96.5">A+</option>
       <option value="92.5">A</option>
       <option value="89.5">A-</option>
@@ -334,12 +334,11 @@
       <option value="62.5">D</option>
       <option value="59.5">D-</option>
     </select><br>
-    <div class="button" onclick="calculateSemester();">Calculate</div>
   </form>
   <b><span id="semesterGrade"></span></b><br><br>
   <b><p>Semester grade with exam</p></b>
   <form name="exam" action="javascript:void(0)">
-    Quarter 1/3 grade: <select name="q1">
+    Quarter 1/3 grade: <select name="q1" onchange="calculateExam();">
       <option value="98.5">A+</option>
       <option value="95">A</option>
       <option value="91.5">A-</option>
@@ -353,7 +352,7 @@
       <option value="65">D</option>
       <option value="61.5">D-</option>
     </select><br>
-    Quarter 2/4 grade: <select name="q2">
+    Quarter 2/4 grade: <select name="q2" onchange="calculateExam();">
       <option value="98.5">A+</option>
       <option value="95">A</option>
       <option value="91.5">A-</option>
@@ -367,7 +366,7 @@
       <option value="65">D</option>
       <option value="61.5">D-</option>
     </select><br>
-    Exam grade: <select name="exam">
+    Exam grade: <select name="exam" onchange="calculateExam();">
       <option value="98.5">A+</option>
       <option value="95">A</option>
       <option value="91.5">A-</option>
@@ -381,7 +380,6 @@
       <option value="65">D</option>
       <option value="61.5">D-</option>
     </select><br>
-    <div class="button" onclick="calculateExam();">Calculate</div>
   </form>
   <b><span id="examGrade"></span></b>
 </div>
@@ -699,6 +697,7 @@ var classes = {
 function setclass() {
   if (document.classes.class.value == "add class") {
     document.classes.class.value = "";
+    document.add_class["entry.1953535029"].value = findCategories(autoCalc);
     changeMode('addClass');
   } else {
     var catLetters = classes[document.classes.class.value][0];
@@ -756,7 +755,8 @@ function calculateSemester() {
   if (required == -1)
     gradeDisplay.innerHTML = "Unfortunately this grade is not possible for you this semester. Good luck for next semester!";
   else
-    gradeDisplay.innerHTML = "Minimum grade required on semester exam: " + min[required] + "% (goes in as " + grades[required] + "%)";
+    gradeDisplay.innerHTML = "Minimum grade required on semester exam: " + min[required] + "% (goes in as " + letterGrade(grades[required]) +
+      "/" + grades[required] + "%)";
   var fail = -1;
   for (var i = 59; i >= 0; i--) {
     if (grade + i*0.2 >= target)
