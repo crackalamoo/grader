@@ -223,6 +223,7 @@
       <option value="apush">American History (AP)</option>
       <option value="ap bio">Biology (H/AP)</option>
       <option value="ap chem">Chemistry (AP)</option>
+      <option value="english 2">English II (H)</option>
       <option value="ap lang brown">English Language & Composition (AP, Brown)</option>
       <option value="ap lang meyer">English Language & Composition (AP, Meyer)</option>
       <option value="ap enviro">Environmental Science (AP)</option>
@@ -335,7 +336,7 @@
       <option value="59.5">D-</option>
     </select><br>
   </form>
-  <b><span id="semesterGrade"></span></b><br><br>
+  <b><span id="semesterGrade">Select grades above to calculate</span></b><br><br>
   <b><p>Semester grade with exam</p></b>
   <form name="exam" action="javascript:void(0)">
     Quarter 1/3 grade: <select name="q1" onchange="calculateExam();">
@@ -381,7 +382,7 @@
       <option value="61.5">D-</option>
     </select><br>
   </form>
-  <b><span id="examGrade"></span></b>
+  <b><span id="examGrade">Select grades above to calculate</span></b>
 </div>
 
 <script>
@@ -692,7 +693,8 @@ var classes = {
   "stats": [["f", "m", "s", "t"], [false, 18, 20, 2, 60]],
   "alice": [["a", "h", "ta", "te"], [false, 25, 20, 20, 35]],
   "ap macro": [["h", "p", "q", "t"], [false, 20, 10, 30, 40]],
-  "apush": [["c", "f", "q", "t"], [false, 20, 20, 20, 40]]
+  "apush": [["c", "f", "q", "t"], [false, 20, 20, 20, 40]],
+  "english 2": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]]
 };
 function setclass() {
   if (document.classes.class.value == "add class") {
