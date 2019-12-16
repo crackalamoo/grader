@@ -559,7 +559,14 @@ function auto_filter(el) {
   return el != "" && el != " ";
 }
 function isNotGrade(g) {
-  return (isNaN(makeNumber(g, 100.0)));
+  if (isNaN(makeNumber(g, 100.0))) {
+    if (["", " ", "P", "EXC", "EX"].indexOf(g) == -1)
+      return true;
+    else
+      return false;
+  } else {
+    return false;
+  }
 }
 function autoGrade(rampal=false) {
   var temp = [];
