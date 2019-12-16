@@ -247,7 +247,7 @@
     <img src="rampal4.jpg"><br>
     <img src="rampal5.jpg"><br>
     <img src="rampal6.png"><br>
-    <p>Credit to Gabriel Sun for "No." and Josh Doischen for "In loving memory"</p>
+    <p>Credit to Gabriel Sun for <cite>No.</cite> and Josh Doischen for <cite>In loving memory</cite></p>
   </span>
 </div>
 <div class="main" id="addClass">
@@ -261,7 +261,7 @@
     <p>For <strong>point system</strong>, type &ldquo;point system&rdquo; for names and weights.</p>
     EXACT names of categories as they appear in MyBackpack: <input type="text" name="entry.1953535029" placeholder="ex: Quizzez, Test, Labs, Homework/Classwork" size="50" required></input><br>
     Weight of each category in above order: <input type="text" name="entry.1262923778" placeholder="ex: 15%, 50%, 25%, 10%" size="25" required></input><br>
-    Custom notes (optional): <input type="text" name="entry.1902727374"></input><br>
+    Notes (optional): <input type="text" name="entry.1902727374" size="40" placeholder="ex: Your name or the teacher's name"></input><br>
     <button class="button" type="submit" value="Send" onclick="mailSent();">Submit</button>
   </form>
 </div>
@@ -694,7 +694,7 @@ var classes = {
   "stats": [["f", "m", "s", "t"], [false, 18, 20, 2, 60]],
   "alice": [["a", "h", "ta", "te"], [false, 25, 20, 20, 35]],
   "ap macro": [["h", "p", "q", "t"], [false, 20, 10, 30, 40]],
-  "apush": [["f", "h", "q", "t"], [false, 20, 20, 20, 40]]
+  "apush": [["c", "f", "q", "t"], [false, 20, 20, 20, 40]]
 };
 function setclass() {
   if (document.classes.class.value == "add class") {
@@ -771,7 +771,8 @@ function mailSent() {
     document.add_class["entry.1262923778"].value == "")
       document.getElementById("mail_sent").innerHTML = "Please enter valid data.";
   else {
-    document.getElementById("mail_sent").innerHTML = "Thank you! Your response was sent and the class should be available shortly.";
+    document.getElementById("mail_sent").innerHTML = "Your response was sent and the class should be available shortly. Thank you!" +
+      "<br>For now, go back and enter weightings manually.";
     document.add_class.style.display = "none";
     document.classes.class.remove(1);
   }
