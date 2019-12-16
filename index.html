@@ -578,12 +578,16 @@ function autoGrade(rampal=false) {
   document.getElementById("inputGrades").value = "";
   while (autoCalc.indexOf("Comment") != -1 || autoCalc.indexOf("Missing Assignment") != -1)
     autoCalc.shift();
-  firstItem = autoCalc[0].trim().split("\t").filter(auto_filter);
-  secondItem = autoCalc[1].trim().split("\t").filter(auto_filter);
-  if (firstItem.length <= 2 && secondItem.length >= 3)
+  try {
+    firstItem = autoCalc[0].trim().split("\t").filter(auto_filter);
+    secondItem = autoCalc[1].trim().split("\t").filter(auto_filter);
+    if (firstItem.length <= 2 && secondItem.length >= 3)
+      lineSystem = 2;
+    else
+      lineSystem = 1;
+  } catch(err) {
     lineSystem = 2;
-  else
-    lineSystem = 1;
+  }
   for (var i = lineSystem-1; i < autoCalc.length; i += lineSystem) {
     autoCalc[i] = autoCalc[i].trim();
     let splitArray = autoCalc[i].split("\t");
