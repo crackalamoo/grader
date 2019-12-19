@@ -81,15 +81,22 @@
     font-weight: bold;
     font-size: 36px;
   }
-  span#rampalmemes {
-    display: none;
+  span.memeSpan {
+    display: flex;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
   }
-  span#rampalmemes img {
+  span#rampalmemes {
+    display: none;
+  }
+  span.memeSpan img {
     width: 20%;
     height: 20%;
+  }
+  span.memeSpan#holidayMemes img {
+    width: 15%;
+    height: 15%;
   }
   div#manualInput {
     display: none;
@@ -102,7 +109,8 @@
 <body>
 
 <h3>Harys Dalvi's Aesthetically Pleasing</h3>
-<h1>AHS* Grade Calculator</h1>
+<h1 id="sitename">AHS* Grade Calculator</h1>
+<div id="topInfo">
 <p id="disclaimer">
   *IMPORTANT: PLEASE READ THE FOLLOWING DISCLAIMER: &ldquo;Harys Dalvi's Aesthetically Pleasing AHS Grade Calculator&rdquo; is not endorsed by, directly
   affiliated with, maintained, authorized, or sponsored by American Learning Systems, Inc.
@@ -123,6 +131,7 @@
   steal rights to administer American Heritage School or any of its affiliates.
 </p>
 <div id="ahsDiv"><img id="ahs" src="https://www.ahschool.com/data/news/thumbs/1579.full.jpg"></div>
+</div>
 
 <hr>
 <div class="main" id="start">
@@ -139,11 +148,19 @@
   Begin by selecting a calculation:<br><br>
   <div class="centerButtons">
     <div class="button" onclick="changeMode('manual');" id="manualInput">Manual Input</div>
-    <div class="button" onclick="changeMode('auto');" id="autoCalculation">Automatic Calculation</div>
+    <div class="button" onclick="changeMode('auto');" id="autoCalculation">Quarter grades</div>
   </div>
   <div class="centerButtons">
     <div class="button" onclick="changeMode('semester')">Semester/Exam grades</div>
   </div>
+  <p>I don't know why you're still here but happy holidays!</p>
+  <span class="memeSpan" id="holidayMemes">
+    <img src="holidays/holiday1.jpg">
+    <img src="holidays/holiday2.jpeg">
+    <img src="holidays/holiday3.jpeg">
+    <img src="holidays/holiday4.jpeg">
+    <img src="holidays/holiday5.jpeg">
+  </span>
   <p>I will <strong>never</strong> use the information you give here to make fun of you. In fact, I don't know how to. I have
     no way of knowing what you type here because I am not good at programming in PHP. JavaScript is considered a &ldquo;client side&rdquo;
     programming language, which means all the code runs on your computer without transferring data anywhere else.</p>
@@ -190,7 +207,7 @@
 </div>
 <div class="main" id="auto">
   <div class="button" onclick="changeMode('start')">Back</div>
-  <p>Congratulations on trying to be cool with automatic grade calculation. Simply copy your grades
+  <p>Simply copy your grades
   from MyBackpack as shown in the image below.</p>
   <p>(If you are on a <strong>mobile device</strong>, including iPads, you should select <i>Assignment</i>,
     then select all the grades, and finally deselect the row that says <i>Assignment</i>)</p>
@@ -243,7 +260,7 @@
   <form name="autoCategories" action="javascript:void(0)"></form>
   <br><span id="classError"></span>
   <br><span id="hoyesel"></span>
-  <br><span id="rampalmemes">
+  <br><span class="memeSpan" id="rampalmemes">
     <img src="rampal3.jpg"><br>
     <img src="rampal4.jpg"><br>
     <img src="rampal5.jpg"><br>
@@ -391,12 +408,20 @@ var categories = [];
 var currentCategory = null;
 var divs = document.getElementsByClassName("main");
 var autoCalc = [];
+var semesters = [];
 function changeMode(mode) {
   for (var i = 0; i < divs.length; i++) {
     if (divs[i].id != mode)
       divs[i].style.display = "none";
     else
       divs[i].style.display = "block";
+  }
+  if (mode == "start") {
+    document.getElementById("topInfo").style.display = "block";
+    document.getElementById("sitename").innerHTML = "AHS* Grade Calculator";
+  } else {
+    document.getElementById("topInfo").style.display = "none";
+    document.getElementById("sitename").innerHTML = "AHS Grade Calculator";
   }
 }
 changeMode("start");
