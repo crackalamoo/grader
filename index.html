@@ -104,6 +104,9 @@
   p#disclaimer {
     font-size: 7px;
   }
+  div#creditInfo {
+    display: none;
+  }
 </style>
 </head>
 <body>
@@ -152,6 +155,7 @@
   </div>
   <div class="centerButtons">
     <div class="button" onclick="changeMode('semester')">Semester/Exam grades</div>
+    <div class="button" onclick="changeMode('gpaCalc')">GPA calculator</div>
   </div>
   <p>I don't know why you're still here but happy holidays!</p>
   <span class="memeSpan" id="holidayMemes">
@@ -401,6 +405,78 @@
   </form>
   <b><span id="examGrade">Select grades above to calculate</span></b>
 </div>
+<div class="main" id="gpaCalc">
+  <br><div class="button" onclick="changeMode('start');">Back</div><br>
+  <h2>Ritvik Teegavarapu AHS GPA Calculator</h2>
+  <h3>Suggested by and named in honor of Ritvik Teegavarapu</h3>
+  <div id="gpaData"></div>
+  <form name="addCredit">
+    <input type="checkbox" name="weighted" onchange="updateGpa()" checked></input> Weighted GPA<br>
+    <select name="letterGrade">
+      <option value="A+">A+</option>
+      <option value="A">A</option>
+      <option value="A-">A-</option>
+      <option value="B+">B+</option>
+      <option value="B">B</option>
+      <option value="B-">B-</option>
+      <option value="C+">C+</option>
+      <option value="C">C</option>
+      <option value="C-">C-</option>
+      <option value="D+">D+</option>
+      <option value="D">D</option>
+      <option value="D-">D-</option>
+      <option value="F">F</option>
+    </select>
+    <select name="classType">
+      <option value="AP">AP/HH</option>
+      <option value="H">H</option>
+      <option value="CP">CP</option>
+    </select>
+    <select name="numCredits">
+      <option value="0.5">Semester</option>
+      <option value="0.25">Quarter</option>
+    </select>
+    <div class="button" onclick="addGpaUnit()">Add</div>
+  </form>
+  <br><br><p><b>Modify/delete grades</b></p>
+  <form name="modifyCredit">
+    Credit number <input type="text" name="creditNum" onchange="creditInfo()"></input>
+    <div class="button" onclick="creditInfo()" id="getCreditButton">View credit</div><br>
+    <div id="creditInfo">
+      <select name="letterGrade">
+        <option value="A+">A+</option>
+        <option value="A">A</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B">B</option>
+        <option value="B-">B-</option>
+        <option value="C+">C+</option>
+        <option value="C">C</option>
+        <option value="C-">C-</option>
+        <option value="D+">D+</option>
+        <option value="D">D</option>
+        <option value="D-">D-</option>
+        <option value="F">F</option>
+      </select>
+      <select name="classType">
+        <option value="AP">AP/HH</option>
+        <option value="H">H</option>
+        <option value="CP">CP</option>
+      </select>
+      <select name="numCredits">
+        <option value="0.5">Semester</option>
+        <option value="0.25">Quarter</option>
+      </select>
+      <div class="button" onclick="editCredit()">Apply</div>
+      <div class="button" onclick="deleteCredit()">Delete</div>
+    </div>
+  </form>
+  <span class="memeSpan">
+    <img src="ritvik/ritvik1.jpeg">
+    <img src="ritvik/ritvik2.jpeg">
+    <img src="ritvik/ritvik3.JPG">
+  </span>
+</div>
 
 <script>
 var mode = "start";
@@ -409,6 +485,7 @@ var currentCategory = null;
 var divs = document.getElementsByClassName("main");
 var autoCalc = [];
 var semesters = [];
+var gpaData = [];
 function changeMode(mode) {
   for (var i = 0; i < divs.length; i++) {
     if (divs[i].id != mode)
@@ -811,6 +888,77 @@ function calculateExam() {
   var grade = q1*0.4 + q2*0.4 + exam*0.2;
   var gradeDisplay = document.getElementById("examGrade");
   examGrade.innerHTML = "Grade for the semester: " + letterGrade(grade) + " (" + roundDecimal(grade, 2) + ")"
+}
+function updateGpa() {
+  var g = document.getElementById("gpaData");
+  g.innerHTML = "";
+  var weighted = document.addCredit.weighted.checked;
+  totalGpa = 0.0;
+  totalCredits = 0.0
+  for (var i = 0; i < gpaData.length; i++) {
+    let gpa = {"A+": 13,
+      "A": 12,
+      "A-": 11,
+      "B+": 10,
+      "B": 9,
+      "B-": 8,
+      "C+": 7,
+      "C": 6,
+      "C-": 5,
+      "D+": 4,
+      "D": 3,
+      "D-": 2,
+      "F": 0
+    }[gpaData[i][0]];
+    if (weighted) {
+      gpa += {"AP": 7.0, "H": 4.0, "CP": 1.0}[gpaData[i][1]];
+    } else {
+      if (gpa == 13)
+        gpa = 12;
+      if (gpa < 3)
+        gpa = 0;
+    }
+    gpa /= 3.0;
+    totalGpa += (Math.round(gpa*100)/100.0)*gpaData[i][2];
+    totalCredits += gpaData[i][2];
+    g.innerHTML += "" + (i+1) + ": " + roundDecimal(gpa, 2) + " (" +
+      gpaData[i][0] + ", " + gpaData[i][1] + ", " + gpaData[i][2] + " credits)<br>";
+  }
+  g.innerHTML += "<b>GPA sum: " + roundDecimal(totalGpa, 2) + "<br>Total credits: " + roundDecimal(totalCredits, 1) +
+   "<br>Cumulative GPA: " + roundDecimal(totalGpa/totalCredits, 4) + "</b>";
+}
+function addGpaUnit() {
+  f = document.addCredit;
+  gpaData.push(new Array(f.letterGrade.value, f.classType.value, new Number(f.numCredits.value)));
+  updateGpa();
+}
+function creditInfo() {
+  i = new Number(document.modifyCredit.creditNum.value) - 1;
+  document.modifyCredit.letterGrade.value = gpaData[i][0];
+  document.modifyCredit.classType.value = gpaData[i][1];
+  document.modifyCredit.numCredits.value = gpaData[i][2];
+  document.getElementById("creditInfo").style.display = "block";
+  document.getElementById("getCreditButton").style.display = "none";
+}
+function hideCreditInfo() {
+  document.getElementById("creditInfo").style.display = "none";
+  document.getElementById("getCreditButton").style.display = "block";
+}
+function editCredit() {
+  i = new Number(document.modifyCredit.creditNum.value) - 1;
+  document.modifyCredit.creditNum.value = "";
+  gpaData[i][0] = document.modifyCredit.letterGrade.value;
+  gpaData[i][1] = document.modifyCredit.classType.value;
+  gpaData[i][2] = new Number(document.modifyCredit.numCredits.value);
+  hideCreditInfo();
+  updateGpa();
+}
+function deleteCredit() {
+  i = new Number(document.modifyCredit.creditNum.value) - 1;
+  document.modifyCredit.creditNum.value = "";
+  gpaData.splice(i, 1);
+  hideCreditInfo();
+  updateGpa();
 }
 </script>
 <br><br><br><br><br><br><br><br><br><br>
