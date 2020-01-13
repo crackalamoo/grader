@@ -404,6 +404,7 @@
   <div id="gpaData"></div>
   <form name="addCredit">
     <input type="checkbox" name="weighted" onchange="updateGpa()" checked></input> Weighted GPA<br>
+    <input type="checkbox" name="fivescale" onchange="updateGpa()"></input> 5.0 Scale<br>
     <select name="letterGrade">
       <option value="A+">A+</option>
       <option value="A">A</option>
@@ -885,6 +886,7 @@ function updateGpa() {
   var g = document.getElementById("gpaData");
   g.innerHTML = "";
   var weighted = document.addCredit.weighted.checked;
+  var fivescale = document.addCredit.fivescale.checked;
   totalGpa = 0.0;
   totalCredits = 0.0
   for (var i = 0; i < gpaData.length; i++) {
@@ -903,7 +905,13 @@ function updateGpa() {
       "F": 0
     }[gpaData[i][0]];
     if (weighted) {
-      gpa += {"AP": 7.0, "H": 4.0, "CP": 1.0}[gpaData[i][1]];
+      if (fivescale) {
+        if (gpa == 13)
+          gpa = 12;
+        gpa += {"AP": 3.0, "H": 1.5, "CP": 0.0}[gpaData[i][1]];
+      } else {
+        gpa += {"AP": 7.0, "H": 4.0, "CP": 1.0}[gpaData[i][1]];
+      }
     } else {
       if (gpa == 13)
         gpa = 12;
