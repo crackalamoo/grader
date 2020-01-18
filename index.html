@@ -107,12 +107,18 @@
   div#creditInfo {
     display: none;
   }
+  .noBottomMargin {
+    margin-bottom: 0;
+  }
+  .noTopMargin {
+    margin-top: 0;
+  }
 </style>
 </head>
 <body>
 
-<h3>Harys Dalvi's Aesthetically Pleasing</h3>
-<h1 id="sitename">AHS* Grade Calculator</h1>
+<h3 class="noBottomMargin">Harys Dalvi's Aesthetically Pleasing</h3>
+<h1 class="noTopMargin" id="sitename">AHS* Grade Calculator</h1>
 <div id="topInfo">
 <p id="disclaimer">
   *IMPORTANT: PLEASE READ THE FOLLOWING DISCLAIMER: &ldquo;Harys Dalvi's Aesthetically Pleasing AHS Grade Calculator&rdquo; is not endorsed by, directly
@@ -165,7 +171,8 @@
     Quarter 2: 10/21/19 &ndash; 12/20/19<br>
     Quarter 3: 01/06/20 &ndash; 03/13/20<br>
     Quarter 4: 03/16/20 &ndash; 05/28/20
-  </p>
+  </p><br>
+  <p>Did you know that Fritzgerald Duvigneaud got into Caltech, MIT, and UChicago?</p>
 </div>
 <div class="main" id="manual">
   <div class="button" onclick="changeMode('start')">Back</div><br>
@@ -257,11 +264,12 @@
   <br><span id="classError"></span>
   <br><span id="hoyesel"></span>
   <br><span class="memeSpan" id="rampalmemes">
-    <img src="rampal3.jpg"><br>
-    <img src="rampal4.jpg"><br>
-    <img src="rampal5.jpg"><br>
-    <img src="rampal6.png"><br>
-    <p>Credit to Gabriel Sun for <cite>No.</cite> and Josh Doischen for <cite>In loving memory</cite></p>
+    <img src="rampal/rampal3.jpg"><br>
+    <img src="rampal/rampal4.jpg"><br>
+    <img src="rampal/rampal5.jpg"><br>
+    <img src="rampal/rampal6.png"><br>
+    <p>Credit to Gabriel Sun for <cite>No.</cite> and Josh Doischen for <cite>In loving memory</cite><br><br>
+    जय श्री रामपाल (<i>Jai Shri Rampal</i>)</p>
   </span>
 </div>
 <div class="main" id="addClass">
@@ -304,7 +312,7 @@
 </div>
 <div class="main" id="semester">
   <br><div class="button" onclick="changeMode('start')">Back</div><br>
-  <b><p>Minimum exam grade required</p></b>
+  <h4>Minimum exam grade required</h4>
   <form name="semester" action="javascript:void(0)">
     Quarter 1/3 grade: <select name="q1" onchange="calculateSemester();">
       <option value="98.5">A+</option>
@@ -349,8 +357,9 @@
       <option value="59.5">D-</option>
     </select><br>
   </form>
-  <b><span id="semesterGrade">Select grades above to calculate</span></b><br><br>
-  <b><p>Semester grade with exam</p></b>
+  <b><span id="semesterGrade">Minimum grade required on semester exam: 86.5% (goes in as B+/88.5%)<br>
+    Select grades above to calculate</span></b><br><br>
+  <b><h4>Semester grade with exam</h4></b>
   <form name="exam" action="javascript:void(0)">
     Quarter 1/3 grade: <select name="q1" onchange="calculateExam();">
       <option value="98.5">A+</option>
@@ -395,12 +404,13 @@
       <option value="61.5">D-</option>
     </select><br>
   </form>
-  <b><span id="examGrade">Select grades above to calculate</span></b>
+  <b><span id="examGrade">Grade for the semester: A+ (98.50)<br>
+    Select grades above to calculate</span></b>
 </div>
 <div class="main" id="gpaCalc">
   <br><div class="button" onclick="changeMode('start');">Back</div><br>
-  <h2>Ritvik Teegavarapu AHS GPA Calculator</h2>
-  <h3>Suggested by and named in honor of Ritvik Teegavarapu</h3>
+  <h2 class="noBottomMargin">Ritvik Teegavarapu AHS GPA Calculator</h2>
+  <h3 class="noTopMargin">Suggested by and named in honor of Ritvik Teegavarapu</h3>
   <div id="gpaData"></div>
   <form name="addCredit">
     <input type="checkbox" name="weighted" onchange="updateGpa()" checked></input> Weighted GPA<br>
@@ -717,7 +727,7 @@ function autoGrade(rampal=false) {
   document.gradesList.innerHTML += findCategories(autoCalc);
   if (RAMPAL) {
     document.gradesList.innerHTML += "<br><br><b>Do the following for <em>each</em> assignment:</b><br>Click on the assignment<br>" +
-      "<img src=\"rampal1.png\"><br><img src=\"rampal2.png\"><br>Look at the <strong>\"Count as\"</strong> and enter it above";
+      "<img src=\"rampal/rampal1.png\"><br><img src=\"rampal/rampal2.png\"><br>Look at the <strong>\"Count as\"</strong> and enter it above";
   }
   changeMode("finalAuto");
 }
@@ -883,12 +893,13 @@ function calculateExam() {
   examGrade.innerHTML = "Grade for the semester: " + letterGrade(grade) + " (" + roundDecimal(grade, 2) + ")"
 }
 function updateGpa() {
+  document.addPreviousGPA.style.display = "none";
   var g = document.getElementById("gpaData");
   g.innerHTML = "";
   var weighted = document.addCredit.weighted.checked;
   var fivescale = document.addCredit.fivescale.checked;
   totalGpa = 0.0;
-  totalCredits = 0.0
+  totalCredits = 0.0;
   for (var i = 0; i < gpaData.length; i++) {
     let gpa = {"A+": 13,
       "A": 12,
