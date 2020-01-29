@@ -893,7 +893,6 @@ function calculateExam() {
   examGrade.innerHTML = "Grade for the semester: " + letterGrade(grade) + " (" + roundDecimal(grade, 2) + ")"
 }
 function updateGpa() {
-  document.addPreviousGPA.style.display = "none";
   var g = document.getElementById("gpaData");
   g.innerHTML = "";
   var weighted = document.addCredit.weighted.checked;
