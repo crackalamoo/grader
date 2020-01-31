@@ -197,11 +197,29 @@
 <div class="main" id="editCategory">
   <div class="button" onclick="updateCategories(); changeMode('manual');">Done</div><br>
   <span id="editCategoryInfo"></span><br>
-  <p>Enter Score/Possible. Examples: 5/6.0, 8.5/9, B+/50.0, NTI/10.00<br>To delete an assignment, enter its score <strong>in
+  <p>Enter Score/Possible. Examples: 5/6.0, 8.5/9, 3/3.<br>To delete an assignment, enter its score <strong>in
     the same way</strong> and click "Delete Assignment".<br>
     To <strong>change the grade on an assignment</strong>, add or remove an assignment out of 0 points (ex: 5/0).</p>
   <form name="editCategory" action = "javascript:void(0)">
-    <input name="score" type="number" size="5"></input>/<input name="possible" type="number" size="5"></input>
+    <input name="score" type="number" size="5"></input>/<input name="possible" type="number" size="5"></input><br>
+    Letter grade: <select name="letter" onchange="addLetterGrade('letter');">
+      <option value="">-- Select a letter grade --</option>
+      <option value="A+">A+</option>
+      <option value="A">A</option>
+      <option value="A-">A-</option>
+      <option value="B+">B+</option>
+      <option value="B">B</option>
+      <option value="B-">B-</option>
+      <option value="C+">C+</option>
+      <option value="C">C</option>
+      <option value="C-">C-</option>
+      <option value="D+">D+</option>
+      <option value="D">D</option>
+      <option value="D-">D-</option>
+      <option value="NTI">NTI</option>
+      <option value="LATE">LATE</option>
+      <option value="AB">AB</option>
+    </select><br>
     <br><br><div class="button" onclick="addAssignment()">Add Assignment</div>
     <div class="button" onclick="deleteAssignment()">Delete Assignment</div><br>
     <input name="percent" type="number" size="5"></input>%<br>
@@ -413,8 +431,9 @@
   <h3 class="noTopMargin">Suggested by and named in honor of Ritvik Teegavarapu</h3>
   <div id="gpaData"></div>
   <form name="addCredit">
-    <input type="checkbox" name="weighted" onchange="updateGpa()" checked></input> Weighted GPA<br>
-    <input type="checkbox" name="fivescale" onchange="updateGpa()"></input> 5.0 Scale<br>
+    <input type="radio" name="weights" value="weighted" onchange="updateGpa()" checked></input>Weighted GPA (AHS weighting)<br>
+    <input type="radio" name="weights" value="fivescale" onchange="updateGpa()"></input>5.0 Scale<br>
+    <input type="radio" name="weights" value="fourscale" onchange="updateGpa()"></input>4.0 Scale<br>
     <select name="letterGrade">
       <option value="A+">A+</option>
       <option value="A">A</option>
@@ -524,6 +543,7 @@ function makeNumber(grade, possible=100.0) {
     case "F-": grade=0; break;
     case "NTI": grade = 0; break;
     case "LATE": grade = 50; break;
+    case "AB": grade = 0; break;
     default: return new Number(grade);
   }
   return new Number(grade*possible/100.0);
@@ -626,6 +646,7 @@ function createCategory() {
 }
 function addAssignment() {
   currentCategory.add(document.editCategory.score.value, document.editCategory.possible.value);
+  document.editCategory.score.type = "number";
   document.editCategory.score.value = "";
   document.editCategory.possible.value = "";
   document.getElementById("editCategoryInfo").innerHTML = "Average in " + currentCategory.name +
@@ -633,6 +654,7 @@ function addAssignment() {
 }
 function deleteAssignment() {
   currentCategory.remove(document.editCategory.score.value, document.editCategory.possible.value);
+  document.editCategory.score.type = "number";
   document.editCategory.score.value = "";
   document.editCategory.possible.value = "";
   document.getElementById("editCategoryInfo").innerHTML = "Average in " + currentCategory.name +
@@ -893,11 +915,10 @@ function calculateExam() {
   examGrade.innerHTML = "Grade for the semester: " + letterGrade(grade) + " (" + roundDecimal(grade, 2) + ")"
 }
 function updateGpa() {
-  document.addPreviousGPA.style.display = "none";
   var g = document.getElementById("gpaData");
   g.innerHTML = "";
-  var weighted = document.addCredit.weighted.checked;
-  var fivescale = document.addCredit.fivescale.checked;
+  var weighted = document.addCredit.weights.value == "weighted";
+  var fivescale = document.addCredit.weights.value == "fivescale";
   totalGpa = 0.0;
   totalCredits = 0.0;
   for (var i = 0; i < gpaData.length; i++) {
@@ -916,18 +937,14 @@ function updateGpa() {
       "F": 0
     }[gpaData[i][0]];
     if (weighted) {
-      if (fivescale) {
-        if (gpa == 13)
-          gpa = 12;
-        gpa += {"AP": 3.0, "H": 1.5, "CP": 0.0}[gpaData[i][1]];
-      } else {
-        gpa += {"AP": 7.0, "H": 4.0, "CP": 1.0}[gpaData[i][1]];
-      }
+      gpa += {"AP": 7.0, "H": 4.0, "CP": 1.0}[gpaData[i][1]];
     } else {
       if (gpa == 13)
         gpa = 12;
       if (gpa < 3)
         gpa = 0;
+      else if (fivescale)
+        gpa += {"AP": 3.0, "H": 1.5, "CP": 0.0}[gpaData[i][1]];
     }
     gpa /= 3.0;
     totalGpa += (Math.round(gpa*100)/100.0)*gpaData[i][2];
@@ -970,6 +987,11 @@ function deleteCredit() {
   gpaData.splice(i, 1);
   hideCreditInfo();
   updateGpa();
+}
+function addLetterGrade() {
+  document.editCategory.score.type = "text";
+  document.editCategory.score.value = document.editCategory["letter"].value;
+  document.editCategory["letter"].value = "";
 }
 </script>
 <br><br><br><br><br><br><br><br><br><br>
