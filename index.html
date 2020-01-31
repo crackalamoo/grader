@@ -98,13 +98,10 @@
     width: 15%;
     height: 15%;
   }
-  div#manualInput {
-    display: none;
-  }
   p#disclaimer {
     font-size: 7px;
   }
-  div#creditInfo {
+  div#creditInfo,div#manualInput,.hidden {
     display: none;
   }
   .noBottomMargin {
@@ -112,6 +109,17 @@
   }
   .noTopMargin {
     margin-top: 0;
+  }
+  @media only screen and (max-width: 550px) {
+    body {
+      padding-left: 6%;
+      padding-right: 6%;
+    }
+    .button {
+      padding-left: 10px;
+      padding-right: 10px;
+      font-size: 80%;
+    }
   }
 </style>
 </head>
@@ -492,7 +500,14 @@
       <div class="button" onclick="editCredit()">Apply</div>
       <div class="button" onclick="deleteCredit()">Delete</div>
     </div>
-  </form>
+  </form><br>
+  <div class="hidden" id="clearLocalStorage">
+    <div class="button"  onclick="clearGpa();">Clear GPA data</div>
+    <p>This will force you to re-enter your GPA next time you visit this page.
+      This will NOT erase the data from the page right now.</p>
+    <p>If you leave the data rather than clearing it, everything will be saved
+      next time you visit this page.</p>
+  </div><br>
   <span class="memeSpan">
     <img src="ritvik/ritvik1.jpeg">
     <img src="ritvik/ritvik2.jpeg">
@@ -672,12 +687,18 @@ function findCategories(autoResult) {
   cats.sort();
   return cats;
 }
-if(typeof(String.prototype.trim) === "undefined")
-{
+if(typeof(String.prototype.trim) === "undefined") {
     String.prototype.trim = function()
     {
         return String(this).replace(/^\s+|\s+$/g, '');
     };
+}
+if (typeof(Storage) !== "undefined") {
+  if (localStorage.gpaData) {
+    gpaData = JSON.parse(localStorage.getItem("gpaData"));
+    updateGpa();
+    document.getElementById("clearLocalStorage").style.display = "block";
+  }
 }
 var previousInput = "";
 var RAMPAL = false;
@@ -954,6 +975,10 @@ function updateGpa() {
   }
   g.innerHTML += "<b>GPA sum: " + roundDecimal(totalGpa, 2) + "<br>Total credits: " + roundDecimal(totalCredits, 1) +
    "<br>Cumulative GPA: " + roundDecimal(totalGpa/totalCredits, 4) + "</b>";
+  if (typeof(Storage) !== "undefined") {
+    localStorage.setItem("gpaData", JSON.stringify(gpaData));
+    document.getElementById("clearLocalStorage").style.display = "block";
+  }
 }
 function addGpaUnit() {
   f = document.addCredit;
@@ -992,6 +1017,10 @@ function addLetterGrade() {
   document.editCategory.score.type = "text";
   document.editCategory.score.value = document.editCategory["letter"].value;
   document.editCategory["letter"].value = "";
+}
+function clearGpa() {
+  localStorage.clear();
+  document.getElementById("clearLocalStorage").style.display = "none";
 }
 </script>
 <br><br><br><br><br><br><br><br><br><br>
