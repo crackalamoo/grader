@@ -268,6 +268,7 @@
     <optgroup label="Core Classes">
       <option value="apush">American History (AP)</option>
       <option value="ap bio">Biology (H/AP)</option>
+      <option value="calc">Calculus (H/AP)</option>
       <option value="ap chem">Chemistry (AP)</option>
       <option value="english 2">English II (H)</option>
       <option value="english 3 cp">English III (CP)</option>
@@ -844,7 +845,8 @@ var classes = {
   "ap macro": [["h", "p", "q", "t"], [false, 20, 10, 30, 40]],
   "apush": [["c", "f", "q", "t"], [false, 20, 20, 20, 40]],
   "english 2": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
-  "english 3 cp": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]]
+  "english 3 cp": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
+  "calc": [["h", "t"], [false, 10, 90]]
 };
 function setclass() {
   if (document.classes.class.value == "add class") {
