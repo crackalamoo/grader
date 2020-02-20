@@ -19,9 +19,6 @@
     padding-bottom: 70px;
     text-align: center;
   }
-  h1,h2,h3 {
-    margin-left: 30%;
-  }
   .button {
     color: #FFFFFF;
     background-color: #0088AA;
@@ -152,18 +149,28 @@
   div.button.active#second:hover {
     background-color: #00CC66;
   }
+  div#calculator h1, div#calculator h6 {
+    text-align: center;
+    color: #FFFFFF;
+    margin: auto;
+  }
 </style>
 </head>
 <body onkeypress="keypress(event)" onkeydown="specialkeys(event)">
 
-<!--
 <h3 class="noBottomMargin">Harys Dalvi's Aesthetically Pleasing</h3>
 <h1 class="noTopMargin" id="sitename">Regular Calculator</h1>
--->
-<hr>
 
 <div id="calculator">
 
+<h1>MI-30XS</h1>
+<h6>&#x1F171;ulti&#x1F171;iew</h6>
+<h6 style="color: #333333"><svg height="12" width="12">
+  <polygon points="0,4 4,2 5,3 7,2.5 11,3 12,8 11,9 9,7 4,10 0,11" fill="rgb(51,51,51)"></polygon>
+  <text x="2" y="8" fill="rgb(170,224,238)">m</text>
+  <text x="5.5" y="7" fill="rgb(51,51,51)" font-size="8">i</text>
+  </svg>
+Maharashtra Instruments</h6><br>
 <div id="screen">
   <div id="mem"></div>
   <div id="ans"></div>
