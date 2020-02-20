@@ -214,7 +214,8 @@ Maharashtra Instruments</h6><br>
   <div class="button" onclick="writescreen('Ì(')" data-bpage="1">arcsin</div>
   <div class="button" onclick="writescreen('Ç(')" data-bpage="1">arccos</div>
   <div class="button" onclick="writescreen('À(')" data-bpage="1">arctan</div>
-  <div class="button" onclick="clearmem();">clear</div>
+  <div class="button" onclick="clearmem();" data-bpage="0">clear</div>
+  <div class="button" onclick="clearallmem();" data-bpage="1">clear all</div>
 </div>
 <div class="buttons">
   <div class="button" onclick="writescreen('^{}', true, false); cursor += 2; writescreen('');">^</div>
@@ -501,6 +502,11 @@ function clearmem() {
   cursor = 0;
   document.getElementById("screen").scrollTop = document.getElementById("screen").scrollHeight;
 }
+function clearallmem() {
+  mem = [];
+  clearmem();
+  switchbutton(0);
+}
 function sin_mode(num) {
   if (anglemode == 0)
     num = Math.sin(num);
@@ -617,7 +623,6 @@ function keypress(event) {
   if (u == 94) {
     writescreen('^{}', true, false); cursor += 2; writescreen('');
   }
-  if (key == 8 || key == 46) deltxt();
 }
 function specialkeys(event) {
   var u = event.which || event.keyCode;
