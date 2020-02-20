@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Regular Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Harys Dalvi">
+  <meta name="description" content="Free Calculator">
+  <meta charset="utf-8">
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+<style>
+  body {
+    background-color: #DDF0FF;
+    font-family: "Baskerville", "Times New Roman";
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 30px;
+    padding-bottom: 70px;
+    text-align: center;
+  }
+  h1,h2,h3 {
+    margin-left: 30%;
+  }
+  .button {
+    color: #FFFFFF;
+    background-color: #0088AA;
+    border: 1px solid #99AAFF;
+    font-family: "Baskerville", "Times New Roman";
+    width: 10%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+  }
+  .button:hover {
+    background-color: #0099CC;
+  }
+  .button.selected {
+    background-color: #00AADD;
+  }
+  .button.selected:hover {
+    background-color: #00BBEE;
+  }
+  img {
+    width: 100%;
+  }
+  span.memeSpan {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  span.memeSpan img {
+    width: 20%;
+    height: 20%;
+  }
+  .noBottomMargin {
+    margin-bottom: 0;
+  }
+  .noTopMargin {
+    margin-top: 0;
+  }
+  @media only screen and (max-width: 650px) {
+    body {
+      padding-left: 3%;
+      padding-right: 3%;
+      margin: 0;
+    }
+    div#calculator {
+      padding: 3%;
+    }
+    .button {
+      padding-left: 10px;
+      padding-right: 10px;
+      font-size: 80%;
+    }
+  }
+  div#calculator {
+    background-color: #AAE0EE;
+    border: 1px solid #99D0DD;
+    width: 90%;
+    padding: 5%;
+    margin: 0;
+    position: relative;
+  }
+  div#screen,div#mode {
+    width: 80%;
+    height: 50px;
+    margin: auto;
+    background-color: #446066;
+    border: 1px solid #004044;
+    padding: 2%;
+    font-size: 20px;
+    color: #FFFFFF;
+    overflow: scroll;
+    text-align: left;
+  }
+  div#mode {
+    height: auto;
+    min-height: 50px;
+  }
+  div.button.number {
+    background-color: #FFFFFF;
+    color: #000055;
+  }
+  div.button.number:hover {
+    background-color: #DDDDDD;
+  }
+  div.button.operation {
+    background-color: #333333;
+  }
+  div.button.operation:hover {
+    background-color: #555555;
+  }
+  div.buttons div.button {
+    display: inline-block;
+  }
+  div#mem {
+    color: #CCCCCC;
+    text-align: right;
+  }
+  div#membuffer,div#mode {
+    display: none;
+  }
+  span#cursor {
+    color: #FF0000;
+  }
+  div.scrollbutton.button {
+    background-color: #000000;
+    color: #FFFFFF;
+  }
+  div#buttonrows {
+    text-align: left;
+  }
+  div.button#second {
+    background-color: #00EE22;
+    color: #4444FF;
+  }
+  div.button#second:hover {
+    background-color: #00BB44;
+  }
+  div.button.active#second {
+    border: 1px solid #000000;
+    background-color: #00FF33;
+    color: #FFFFFF;
+  }
+  div.button.active#second:hover {
+    background-color: #00CC66;
+  }
+</style>
+</head>
+<body onkeypress="keypress(event)" onkeydown="specialkeys(event)">
+
+<!--
+<h3 class="noBottomMargin">Harys Dalvi's Aesthetically Pleasing</h3>
+<h1 class="noTopMargin" id="sitename">Regular Calculator</h1>
+-->
+<hr>
+
+<div id="calculator">
+
+<div id="screen">
+  <div id="mem"></div>
+  <div id="ans"></div>
+  <div id="membuffer">&emsp;</div>
+</div>
+<div id="mode">
+  <form name="mode">
+    <input type="radio" name="angle" value="1">
+    <label for="1">Degree</label><br>
+    <input type="radio" name="angle" value="0">
+    <label for="0">Radian</label><br><br>
+    <input type="radio" name="notation" value="0">
+    <label for="0">Normal</label><br>
+    <input type="radio" name="notation" value="1">
+    <label for="1">Scientific</label><br><br>
+  </form>
+</div>
+<br>
+<div id="buttonrows">
+<div class="buttons">
+  <div class="button" id="second" onclick="switchbutton()">2nd</div>
+  <div class="button" onclick="quit()">quit</div>
+  <div class="button" onclick="changeMode()">mode</div>
+  <div class="scrollbutton button" onclick="scrollleft();"><</div>
+  <div class="scrollbutton button" onclick="scrollright();">></div>
+</div>
+<div class="buttons">
+  <div class="button" onclick="writescreen('Ł(')">log</div>
+  <div class="button" onclick="writescreen('ł(')" data-bpage="0">ln</div>
+  <div class="button" onclick="writescreen('è^{}', true, false); cursor += 3; writescreen('');" data-bpage="1">\(e^x\)</div>
+  <div class="button" onclick="writescreen('{}á{}', true, false); cursor++; writescreen('');"> n/d </div>
+  <div class="button" onclick="writescreen('*10^{}', true, false); cursor += 5; writescreen('');">\(\times10^n\)</div>
+  <div class="button" onclick="deltxt();">delete</div>
+</div>
+<div class="buttons">
+  <div class="button" onclick="writescreen('π')">π</div>
+  <div class="button" onclick="writescreen('ì(')" data-bpage="0">sin</div>
+  <div class="button" onclick="writescreen('ç(')" data-bpage="0">cos</div>
+  <div class="button" onclick="writescreen('à(')" data-bpage="0">tan</div>
+  <div class="button" onclick="writescreen('Ì(')" data-bpage="1">arcsin</div>
+  <div class="button" onclick="writescreen('Ç(')" data-bpage="1">arccos</div>
+  <div class="button" onclick="writescreen('À(')" data-bpage="1">arctan</div>
+  <div class="button" onclick="clearmem();">clear</div>
+</div>
+<div class="buttons">
+  <div class="button" onclick="writescreen('^{}', true, false); cursor += 2; writescreen('');">^</div>
+  <div class="button" onclick="writescreen('^{-1}')">\(x^{-1}\)</div>
+  <div class="button" onclick="writescreen('(')">(</div>
+  <div class="button" onclick="writescreen(')')">)</div>
+  <div class="operation button" onclick="writescreen('/')">&divide;</div>
+</div>
+<div class="buttons">
+  <div class="button" onclick="writescreen('^{2}')">\(x^2\)</div>
+  <div class="number button" onclick="writescreen('7')">7</div>
+  <div class="number button" onclick="writescreen('8')">8</div>
+  <div class="number button" onclick="writescreen('9')">9</div>
+  <div class="operation button" onclick="writescreen('*')">×</div>
+</div>
+<div class="buttons">
+  <div class="button" onclick="writescreen('ù{}', true, false); cursor += 2; writescreen('');">\( \sqrt{x} \)</div>
+  <div class="number button" onclick="writescreen('4')">4</div>
+  <div class="number button" onclick="writescreen('5')">5</div>
+  <div class="number button" onclick="writescreen('6')">6</div>
+  <div class="operation button" onclick="writescreen('-')">-</div>
+</div>
+<div class="buttons">
+  <div class="button" onclick="">sto→</div>
+  <div class="number button" onclick="writescreen('1')">1</div>
+  <div class="number button" onclick="writescreen('2')">2</div>
+  <div class="number button" onclick="writescreen('3')">3</div>
+  <div class="operation button" onclick="writescreen('+')">+</div>
+</div>
+<div class="buttons">
+  <div class="button" onclick="alert('Haha funnee calculator already on')">on</div>
+  <div class="number button" onclick="writescreen('0')">0</div>
+  <div class="number button" onclick="writescreen('.')">.</div>
+  <div class="number button" onclick="writescreen('-')" data-bpage="0">(-)</div>
+  <div class="number button" onclick="writescreen('Å')" data-bpage="1">ans</div>
+  <div class="operation button" onclick="enter()">enter</div>
+</div>
+</div>
+
+</div>
+
+<script>
+var screentxt = "";
+var buttons = document.getElementsByClassName("button");
+var cursor = 0;
+var ans = 0;
+var mathprint = true;
+var clearWithButton = false;
+var closebrackets = [")", "]", "}"];
+var openbrackets = ["(", "[", "{"];
+var operations = ["+", "-", "*", "/", "^"];
+var functions = ["ì", "ç", "à", "ł", "ù", "Ł", "Ì", "Ç", "À"];
+var doublefunctions = ["^", "á"];
+var anglemode = 1;
+document.mode.angle.value = anglemode;
+var notation = 0;
+document.mode.notation.value = notation;
+var mem = [];
+var screenview = 0;
+var buttonmode = 1;
+switchbutton();
+function writescreen(str, add=true, render=true) {
+  if (!add || clearWithButton) {
+    screentxt = "";
+    cursor = 0;
+    clearWithButton = false;
+  }
+  if (add & screentxt.length == 0 && operations.indexOf(str[0]) != -1) {
+    screentxt = "Å";
+    cursor = 1;
+    ansWithButton = false;
+    updateMem();
+  }
+  screentxt = screentxt.slice(0, cursor) + str + screentxt.slice(cursor);
+  if (render) {
+    cursor += str.length;
+    if (mathprint) {
+      let txt = screentxt;
+      if (cursor == screentxt.length) {
+        txt = screentxt + " \\color{magenta}{\\_} ";
+      } else {
+        if (closebrackets.indexOf(txt[cursor-1]) == -1 && openbrackets.indexOf(txt[cursor-1]) == -1) {
+          txt = screentxt.slice(0, cursor) + " \\underline{ " + screentxt.slice(cursor, cursor+1) + "}" +
+            screentxt.slice(cursor+1);
+        } else {
+          txt = screentxt.slice(0, cursor) + " \\underline{□} " +
+            screentxt.slice(cursor);
+        }
+      }
+      document.getElementById("ans").innerHTML = "\\(" + to_latex(txt) + "\\)";
+      updateMath();
+      document.getElementById("screen").scrollTop = document.getElementById("screen").scrollHeight;
+    } else {
+      document.getElementById("ans").innerHTML = to_eval(screentxt);
+    }
+    buttonmode = 1;
+    switchbutton();
+  }
+}
+function updateMem() {
+  document.getElementById("membuffer").style.display = "";
+  document.getElementById("mem").innerHTML = "";
+  for (var i = 0; i < mem.length; i++)
+    document.getElementById("mem").innerHTML += "\\(" + mem[i] + "\\)<br>";
+  document.getElementById("screen").scrollTop = document.getElementById("screen").scrollHeight;
+}
+function updateMath() {
+  MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+}
+function to_eval(str) {
+  while (str.indexOf("^") != -1) {
+    var i = str.indexOf("^");
+    let exponent = str.slice(i+2, findClosingBracket(str, i+1, open='{', close='}'));
+    var j = i - 1;
+    for (var b = 0; b < closebrackets.length; b++) {
+      if (str[j] == closebrackets[b]) {
+        j = findOpeningBracket(str, j, open=openbrackets[b], close=closebrackets[b]);
+        if (functions.indexOf(str[j-1]) != -1)
+          j--;
+      }
+    }
+    while (j == i - 1 && j > 0) {
+      if (operations.indexOf(str[j-1]) == -1)
+        j--;
+    }
+    str = str.slice(0, j) + "Math.pow(" + str.slice(j, i) + "," + exponent + ")" + str.slice(i + exponent.length + 3);
+  }
+  str = str.replace(/Å/g, "ans");
+  str = str.replace(/à/g, "tan_mode");
+  str = str.replace(/ç/g, "cos_mode");
+  str = str.replace(/ì/g, "sin_mode");
+  str = str.replace(/À/g, "atan_mode");
+  str = str.replace(/Ç/g, "acos_mode");
+  str = str.replace(/Ì/g, "asin_mode");
+  str = str.replace(/ł/g, "Math.log");
+  str = str.replace(/á/g, "/");
+  str = str.replace(/[{]/g, "(");
+  str = str.replace(/[}]/g, ")");
+  str = str.replace(/π/g, "Math.PI");
+  str = str.replace(/ù/g, "Math.sqrt");
+  str = str.replace(/Ł/g, "Math.log10");
+  str = str.replace(/è/g, "Math.E");
+  return str;
+}
+function to_latex(str) {
+  str = str.replace(/\*/g, "\\cdot");
+  str = str.replace(/Å/g, "\\text{ans}");
+  str = str.replace(/\//g, "\\div");
+  str = str.replace(/à/g, "\\tan");
+  str = str.replace(/ç/g, "\\cos");
+  str = str.replace(/ì/g, "\\sin");
+  str = str.replace(/À/g, "\\tan^{-1}");
+  str = str.replace(/Ç/g, "\\cos^{-1}");
+  str = str.replace(/Ì/g, "\\sin^{-1}");
+  str = str.replace(/ł/g, "\\ln");
+  str = str.replace(/π/g, "\\pi");
+  str = str.replace(/ù/g, "\\sqrt");
+  str = str.replace(/Ł/g, "\\log");
+  for (var i = 0; i < str.length-1; i++) {
+    if (str[i] == "(") {
+      let j = findClosingBracket(str, i);
+      if (j != -1) {
+        str = str.slice(0, i) + "\\left" + str.slice(i);
+        str = str.slice(0, j+5) + "\\right" + str.slice(j+5);
+        i += 5;
+      }
+    }
+  }
+  while (str.indexOf("á") != -1) {
+    var i = str.indexOf("á");
+    console.log("hi");
+    console.log(i);
+    console.log(str);
+    var j = findOpeningBracket(str, i-1, open="{", close="}");
+    str = str.slice(0, i) + str.slice(i+1);
+    str = str.slice(0, j) + "\\frac" + str.slice(j);
+  }
+  return str;
+}
+function enter() {
+  var val;
+  updateMem();
+  try {
+    while ((screentxt.match(/[(]/g) || []).length > (screentxt.match(/[)]/g) || []).length)
+      screentxt += ")";
+    if (screentxt[0] == "=")
+      val = ans;
+    else
+      val = eval(to_eval(screentxt));
+    if  (val == undefined || isNaN(val)) {
+      throw new Error("Invalid eval");
+    }
+    ans = val;
+    val = new Number(val.toFixed(9));
+    if (notation == 1) {
+      val = val.toExponential().toString();
+      if (val.indexOf("e") > 12) {
+        val = val.slice(0, 11) + val.slice(val.indexOf("e"));
+      }
+      val = val.slice(0, val.indexOf("e")) + "\\cdot 10^{" + val.slice(val.indexOf("e")+2) + "}";
+    }
+    mem.push(val);
+    val = "=" + val.toString();
+    screentxt = "";
+    cursor = 0;
+  } catch {
+    val = "\\color{red}{\\text{ERROR}}";
+    clearmem();
+  }
+  writescreen(val, false);
+  clearWithButton = true;
+}
+function scrollright() {
+  cursor++;
+  while (screentxt[cursor] == "{" || screentxt[cursor] == "á")
+    cursor++;
+  if (cursor > screentxt.length)
+    cursor = screentxt.length;
+  writescreen("");
+}
+function scrollleft() {
+  cursor--;
+  while (screentxt[cursor] == "{" || screentxt[cursor] == "á")
+    cursor--;
+  if (cursor < 0)
+    cursor = 0;
+  writescreen("");
+}
+
+function findClosingBracket(str, pos, open='(', close=')') {
+  if (str[pos] != open)
+    throw new Error("No " + open + " at index " + pos);
+  let depth = 1;
+  for (let i = pos + 1; i < str.length; i++) {
+    switch (str[i]) {
+      case open:
+        depth++; break;
+      case close:
+        if (--depth == 0)
+          return i;
+        break;
+    }
+  }
+  return -1;
+}
+
+function findOpeningBracket(str, pos, open='(', close=')') {
+  if (str[pos] != close)
+    throw new Error("No " + close + " at index " + pos);
+  let depth = 1;
+  for (let i = pos - 1; i >= 0; i--) {
+    switch (str[i]) {
+      case close:
+        depth++; break;
+      case open:
+        if (--depth == 0)
+          return i;
+        break;
+    }
+  }
+  return -1;
+}
+function clearmem() {
+  document.getElementById("membuffer").style.display = "block";
+  updateMem();
+  document.getElementById("mem").innerHTML += "<br><br><br>";
+  document.getElementById("ans").innerHTML = "";
+  screentxt = "";
+  cursor = 0;
+  document.getElementById("screen").scrollTop = document.getElementById("screen").scrollHeight;
+}
+function sin_mode(num) {
+  if (anglemode == 0)
+    num = Math.sin(num);
+  else
+    num = Math.sin(num*Math.PI/180.0);
+  return num;
+}
+function cos_mode(num) {
+  if (anglemode == 0)
+    num = Math.cos(num);
+  else
+    num = Math.cos(num*Math.PI/180.0);
+  return num;
+}
+function tan_mode(num) {
+  if (anglemode == 0)
+    num = Math.tan(num);
+  else
+    num = Math.tan(num*Math.PI/180.0);
+  return num;
+}
+function asin_mode(num) {
+  num = Math.asin(num);
+  if (anglemode == 1)
+    num *= 180.0/Math.PI;
+  return num;
+}
+function acos_mode(num) {
+  num = Math.acos(num);
+  if (anglemode == 1)
+    num *= 180.0/Math.PI;
+  return num;
+}
+function atan_mode(num) {
+  num = Math.atan(num);
+  if (anglemode == 1)
+    num *= 180.0/Math.PI;
+  return num;
+}
+function deltxt() {
+  var delchar = cursor;
+  if (delchar == screentxt.length) delchar--;
+  if (screentxt[delchar] == "}") delchar--;
+  if (screentxt[delchar] == "{") {
+    let end = findClosingBracket(screentxt, delchar, open='{', close='}');
+    if (end == -1) {
+      screentxt = screentxt.slice(0, delchar) + screentxt.slice(delchar+1);
+    } else {
+      screentxt = screentxt.slice(0, delchar) + screentxt.slice(end+1);
+    }
+    delchar--;
+    if (doublefunctions.indexOf(screentxt[delchar]) != -1) {
+      screentxt = screentxt.slice(0, delchar) + screentxt.slice(delchar+1);
+      delchar--;
+    }
+    screentxt = screentxt.replace(/}/, ")");
+    screentxt = screentxt.replace(/{/, "(");
+    cursor = delchar - 1;
+  } else {
+    screentxt = screentxt.slice(0, delchar) + screentxt.slice(delchar+1);
+    cursor = delchar - 1;
+  }
+  if (cursor == screentxt.length - 1) cursor++;
+  if (cursor > screentxt.length) cursor = screentxt.length;
+  if (cursor < 0) cursor = 0;
+  writescreen("");
+}
+function changeMode() {
+  document.getElementById("screen").style.display = "none";
+  document.getElementById("mode").style.display = "block";
+  screenview = 1;
+}
+function quit() {
+  if (screenview == 1) {
+    anglemode = new Number(document.mode.angle.value).valueOf();
+    notation = new Number(document.mode.notation.value).valueOf();
+    document.getElementById("mode").style.display = "none";
+    document.getElementById("screen").style.display = "block";
+    screenview = 0;
+  }
+}
+function switchbutton() {
+  if (buttonmode == 0) {
+    buttonmode = 1;
+    document.getElementById("second").className = "active button";
+  } else {
+    buttonmode = 0;
+    document.getElementById("second").className = "button";
+  }
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].attributes["data-bpage"] != undefined) {
+      if (buttons[i].attributes["data-bpage"].value == buttonmode)
+        buttons[i].style.display = "inline-block";
+      else
+        buttons[i].style.display = "none";
+    }
+  }
+}
+function keypress(event) {
+  var u = event.which || event.keyCode;
+  if (48 <= u && u <= 59) writescreen('' + (u-48));
+  if (u == 45) writescreen('-');
+  if (u == 43) writescreen("+");
+  if (u == 61 || u == 13) enter();
+  if (u == 46) writescreen(".");
+  if (u == 47) writescreen("/");
+  if (u == 42) writescreen("*");
+  if (u == 94) {
+    writescreen('^{}', true, false); cursor += 2; writescreen('');
+  }
+  if (key == 8 || key == 46) deltxt();
+}
+function specialkeys(event) {
+  var u = event.which || event.keyCode;
+  if (u == 8 || u == 46) deltxt();
+  if (u == 37) scrollleft();
+  if (u == 39) scrollright();
+}
+
+window.onload = function() {
+  writescreen("");
+};
+
+</script>
+
+<br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
