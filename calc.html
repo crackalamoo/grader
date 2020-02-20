@@ -100,6 +100,7 @@
   div#mode {
     height: auto;
     min-height: 50px;
+    font-size: 16px;
   }
   div.button.number {
     background-color: #FFFFFF;
@@ -167,8 +168,8 @@
 <h6>&#x1F171;ulti&#x1F171;iew</h6>
 <h6 style="color: #333333"><svg height="12" width="12">
   <polygon points="0,4 4,2 5,3 7,2.5 11,3 12,8 11,9 9,7 4,10 0,11" fill="rgb(51,51,51)"></polygon>
-  <text x="2" y="8" fill="rgb(170,224,238)">m</text>
-  <text x="5.5" y="7" fill="rgb(51,51,51)" font-size="8">i</text>
+  <text x="2" y="7" fill="rgb(170,224,238)" font-size="9">m</text>
+  <text x="5.5" y="7" fill="rgb(51,51,51)" font-size="6">i</text>
   </svg>
 Maharashtra Instruments</h6><br>
 <div id="screen">
@@ -191,7 +192,7 @@ Maharashtra Instruments</h6><br>
 <br>
 <div id="buttonrows">
 <div class="buttons">
-  <div class="button" id="second" onclick="switchbutton()">2nd</div>
+  <div class="button" id="second" onclick="secondbutton()">2nd</div>
   <div class="button" onclick="quit()">quit</div>
   <div class="button" onclick="changeMode()">mode</div>
   <div class="scrollbutton button" onclick="scrollleft();"><</div>
@@ -266,6 +267,7 @@ var closebrackets = [")", "]", "}"];
 var openbrackets = ["(", "[", "{"];
 var operations = ["+", "-", "*", "/", "^"];
 var functions = ["ì", "ç", "à", "ł", "ù", "Ł", "Ì", "Ç", "À"];
+var automult = functions + ["è", "π"];
 var doublefunctions = ["^", "á"];
 var anglemode = 1;
 document.mode.angle.value = anglemode;
@@ -273,8 +275,8 @@ var notation = 0;
 document.mode.notation.value = notation;
 var mem = [];
 var screenview = 0;
-var buttonmode = 1;
-switchbutton();
+var buttonmode;
+switchbutton(0);
 function writescreen(str, add=true, render=true) {
   if (!add || clearWithButton) {
     screentxt = "";
@@ -295,7 +297,7 @@ function writescreen(str, add=true, render=true) {
       if (cursor == screentxt.length) {
         txt = screentxt + " \\color{magenta}{\\_} ";
       } else {
-        if (closebrackets.indexOf(txt[cursor-1]) == -1 && openbrackets.indexOf(txt[cursor-1]) == -1) {
+        if (closebrackets.indexOf(txt[cursor]) == -1 && openbrackets.indexOf(txt[cursor]) == -1) {
           txt = screentxt.slice(0, cursor) + " \\underline{ " + screentxt.slice(cursor, cursor+1) + "}" +
             screentxt.slice(cursor+1);
         } else {
@@ -309,8 +311,7 @@ function writescreen(str, add=true, render=true) {
     } else {
       document.getElementById("ans").innerHTML = to_eval(screentxt);
     }
-    buttonmode = 1;
-    switchbutton();
+    switchbutton(0);
   }
 }
 function updateMem() {
@@ -321,9 +322,21 @@ function updateMem() {
   document.getElementById("screen").scrollTop = document.getElementById("screen").scrollHeight;
 }
 function updateMath() {
-  MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+  document.getElementById("ans").style.visibility = "hidden";
+  document.getElementById("mem").style.visibility = "hidden";
+  var f = function() {
+    document.getElementById("ans").style.visibility = "";
+    document.getElementById("mem").style.visibility = "";
+  };
+  MathJax.Hub.Queue(["Typeset",MathJax.Hub, f]);
 }
 function to_eval(str) {
+  for (var i = 0; i < automult.length; i++) {
+    let re = new RegExp("[0-9]" + automult[i], 'g');
+    str = str.replace(re, function(match) {
+      return match[0] + "*" + match[1];
+    });
+  }
   while (str.indexOf("^") != -1) {
     var i = str.indexOf("^");
     let exponent = str.slice(i+2, findClosingBracket(str, i+1, open='{', close='}'));
@@ -331,13 +344,15 @@ function to_eval(str) {
     for (var b = 0; b < closebrackets.length; b++) {
       if (str[j] == closebrackets[b]) {
         j = findOpeningBracket(str, j, open=openbrackets[b], close=closebrackets[b]);
-        if (functions.indexOf(str[j-1]) != -1)
+        if (j > 0 && functions.indexOf(str[j-1]) != -1)
           j--;
       }
     }
     while (j == i - 1 && j > 0) {
-      if (operations.indexOf(str[j-1]) == -1)
+      if (operations.indexOf(str[j-1]) == -1 && functions.indexOf(str[j-1]) == -1)
         j--;
+      else if (j == i - 1)
+        break;
     }
     str = str.slice(0, j) + "Math.pow(" + str.slice(j, i) + "," + exponent + ")" + str.slice(i + exponent.length + 3);
   }
@@ -372,6 +387,7 @@ function to_latex(str) {
   str = str.replace(/π/g, "\\pi");
   str = str.replace(/ù/g, "\\sqrt");
   str = str.replace(/Ł/g, "\\log");
+  str = str.replace(/è/g, "e");
   for (var i = 0; i < str.length-1; i++) {
     if (str[i] == "(") {
       let j = findClosingBracket(str, i);
@@ -403,7 +419,7 @@ function enter() {
       val = ans;
     else
       val = eval(to_eval(screentxt));
-    if  (val == undefined || isNaN(val)) {
+    if  (val == undefined || isNaN(val) || !isFinite(val)) {
       throw new Error("Invalid eval");
     }
     ans = val;
@@ -428,7 +444,7 @@ function enter() {
 }
 function scrollright() {
   cursor++;
-  while (screentxt[cursor] == "{" || screentxt[cursor] == "á")
+  while (screentxt[cursor] == "{" || screentxt[cursor] == "á" || functions.indexOf(screentxt[cursor]) != -1)
     cursor++;
   if (cursor > screentxt.length)
     cursor = screentxt.length;
@@ -436,7 +452,7 @@ function scrollright() {
 }
 function scrollleft() {
   cursor--;
-  while (screentxt[cursor] == "{" || screentxt[cursor] == "á")
+  while (screentxt[cursor] == "{" || screentxt[cursor] == "á" || functions.indexOf(screentxt[cursor]) != -1)
     cursor--;
   if (cursor < 0)
     cursor = 0;
@@ -504,6 +520,8 @@ function tan_mode(num) {
     num = Math.tan(num);
   else
     num = Math.tan(num*Math.PI/180.0);
+  if (Math.abs(num) >= 150000000000000)
+    return NaN;
   return num;
 }
 function asin_mode(num) {
@@ -566,17 +584,21 @@ function quit() {
     screenview = 0;
   }
 }
-function switchbutton() {
-  if (buttonmode == 0) {
-    buttonmode = 1;
+function secondbutton() {
+  if (buttonmode == 1)
+    switchbutton(0);
+  else
+    switchbutton(1);
+}
+function switchbutton(page) {
+  if (page == 1)
     document.getElementById("second").className = "active button";
-  } else {
-    buttonmode = 0;
+  else
     document.getElementById("second").className = "button";
-  }
+  buttonmode = page;
   for (var i = 0; i < buttons.length; i++) {
     if (buttons[i].attributes["data-bpage"] != undefined) {
-      if (buttons[i].attributes["data-bpage"].value == buttonmode)
+      if (buttons[i].attributes["data-bpage"].value == page)
         buttons[i].style.display = "inline-block";
       else
         buttons[i].style.display = "none";
