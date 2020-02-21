@@ -74,6 +74,12 @@
     div#calculator {
       padding: 3%;
     }
+    div#screen {
+      height: 50px;
+    }
+    div#mode {
+      min-height: 50px;
+    }
     .button {
       padding-left: 10px;
       padding-right: 10px;
@@ -90,7 +96,7 @@
   }
   div#screen,div#mode {
     width: 80%;
-    height: 50px;
+    height: 100px;
     margin: auto;
     background-color: #446066;
     border: 1px solid #004044;
@@ -102,7 +108,7 @@
   }
   div#mode {
     height: auto;
-    min-height: 50px;
+    min-height: 100px;
     font-size: 16px;
   }
   div.button.number {
@@ -281,9 +287,9 @@ Maharashtra Instruments</h6><br>
   <div class="number button" onclick="writescreen('4')" data-bpage="1">\(4\)</div>
   <div class="number button" onclick="writescreen('5')" data-bpage="1">\(5\)</div>
   <div class="number button" onclick="writescreen('6')" data-bpage="1">\(6\)</div>
-  <div class="button" onclick="writescreen('4')" data-bpage="2">\(x\)</div>
-  <div class="button" onclick="writescreen('5')" data-bpage="2">\(y\)</div>
-  <div class="button" onclick="writescreen('6')" data-bpage="2">\(z\)</div>
+  <div class="button" onclick="writescreen('x')" data-bpage="2">\(x\)</div>
+  <div class="button" onclick="writescreen('y')" data-bpage="2">\(y\)</div>
+  <div class="button" onclick="writescreen('z')" data-bpage="2">\(z\)</div>
   <div class="operation button" onclick="writescreen('-')">\(-\)</div>
 </div>
 <div class="buttons">
@@ -351,7 +357,7 @@ function writescreen(str, add=true, render=true) {
     if (add) {
       document.getElementById("ans").style.textAlign = "";
     }
-    if (add & screentxt.length == 0 && operations.indexOf(str[0]) != -1) {
+    if (add & screentxt.length == 0 && (operations.indexOf(str[0]) != -1 || str == ">")) {
       screentxt = "Å";
       cursor = 1;
       updateMem();
@@ -376,6 +382,7 @@ function writescreen(str, add=true, render=true) {
         document.getElementById("ans").innerHTML = "\\(" + to_latex(txt) + "\\)";
         updateMath();
         document.getElementById("screen").scrollTop = document.getElementById("screen").scrollHeight;
+        document.getElementById("screen").scrollLeft = document.getElementById("screen").scrollWidth;
       } else {
         document.getElementById("ans").innerHTML = to_eval(screentxt);
       }
@@ -397,12 +404,12 @@ function updateMem() {
   document.getElementById("membuffer").style.display = "";
   document.getElementById("mem").innerHTML = "";
   for (var i = 0; i < mem.length; i++) {
-    document.getElementById("mem").innerHTML += "<div class='commandMem'>\\(" + to_latex(commandmem[i]) + "\\)</div><br>";
-    document.getElementById("mem").innerHTML += "\\(" + mem[i] + "\\)<br>";
+    document.getElementById("mem").innerHTML += "<br><div class='commandMem'>\\(" + to_latex(commandmem[i]) + "\\)</div>";
+    document.getElementById("mem").innerHTML += "<br>\\(" + mem[i] + "\\)<br>";
   }
   if (commandmem.length > mem.length) {
     for (var i = mem.length; i < commandmem.length; i++) {
-      document.getElementById("mem").innerHTML += "<div class='commandMem'>\\(" + to_latex(commandmem[i]) + "\\)</div><br>";
+      document.getElementById("mem").innerHTML += "<br><div class='commandMem'>\\(" + to_latex(commandmem[i]) + "\\)</div>";
     }
   }
   document.getElementById("screen").scrollTop = document.getElementById("screen").scrollHeight;
@@ -447,6 +454,12 @@ function to_eval(str) {
     }
     str = str.slice(0, i) + "Math.abs(" + str.slice(i+1);
   }
+  for (var i = 0; i < str.length-1; i++) {
+    if (variables.indexOf(str[i]) != -1 && variables.indexOf(str[i+1]) != -1) {
+      str = str.slice(0, i+1) + "*" + str.slice(i+1);
+      i++;
+    }
+  }
   str = str.replace(/Å/g, "ans");
   str = str.replace(/ýà/g, "Math.tanh");
   str = str.replace(/ýç/g, "Math.cosh");
@@ -473,9 +486,9 @@ function to_eval(str) {
   return str;
 }
 function to_latex(str) {
-  str = str.replace(/\*/g, "\\cdot");
+  str = str.replace(/\*/g, " \\cdot ");
   str = str.replace(/Å/g, "\\text{ans}");
-  str = str.replace(/\//g, "\\div");
+  str = str.replace(/\//g, " \\div ");
   str = str.replace(/ý/g, "\\text{hyp}");
   str = str.replace(/\\text{hyp}à/g, "\\tanh");
   str = str.replace(/\\text{hyp}ç/g, "\\cosh");
