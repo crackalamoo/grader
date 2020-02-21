@@ -2,13 +2,14 @@
 <html>
 <head>
   <title>Regular Calculator</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="author" content="Harys Dalvi">
   <meta name="description" content="Free Calculator">
   <meta charset="utf-8">
-  <script type="text/javascript" async
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"></script>
 <style>
   body {
     background-color: #DDF0FF;
@@ -29,6 +30,8 @@
     padding-right: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
+    margin-bottom: 3px;
+    height: 18px;
     text-align: center;
     cursor: pointer;
     user-select: none;
@@ -74,7 +77,7 @@
     .button {
       padding-left: 10px;
       padding-right: 10px;
-      font-size: 80%;
+      font-size: 70%;
     }
   }
   div#calculator {
@@ -92,7 +95,7 @@
     background-color: #446066;
     border: 1px solid #004044;
     padding: 2%;
-    font-size: 20px;
+    font-size: 18px;
     color: #FFFFFF;
     overflow: scroll;
     text-align: left;
@@ -150,26 +153,43 @@
   div.button.active#second:hover {
     background-color: #00CC66;
   }
+  div.button#alpha {
+    background-color: #FFEE22;
+    color: #4444FF;
+  }
+  div.button#alpha:hover {
+    background-color: #CCBB44;
+  }
+  div.button.active#alpha {
+    border: 1px solid #000000;
+    background-color: #FFFF33;
+    color: #00CCFF;
+  }
+  div.button.active#alpha:hover {
+    background-color: #EEEE66;
+  }
   div#calculator h1, div#calculator h6 {
     text-align: center;
     color: #FFFFFF;
     margin: auto;
   }
+  div.commandMem {
+    text-align: left;
+  }
 </style>
 </head>
-<body onkeypress="keypress(event)" onkeydown="specialkeys(event)">
+<body onkeypress="keypress(event)" onkeydown="specialkeys(event)" onkeyup="specialkeysUp(event)">
 
 <h3 class="noBottomMargin">Harys Dalvi's Aesthetically Pleasing</h3>
 <h1 class="noTopMargin" id="sitename">Regular Calculator</h1>
 
 <div id="calculator">
 
-<h1>MI-30XS</h1>
-<h6>&#x1F171;ulti&#x1F171;iew</h6>
+<h1>MI-\(n\)spire CX II CAS</h1>
 <h6 style="color: #333333"><svg height="12" width="12">
   <polygon points="0,4 4,2 5,3 7,2.5 11,3 12,8 11,9 9,7 4,10 0,11" fill="rgb(51,51,51)"></polygon>
-  <text x="2" y="7" fill="rgb(170,224,238)" font-size="9">m</text>
-  <text x="5.5" y="7" fill="rgb(51,51,51)" font-size="6">i</text>
+  <text x="2" y="7" fill="rgb(170,224,238)" font-size="10">m</text>
+  <text x="5.5" y="6.5" fill="rgb(51,51,51)" font-size="6" font-style="italic">i</text>
   </svg>
 Maharashtra Instruments</h6><br>
 <div id="screen">
@@ -187,71 +207,110 @@ Maharashtra Instruments</h6><br>
     <label for="0">Normal</label><br>
     <input type="radio" name="notation" value="1">
     <label for="1">Scientific</label><br><br>
+    <input type="number" name="logbase" value="10">
+    <label for="10">Log base</label><br><br>
   </form>
 </div>
 <br>
 <div id="buttonrows">
 <div class="buttons">
-  <div class="button" id="second" onclick="secondbutton()">2nd</div>
-  <div class="button" onclick="quit()">quit</div>
-  <div class="button" onclick="changeMode()">mode</div>
-  <div class="scrollbutton button" onclick="scrollleft();"><</div>
-  <div class="scrollbutton button" onclick="scrollright();">></div>
+  <div class="button" id="second" onclick="secondbutton()">\(2^{\text{nd}}\)</div>
+  <div class="button" onclick="quit()">\(\text{quit}\)</div>
+  <div class="button" onclick="changeMode()">\(\text{mode}\)</div>
+  <div class="scrollbutton button" onclick="scrollleft();">\(\text{<}\)</div>
+  <div class="scrollbutton button" onclick="scrollright();">\(\text{>}\)</div>
 </div>
 <div class="buttons">
-  <div class="button" onclick="writescreen('Ł(')">log</div>
-  <div class="button" onclick="writescreen('ł(')" data-bpage="0">ln</div>
-  <div class="button" onclick="writescreen('è^{}', true, false); cursor += 3; writescreen('');" data-bpage="1">\(e^x\)</div>
-  <div class="button" onclick="writescreen('{}á{}', true, false); cursor++; writescreen('');"> n/d </div>
+  <div class="button" id="alpha" onclick="alphabutton()">\(\text{alpha}\)</div>
+  <div class="button" onclick="writescreen('ý')">\( \text{hyp} \)</div>
+  <div class="button" onclick="writescreen('Ä');"> \( \lvert x \rvert \) </div>
   <div class="button" onclick="writescreen('*10^{}', true, false); cursor += 5; writescreen('');">\(\times10^n\)</div>
-  <div class="button" onclick="deltxt();">delete</div>
+  <div class="button" onclick="deltxt();">\(\text{del}\)</div>
 </div>
 <div class="buttons">
-  <div class="button" onclick="writescreen('π')">π</div>
-  <div class="button" onclick="writescreen('ì(')" data-bpage="0">sin</div>
-  <div class="button" onclick="writescreen('ç(')" data-bpage="0">cos</div>
-  <div class="button" onclick="writescreen('à(')" data-bpage="0">tan</div>
-  <div class="button" onclick="writescreen('Ì(')" data-bpage="1">arcsin</div>
-  <div class="button" onclick="writescreen('Ç(')" data-bpage="1">arccos</div>
-  <div class="button" onclick="writescreen('À(')" data-bpage="1">arctan</div>
-  <div class="button" onclick="clearmem();" data-bpage="0">clear</div>
-  <div class="button" onclick="clearallmem();" data-bpage="1">clear all</div>
+  <div class="button" onclick="writescreen('Ł(')" data-bpage="0">\(\log\)</div>
+  <div class="button" onclick="writescreen('10^{}', true, false); cursor += 4; writescreen('');" data-bpage="1">\(10^x\)</div>
+  <div class="button" onclick="writescreen('Ł(')" data-bpage="2">\(\log\)</div>
+  <div class="button" onclick="writescreen('ł(')" data-bpage="0">\(\ln\)</div>
+  <div class="button" onclick="writescreen('è^{}', true, false); cursor += 3; writescreen('');" data-bpage="1">\(e^x\)</div>
+  <div class="button" onclick="writescreen('ł(')" data-bpage="2">\(\ln\)</div>
+  <div class="button" onclick="writescreen('{}á{}', true, false); cursor++; writescreen('');"> \(\frac{n}{d}\) </div>
+  <div class="button" onclick="enter(true)">\( \text{f to d} \)</div>
+  <div class="button" onclick="clearmem();" data-bpage="0">\(\text{clear}\)</div>
+  <div class="button" onclick="clearallmem(); alert('MC: memory cleared (Minecraft)');" data-bpage="1">\(\text{MC}\)</div>
+  <div class="button" onclick="clearmem();" data-bpage="2">\(\text{clear}\)</div>
 </div>
 <div class="buttons">
-  <div class="button" onclick="writescreen('^{}', true, false); cursor += 2; writescreen('');">^</div>
+  <div class="button" onclick="writescreen('π')">\(\pi\)</div>
+  <div class="button" onclick="writescreen('ì(')" data-bpage="0">\(\sin\)</div>
+  <div class="button" onclick="writescreen('ç(')" data-bpage="0">\(\cos\)</div>
+  <div class="button" onclick="writescreen('à(')" data-bpage="0">\(\tan\)</div>
+  <div class="button" onclick="writescreen('Ì(')" data-bpage="1">\(\sin^{-1}\)</div>
+  <div class="button" onclick="writescreen('Ç(')" data-bpage="1">\(\cos^{-1}\)</div>
+  <div class="button" onclick="writescreen('À(')" data-bpage="1">\(\tan^{-1}\)</div>
+  <div class="button" onclick="writescreen('ì(')" data-bpage="2">\(\sin\)</div>
+  <div class="button" onclick="writescreen('ç(')" data-bpage="2">\(\cos\)</div>
+  <div class="button" onclick="writescreen('à(')" data-bpage="2">\(\tan\)</div>
+  <div class="button" onclick="writescreen('ÿ')">\(\text{\%}\)</div>
+</div>
+<div class="buttons">
+  <div class="button" onclick="writescreen('^{}', true, false); cursor += 2; writescreen('');">\( \wedge \)</div>
   <div class="button" onclick="writescreen('^{-1}')">\(x^{-1}\)</div>
-  <div class="button" onclick="writescreen('(')">(</div>
-  <div class="button" onclick="writescreen(')')">)</div>
-  <div class="operation button" onclick="writescreen('/')">&divide;</div>
+  <div class="button" onclick="writescreen('(')">\((\)</div>
+  <div class="button" onclick="writescreen(')')">\()\)</div>
+  <div class="operation button" onclick="writescreen('/')">\(\div\)</div>
 </div>
 <div class="buttons">
   <div class="button" onclick="writescreen('^{2}')">\(x^2\)</div>
-  <div class="number button" onclick="writescreen('7')">7</div>
-  <div class="number button" onclick="writescreen('8')">8</div>
-  <div class="number button" onclick="writescreen('9')">9</div>
-  <div class="operation button" onclick="writescreen('*')">×</div>
+  <div class="number button" onclick="writescreen('7')" data-bpage="0">\(7\)</div>
+  <div class="number button" onclick="writescreen('8')" data-bpage="0">\(8\)</div>
+  <div class="number button" onclick="writescreen('9')" data-bpage="0">\(9\)</div>
+  <div class="number button" onclick="writescreen('7')" data-bpage="1">\(7\)</div>
+  <div class="number button" onclick="writescreen('8')" data-bpage="1">\(8\)</div>
+  <div class="number button" onclick="writescreen('9')" data-bpage="1">\(9\)</div>
+  <div class="button" onclick="writescreen('a')" data-bpage="2">\(a\)</div>
+  <div class="button" onclick="writescreen('b')" data-bpage="2">\(b\)</div>
+  <div class="button" onclick="writescreen('c')" data-bpage="2">\(c\)</div>
+  <div class="operation button" onclick="writescreen('*')">\(\times\)</div>
 </div>
 <div class="buttons">
   <div class="button" onclick="writescreen('ù{}', true, false); cursor += 2; writescreen('');">\( \sqrt{x} \)</div>
-  <div class="number button" onclick="writescreen('4')">4</div>
-  <div class="number button" onclick="writescreen('5')">5</div>
-  <div class="number button" onclick="writescreen('6')">6</div>
-  <div class="operation button" onclick="writescreen('-')">-</div>
+  <div class="number button" onclick="writescreen('4')" data-bpage="0">\(4\)</div>
+  <div class="number button" onclick="writescreen('5')" data-bpage="0">\(5\)</div>
+  <div class="number button" onclick="writescreen('6')" data-bpage="0">\(6\)</div>
+  <div class="number button" onclick="writescreen('4')" data-bpage="1">\(4\)</div>
+  <div class="number button" onclick="writescreen('5')" data-bpage="1">\(5\)</div>
+  <div class="number button" onclick="writescreen('6')" data-bpage="1">\(6\)</div>
+  <div class="button" onclick="writescreen('4')" data-bpage="2">\(x\)</div>
+  <div class="button" onclick="writescreen('5')" data-bpage="2">\(y\)</div>
+  <div class="button" onclick="writescreen('6')" data-bpage="2">\(z\)</div>
+  <div class="operation button" onclick="writescreen('-')">\(-\)</div>
 </div>
 <div class="buttons">
-  <div class="button" onclick="">sto→</div>
-  <div class="number button" onclick="writescreen('1')">1</div>
-  <div class="number button" onclick="writescreen('2')">2</div>
-  <div class="number button" onclick="writescreen('3')">3</div>
-  <div class="operation button" onclick="writescreen('+')">+</div>
+  <div class="button" onclick="writescreen('>')">\(\text{sto} \mapsto \)</div>
+  <div class="number button" onclick="writescreen('1')" data-bpage="0">\(1\)</div>
+  <div class="number button" onclick="writescreen('2')" data-bpage="0">\(2\)</div>
+  <div class="number button" onclick="writescreen('3')" data-bpage="0">\(3\)</div>
+  <div class="number button" onclick="writescreen('1')" data-bpage="1">\(1\)</div>
+  <div class="number button" onclick="writescreen('2')" data-bpage="1">\(2\)</div>
+  <div class="number button" onclick="writescreen('3')" data-bpage="1">\(3\)</div>
+  <div class="button" onclick="writescreen('t')" data-bpage="2">\(t\)</div>
+  <div class="button" onclick="writescreen('r')" data-bpage="2">\(r\)</div>
+  <div class="button" onclick="writescreen('θ')" data-bpage="2">\( \theta \)</div>
+  <div class="operation button" onclick="writescreen('+')">\(+\)</div>
 </div>
 <div class="buttons">
-  <div class="button" onclick="alert('Haha funnee calculator already on')">on</div>
-  <div class="number button" onclick="writescreen('0')">0</div>
-  <div class="number button" onclick="writescreen('.')">.</div>
-  <div class="number button" onclick="writescreen('-')" data-bpage="0">(-)</div>
-  <div class="number button" onclick="writescreen('Å')" data-bpage="1">ans</div>
-  <div class="operation button" onclick="enter()">enter</div>
+  <div class="button" onclick="alert('Haha funnee calculator already on')">\(\text{on}\)</div>
+  <div class="number button" onclick="writescreen('0')" data-bpage="0">\(0\)</div>
+  <div class="number button" onclick="writescreen('.')" data-bpage="0">\(.\)</div>
+  <div class="button" onclick="writescreen('m')" data-bpage="2">\(m\)</div>
+  <div class="number button" onclick="writescreen('0')" data-bpage="1">\(0\)</div>
+  <div class="number button" onclick="writescreen('.')" data-bpage="1">\(.\)</div>
+  <div class="button" onclick="writescreen('n')" data-bpage="2">\(n\)</div>
+  <div class="number button" onclick="negbutton()" data-bpage="0">\((-)\)</div>
+  <div class="number button" onclick="writescreen('Å')" data-bpage="1">\(\text{ans}\)</div>
+  <div class="button" onclick="writescreen('k')" data-bpage="2">\(k\)</div>
+  <div class="operation button" onclick="enter()">\(\text{enter}\)</div>
 </div>
 </div>
 
@@ -264,72 +323,92 @@ var cursor = 0;
 var ans = 0;
 var mathprint = true;
 var clearWithButton = false;
-var closebrackets = [")", "]", "}"];
-var openbrackets = ["(", "[", "{"];
+var closebrackets = [")", "]", "}", "Ä"];
+var openbrackets = ["(", "[", "{", "Ä"];
 var operations = ["+", "-", "*", "/", "^"];
 var functions = ["ì", "ç", "à", "ł", "ù", "Ł", "Ì", "Ç", "À"];
-var automult = functions + ["è", "π"];
+var variables = ["a", "b", "c", "x", "y", "z", "r", "t", "θ", "m", "n", "k"];
+var a=0, b=0, c=0, x=0, y=0, z=0, r=0, theta=0, m=0, n=0, k=0;
+var automult = functions.concat(variables).concat(["è", "π"]).concat(["\\(", "\\{", "\\["]);
 var doublefunctions = ["^", "á"];
 var anglemode = 1;
 document.mode.angle.value = anglemode;
 var notation = 0;
+var logbase = 10;
 document.mode.notation.value = notation;
 var mem = [];
+var commandmem = [];
 var screenview = 0;
 var buttonmode;
 switchbutton(0);
 function writescreen(str, add=true, render=true) {
-  if (!add || clearWithButton) {
-    screentxt = "";
-    cursor = 0;
-    clearWithButton = false;
-  }
-  if (add & screentxt.length == 0 && operations.indexOf(str[0]) != -1) {
-    screentxt = "Å";
-    cursor = 1;
-    ansWithButton = false;
-    updateMem();
-  }
-  screentxt = screentxt.slice(0, cursor) + str + screentxt.slice(cursor);
-  if (render) {
-    cursor += str.length;
-    if (mathprint) {
-      let txt = screentxt;
-      if (cursor == screentxt.length) {
-        txt = screentxt + " \\color{magenta}{\\_} ";
-      } else {
-        if (closebrackets.indexOf(txt[cursor]) == -1 && openbrackets.indexOf(txt[cursor]) == -1) {
-          txt = screentxt.slice(0, cursor) + " \\underline{ " + screentxt.slice(cursor, cursor+1) + "}" +
-            screentxt.slice(cursor+1);
-        } else {
-          txt = screentxt.slice(0, cursor) + " \\underline{□} " +
-            screentxt.slice(cursor);
-        }
-      }
-      document.getElementById("ans").innerHTML = "\\(" + to_latex(txt) + "\\)";
-      updateMath();
-      document.getElementById("screen").scrollTop = document.getElementById("screen").scrollHeight;
-    } else {
-      document.getElementById("ans").innerHTML = to_eval(screentxt);
+  if (screenview == 0) {
+    if (!add || clearWithButton) {
+      screentxt = "";
+      cursor = 0;
+      clearWithButton = false;
     }
-    switchbutton(0);
+    if (add) {
+      document.getElementById("ans").style.textAlign = "";
+    }
+    if (add & screentxt.length == 0 && operations.indexOf(str[0]) != -1) {
+      screentxt = "Å";
+      cursor = 1;
+      updateMem();
+    }
+    screentxt = screentxt.slice(0, cursor) + str + screentxt.slice(cursor);
+    if (render) {
+      cursor += str.length;
+      if (mathprint) {
+        let txt = screentxt;
+        if (cursor == screentxt.length && add) {
+          txt = screentxt + " \\_ ";
+        } else {
+          if (closebrackets.indexOf(txt[cursor]) == -1 && openbrackets.indexOf(txt[cursor]) == -1) {
+            txt = screentxt.slice(0, cursor) + " \\underline{ " + screentxt.slice(cursor, cursor+1) + "}" +
+              screentxt.slice(cursor+1);
+          } else {
+            txt = screentxt.slice(0, cursor) + " ß " +
+              screentxt.slice(cursor);
+          }
+        }
+        txt = txt.replace(/{}á{}/g, "{ß}á{ß}");
+        document.getElementById("ans").innerHTML = "\\(" + to_latex(txt) + "\\)";
+        updateMath();
+        document.getElementById("screen").scrollTop = document.getElementById("screen").scrollHeight;
+      } else {
+        document.getElementById("ans").innerHTML = to_eval(screentxt);
+      }
+      switchbutton(0);
+    }
   }
+}
+function negbutton() {
+  writescreen('-', true, false);
+  if (screentxt.length == 2 && screentxt[0] == "Å") {
+    screentxt = screentxt[1];
+    cursor = 1;
+  } else {
+    cursor++;
+  }
+  writescreen('');
 }
 function updateMem() {
   document.getElementById("membuffer").style.display = "";
   document.getElementById("mem").innerHTML = "";
-  for (var i = 0; i < mem.length; i++)
+  for (var i = 0; i < mem.length; i++) {
+    document.getElementById("mem").innerHTML += "<div class='commandMem'>\\(" + to_latex(commandmem[i]) + "\\)</div><br>";
     document.getElementById("mem").innerHTML += "\\(" + mem[i] + "\\)<br>";
+  }
+  if (commandmem.length > mem.length) {
+    for (var i = mem.length; i < commandmem.length; i++) {
+      document.getElementById("mem").innerHTML += "<div class='commandMem'>\\(" + to_latex(commandmem[i]) + "\\)</div><br>";
+    }
+  }
   document.getElementById("screen").scrollTop = document.getElementById("screen").scrollHeight;
 }
 function updateMath() {
-  document.getElementById("ans").style.visibility = "hidden";
-  document.getElementById("mem").style.visibility = "hidden";
-  var f = function() {
-    document.getElementById("ans").style.visibility = "";
-    document.getElementById("mem").style.visibility = "";
-  };
-  MathJax.Hub.Queue(["Typeset",MathJax.Hub, f]);
+  renderMathInElement(document.getElementById("screen"));
 }
 function to_eval(str) {
   for (var i = 0; i < automult.length; i++) {
@@ -350,14 +429,31 @@ function to_eval(str) {
       }
     }
     while (j == i - 1 && j > 0) {
-      if (operations.indexOf(str[j-1]) == -1 && functions.indexOf(str[j-1]) == -1)
+      if (operations.indexOf(str[j-1]) == -1 && functions.indexOf(str[j-1]) == -1 && openbrackets.indexOf(str[j-1]) == -1
+        && closebrackets.indexOf(str[j-1]) == -1)
         j--;
       else if (j == i - 1)
         break;
     }
     str = str.slice(0, j) + "Math.pow(" + str.slice(j, i) + "," + exponent + ")" + str.slice(i + exponent.length + 3);
   }
+  while (str.indexOf("Ä") != -1) {
+    var i = str.indexOf("Ä");
+    var j = str.lastIndexOf("Ä");
+    if (j == i) {
+      str += ")";
+    } else {
+      str = str.slice(0, j) + ")" + str.slice(j+1);
+    }
+    str = str.slice(0, i) + "Math.abs(" + str.slice(i+1);
+  }
   str = str.replace(/Å/g, "ans");
+  str = str.replace(/ýà/g, "Math.tanh");
+  str = str.replace(/ýç/g, "Math.cosh");
+  str = str.replace(/ýì/g, "Math.sinh");
+  str = str.replace(/ýÀ/g, "Math.atanh");
+  str = str.replace(/ýÇ/g, "Math.acosh");
+  str = str.replace(/ýÌ/g, "Math.asinh");
   str = str.replace(/à/g, "tan_mode");
   str = str.replace(/ç/g, "cos_mode");
   str = str.replace(/ì/g, "sin_mode");
@@ -370,14 +466,23 @@ function to_eval(str) {
   str = str.replace(/[}]/g, ")");
   str = str.replace(/π/g, "Math.PI");
   str = str.replace(/ù/g, "Math.sqrt");
-  str = str.replace(/Ł/g, "Math.log10");
+  str = str.replace(/Ł/g, "log_mode");
   str = str.replace(/è/g, "Math.E");
+  str = str.replace(/ÿ/g, "*0.01");
+  str = str.replace(/θ/g, "theta");
   return str;
 }
 function to_latex(str) {
   str = str.replace(/\*/g, "\\cdot");
   str = str.replace(/Å/g, "\\text{ans}");
   str = str.replace(/\//g, "\\div");
+  str = str.replace(/ý/g, "\\text{hyp}");
+  str = str.replace(/\\text{hyp}à/g, "\\tanh");
+  str = str.replace(/\\text{hyp}ç/g, "\\cosh");
+  str = str.replace(/\\text{hyp}ì/g, "\\sinh");
+  str = str.replace(/\\text{hyp}À/g, "\\tanh^{-1}");
+  str = str.replace(/\\text{hyp}Ç/g, "\\cosh^{-1}");
+  str = str.replace(/\\text{hyp}Ì/g, "\\sinh^{-1}");
   str = str.replace(/à/g, "\\tan");
   str = str.replace(/ç/g, "\\cos");
   str = str.replace(/ì/g, "\\sin");
@@ -387,8 +492,14 @@ function to_latex(str) {
   str = str.replace(/ł/g, "\\ln");
   str = str.replace(/π/g, "\\pi");
   str = str.replace(/ù/g, "\\sqrt");
-  str = str.replace(/Ł/g, "\\log");
+  if (logbase == 10)
+    str = str.replace(/Ł/g, "\\log");
+  else
+    str = str.replace(/Ł/g, "\\log_{" + logbase + "}");
   str = str.replace(/è/g, "e");
+  str = str.replace(/>/g, "\\rightarrow ");
+  str = str.replace(/ÿ/g, "\\%");
+  str = str.replace(/ß/g, "\\fbox{ \\vphantom{5} }");
   for (var i = 0; i < str.length-1; i++) {
     if (str[i] == "(") {
       let j = findClosingBracket(str, i);
@@ -397,27 +508,42 @@ function to_latex(str) {
         str = str.slice(0, j+5) + "\\right" + str.slice(j+5);
         i += 5;
       }
+    } if (str[i] == "Ä") {
+      let j = findClosingBracket(str, i, open="Ä", close="Ä");
+      if (j == -1) {
+        str = str.slice(0, i) + "\\lvert" + str.slice(i+1);
+        i += 6;
+      } else {
+        str = str.slice(0, i) + "\\lvert" + str.slice(i+1);
+        str = str.slice(0, j+5) + "\\rvert" + str.slice(j+6);
+        i += 6;
+      }
     }
   }
   while (str.indexOf("á") != -1) {
     var i = str.indexOf("á");
-    console.log("hi");
-    console.log(i);
-    console.log(str);
     var j = findOpeningBracket(str, i-1, open="{", close="}");
     str = str.slice(0, i) + str.slice(i+1);
     str = str.slice(0, j) + "\\frac" + str.slice(j);
   }
   return str;
 }
-function enter() {
+function enter(onlydecimal=false) {
   var val;
+  var storevar = null;
+  commandmem.push(screentxt);
   updateMem();
+  if (screentxt[screentxt.length - 2] == ">" && variables.indexOf(screentxt[screentxt.length - 1]) != -1) {
+    storevar = screentxt[screentxt.length - 1];
+    screentxt = screentxt.slice(0, screentxt.length - 2);
+  }
   try {
     while ((screentxt.match(/[(]/g) || []).length > (screentxt.match(/[)]/g) || []).length)
       screentxt += ")";
-    if (screentxt[0] == "=")
+    if (screentxt[0] == "=") {
       val = ans;
+      commandmem[commandmem.length-1] = "Å";
+    }
     else
       val = eval(to_eval(screentxt));
     if  (val == undefined || isNaN(val) || !isFinite(val)) {
@@ -430,15 +556,41 @@ function enter() {
       if (val.indexOf("e") > 12) {
         val = val.slice(0, 11) + val.slice(val.indexOf("e"));
       }
-      val = val.slice(0, val.indexOf("e")) + "\\cdot 10^{" + val.slice(val.indexOf("e")+2) + "}";
+      let shift = 2;
+      if (val[val.indexOf("e")+1] == "-") shift = 1;
+      val = val.slice(0, val.indexOf("e")) + "\\cdot 10^{" + val.slice(val.indexOf("e")+shift) + "}";
+    } else if (!onlydecimal && Math.abs(val - Math.round(val)) > Math.pow(10, -9)) {
+      for (var i = 2; i <= 100; i++) {
+        if (Math.abs(Math.round(val*i) - val*i) < Math.pow(10, -9) && Math.abs(val) > Math.pow(10, -9)) {
+          val = "\\frac{" + (val*i) + "}{" + i + "}";
+          break;
+        }
+      }
+    }
+    switch(storevar) {
+      case null: break;
+      case "a": a = ans; break;
+      case "b": b = ans; break;
+      case "c": c = ans; break;
+      case "x": x = ans; break;
+      case "y": y = ans; break;
+      case "z": z = ans; break;
+      case "t": t = ans; break;
+      case "r": r = ans; break;
+      case "θ": theta = ans; break;
+      case "m": m = ans; break;
+      case "n": n = ans; break;
+      case "k": k = ans; break;
     }
     mem.push(val);
     val = "=" + val.toString();
+    document.getElementById("ans").style.textAlign = "right";
     screentxt = "";
     cursor = 0;
   } catch {
     val = "\\color{red}{\\text{ERROR}}";
     clearmem();
+    mem.push("\\color{red}{\\text{ERROR}}");
   }
   writescreen(val, false);
   clearWithButton = true;
@@ -466,12 +618,12 @@ function findClosingBracket(str, pos, open='(', close=')') {
   let depth = 1;
   for (let i = pos + 1; i < str.length; i++) {
     switch (str[i]) {
-      case open:
-        depth++; break;
       case close:
         if (--depth == 0)
           return i;
         break;
+      case open:
+        depth++; break;
     }
   }
   return -1;
@@ -501,9 +653,11 @@ function clearmem() {
   screentxt = "";
   cursor = 0;
   document.getElementById("screen").scrollTop = document.getElementById("screen").scrollHeight;
+  updateMath();
 }
 function clearallmem() {
   mem = [];
+  commandmem = [];
   clearmem();
   switchbutton(0);
 }
@@ -563,13 +717,16 @@ function deltxt() {
     if (doublefunctions.indexOf(screentxt[delchar]) != -1) {
       screentxt = screentxt.slice(0, delchar) + screentxt.slice(delchar+1);
       delchar--;
+      if (screentxt[delchar] == "}") {
+        let start = findOpeningBracket(screentxt, delchar, open='{', close='}');
+        screentxt[delchar] = ")";
+        screentxt[start] = "(";
+      }
     }
     screentxt = screentxt.replace(/}/, ")");
     screentxt = screentxt.replace(/{/, "(");
-    cursor = delchar - 1;
   } else {
     screentxt = screentxt.slice(0, delchar) + screentxt.slice(delchar+1);
-    cursor = delchar - 1;
   }
   if (cursor == screentxt.length - 1) cursor++;
   if (cursor > screentxt.length) cursor = screentxt.length;
@@ -585,6 +742,7 @@ function quit() {
   if (screenview == 1) {
     anglemode = new Number(document.mode.angle.value).valueOf();
     notation = new Number(document.mode.notation.value).valueOf();
+    logbase = new Number(document.mode.logbase.value).valueOf();
     document.getElementById("mode").style.display = "none";
     document.getElementById("screen").style.display = "block";
     screenview = 0;
@@ -596,11 +754,21 @@ function secondbutton() {
   else
     switchbutton(1);
 }
+function alphabutton() {
+  if (buttonmode == 2)
+    switchbutton(0);
+  else
+    switchbutton(2);
+}
 function switchbutton(page) {
   if (page == 1)
     document.getElementById("second").className = "active button";
   else
     document.getElementById("second").className = "button";
+  if (page == 2)
+    document.getElementById("alpha").className = "active button";
+  else
+    document.getElementById("alpha").className = "button";
   buttonmode = page;
   for (var i = 0; i < buttons.length; i++) {
     if (buttons[i].attributes["data-bpage"] != undefined) {
@@ -620,6 +788,11 @@ function keypress(event) {
   if (u == 46) writescreen(".");
   if (u == 47) writescreen("/");
   if (u == 42) writescreen("*");
+  if (u == 40) writescreen("(");
+  if (u == 41) writescreen(")");
+  if (u == 99) clearmem();
+  if (u == 37) writescreen("ÿ");
+  if (u == 124) writescreen("Ä");
   if (u == 94) {
     writescreen('^{}', true, false); cursor += 2; writescreen('');
   }
@@ -629,6 +802,14 @@ function specialkeys(event) {
   if (u == 8 || u == 46) deltxt();
   if (u == 37) scrollleft();
   if (u == 39) scrollright();
+  if (u == 16) switchbutton(1);
+}
+function specialkeysUp(event) {
+  var u = event.which || event.keyCode;
+  if (u == 16) switchbutton(0);
+}
+function log_mode(num) {
+  return Math.log10(num)/Math.log10(logbase);
 }
 
 window.onload = function() {
