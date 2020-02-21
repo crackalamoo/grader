@@ -424,6 +424,12 @@ function to_eval(str) {
       return match[0] + "*" + match[1];
     });
   }
+  for (var i = 0; i < str.length-1; i++) {
+    if (variables.indexOf(str[i]) != -1 && variables.indexOf(str[i+1]) != -1) {
+      str = str.slice(0, i+1) + "*" + str.slice(i+1);
+      i++;
+    }
+  }
   while (str.indexOf("^") != -1) {
     var i = str.indexOf("^");
     let exponent = str.slice(i+2, findClosingBracket(str, i+1, open='{', close='}'));
@@ -453,12 +459,6 @@ function to_eval(str) {
       str = str.slice(0, j) + ")" + str.slice(j+1);
     }
     str = str.slice(0, i) + "Math.abs(" + str.slice(i+1);
-  }
-  for (var i = 0; i < str.length-1; i++) {
-    if (variables.indexOf(str[i]) != -1 && variables.indexOf(str[i+1]) != -1) {
-      str = str.slice(0, i+1) + "*" + str.slice(i+1);
-      i++;
-    }
   }
   str = str.replace(/Å/g, "ans");
   str = str.replace(/ýà/g, "Math.tanh");
