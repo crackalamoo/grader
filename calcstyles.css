@@ -93,7 +93,7 @@ body.cathy div.scrollbutton.button {
   background-color: #222200;
   color: #FFFFFF;
 }
-body.cathy div#screen,body.cathy div#mode,body.cathy div#prgm {
+body.cathy div#screen,body.cathy div#mode,body.cathy div#prgm, body.cathy div#selection {
   width: 80%;
   height: 100px;
   margin: auto;
