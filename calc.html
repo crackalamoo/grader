@@ -10,6 +10,7 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
       onload="renderMathInElement(document.body);"></script>
+  <link rel="stylesheet" href="calcstyles.css">
 <style>
   body {
     background-color: #DDF0FF;
@@ -40,12 +41,6 @@
   .button:hover {
     background-color: #0099CC;
   }
-  .button.selected {
-    background-color: #00AADD;
-  }
-  .button.selected:hover {
-    background-color: #00BBEE;
-  }
   img {
     width: 100%;
   }
@@ -71,6 +66,9 @@
       padding-right: 3%;
       margin: 0;
     }
+    h1 {
+      font-size: 28px;
+    }
     div#calculator {
       padding: 3%;
     }
@@ -94,7 +92,7 @@
     margin: 0;
     position: relative;
   }
-  div#screen,div#mode {
+  div#screen,div#mode,div#prgm {
     width: 80%;
     height: 100px;
     margin: auto;
@@ -131,7 +129,7 @@
     color: #CCCCCC;
     text-align: right;
   }
-  div#membuffer,div#mode {
+  div#membuffer,div#mode,div#punjab,div#prgm {
     display: none;
   }
   span#cursor {
@@ -182,6 +180,14 @@
   div.commandMem {
     text-align: left;
   }
+  div#prgm {
+    font-family: monospace;
+    font-size: 16px;
+    overflow: scroll;
+  }
+  span#mi_txt {
+    color: #333333;
+  }
 </style>
 </head>
 <body onkeypress="keypress(event)" onkeydown="specialkeys(event)" onkeyup="specialkeysUp(event)">
@@ -191,20 +197,32 @@
 
 <div id="calculator">
 
-<h1>MI-\(n\)spire CX II CAS</h1>
-<h6 style="color: #333333"><svg height="12" width="12">
+<div id="maharashtra">
+<h1 id="calcname">MI-\(n\)spire CX II CAS</h1>
+<h6><svg height="12" width="12" id="mi_svg">
   <polygon points="0,4 4,2 5,3 7,2.5 11,3 12,8 11,9 9,7 4,10 0,11" fill="rgb(51,51,51)"></polygon>
-  <text x="2" y="7" fill="rgb(170,224,238)" font-size="10">m</text>
-  <text x="5.5" y="6.5" fill="rgb(51,51,51)" font-size="6" font-style="italic">i</text>
+  <text x="2.6" y="5" fill="rgb(170,224,238)" font-size="8" id="mi_m" transform="rotate(10)">m</text>
+  <text x="5.6" y="4" fill="rgb(51,51,51)" font-size="6" transform="rotate(10)">i</text>
   </svg>
-Maharashtra Instruments</h6><br>
+<span id="mi_txt">Maharashtra Instruments</span></h6>
+</div>
+<div id="punjab">
+<h1>PI-\(n\)spire CX II CAS</h1>
+<h6 style="color: #333333"><svg height="12" width="12">
+  <polygon points="0,12 2,8 3,5 5,3 7,4 10,5 12,7 11,9 7,8 4,11" fill="rgb(51,51,51)"></polygon>
+  <text x="3.7" y="6" fill="rgb(170,238,224)" font-size="8" transform="rotate(10)">p</text>
+  <text x="6.3" y="5.1" fill="rgb(51,51,51)" font-size="6" transform="rotate(10)">i</text>
+  </svg>
+Punjab Instruments</h6>
+</div>
+<br>
 <div id="screen">
   <div id="mem"></div>
   <div id="ans"></div>
   <div id="membuffer">&emsp;</div>
 </div>
 <div id="mode">
-  <form name="mode">
+  <form name="mode" action="javascript:void(0)">
     <input type="radio" name="angle" value="1">
     <label for="1">Degree</label><br>
     <input type="radio" name="angle" value="0">
@@ -213,16 +231,28 @@ Maharashtra Instruments</h6><br>
     <label for="0">Normal</label><br>
     <input type="radio" name="notation" value="1">
     <label for="1">Scientific</label><br><br>
-    <input type="number" name="logbase" value="10">
-    <label for="10">Log base</label><br><br>
+    <label for="logbase">Log base</label>
+    <input type="number" name="logbase" value="10" min="0" step="any"><br>
+    <input type="checkbox" name="debug">
+    <label for="debug">Debug mode</label><br>
+    <label for="color">Color scheme: </label><select name="color">
+      <option value="">Harys</option>
+      <option value="abdussalam">Abdus Salam</option>
+      <option value="night">Night</option>
+      <option value="cathy">Cathy</option>
+      <option value="washington">Washington</option>
+    </select>
   </form>
 </div>
+<div id="prgm" contenteditable="true"></div>
 <br>
 <div id="buttonrows">
 <div class="buttons">
   <div class="button" id="second" onclick="secondbutton()">\(2^{\text{nd}}\)</div>
   <div class="button" onclick="quit()">\(\text{quit}\)</div>
-  <div class="button" onclick="changeMode()">\(\text{mode}\)</div>
+  <div class="button" onclick="changeMode()" data-bpage="0">\(\text{mode}\)</div>
+  <div class="button" onclick="editPrgm()" data-bpage="1">\(\text{prgm}\)</div>
+  <div class="button" onclick="changeMode()" data-bpage="2">\(\text{mode}\)</div>
   <div class="scrollbutton button" onclick="scrollleft();">\(\text{<}\)</div>
   <div class="scrollbutton button" onclick="scrollright();">\(\text{>}\)</div>
 </div>
@@ -240,7 +270,7 @@ Maharashtra Instruments</h6><br>
   <div class="button" onclick="writescreen('ł(')" data-bpage="0">\(\ln\)</div>
   <div class="button" onclick="writescreen('è^{}', true, false); cursor += 3; writescreen('');" data-bpage="1">\(e^x\)</div>
   <div class="button" onclick="writescreen('ł(')" data-bpage="2">\(\ln\)</div>
-  <div class="button" onclick="writescreen('{}á{}', true, false); cursor++; writescreen('');"> \(\frac{n}{d}\) </div>
+  <div class="button" onclick="fracbutton();"> \(\frac{n}{d}\) </div>
   <div class="button" onclick="enter(true)">\( \text{f to d} \)</div>
   <div class="button" onclick="clearmem();" data-bpage="0">\(\text{clear}\)</div>
   <div class="button" onclick="clearallmem(); alert('MC: memory cleared (Minecraft)');" data-bpage="1">\(\text{MC}\)</div>
@@ -280,7 +310,9 @@ Maharashtra Instruments</h6><br>
   <div class="operation button" onclick="writescreen('*')">\(\times\)</div>
 </div>
 <div class="buttons">
-  <div class="button" onclick="writescreen('ù{}', true, false); cursor += 2; writescreen('');">\( \sqrt{x} \)</div>
+  <div class="button" onclick="writescreen('ù{}', true, false); cursor += 2; writescreen('');" data-bpage="0">\( \sqrt{x} \)</div>
+  <div class="button" onclick="writescreen('Ù{}', true, false); cursor += 2; writescreen('');" data-bpage="1">\( \sqrt[3]{x} \)</div>
+  <div class="button" onclick="writescreen('ù{}', true, false); cursor += 2; writescreen('');" data-bpage="2">\( \sqrt{x} \)</div>
   <div class="number button" onclick="writescreen('4')" data-bpage="0">\(4\)</div>
   <div class="number button" onclick="writescreen('5')" data-bpage="0">\(5\)</div>
   <div class="number button" onclick="writescreen('6')" data-bpage="0">\(6\)</div>
@@ -306,7 +338,9 @@ Maharashtra Instruments</h6><br>
   <div class="operation button" onclick="writescreen('+')">\(+\)</div>
 </div>
 <div class="buttons">
-  <div class="button" onclick="alert('Haha funnee calculator already on')">\(\text{on}\)</div>
+  <div class="button" onclick="alert('Haha funnee calculator already on')" data-bpage="0">\(\text{on}\)</div>
+  <div class="button" onclick="execPrgm();" data-bpage="1">\(\text{exec}\)</div>
+  <div class="button" onclick="alert('Haha funnee calculator already on')" data-bpage="2">\(\text{on}\)</div>
   <div class="number button" onclick="writescreen('0')" data-bpage="0">\(0\)</div>
   <div class="number button" onclick="writescreen('.')" data-bpage="0">\(.\)</div>
   <div class="button" onclick="writescreen('m')" data-bpage="2">\(m\)</div>
@@ -322,6 +356,8 @@ Maharashtra Instruments</h6><br>
 
 </div>
 
+<div id="debug"></div>
+
 <script>
 var screentxt = "";
 var buttons = document.getElementsByClassName("button");
@@ -332,8 +368,8 @@ var clearWithButton = false;
 var closebrackets = [")", "]", "}", "Ä"];
 var openbrackets = ["(", "[", "{", "Ä"];
 var operations = ["+", "-", "*", "/", "^"];
-var functions = ["ì", "ç", "à", "ł", "ù", "Ł", "Ì", "Ç", "À"];
-var variables = ["a", "b", "c", "x", "y", "z", "r", "t", "θ", "m", "n", "k"];
+var functions = ["ì", "ç", "à", "ł", "ù", "Ł", "Ì", "Ç", "À", "Ù"];
+var variables = ["¡", "¤", "¢", "£", "¥", "«", "®", "Þ", "θ", "¶", "ñ", "¿"];
 var a=0, b=0, c=0, x=0, y=0, z=0, r=0, theta=0, m=0, n=0, k=0;
 var automult = functions.concat(variables).concat(["è", "π"]).concat(["\\(", "\\{", "\\["]);
 var doublefunctions = ["^", "á"];
@@ -346,8 +382,9 @@ var mem = [];
 var commandmem = [];
 var screenview = 0;
 var buttonmode;
+var debugmode = false;
 switchbutton(0);
-function writescreen(str, add=true, render=true) {
+function writescreen(str, add=true, render=true, mem=true) {
   if (screenview == 0) {
     if (!add || clearWithButton) {
       screentxt = "";
@@ -357,10 +394,12 @@ function writescreen(str, add=true, render=true) {
     if (add) {
       document.getElementById("ans").style.textAlign = "";
     }
+    if (screentxt.length == 0 && mem) {
+      updateMem();
+    }
     if (add & screentxt.length == 0 && (operations.indexOf(str[0]) != -1 || str == ">")) {
       screentxt = "Å";
       cursor = 1;
-      updateMem();
     }
     screentxt = screentxt.slice(0, cursor) + str + screentxt.slice(cursor);
     if (render) {
@@ -400,15 +439,17 @@ function negbutton() {
   }
   writescreen('');
 }
-function updateMem() {
+function updateMem(lastmem=true) {
   document.getElementById("membuffer").style.display = "";
   document.getElementById("mem").innerHTML = "";
-  for (var i = 0; i < mem.length; i++) {
+  let shift = 1;
+  if (lastmem) shift = 0;
+  for (var i = 0; i < mem.length-shift; i++) {
     document.getElementById("mem").innerHTML += "<br><div class='commandMem'>\\(" + to_latex(commandmem[i]) + "\\)</div>";
     document.getElementById("mem").innerHTML += "<br>\\(" + mem[i] + "\\)<br>";
   }
-  if (commandmem.length > mem.length) {
-    for (var i = mem.length; i < commandmem.length; i++) {
+  if (commandmem.length > mem.length-shift && mem.length-shift > -1) {
+    for (var i = mem.length-shift; i < commandmem.length; i++) {
       document.getElementById("mem").innerHTML += "<br><div class='commandMem'>\\(" + to_latex(commandmem[i]) + "\\)</div>";
     }
   }
@@ -416,6 +457,11 @@ function updateMem() {
 }
 function updateMath() {
   renderMathInElement(document.getElementById("screen"));
+  if (debugmode) {
+    document.getElementById("debug").innerHTML = "screentxt: " + screentxt + "<br>LATEX: " + to_latex(screentxt) +
+      "<br>eval: " + to_eval(screentxt) + "<br>screentxt[cursor]: " + screentxt[cursor];
+  }
+  document.getElementById("screen").scrollTop = document.getElementById("screen").scrollHeight;
 }
 function to_eval(str) {
   for (var i = 0; i < automult.length; i++) {
@@ -426,6 +472,14 @@ function to_eval(str) {
   }
   for (var i = 0; i < str.length-1; i++) {
     if (variables.indexOf(str[i]) != -1 && variables.indexOf(str[i+1]) != -1) {
+      str = str.slice(0, i+1) + "*" + str.slice(i+1);
+      i++;
+    }
+    if ((["(", "["].indexOf(str[i]) != -1 || functions.indexOf(str[i]) != -1) && automult.indexOf(str[i-1]) != -1 && functions.indexOf(str[i-1]) == -1) {
+      str = str.slice(0, i) + "*" + str.slice(i);
+      i++;
+    }
+    if (closebrackets.indexOf(str[i]) != -1 && automult.indexOf(str[i+1]) != -1) {
       str = str.slice(0, i+1) + "*" + str.slice(i+1);
       i++;
     }
@@ -443,7 +497,7 @@ function to_eval(str) {
     }
     while (j == i - 1 && j > 0) {
       if (operations.indexOf(str[j-1]) == -1 && functions.indexOf(str[j-1]) == -1 && openbrackets.indexOf(str[j-1]) == -1
-        && closebrackets.indexOf(str[j-1]) == -1)
+        && closebrackets.indexOf(str[j-1]) == -1 && str[j-1] != ",")
         j--;
       else if (j == i - 1)
         break;
@@ -479,6 +533,7 @@ function to_eval(str) {
   str = str.replace(/[}]/g, ")");
   str = str.replace(/π/g, "Math.PI");
   str = str.replace(/ù/g, "Math.sqrt");
+  str = str.replace(/Ù/g, "Math.cbrt");
   str = str.replace(/Ł/g, "log_mode");
   str = str.replace(/è/g, "Math.E");
   str = str.replace(/ÿ/g, "*0.01");
@@ -505,6 +560,7 @@ function to_latex(str) {
   str = str.replace(/ł/g, "\\ln");
   str = str.replace(/π/g, "\\pi");
   str = str.replace(/ù/g, "\\sqrt");
+  str = str.replace(/Ù/g, "\\sqrt[3]");
   if (logbase == 10)
     str = str.replace(/Ł/g, "\\log");
   else
@@ -524,18 +580,18 @@ function to_latex(str) {
     } if (str[i] == "Ä") {
       let j = findClosingBracket(str, i, open="Ä", close="Ä");
       if (j == -1) {
-        str = str.slice(0, i) + "\\lvert" + str.slice(i+1);
+        str = str.slice(0, i) + "\\lvert " + str.slice(i+1);
         i += 6;
       } else {
-        str = str.slice(0, i) + "\\lvert" + str.slice(i+1);
-        str = str.slice(0, j+5) + "\\rvert" + str.slice(j+6);
+        str = str.slice(0, i) + "\\lvert " + str.slice(i+1);
+        str = str.slice(0, j+6) + "\\rvert " + str.slice(j+7);
         i += 6;
       }
     }
   }
   while (str.indexOf("á") != -1) {
-    var i = str.indexOf("á");
-    var j = findOpeningBracket(str, i-1, open="{", close="}");
+    let i = str.indexOf("á");
+    let j = findOpeningBracket(str, str.lastIndexOf("}", i), open="{", close="}");
     str = str.slice(0, i) + str.slice(i+1);
     str = str.slice(0, j) + "\\frac" + str.slice(j);
   }
@@ -545,7 +601,6 @@ function enter(onlydecimal=false) {
   var val;
   var storevar = null;
   commandmem.push(screentxt);
-  updateMem();
   if (screentxt[screentxt.length - 2] == ">" && variables.indexOf(screentxt[screentxt.length - 1]) != -1) {
     storevar = screentxt[screentxt.length - 1];
     screentxt = screentxt.slice(0, screentxt.length - 2);
@@ -560,11 +615,11 @@ function enter(onlydecimal=false) {
     else
       val = eval(to_eval(screentxt));
     if  (val == undefined || isNaN(val) || !isFinite(val)) {
-      throw new Error("Invalid eval");
+      throw new Error("Error in evaluating input");
     }
     ans = val;
-    val = new Number(val.toFixed(9));
-    if (notation == 1) {
+    val = new Number(val.toFixed(15));
+    if (notation == 1 || Math.abs(val) >= Math.pow(10, 9) || (Math.abs(val) <= Math.pow(10, -7) && Math.abs(val) > 0)) {
       val = val.toExponential().toString();
       if (val.indexOf("e") > 12) {
         val = val.slice(0, 11) + val.slice(val.indexOf("e"));
@@ -572,40 +627,46 @@ function enter(onlydecimal=false) {
       let shift = 2;
       if (val[val.indexOf("e")+1] == "-") shift = 1;
       val = val.slice(0, val.indexOf("e")) + "\\cdot 10^{" + val.slice(val.indexOf("e")+shift) + "}";
-    } else if (!onlydecimal && Math.abs(val - Math.round(val)) > Math.pow(10, -9)) {
+    } else if (!onlydecimal && Math.abs(val - Math.round(val)) > Math.pow(10, -9) && screentxt.indexOf("ÿ") == -1) {
       for (var i = 2; i <= 100; i++) {
         if (Math.abs(Math.round(val*i) - val*i) < Math.pow(10, -9) && Math.abs(val) > Math.pow(10, -9)) {
-          val = "\\frac{" + (val*i) + "}{" + i + "}";
+          val = "\\frac{" + Math.round(val*i) + "}{" + i + "}";
           break;
         }
       }
+    } else if (notation == 0 && screentxt.indexOf("ÿ") != -1) {
+      val = Math.round(val*10000000.0)/100000.0 + "\\%";
     }
     switch(storevar) {
       case null: break;
-      case "a": a = ans; break;
-      case "b": b = ans; break;
-      case "c": c = ans; break;
-      case "x": x = ans; break;
-      case "y": y = ans; break;
-      case "z": z = ans; break;
-      case "t": t = ans; break;
-      case "r": r = ans; break;
+      case "¡": a = ans; break;
+      case "¤": b = ans; break;
+      case "¢": c = ans; break;
+      case "£": x = ans; break;
+      case "¥": y = ans; break;
+      case "«": z = ans; break;
+      case "Þ": t = ans; break;
+      case "®": r = ans; break;
       case "θ": theta = ans; break;
-      case "m": m = ans; break;
-      case "n": n = ans; break;
-      case "k": k = ans; break;
+      case "¶": m = ans; break;
+      case "ñ": n = ans; break;
+      case "¿": k = ans; break;
     }
     mem.push(val);
     val = "=" + val.toString();
     document.getElementById("ans").style.textAlign = "right";
     screentxt = "";
     cursor = 0;
-  } catch {
-    val = "\\color{red}{\\text{ERROR}}";
+  } catch(err) {
+    if (debugmode)
+      val = "\\color{red}{\\text{ERROR: " + err.message + "}}";
+    else
+      val = "\\color{red}{\\text{ERROR}}";
     clearmem();
     mem.push("\\color{red}{\\text{ERROR}}");
   }
-  writescreen(val, false);
+  updateMem(false);
+  writescreen(val, false, true, false);
   clearWithButton = true;
 }
 function scrollright() {
@@ -665,8 +726,8 @@ function clearmem() {
   document.getElementById("ans").innerHTML = "";
   screentxt = "";
   cursor = 0;
-  document.getElementById("screen").scrollTop = document.getElementById("screen").scrollHeight;
   updateMath();
+  document.getElementById("screen").scrollTop = document.getElementById("screen").scrollHeight;
 }
 function clearallmem() {
   mem = [];
@@ -718,7 +779,9 @@ function atan_mode(num) {
 function deltxt() {
   var delchar = cursor;
   if (delchar == screentxt.length) delchar--;
-  if (screentxt[delchar] == "}") delchar--;
+  if (screentxt[delchar] == "}") {
+    delchar--;
+  }
   if (screentxt[delchar] == "{") {
     let end = findClosingBracket(screentxt, delchar, open='{', close='}');
     if (end == -1) {
@@ -727,6 +790,7 @@ function deltxt() {
       screentxt = screentxt.slice(0, delchar) + screentxt.slice(end+1);
     }
     delchar--;
+    if (delchar < 0) delchar = 0;
     if (doublefunctions.indexOf(screentxt[delchar]) != -1) {
       screentxt = screentxt.slice(0, delchar) + screentxt.slice(delchar+1);
       delchar--;
@@ -741,15 +805,26 @@ function deltxt() {
   } else {
     screentxt = screentxt.slice(0, delchar) + screentxt.slice(delchar+1);
   }
-  if (cursor == screentxt.length - 1) cursor++;
+  if (functions.indexOf(screentxt[delchar-1]) != -1)
+    screentxt = screentxt.slice(0, delchar-1) + screentxt.slice(delchar);
+  if (doublefunctions.indexOf(screentxt[cursor]) != -1) cursor--;
   if (cursor > screentxt.length) cursor = screentxt.length;
   if (cursor < 0) cursor = 0;
   writescreen("");
+  return true;
 }
 function changeMode() {
   document.getElementById("screen").style.display = "none";
   document.getElementById("mode").style.display = "block";
+  document.getElementById("prgm").style.display = "none";
   screenview = 1;
+}
+function editPrgm() {
+  document.getElementById("screen").style.display = "none";
+  document.getElementById("mode").style.display = "none";
+  document.getElementById("prgm").style.display = "block";
+  document.getElementById("prgm").focus();
+  screenview = 2;
 }
 function quit() {
   if (screenview == 1) {
@@ -759,7 +834,41 @@ function quit() {
     document.getElementById("mode").style.display = "none";
     document.getElementById("screen").style.display = "block";
     screenview = 0;
+    debugmode = document.mode.debug.checked;
+    document.body.className = document.mode.color.value;
+    let color = document.mode.color.value;
+    if (color == "abdussalam") {
+      document.getElementById("maharashtra").style.display = "none";
+      document.getElementById("punjab").style.display = "block";
+    } else {
+      document.getElementById("maharashtra").style.display = "block";
+      document.getElementById("punjab").style.display = "none";
+      let mi_m = document.getElementById("mi_m");
+      let mi_svg = document.getElementById("mi_svg");
+      let mi_txt = document.getElementById("mi_txt");
+      let state = "Maharashtra";
+      if (color == "" || color == "night") {
+        mi_svg.style.visibility = "";
+      } else
+        mi_svg.style.visibility = "hidden";
+      if (color == "")
+        mi_m.style.fill = "#AAE0EE";
+      else if (color == "night")
+        mi_m.style.fill = "#111155";
+      else if (color == "cathy")
+        state = "Yunnan";
+      else if (color == "washington")
+        state = "Virginia";
+      mi_txt.innerHTML = state + " Instruments";
+      document.getElementById("calcname").innerHTML = state[0] + "I-\\(n\\)SPIRE CX II CAS";
+      renderMathInElement(document.getElementById("calcname"));
+    }
+  } if (screenview == 2) {
+    document.getElementById("prgm").style.display = "none";
+    document.getElementById("screen").style.display = "block";
+    screenview = 0;
   }
+  updateMath();
 }
 function secondbutton() {
   if (buttonmode == 1)
@@ -803,9 +912,24 @@ function keypress(event) {
   if (u == 42) writescreen("*");
   if (u == 40) writescreen("(");
   if (u == 41) writescreen(")");
-  if (u == 99) clearmem();
+  if (u == 67) clearmem();
   if (u == 37) writescreen("ÿ");
   if (u == 124) writescreen("Ä");
+  if (u == 104) writescreen("ý");
+  if (u == 101) writescreen("è");
+  if (u == 62) writescreen(">");
+  if (u == 97) writescreen("¡");
+  if (u == 98) writescreen("¤");
+  if (u == 99) writescreen("¢");
+  if (u == 120) writescreen("£");
+  if (u == 121) writescreen("¥");
+  if (u == 122) writescreen("«");
+  if (u == 116) writescreen("Þ");
+  if (u == 114) writescreen("®");
+  if (u == 109) writescreen("¶");
+  if (u == 110) writescreen("ñ");
+  if (u == 107) writescreen("¿");
+  if (u == 102) fracbutton();
   if (u == 94) {
     writescreen('^{}', true, false); cursor += 2; writescreen('');
   }
@@ -823,6 +947,20 @@ function specialkeysUp(event) {
 }
 function log_mode(num) {
   return Math.log10(num)/Math.log10(logbase);
+}
+function execPrgm() {
+  try {
+    var code = document.getElementById("prgm").innerHTML;
+    code = code.replace(/<div>/g, "\n");
+    code = code.replace(/<\/div>/g, "");
+    eval(code);
+  } catch(err) {
+    writescreen("\\color{red}{\\text{ERROR: " + err.message + "}}", false, true);
+    clearWithButton = true;
+  }
+}
+function fracbutton() {
+  writescreen('{}á{}', true, false); cursor++; writescreen('');
 }
 
 window.onload = function() {

@@ -1,0 +1,160 @@
+body.abdussalam {
+  background-color: #DDFFF0;
+}
+body.abdussalam div#calculator {
+  background-color: #AAEEE0;
+}
+body.abdussalam div.button {
+  background-color: #00AA88;
+  border: 1px solid #99FFAA;
+}
+body.abdussalam div.button:hover {
+  background-color: #00CC99;
+}
+body.abdussalam div.button.number {
+  background-color: #F0FFF0;
+  color: #000055;
+}
+body.abdussalam div.button.number:hover {
+  background-color: #D0DDD0;
+}
+body.abdussalam div.button.operation {
+  background-color: #333333;
+}
+body.abdussalam div.button.operation:hover {
+  background-color: #555555;
+}
+body.abdussalam div.scrollbutton.button {
+  background-color: #003300;
+  color: #FFFFFF;
+}
+
+body.night {
+  background-color: #000000;
+}
+body.night div#calculator {
+  background-color: #111155;
+}
+body.night div.button {
+  background-color: #003377;
+}
+body.night div.button:hover {
+  background-color: #0044CC;
+}
+body.night div.button.number {
+  background-color: #F0F0FF;
+  color: #000055;
+}
+body.night div.button.number:hover {
+  background-color: #D0D0DD;
+}
+body.night div.button.operation {
+  background-color: #333333;
+}
+body.night div.button.operation:hover {
+  background-color: #555555;
+}
+body.night div.scrollbutton.button {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+body.night div#debug {
+  color: #FFFFFF;
+}
+
+body.cathy {
+  background-color: #FEEDF5;
+}
+body.cathy div#calculator {
+  background-color: #E6BBCF;
+  border: none;
+}
+body.cathy div.button {
+  background-color: #BDA7CF;
+  border: 1px solid #ADA0BF;
+}
+body.cathy div.button:hover {
+  background-color: #CDB7DF;
+}
+body.cathy div.button.number {
+  background-color: #FFFFFF;
+  color: #000033;
+}
+body.cathy div.button.number:hover {
+  background-color: #CCCCCC;
+}
+body.cathy div.button.operation {
+  background-color: #E4BAE9;
+}
+body.cathy div.button.operation:hover {
+  background-color: #F4BAE9;
+}
+body.cathy div.scrollbutton.button {
+  background-color: #222200;
+  color: #FFFFFF;
+}
+body.cathy div#screen,body.cathy div#mode,body.cathy div#prgm {
+  width: 80%;
+  height: 100px;
+  margin: auto;
+  background-color: #F6F7EE;
+  border: 1px solid #F6F7EE;
+  padding: 2%;
+  font-size: 18px;
+  color: #000000;
+  overflow: scroll;
+  text-align: left;
+}
+body.cathy div#mode {
+  min-height: 100px;
+  height: auto;
+}
+body.cathy div#mem {
+  color: #998888;
+}
+body.cathy div.button#alpha,body.cathy div.button#second {
+  background-color: #EBCFC4;
+  color: #4444FF;
+}
+body.cathy div.button#alpha:hover,body.cathy div.button#second:hover {
+  background-color: #FBDFD4;
+}
+body.cathy div.button.active#alpha,body.cathy div.button.active#second {
+  border: 1px solid #000000;
+  background-color: #FFFFCC;
+  color: #00CCFF;
+}
+body.cathy div.button.active#alpha:hover,body.cathy div.button.active#second:hover {
+  background-color: #FFFFDD;
+}
+
+body.washington {
+  background-color: #DDF0FF;
+}
+body.washington div#calculator {
+  background-color: #AAE0EE;
+}
+body.washington div.button {
+  background-color: #AA0022;
+  border: 1px solid #BB0000;
+}
+body.washington div.button:hover {
+  background-color: #CC0033;
+}
+body.washington div.button.number {
+  background-color: #FFFFFF;
+  color: #000055;
+}
+body.washington div.button.number:hover {
+  background-color: #DDDDDD;
+}
+body.washington div.button.operation {
+  background-color: #000077;
+}
+body.washington div.button.operation:hover {
+  background-color: #0000BB;
+}
+body.washington div.scrollbutton.button {
+  background-color: #000033;
+  color: #FFFFFF;
+}
