@@ -11,6 +11,8 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
       onload="renderMathInElement(document.body);"></script>
   <link rel="stylesheet" href="calcstyles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.6.0/math.min.js"></script>
+  <script src="import.js"></script>
 <style>
   body {
     background-color: #DDF0FF;
@@ -180,6 +182,9 @@
   div.commandMem {
     text-align: left;
   }
+  div#mem div.highlight {
+    background-color: #666666;
+  }
   div#prgm {
     font-family: monospace;
     font-size: 16px;
@@ -190,7 +195,7 @@
   }
 </style>
 </head>
-<body onkeypress="keypress(event)" onkeydown="specialkeys(event)" onkeyup="specialkeysUp(event)">
+<body onkeypress="keypress(event)" onkeydown="specialkeys(event)">
 
 <h3 class="noBottomMargin">Harys Dalvi's Aesthetically Pleasing</h3>
 <h1 class="noTopMargin" id="sitename">Regular Calculator</h1>
@@ -244,7 +249,9 @@ Punjab Instruments</h6>
     </select>
   </form>
 </div>
-<div id="prgm" contenteditable="true"></div>
+<div id="prgm">Program (JavaScript):<br>
+<code id="prgm_txt" contenteditable="true">alert('Hello, world!');</code>
+</div>
 <div id="selection"><form name="selection" action="javascript:void(0)">
   <br>Select an option: <select name="choice"></select>
 </form></div>
@@ -256,8 +263,12 @@ Punjab Instruments</h6>
   <div class="button" onclick="changeMode()" data-bpage="0">\(\text{mode}\)</div>
   <div class="button" onclick="editPrgm()" data-bpage="1">\(\text{prgm}\)</div>
   <div class="button" onclick="changeMode()" data-bpage="2">\(\text{mode}\)</div>
-  <div class="scrollbutton button" onclick="scrollleft();">\(\text{<}\)</div>
-  <div class="scrollbutton button" onclick="scrollright();">\(\text{>}\)</div>
+  <div class="scrollbutton button" onclick="scrollleft();" data-bpage="0">\(\leftarrow\)</div>
+  <div class="scrollbutton button" onclick="scrollup();" data-bpage="1">\(\uparrow\)</div>
+  <div class="scrollbutton button" onclick="scrollleft();" data-bpage="2">\(\leftarrow\)</div>
+  <div class="scrollbutton button" onclick="scrollright();" data-bpage="0">\(\rightarrow\)</div>
+  <div class="scrollbutton button" onclick="scrolldown();" data-bpage="1">\(\downarrow\)</div>
+  <div class="scrollbutton button" onclick="scrollright();" data-bpage="2">\(\rightarrow\)</div>
 </div>
 <div class="buttons">
   <div class="button" id="alpha" onclick="alphabutton()">\(\text{alpha}\)</div>
@@ -313,9 +324,9 @@ Punjab Instruments</h6>
   <div class="number button" onclick="writescreen('7')" data-bpage="1">\(7\)</div>
   <div class="number button" onclick="writescreen('8')" data-bpage="1">\(8\)</div>
   <div class="number button" onclick="writescreen('9')" data-bpage="1">\(9\)</div>
-  <div class="button" onclick="writescreen('a')" data-bpage="2">\(a\)</div>
-  <div class="button" onclick="writescreen('b')" data-bpage="2">\(b\)</div>
-  <div class="button" onclick="writescreen('c')" data-bpage="2">\(c\)</div>
+  <div class="button" onclick="writescreen('¡')" data-bpage="2">\(a\)</div>
+  <div class="button" onclick="writescreen('¤')" data-bpage="2">\(b\)</div>
+  <div class="button" onclick="writescreen('¢')" data-bpage="2">\(c\)</div>
   <div class="operation button" onclick="writescreen('*')">\(\times\)</div>
 </div>
 <div class="buttons">
@@ -328,9 +339,9 @@ Punjab Instruments</h6>
   <div class="number button" onclick="writescreen('4')" data-bpage="1">\(4\)</div>
   <div class="number button" onclick="writescreen('5')" data-bpage="1">\(5\)</div>
   <div class="number button" onclick="writescreen('6')" data-bpage="1">\(6\)</div>
-  <div class="button" onclick="writescreen('x')" data-bpage="2">\(x\)</div>
-  <div class="button" onclick="writescreen('y')" data-bpage="2">\(y\)</div>
-  <div class="button" onclick="writescreen('z')" data-bpage="2">\(z\)</div>
+  <div class="button" onclick="writescreen('£')" data-bpage="2">\(x\)</div>
+  <div class="button" onclick="writescreen('¥')" data-bpage="2">\(y\)</div>
+  <div class="button" onclick="writescreen('«')" data-bpage="2">\(z\)</div>
   <div class="operation button" onclick="writescreen('-')">\(-\)</div>
 </div>
 <div class="buttons">
@@ -341,8 +352,8 @@ Punjab Instruments</h6>
   <div class="number button" onclick="writescreen('1')" data-bpage="1">\(1\)</div>
   <div class="number button" onclick="writescreen('2')" data-bpage="1">\(2\)</div>
   <div class="number button" onclick="writescreen('3')" data-bpage="1">\(3\)</div>
-  <div class="button" onclick="writescreen('t')" data-bpage="2">\(t\)</div>
-  <div class="button" onclick="writescreen('r')" data-bpage="2">\(r\)</div>
+  <div class="button" onclick="writescreen('Þ')" data-bpage="2">\(t\)</div>
+  <div class="button" onclick="writescreen('®')" data-bpage="2">\(r\)</div>
   <div class="button" onclick="writescreen('θ')" data-bpage="2">\( \theta \)</div>
   <div class="operation button" onclick="writescreen('+')">\(+\)</div>
 </div>
@@ -352,13 +363,13 @@ Punjab Instruments</h6>
   <div class="button" onclick="alert('Haha funnee calculator already on')" data-bpage="2">\(\text{on}\)</div>
   <div class="number button" onclick="writescreen('0')" data-bpage="0">\(0\)</div>
   <div class="number button" onclick="writescreen('.')" data-bpage="0">\(.\)</div>
-  <div class="button" onclick="writescreen('m')" data-bpage="2">\(m\)</div>
+  <div class="button" onclick="writescreen('¶')" data-bpage="2">\(m\)</div>
   <div class="number button" onclick="writescreen('0')" data-bpage="1">\(0\)</div>
   <div class="number button" onclick="writescreen('.')" data-bpage="1">\(.\)</div>
-  <div class="button" onclick="writescreen('n')" data-bpage="2">\(n\)</div>
+  <div class="button" onclick="writescreen('ñ')" data-bpage="2">\(n\)</div>
   <div class="number button" onclick="negbutton()" data-bpage="0">\((-)\)</div>
   <div class="number button" onclick="writescreen('Å')" data-bpage="1">\(\text{ans}\)</div>
-  <div class="button" onclick="writescreen('k')" data-bpage="2">\(k\)</div>
+  <div class="button" onclick="writescreen('¿')" data-bpage="2">\(k\)</div>
   <div class="operation button" onclick="enter()">\(\text{enter}\)</div>
 </div>
 </div>
@@ -371,19 +382,19 @@ Punjab Instruments</h6>
 var screentxt = "";
 var buttons = document.getElementsByClassName("button");
 var cursor = 0;
-var ans = 0;
+var memselect = -1;
 var mathprint = true;
 var clearWithButton = false;
 var closebrackets = [")", "]", "}", "Ä"];
 var openbrackets = ["(", "[", "{", "Ä"];
-var operations = ["+", "-", "*", "/", "^", "!"];
+var operations = ["+", "-", "*", "/", "^", "!", "ÿ"];
 var functions = ["ì", "ç", "à", "ł", "ù", "Ł", "Ì", "Ç", "À", "Ù", "¯", "¸"];
 var variables = ["¡", "¤", "¢", "£", "¥", "«", "®", "Þ", "θ", "¶", "ñ", "¿"];
 var digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var a=0, b=0, c=0, x=0, y=0, z=0, r=0, theta=0, m=0, n=0, k=0;
 var automult = functions.concat(variables).concat(["è", "π"]).concat(["\\(", "\\{", "\\[", "Â"]);
 var doublefunctions = ["^", "á", "©", "¦"];
 var anglemode = 1;
+var memDivs = [];
 document.mode.angle.value = anglemode;
 var notation = 0;
 var logbase = 10;
@@ -393,10 +404,13 @@ var commandmem = [];
 var screenview = 0;
 var buttonmode;
 var debugmode = false;
+const BIG_NUM = math.pow(10, 309);
 const CMND_DEF = "\\newcommand{\\floor}[1]{\\left\\lfloor #1 \\right\\rfloor} \\newcommand{\\ceil}[1]{\\left\\lceil #1 \\right\\rceil}";
 switchbutton(0);
 function writescreen(str, add=true, render=true, mem=true) {
   if (screenview == 0) {
+    if (str != "")
+      memselect = -1;
     if (!add || clearWithButton) {
       screentxt = "";
       cursor = 0;
@@ -452,18 +466,27 @@ function negbutton() {
 }
 function updateMem(lastmem=true) {
   document.getElementById("membuffer").style.display = "";
-  document.getElementById("mem").innerHTML = "";
+  let membox = document.getElementById("mem");
+  membox.innerHTML = "";
   let shift = 1;
   if (lastmem) shift = 0;
   for (var i = 0; i < mem.length-shift; i++) {
-    document.getElementById("mem").innerHTML += "<br><div class='commandMem'>\\( " + CMND_DEF + to_latex(commandmem[i]) + "\\)</div>";
-    document.getElementById("mem").innerHTML += "<br>\\( " + mem[i] + "\\)<br>";
+    membox.innerHTML += "<div class='commandMem'>\\( " + CMND_DEF + to_latex(commandmem[i]) + "\\)</div>";
+    membox.innerHTML += "<div>\\( " + mem[i] + "\\)</div>";
   }
   if (commandmem.length > mem.length-shift && mem.length-shift > -1) {
     for (var i = mem.length-shift; i < commandmem.length; i++) {
-      document.getElementById("mem").innerHTML += "<br><div class='commandMem'>\\( " + CMND_DEF + to_latex(commandmem[i]) + "\\)</div>";
+      membox.innerHTML += "<div class='commandMem'>\\( " + CMND_DEF + to_latex(commandmem[i]) + "\\)</div>";
     }
   }
+  let allDivs = document.getElementsByTagName("div");
+  memDivs = [];
+  for (var i = 0; i < allDivs.length; i++) {
+    if (membox.contains(allDivs[i]) && membox != allDivs[i])
+      memDivs.push(allDivs[i]);
+  }
+  if (memselect >= 0 && memselect < memDivs.length)
+    memDivs[memselect].className += " highlight";
   document.getElementById("screen").scrollTop = document.getElementById("screen").scrollHeight;
 }
 function updateMath() {
@@ -486,11 +509,12 @@ function to_eval(str) {
       str = str.slice(0, i+1) + "*" + str.slice(i+1);
       i++;
     }
-    if ((["(", "["].indexOf(str[i]) != -1 || functions.indexOf(str[i]) != -1) && automult.indexOf(str[i-1]) != -1 && functions.indexOf(str[i-1]) == -1) {
-      str = str.slice(0, i) + "*" + str.slice(i);
+    if ((["(", "["].indexOf(str[i+1]) != -1 || functions.indexOf(str[i+1]) != -1) && automult.indexOf(str[i]) != -1
+        && functions.indexOf(str[i]) == -1 && str[i] != "Ä") {
+      str = str.slice(0, i+1) + "*" + str.slice(i+1);
       i++;
     }
-    if (closebrackets.indexOf(str[i]) != -1 && automult.indexOf(str[i+1]) != -1) {
+    if (closebrackets.indexOf(str[i]) != -1 && automult.indexOf(str[i+1]) != -1 && str[i] != "Ä") {
       str = str.slice(0, i+1) + "*" + str.slice(i+1);
       i++;
     }
@@ -513,7 +537,7 @@ function to_eval(str) {
       else if (j == i - 1)
         break;
     }
-    str = str.slice(0, j) + "Math.pow(" + str.slice(j, i) + "," + exponent + ")" + str.slice(i + exponent.length + 3);
+    str = str.slice(0, j) + "pow(" + str.slice(j, i) + "," + exponent + ")" + str.slice(i + exponent.length + 3);
   }
   while (str.indexOf("Ä") != -1) {
     var i = str.indexOf("Ä");
@@ -523,7 +547,7 @@ function to_eval(str) {
     } else {
       str = str.slice(0, j) + ")" + str.slice(j+1);
     }
-    str = str.slice(0, i) + "Math.abs(" + str.slice(i+1);
+    str = str.slice(0, i) + "abs(" + str.slice(i+1);
   }
   while (str.indexOf("!") != -1) {
     var i = str.indexOf("!");
@@ -542,27 +566,27 @@ function to_eval(str) {
     str = str.slice(0, j) + "nPr(" + str.slice(j+1, i-1) + "," + str.slice(i+2);
   }
   str = str.replace(/Å/g, "ans");
-  str = str.replace(/ýà/g, "Math.tanh");
-  str = str.replace(/ýç/g, "Math.cosh");
-  str = str.replace(/ýì/g, "Math.sinh");
-  str = str.replace(/ýÀ/g, "Math.atanh");
-  str = str.replace(/ýÇ/g, "Math.acosh");
-  str = str.replace(/ýÌ/g, "Math.asinh");
+  str = str.replace(/ýà/g, "tanh");
+  str = str.replace(/ýç/g, "cosh");
+  str = str.replace(/ýì/g, "sinh");
+  str = str.replace(/ýÀ/g, "atanh");
+  str = str.replace(/ýÇ/g, "acosh");
+  str = str.replace(/ýÌ/g, "asinh");
   str = str.replace(/à/g, "tan_mode");
   str = str.replace(/ç/g, "cos_mode");
   str = str.replace(/ì/g, "sin_mode");
   str = str.replace(/À/g, "atan_mode");
   str = str.replace(/Ç/g, "acos_mode");
   str = str.replace(/Ì/g, "asin_mode");
-  str = str.replace(/ł/g, "Math.log");
+  str = str.replace(/ł/g, "log");
   str = str.replace(/á/g, "/");
   str = str.replace(/[{]/g, "(");
   str = str.replace(/[}]/g, ")");
-  str = str.replace(/π/g, "Math.PI");
-  str = str.replace(/ù/g, "Math.sqrt");
-  str = str.replace(/Ù/g, "Math.cbrt");
+  str = str.replace(/π/g, "pi");
+  str = str.replace(/ù/g, "sqrt");
+  str = str.replace(/Ù/g, "cbrt");
   str = str.replace(/Ł/g, "log_mode");
-  str = str.replace(/è/g, "Math.E");
+  str = str.replace(/è/g, "e");
   str = str.replace(/ÿ/g, "*0.01");
   str = str.replace(/θ/g, "theta");
   str = str.replace(/¡/g, "a");
@@ -576,11 +600,11 @@ function to_eval(str) {
   str = str.replace(/¶/g, "m");
   str = str.replace(/£/g, "ñ");
   str = str.replace(/¿/g, "k");
-  str = str.replace(/Â/g, "Math.random()");
+  str = str.replace(/Â/g, "random()");
   str = str.replace(/\}©\{/g, ",");
   str = str.replace(/\}¦\{/g, ",");
-  str = str.replace(/¸/g, "Math.floor");
-  str = str.replace(/¯/g, "Math.ceil");
+  str = str.replace(/¸/g, "floor");
+  str = str.replace(/¯/g, "ceil");
   return str;
 }
 function to_latex(str) {
@@ -659,74 +683,85 @@ function to_latex(str) {
 function enter(onlydecimal=false) {
   var val;
   var storevar = null;
-  commandmem.push(screentxt);
-  if (screentxt[screentxt.length - 2] == ">" && variables.indexOf(screentxt[screentxt.length - 1]) != -1) {
-    storevar = screentxt[screentxt.length - 1];
-    screentxt = screentxt.slice(0, screentxt.length - 2);
-  }
-  try {
-    while ((screentxt.match(/[(]/g) || []).length > (screentxt.match(/[)]/g) || []).length)
-      screentxt += ")";
-    if (screentxt[0] == "=") {
-      val = ans;
-      commandmem[commandmem.length-1] = "Å";
+  if (memselect == -1) {
+    commandmem.push(screentxt);
+    if (screentxt[screentxt.length - 2] == ">" && variables.indexOf(screentxt[screentxt.length - 1]) != -1) {
+      storevar = screentxt[screentxt.length - 1];
+      screentxt = screentxt.slice(0, screentxt.length - 2);
     }
-    else
-      val = eval(to_eval(screentxt));
-    if  (val == undefined || isNaN(val) || !isFinite(val)) {
-      throw new Error("Error in evaluating input");
-    }
-    ans = val;
-    val = new Number(val.toFixed(15));
-    if (notation == 1 || Math.abs(val) >= Math.pow(10, 9) || (Math.abs(val) <= Math.pow(10, -7) && Math.abs(val) > 0)) {
-      val = val.toExponential().toString();
-      if (val.indexOf("e") > 12) {
-        val = val.slice(0, 11) + val.slice(val.indexOf("e"));
+    try {
+      while ((screentxt.match(/[(]/g) || []).length > (screentxt.match(/[)]/g) || []).length)
+        screentxt += ")";
+      if (screentxt[0] == "=") {
+        val = scope.ans;
+        commandmem[commandmem.length-1] = "Å";
+      } else
+        val = math.evaluate(to_eval(screentxt), scope);
+      if  (val == undefined || isNaN(val) || !isFinite(val)) {
+        throw new Error("Error in evaluating input");
       }
-      let shift = 2;
-      if (val[val.indexOf("e")+1] == "-") shift = 1;
-      val = val.slice(0, val.indexOf("e")) + "\\cdot 10^{" + val.slice(val.indexOf("e")+shift) + "}";
-    } else if (!onlydecimal && Math.abs(val - Math.round(val)) > Math.pow(10, -9) && screentxt.indexOf("ÿ") == -1) {
-      for (var i = 2; i <= 100; i++) {
-        if (Math.abs(Math.round(val*i) - val*i) < Math.pow(10, -9) && Math.abs(val) > Math.pow(10, -9)) {
-          val = "\\frac{" + Math.round(val*i) + "}{" + i + "}";
-          break;
+      scope.ans = val;
+      val = new Number(val.toFixed(15));
+      if (notation == 1 || Math.abs(val) >= Math.pow(10, 9) || (Math.abs(val) <= Math.pow(10, -7) && Math.abs(val) > 0)) {
+        val = val.toExponential().toString();
+        if (val.indexOf("e") > 12) {
+          val = val.slice(0, 11) + val.slice(val.indexOf("e"));
         }
+        let shift = 2;
+        if (val[val.indexOf("e")+1] == "-") shift = 1;
+        val = val.slice(0, val.indexOf("e")) + "\\cdot 10^{" + val.slice(val.indexOf("e")+shift) + "}";
+      } else if (!onlydecimal && Math.abs(val - Math.round(val)) > Math.pow(10, -9) && screentxt.indexOf("ÿ") == -1) {
+        for (var i = 2; i <= 100; i++) {
+          if (Math.abs(Math.round(val*i) - val*i) < Math.pow(10, -9) && Math.abs(val) > Math.pow(10, -9)) {
+            val = "\\frac{" + Math.round(val*i) + "}{" + i + "}";
+            break;
+          }
+        }
+      } else if (notation == 0 && screentxt.indexOf("ÿ") != -1) {
+        val = Math.round(val*10000000.0)/100000.0 + "\\%";
       }
-    } else if (notation == 0 && screentxt.indexOf("ÿ") != -1) {
-      val = Math.round(val*10000000.0)/100000.0 + "\\%";
+      switch(storevar) {
+        case null: break;
+        case "¡": scope.a = scope.ans; break;
+        case "¤": scope.b = scope.ans; break;
+        case "¢": scope.c = scope.ans; break;
+        case "£": scope.x = scope.ans; break;
+        case "¥": scope.y = scope.ans; break;
+        case "«": scope.z = scope.ans; break;
+        case "Þ": scope.t = scope.ans; break;
+        case "®": scope.r = scope.ans; break;
+        case "θ": scope.theta = scope.ans; break;
+        case "¶": scope.m = scope.ans; break;
+        case "ñ": scope.n = scope.ans; break;
+        case "¿": scope.k = scope.ans; break;
+      }
+      mem.push(val);
+      val = "=" + val.toString();
+      document.getElementById("ans").style.textAlign = "right";
+      screentxt = "";
+      cursor = 0;
+    } catch(err) {
+      if (debugmode)
+        val = "\\color{red}{\\text{ERROR: " + err.message + "}}";
+      else
+        val = "\\color{red}{\\text{ERROR}}";
+      clearmem();
+      mem.push("\\color{red}{\\text{ERROR}}");
     }
-    switch(storevar) {
-      case null: break;
-      case "¡": a = ans; break;
-      case "¤": b = ans; break;
-      case "¢": c = ans; break;
-      case "£": x = ans; break;
-      case "¥": y = ans; break;
-      case "«": z = ans; break;
-      case "Þ": t = ans; break;
-      case "®": r = ans; break;
-      case "θ": theta = ans; break;
-      case "¶": m = ans; break;
-      case "ñ": n = ans; break;
-      case "¿": k = ans; break;
-    }
-    mem.push(val);
-    val = "=" + val.toString();
-    document.getElementById("ans").style.textAlign = "right";
-    screentxt = "";
-    cursor = 0;
-  } catch(err) {
-    if (debugmode)
-      val = "\\color{red}{\\text{ERROR: " + err.message + "}}";
+    updateMem(false);
+    writescreen(val, false, true, false);
+    clearWithButton = true;
+  } else {
+    if (memselect % 2 == 0)
+      writescreen(commandmem[Math.floor(memselect / 2)]);
     else
-      val = "\\color{red}{\\text{ERROR}}";
-    clearmem();
-    mem.push("\\color{red}{\\text{ERROR}}");
+      writescreen(mem[Math.floor(memselect / 2)]);
+    memselect = -1;
+    updateMem();
+    updateMath();
+    document.getElementById("screen").scrollTop = document.getElementById("screen").scrollHeight;
+    document.getElementById("screen").scrollLeft = document.getElementById("screen").scrollWidth;
   }
-  updateMem(false);
-  writescreen(val, false, true, false);
-  clearWithButton = true;
 }
 function scrollright() {
   cursor++;
@@ -783,7 +818,7 @@ function findOpeningBracket(str, pos, open='(', close=')') {
 function clearmem() {
   document.getElementById("membuffer").style.display = "block";
   updateMem();
-  document.getElementById("mem").innerHTML += "<br><br><br>";
+  document.getElementById("mem").innerHTML += "<br><br><br><br><br><br><br><br>";
   document.getElementById("ans").innerHTML = "";
   screentxt = "";
   cursor = 0;
@@ -796,47 +831,7 @@ function clearallmem() {
   clearmem();
   switchbutton(0);
 }
-function sin_mode(num) {
-  if (anglemode == 0)
-    num = Math.sin(num);
-  else
-    num = Math.sin(num*Math.PI/180.0);
-  return num;
-}
-function cos_mode(num) {
-  if (anglemode == 0)
-    num = Math.cos(num);
-  else
-    num = Math.cos(num*Math.PI/180.0);
-  return num;
-}
-function tan_mode(num) {
-  if (anglemode == 0)
-    num = Math.tan(num);
-  else
-    num = Math.tan(num*Math.PI/180.0);
-  if (Math.abs(num) >= 150000000000000)
-    return NaN;
-  return num;
-}
-function asin_mode(num) {
-  num = Math.asin(num);
-  if (anglemode == 1)
-    num *= 180.0/Math.PI;
-  return num;
-}
-function acos_mode(num) {
-  num = Math.acos(num);
-  if (anglemode == 1)
-    num *= 180.0/Math.PI;
-  return num;
-}
-function atan_mode(num) {
-  num = Math.atan(num);
-  if (anglemode == 1)
-    num *= 180.0/Math.PI;
-  return num;
-}
+
 function deltxt() {
   var delchar = cursor;
   if (delchar == screentxt.length) delchar--;
@@ -886,8 +881,9 @@ function editPrgm() {
   document.getElementById("mode").style.display = "none";
   document.getElementById("prgm").style.display = "block";
   document.getElementById("selection").style.display = "none";
-  document.getElementById("prgm").focus();
+  document.getElementById("prgm_txt").focus();
   screenview = 2;
+  switchbutton(0);
 }
 function quit() {
   if (screenview == 1) {
@@ -1019,13 +1015,11 @@ function specialkeysUp(event) {
   var u = event.which || event.keyCode;
   if (u == 16) switchbutton(0);
 }
-function log_mode(num) {
-  return Math.log10(num)/Math.log10(logbase);
-}
 function execPrgm() {
   try {
-    var code = document.getElementById("prgm").innerHTML;
+    var code = document.getElementById("prgm_txt").innerHTML;
     code = code.replace(/<div>/g, "\n");
+    code = code.replace(/<br>/g, "\n");
     code = code.replace(/<\/div>/g, "");
     eval(code);
   } catch(err) {
@@ -1035,25 +1029,6 @@ function execPrgm() {
 }
 function fracbutton() {
   writescreen('{}á{}', true, false); cursor++; writescreen('');
-}
-function factorial(num) {
-  var product = 1;
-  if (num == 0 || num == 1) return 1;
-  else if (num < 0 || !Number.isInteger(num))
-    throw new Error("Can only take factorial of nonnegative integers");
-  else {
-    while (num > 1) {
-      product *= num;
-      num--;
-    }
-  }
-  return product;
-}
-function nCr(n, r) {
-  return (factorial(n))/(factorial(r) * factorial(n-r));
-}
-function nPr(n, r) {
-  return (factorial(n))/(factorial(n-r));
 }
 function choosefunction(functions, disp) {
   document.getElementById("screen").style.display = "none";
@@ -1071,9 +1046,30 @@ function choosefunction(functions, disp) {
   switchbutton(0);
   screenview = 3;
 }
+function scrollup() {
+  if (memselect < 0) memselect = mem.length + commandmem.length - 1;
+  else if (memselect > -1) memselect--;
+  updateMem();
+  writescreen("");
+  if (memselect != -1)
+    document.getElementById("screen").scrollTop = memDivs[memselect].offsetHeight * memselect - 30;
+  document.getElementById("screen").scrollLeft = 0;
+  switchbutton(1);
+}
+function scrolldown() {
+  if (memselect >= mem.length + commandmem.length - 1) memselect = -1;
+  else memselect++;
+  updateMem();
+  writescreen("");
+  if (memselect != -1)
+    document.getElementById("screen").scrollTop = memDivs[memselect].offsetHeight * memselect - 30;
+  document.getElementById("screen").scrollLeft = 0;
+  switchbutton(1);
+}
 
 window.onload = function() {
   writescreen("");
+  document.body.addEventListener("keyup", specialkeysUp);
 };
 
 </script>
