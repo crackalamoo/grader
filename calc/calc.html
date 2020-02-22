@@ -530,12 +530,15 @@ function to_eval(str) {
           j--;
       }
     }
-    while (j == i - 1 && j > 0) {
+    while (str[j-1] == "." || digits.indexOf(str[j-1]) != -1) j--;
+    while (j > 0) {
       if (operations.indexOf(str[j-1]) == -1 && functions.indexOf(str[j-1]) == -1 && openbrackets.indexOf(str[j-1]) == -1
-        && closebrackets.indexOf(str[j-1]) == -1 && str[j-1] != ",")
-        j--;
-      else if (j == i - 1)
+        && closebrackets.indexOf(str[j-1]) == -1 && str[j-1] != ",") {
+          j--;
+      }
+      else {
         break;
+      }
     }
     str = str.slice(0, j) + "pow(" + str.slice(j, i) + "," + exponent + ")" + str.slice(i + exponent.length + 3);
   }
@@ -753,9 +756,9 @@ function enter(onlydecimal=false) {
     clearWithButton = true;
   } else {
     if (memselect % 2 == 0)
-      writescreen(commandmem[Math.floor(memselect / 2)]);
+      writescreen(commandmem[Math.floor(memselect / 2)].toString());
     else
-      writescreen(mem[Math.floor(memselect / 2)]);
+      writescreen(mem[Math.floor(memselect / 2)].toString());
     memselect = -1;
     updateMem();
     updateMath();
