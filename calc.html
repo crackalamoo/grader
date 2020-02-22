@@ -92,7 +92,7 @@
     margin: 0;
     position: relative;
   }
-  div#screen,div#mode,div#prgm {
+  div#screen,div#mode,div#prgm,div#selection {
     width: 80%;
     height: 100px;
     margin: auto;
@@ -110,11 +110,11 @@
     font-size: 16px;
   }
   div.button.number {
-    background-color: #FFFFFF;
+    background-color: #EEEEFF;
     color: #000055;
   }
   div.button.number:hover {
-    background-color: #DDDDDD;
+    background-color: #DDDDEE;
   }
   div.button.operation {
     background-color: #333333;
@@ -129,7 +129,7 @@
     color: #CCCCCC;
     text-align: right;
   }
-  div#membuffer,div#mode,div#punjab,div#prgm {
+  div#membuffer,div#mode,div#punjab,div#prgm,div#selection {
     display: none;
   }
   span#cursor {
@@ -245,6 +245,9 @@ Punjab Instruments</h6>
   </form>
 </div>
 <div id="prgm" contenteditable="true"></div>
+<div id="selection"><form name="selection" action="javascript:void(0)">
+  <br>Select an option: <select name="choice"></select>
+</form></div>
 <br>
 <div id="buttonrows">
 <div class="buttons">
@@ -258,8 +261,12 @@ Punjab Instruments</h6>
 </div>
 <div class="buttons">
   <div class="button" id="alpha" onclick="alphabutton()">\(\text{alpha}\)</div>
-  <div class="button" onclick="writescreen('ý')">\( \text{hyp} \)</div>
-  <div class="button" onclick="writescreen('Ä');"> \( \lvert x \rvert \) </div>
+  <div class="button" onclick="choosefunction(['¸{}', '¯{}'], ['floor', 'ceil']);" data-bpage="0">\( \text{math} \)</div>
+  <div class="button" onclick="writescreen('ý')" data-bpage="1">\( \text{hyp} \)</div>
+  <div class="button" onclick="choosefunction(['¸{}', '¯{}'], ['floor', 'ceil']);" data-bpage="2">\( \text{math} \)</div>
+  <div class="button" onclick="writescreen('Ä');" data-bpage="0"> \( \lvert x \rvert \) </div>
+  <div class="button" onclick="choosefunction(['!', '{}©{}', '{}¦{}', 'Â'], ['!', 'nCr', 'nPr', 'rand']);" data-bpage="1"> \( \text{prb} \) </div>
+  <div class="button" onclick="writescreen('Ä');" data-bpage="2"> \( \lvert x \rvert \) </div>
   <div class="button" onclick="writescreen('*10^{}', true, false); cursor += 5; writescreen('');">\(\times10^n\)</div>
   <div class="button" onclick="deltxt();">\(\text{del}\)</div>
 </div>
@@ -297,7 +304,9 @@ Punjab Instruments</h6>
   <div class="operation button" onclick="writescreen('/')">\(\div\)</div>
 </div>
 <div class="buttons">
-  <div class="button" onclick="writescreen('^{2}')">\(x^2\)</div>
+  <div class="button" onclick="writescreen('^{2}')" data-bpage="0">\(x^2\)</div>
+  <div class="button" onclick="writescreen('^{3}')" data-bpage="1">\(x^3\)</div>
+  <div class="button" onclick="writescreen('^{2}')" data-bpage="2">\(x^2\)</div>
   <div class="number button" onclick="writescreen('7')" data-bpage="0">\(7\)</div>
   <div class="number button" onclick="writescreen('8')" data-bpage="0">\(8\)</div>
   <div class="number button" onclick="writescreen('9')" data-bpage="0">\(9\)</div>
@@ -367,12 +376,13 @@ var mathprint = true;
 var clearWithButton = false;
 var closebrackets = [")", "]", "}", "Ä"];
 var openbrackets = ["(", "[", "{", "Ä"];
-var operations = ["+", "-", "*", "/", "^"];
-var functions = ["ì", "ç", "à", "ł", "ù", "Ł", "Ì", "Ç", "À", "Ù"];
+var operations = ["+", "-", "*", "/", "^", "!"];
+var functions = ["ì", "ç", "à", "ł", "ù", "Ł", "Ì", "Ç", "À", "Ù", "¯", "¸"];
 var variables = ["¡", "¤", "¢", "£", "¥", "«", "®", "Þ", "θ", "¶", "ñ", "¿"];
+var digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var a=0, b=0, c=0, x=0, y=0, z=0, r=0, theta=0, m=0, n=0, k=0;
-var automult = functions.concat(variables).concat(["è", "π"]).concat(["\\(", "\\{", "\\["]);
-var doublefunctions = ["^", "á"];
+var automult = functions.concat(variables).concat(["è", "π"]).concat(["\\(", "\\{", "\\[", "Â"]);
+var doublefunctions = ["^", "á", "©", "¦"];
 var anglemode = 1;
 document.mode.angle.value = anglemode;
 var notation = 0;
@@ -383,6 +393,7 @@ var commandmem = [];
 var screenview = 0;
 var buttonmode;
 var debugmode = false;
+const CMND_DEF = "\\newcommand{\\floor}[1]{\\left\\lfloor #1 \\right\\rfloor} \\newcommand{\\ceil}[1]{\\left\\lceil #1 \\right\\rceil}";
 switchbutton(0);
 function writescreen(str, add=true, render=true, mem=true) {
   if (screenview == 0) {
@@ -418,7 +429,7 @@ function writescreen(str, add=true, render=true, mem=true) {
           }
         }
         txt = txt.replace(/{}á{}/g, "{ß}á{ß}");
-        document.getElementById("ans").innerHTML = "\\(" + to_latex(txt) + "\\)";
+        document.getElementById("ans").innerHTML = "\\(" + CMND_DEF + to_latex(txt) + "\\)";
         updateMath();
         document.getElementById("screen").scrollTop = document.getElementById("screen").scrollHeight;
         document.getElementById("screen").scrollLeft = document.getElementById("screen").scrollWidth;
@@ -445,12 +456,12 @@ function updateMem(lastmem=true) {
   let shift = 1;
   if (lastmem) shift = 0;
   for (var i = 0; i < mem.length-shift; i++) {
-    document.getElementById("mem").innerHTML += "<br><div class='commandMem'>\\(" + to_latex(commandmem[i]) + "\\)</div>";
-    document.getElementById("mem").innerHTML += "<br>\\(" + mem[i] + "\\)<br>";
+    document.getElementById("mem").innerHTML += "<br><div class='commandMem'>\\( " + CMND_DEF + to_latex(commandmem[i]) + "\\)</div>";
+    document.getElementById("mem").innerHTML += "<br>\\( " + mem[i] + "\\)<br>";
   }
   if (commandmem.length > mem.length-shift && mem.length-shift > -1) {
     for (var i = mem.length-shift; i < commandmem.length; i++) {
-      document.getElementById("mem").innerHTML += "<br><div class='commandMem'>\\(" + to_latex(commandmem[i]) + "\\)</div>";
+      document.getElementById("mem").innerHTML += "<br><div class='commandMem'>\\( " + CMND_DEF + to_latex(commandmem[i]) + "\\)</div>";
     }
   }
   document.getElementById("screen").scrollTop = document.getElementById("screen").scrollHeight;
@@ -514,6 +525,22 @@ function to_eval(str) {
     }
     str = str.slice(0, i) + "Math.abs(" + str.slice(i+1);
   }
+  while (str.indexOf("!") != -1) {
+    var i = str.indexOf("!");
+    var j = i-1;
+    while (digits.indexOf(str[j]) == -1 && j != "Å" && variables.indexOf(str[j]) != -1 && j > 0) j--;
+    str = str.slice(0, j) + "factorial(" + str.slice(j, i) + ")" + str.slice(i+1);
+  }
+  while (str.indexOf("©") != -1) {
+    let i = str.indexOf("©");
+    let j = findOpeningBracket(str, str.lastIndexOf("}", i), open="{", close="}");
+    str = str.slice(0, j) + "nCr(" + str.slice(j+1, i-1) + "," + str.slice(i+2);
+  }
+  while (str.indexOf("¦") != -1) {
+    let i = str.indexOf("¦");
+    let j = findOpeningBracket(str, str.lastIndexOf("}", i), open="{", close="}");
+    str = str.slice(0, j) + "nPr(" + str.slice(j+1, i-1) + "," + str.slice(i+2);
+  }
   str = str.replace(/Å/g, "ans");
   str = str.replace(/ýà/g, "Math.tanh");
   str = str.replace(/ýç/g, "Math.cosh");
@@ -549,6 +576,11 @@ function to_eval(str) {
   str = str.replace(/¶/g, "m");
   str = str.replace(/£/g, "ñ");
   str = str.replace(/¿/g, "k");
+  str = str.replace(/Â/g, "Math.random()");
+  str = str.replace(/\}©\{/g, ",");
+  str = str.replace(/\}¦\{/g, ",");
+  str = str.replace(/¸/g, "Math.floor");
+  str = str.replace(/¯/g, "Math.ceil");
   return str;
 }
 function to_latex(str) {
@@ -572,6 +604,7 @@ function to_latex(str) {
   str = str.replace(/π/g, "\\pi");
   str = str.replace(/ù/g, "\\sqrt");
   str = str.replace(/Ù/g, "\\sqrt[3]");
+  str = str.replace(/Â/g, "\\text{rand}");
   if (logbase == 10)
     str = str.replace(/Ł/g, "\\log");
   else
@@ -589,8 +622,12 @@ function to_latex(str) {
   str = str.replace(/Þ/g, "t");
   str = str.replace(/®/g, "r");
   str = str.replace(/¶/g, "m");
-  str = str.replace(/£/g, "ñ");
+  str = str.replace(/ñ/g, "n");
   str = str.replace(/¿/g, "k");
+  str = str.replace(/\}©\{/g, "\\choose ");
+  str = str.replace(/\}¦\{/g, "P");
+  str = str.replace(/¸/g, "\\floor");
+  str = str.replace(/¯/g, "\\ceil");
   for (var i = 0; i < str.length-1; i++) {
     if (str[i] == "(") {
       let j = findClosingBracket(str, i);
@@ -693,18 +730,20 @@ function enter(onlydecimal=false) {
 }
 function scrollright() {
   cursor++;
-  while (screentxt[cursor] == "{" || screentxt[cursor] == "á" || functions.indexOf(screentxt[cursor]) != -1)
+  while (screentxt[cursor] == "{" || doublefunctions.indexOf(screentxt[cursor]) != -1 || functions.indexOf(screentxt[cursor]) != -1)
     cursor++;
   if (cursor > screentxt.length)
     cursor = screentxt.length;
+  if (screentxt[cursor] == "{") cursor--;
   writescreen("");
 }
 function scrollleft() {
   cursor--;
-  while (screentxt[cursor] == "{" || screentxt[cursor] == "á" || functions.indexOf(screentxt[cursor]) != -1)
+  while (screentxt[cursor] == "{" || doublefunctions.indexOf(screentxt[cursor]) != -1 || functions.indexOf(screentxt[cursor]) != -1)
     cursor--;
   if (cursor < 0)
     cursor = 0;
+  if (screentxt[cursor] == "{") cursor++;
   writescreen("");
 }
 
@@ -839,12 +878,14 @@ function changeMode() {
   document.getElementById("screen").style.display = "none";
   document.getElementById("mode").style.display = "block";
   document.getElementById("prgm").style.display = "none";
+  document.getElementById("selection").style.display = "none";
   screenview = 1;
 }
 function editPrgm() {
   document.getElementById("screen").style.display = "none";
   document.getElementById("mode").style.display = "none";
   document.getElementById("prgm").style.display = "block";
+  document.getElementById("selection").style.display = "none";
   document.getElementById("prgm").focus();
   screenview = 2;
 }
@@ -889,6 +930,17 @@ function quit() {
     document.getElementById("prgm").style.display = "none";
     document.getElementById("screen").style.display = "block";
     screenview = 0;
+  } if (screenview == 3) {
+    document.getElementById("selection").style.display = "none";
+    document.getElementById("screen").style.display = "block";
+    screenview = 0;
+    writescreen(document.selection.choice.value);
+    if (document.selection.choice.value == "{}©{}" || document.selection.choice.value == "{}¦{}") {
+      cursor -= 2;
+      scrollleft();
+    }
+    if (document.selection.choice.value == "¯{}" || document.selection.choice.value == "¸{}")
+      scrollleft();
   }
   updateMath();
 }
@@ -983,6 +1035,41 @@ function execPrgm() {
 }
 function fracbutton() {
   writescreen('{}á{}', true, false); cursor++; writescreen('');
+}
+function factorial(num) {
+  var product = 1;
+  if (num == 0 || num == 1) return 1;
+  else if (num < 0 || !Number.isInteger(num))
+    throw new Error("Can only take factorial of nonnegative integers");
+  else {
+    while (num > 1) {
+      product *= num;
+      num--;
+    }
+  }
+  return product;
+}
+function nCr(n, r) {
+  return (factorial(n))/(factorial(r) * factorial(n-r));
+}
+function nPr(n, r) {
+  return (factorial(n))/(factorial(n-r));
+}
+function choosefunction(functions, disp) {
+  document.getElementById("screen").style.display = "none";
+  document.getElementById("mode").style.display = "none";
+  document.getElementById("prgm").style.display = "none";
+  document.getElementById("selection").style.display = "block";
+  while (document.selection.choice.options.length > 0)
+    document.selection.choice.remove(0);
+  for (var i = 0; i < functions.length; i++) {
+    let option = document.createElement("option");
+    option.innerHTML = disp[i];
+    option.value = functions[i];
+    document.selection.choice.add(option);
+  }
+  switchbutton(0);
+  screenview = 3;
 }
 
 window.onload = function() {
