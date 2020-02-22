@@ -538,6 +538,17 @@ function to_eval(str) {
   str = str.replace(/è/g, "Math.E");
   str = str.replace(/ÿ/g, "*0.01");
   str = str.replace(/θ/g, "theta");
+  str = str.replace(/¡/g, "a");
+  str = str.replace(/¤/g, "b");
+  str = str.replace(/¢/g, "c");
+  str = str.replace(/£/g, "x");
+  str = str.replace(/¥/g, "y");
+  str = str.replace(/«/g, "z");
+  str = str.replace(/Þ/g, "t");
+  str = str.replace(/®/g, "r");
+  str = str.replace(/¶/g, "m");
+  str = str.replace(/£/g, "ñ");
+  str = str.replace(/¿/g, "k");
   return str;
 }
 function to_latex(str) {
@@ -569,6 +580,17 @@ function to_latex(str) {
   str = str.replace(/>/g, "\\rightarrow ");
   str = str.replace(/ÿ/g, "\\%");
   str = str.replace(/ß/g, "\\fbox{ \\vphantom{5} }");
+  str = str.replace(/¡/g, "a");
+  str = str.replace(/¤/g, "b");
+  str = str.replace(/¢/g, "c");
+  str = str.replace(/£/g, "x");
+  str = str.replace(/¥/g, "y");
+  str = str.replace(/«/g, "z");
+  str = str.replace(/Þ/g, "t");
+  str = str.replace(/®/g, "r");
+  str = str.replace(/¶/g, "m");
+  str = str.replace(/£/g, "ñ");
+  str = str.replace(/¿/g, "k");
   for (var i = 0; i < str.length-1; i++) {
     if (str[i] == "(") {
       let j = findClosingBracket(str, i);
