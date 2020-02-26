@@ -404,8 +404,7 @@ function scrollright() {
   math_disp("");
 }
 function scrollleft() {
-  var txt = functxt;
-  else txt = screentxt;
+  var txt = screentxt;
   cursor--;
   while (txt[cursor] == "{" || doublefunctions.indexOf(txt[cursor]) != -1 || functions.indexOf(txt[cursor]) != -1)
     cursor--;
