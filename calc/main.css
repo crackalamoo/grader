@@ -1,0 +1,179 @@
+body {
+  background-color: #DDF0FF;
+  font-family: "Baskerville", "Times New Roman";
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 30px;
+  padding-bottom: 70px;
+  text-align: center;
+}
+.button {
+  color: #FFFFFF;
+  background-color: #0088AA;
+  border: 1px solid #99AAFF;
+  font-family: "Baskerville", "Times New Roman";
+  width: 10%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 3px;
+  height: 18px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  -moz-user-select: none;
+}
+.button:hover {
+  background-color: #0099CC;
+}
+img {
+  width: 100%;
+}
+span.memeSpan {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+span.memeSpan img {
+  width: 20%;
+  height: 20%;
+}
+.noBottomMargin {
+  margin-bottom: 0;
+}
+.noTopMargin {
+  margin-top: 0;
+}
+@media only screen and (max-width: 650px) {
+  body {
+    padding-left: 3%;
+    padding-right: 3%;
+    margin: 0;
+  }
+  h1 {
+    font-size: 28px;
+  }
+  div#calculator {
+    padding: 3%;
+  }
+  div#screen {
+    height: 50px;
+  }
+  div#mode {
+    min-height: 50px;
+  }
+  .button {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 70%;
+  }
+}
+div#calculator {
+  background-color: #AAE0EE;
+  border: 1px solid #99D0DD;
+  width: 90%;
+  padding: 5%;
+  margin: 0;
+  position: relative;
+}
+div#screen,div#mode,div#prgm,div#selection {
+  width: 80%;
+  height: 100px;
+  margin: auto;
+  background-color: #446066;
+  border: 1px solid #004044;
+  padding: 2%;
+  font-size: 18px;
+  color: #FFFFFF;
+  overflow: scroll;
+  text-align: left;
+}
+div#mode {
+  height: auto;
+  min-height: 100px;
+  font-size: 16px;
+}
+div.button.number {
+  background-color: #EEEEFF;
+  color: #000055;
+}
+div.button.number:hover {
+  background-color: #DDDDEE;
+}
+div.button.operation {
+  background-color: #333333;
+}
+div.button.operation:hover {
+  background-color: #555555;
+}
+div.buttons div.button {
+  display: inline-block;
+}
+div#mem {
+  color: #CCCCCC;
+  text-align: right;
+}
+div#membuffer,div#mode,div#punjab,div#prgm,div#selection {
+  display: none;
+}
+span#cursor {
+  color: #FF0000;
+}
+div.scrollbutton.button {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+div#buttonrows {
+  text-align: left;
+}
+div.button#second {
+  background-color: #00EE22;
+  color: #4444FF;
+}
+div.button#second:hover {
+  background-color: #00BB44;
+}
+div.button.active#second {
+  border: 1px solid #000000;
+  background-color: #00FF33;
+  color: #FFFFFF;
+}
+div.button.active#second:hover {
+  background-color: #00CC66;
+}
+div.button#alpha {
+  background-color: #FFEE22;
+  color: #4444FF;
+}
+div.button#alpha:hover {
+  background-color: #CCBB44;
+}
+div.button.active#alpha {
+  border: 1px solid #000000;
+  background-color: #FFFF33;
+  color: #00CCFF;
+}
+div.button.active#alpha:hover {
+  background-color: #EEEE66;
+}
+div#calculator h1, div#calculator h6 {
+  text-align: center;
+  color: #FFFFFF;
+  margin: auto;
+}
+div.commandMem {
+  text-align: left;
+}
+div#mem div.highlight {
+  background-color: #666666;
+}
+div#prgm {
+  font-family: monospace;
+  font-size: 16px;
+  overflow: scroll;
+}
+span#mi_txt {
+  color: #333333;
+}

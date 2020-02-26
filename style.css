@@ -1,0 +1,113 @@
+body {
+  background-color: #DDF0FF;
+  font-family: "Baskerville", "Times New Roman";
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 30px;
+  padding-bottom: 70px;
+}
+h1,h2,h3 {
+  margin-left: 30%;
+}
+iframe#hidden_iframe {
+  display: none;
+}
+p#javascript {
+  margin-left: 40px;
+  font-weight: bold;
+  color: #0088AA;
+}
+.button {
+  color: #FFFFFF;
+  background-color: #0088AA;
+  border: 1px solid #99AAFF;
+  font-family: "Baskerville", "Times New Roman";
+  min-width: 70px;
+  max-width: 200px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: #0099CC;
+}
+.button.selected {
+  background-color: #00AADD;
+}
+.button.selected:hover {
+  background-color: #00BBEE;
+}
+div.centerButtons {
+  display: flex;
+  margin-left: 20%;
+  margin-right: 20%;
+  justify-content: center;
+}
+textarea {
+  width: 80%;
+  margin-left: 10%;
+  background-color: #DDDEDF;
+  padding: 5px;
+  min-height: 500px;
+  font-family: "Courier New", "Courier", monospace;
+  resize: none;
+}
+img {
+  width: 100%;
+}
+div#ahsDiv {
+  text-align: center;
+}
+img#ahs {
+  max-width: 200px;
+}
+ul.faq li {
+  font-weight: bold;
+}
+span#hoyesel {
+  font-weight: bold;
+  font-size: 36px;
+}
+span.memeSpan {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+span#rampalmemes {
+  display: none;
+}
+span.memeSpan img {
+  width: 20%;
+  height: 20%;
+}
+span.memeSpan#holidayMemes img {
+  width: 15%;
+  height: 15%;
+}
+p#disclaimer {
+  font-size: 7px;
+}
+div#creditInfo,div#manualInput,.hidden {
+  display: none;
+}
+.noBottomMargin {
+  margin-bottom: 0;
+}
+.noTopMargin {
+  margin-top: 0;
+}
+@media only screen and (max-width: 550px) {
+  body {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+  .button {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 80%;
+  }
+}
