@@ -124,3 +124,12 @@ a:hover {
 div.button a {
   color: #FFFFFF;
 }
+span#seth {
+  color: #FF0000;
+  text-decoration: underline;
+  font-weight: bolder;
+}
+img#seth_img {
+  width: 30%;
+  float: right;
+}
