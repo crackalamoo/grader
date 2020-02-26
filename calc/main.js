@@ -54,9 +54,6 @@ function writescreen(str, add=true, render=true, mem=true) {
     }
   }
 }
-function writefunc(str, add=true, render=true) {
-  functxt = writemath(document.getElementById("func"), functxt, str, add, render);
-}
 // ans, screentxt, str...
 function writemath(div, txt, write, add=true, render=true) {
   txt = txt.slice(0, cursor) + write + txt.slice(cursor);
@@ -117,7 +114,6 @@ function updateMem(lastmem=true) {
 }
 function updateMath() {
   renderMathInElement(document.getElementById("screen"));
-  renderMathInElement(document.getElementById("func"));
   if (debugmode) {
     document.getElementById("debug").innerHTML = "screentxt: " + screentxt + "<br>LATEX: " + to_latex(screentxt) +
       "<br>eval: " + to_eval(screentxt) + "<br>screentxt[cursor]: " + screentxt[cursor];
