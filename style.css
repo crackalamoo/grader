@@ -111,3 +111,16 @@ div#creditInfo,div#manualInput,.hidden {
     font-size: 80%;
   }
 }
+a {
+  color: #0033FF;
+  text-decoration: none;
+}
+a:visited {
+  color: #0033FF;
+}
+a:hover {
+  color: #00FF33;
+}
+div.button a {
+  color: #FFFFFF;
+}
