@@ -326,7 +326,11 @@ var classes = {
   "apush": [["c", "f", "q", "t"], [false, 20, 20, 20, 40]],
   "english 2": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
   "english 3 cp": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
-  "calc": [["h", "t"], [false, 10, 90]]
+  "calc": [["h", "t"], [false, 10, 90]],
+  "ap lit": [["c", "m", "q", "t"], [false, 15, 5, 30, 50]],
+  "ap gov": [["c", "f", "q", "t", "p"], [false, 10, 20, 20, 40, 10]],
+  "ap comparative": [["c", "q", "t", "f", "p"], [false, 10, 20, 40, 20, 10]],
+  "ap world": [["e", "h", "q", "t"], [false, 15, 20, 25, 40]]
 };
 function setclass() {
   if (document.classes.class.value == "add class") {
@@ -357,6 +361,8 @@ function setclass() {
         " DE " + ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO",
         "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"][date.getMonth()] + " DE "
         + date.getFullYear() + "!!!!!";
+    } else if (document.classes.class.value == "ap world") {
+      document.getElementById("hoyesel").innerHTML = "Clear your desks, please.";
     } else {
       document.getElementById("hoyesel").innerHTML = "";
     }
