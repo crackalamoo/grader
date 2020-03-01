@@ -113,6 +113,7 @@ function updateCategories() {
       changeMode("editCategory");
       document.getElementById("editCategoryInfo").innerHTML = "Average in " + currentCategory.name +
         ": " + roundDecimal(currentCategory.score(), 2) + "%";
+      document.getElementById("required_score").innerHTML = "";
     }}(categories[i]);
     if (currentCategory != null && categories[i].name == currentCategory.name) {
       newCategory.className = "button selected";
@@ -511,4 +512,29 @@ function addLetterGrade() {
 function clearGpa() {
   localStorage.clear();
   document.getElementById("clearLocalStorage").style.display = "none";
+}
+function totalClassScore() {
+  var totalScore = 0;
+  var totalPercent = 0;
+  for (var i = 0; i < categories.length; i++) {
+    totalPercent += categories[i].percentage;
+    totalScore += categories[i].score()*categories[i].percentage/100.0;
+  }
+  totalScore /= (totalPercent/100.0);
+  return totalScore;
+}
+function calcRequired() {
+  var initial_score = [currentCategory.total, currentCategory.possible];
+  var req_grade = new Number(document.editCategory.keepGrade.value);
+  var worthPoints = new Number(document.editCategory.worthPoints.value);
+  var reqPoints = 0;
+  currentCategory.possible += worthPoints;
+  var increase = req_grade - totalClassScore();
+  var category_increase = increase / currentCategory.percentage;
+  var category_increase_pts = category_increase * currentCategory.possible;
+  document.getElementById("required_score").innerHTML = "You must receive " +
+    roundDecimal(category_increase_pts, 2) + "/" + roundDecimal(worthPoints, 2) +
+    " to have " + req_grade + "% in the class";
+  currentCategory.total = initial_score[0];
+  currentCategory.possible = initial_score[1];
 }

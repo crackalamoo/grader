@@ -121,7 +121,13 @@
     <br><br><div class="button" onclick="addAssignment()">Add Assignment</div>
     <div class="button" onclick="deleteAssignment()">Delete Assignment</div><br>
     <input name="percent" type="number" size="5"></input>%<br>
-    <div class="button" onclick="changePercent()">Change Percentage</div>
+    <div class="button" onclick="changePercent()">Change Percentage</div><br><br>
+    <h4>What do I need on an upcoming assignment?</h4>
+    <p>Credit to Cathy T. Quan for this idea</p>
+    Grade desired in the class: <input name="keepGrade" type="number"></input>%<br>
+    Number of points the assignment is worth: <input name="worthPoints" type="number"></input><br><br>
+    <div class="button" onclick="calcRequired()">Calculate required score</div>
+    <span id="required_score"></span>
   </form>
 </div>
 <div class="main" id="auto">
