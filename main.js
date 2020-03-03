@@ -331,7 +331,9 @@ var classes = {
   "ap lit": [["c", "m", "q", "t"], [false, 15, 5, 30, 50]],
   "ap gov": [["c", "f", "q", "t", "p"], [false, 10, 20, 20, 40, 10]],
   "ap comparative": [["c", "q", "t", "f", "p"], [false, 10, 20, 40, 20, 10]],
-  "ap world": [["e", "h", "q", "t"], [false, 15, 20, 25, 40]]
+  "ap world": [["e", "h", "q", "t"], [false, 15, 20, 25, 40]],
+  "physics h": [[], [true]],
+  "stats adv": [["a", "g", "m", "t"], [false, 2, 20, 18, 60]]
 };
 function setclass() {
   if (document.classes.class.value == "add class") {
