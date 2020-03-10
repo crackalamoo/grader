@@ -41,6 +41,7 @@ function makeNumber(grade, possible=100.0) {
     case "NTI": grade = 0; break;
     case "LATE": grade = 50; break;
     case "AB": grade = 0; break;
+    case "P": grade = 0; break;
     default: return new Number(grade);
   }
   return new Number(grade*possible/100.0);
@@ -236,6 +237,8 @@ function autoGrade(rampal=false) {
     temp.push(splitArray[2]);
     if (["", " ", "P", "EXC", "EX"].indexOf(temp[1]) == -1)
       temp2.push(temp);
+    if (temp[1] == "P")
+      if (splitArray[3] == "0.00%") temp2.push(temp);
   }
   autoCalc = temp2;
   document.gradesList.innerHTML = "";
@@ -334,7 +337,9 @@ var classes = {
   "ap world": [["e", "h", "q", "t"], [false, 15, 20, 25, 40]],
   "physics h": [[], [true]],
   "stats adv": [["a", "g", "m", "t"], [false, 2, 20, 18, 60]],
-  "intro code": [["h", "q", "t", "p"], [false, 20, 20, 30, 30]]
+  "intro code": [["h", "q", "t", "p"], [false, 20, 20, 30, 30]],
+  "chem": [["h", "l", "q", "s", "t"], [false, 10, 35, 15, 20, 20]],
+  "spanish 3": [["h", "p", "q", "t"], [false, 10, 30, 25, 35]]
 };
 function setclass() {
   if (document.classes.class.value == "add class") {
