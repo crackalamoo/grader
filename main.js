@@ -42,6 +42,8 @@ function makeNumber(grade, possible=100.0) {
     case "LATE": grade = 50; break;
     case "AB": grade = 0; break;
     case "P": grade = 0; break;
+    case "": grade = 0; break;
+    case " ": grade = 0; break;
     default: return new Number(grade);
   }
   return new Number(grade*possible/100.0);
@@ -237,7 +239,7 @@ function autoGrade(rampal=false) {
     temp.push(splitArray[2]);
     if (["", " ", "P", "EXC", "EX"].indexOf(temp[1]) == -1)
       temp2.push(temp);
-    if (temp[1] == "P")
+    if (["", " ", "P"].indexOf(temp[1]) != -1)
       if (splitArray[3] == "0.00%") temp2.push(temp);
   }
   autoCalc = temp2;
@@ -339,7 +341,11 @@ var classes = {
   "stats adv": [["a", "g", "m", "t"], [false, 2, 20, 18, 60]],
   "intro code": [["h", "q", "t", "p"], [false, 20, 20, 30, 30]],
   "chem": [["h", "l", "q", "s", "t"], [false, 10, 35, 15, 20, 20]],
-  "spanish 3": [["h", "p", "q", "t"], [false, 10, 30, 25, 35]]
+  "spanish 3": [["h", "p", "q", "t"], [false, 10, 30, 25, 35]],
+  "principles": [["c", "t", "w"], [false, 50, 20, 30]],
+  "english 1": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
+  "ap human": [["h", "p", "q", "t"], [false, 10, 20, 30, 40]],
+  "ap psych": [["h", "p", "q", "t"], [false, 25, 10, 25, 40]]
 };
 function setclass() {
   if (document.classes.class.value == "add class") {
