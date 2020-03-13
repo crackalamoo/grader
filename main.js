@@ -552,3 +552,7 @@ function calcRequired() {
   currentCategory.total = initial_score[0];
   currentCategory.possible = initial_score[1];
 }
+function pasteGrades() {
+  var grades = await navigator.clipboard.readText();
+  document.getElementById("inputGrades").innerHTML = grades;
+}
