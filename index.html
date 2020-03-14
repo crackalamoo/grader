@@ -57,10 +57,12 @@
   <div class="centerButtons">
     <div class="button" onclick="changeMode('semester')">Semester/Exam grades</div>
     <div class="button" onclick="changeMode('gpaCalc')">GPA calculator</div>
-  </div>
+  </div><br>
   <div class="centerButtons">
     <div class="button"><a href="calc/calc.html">Regular calculator</a></div>
   </div>
+  <p><b>STAY HEALTHY!</b></p>
+  <img src="minecraft.JPG">
   <p>I will <strong>never</strong> use the information you give here to make fun of you. In fact, I don't know how to. I have
     no way of knowing what you type here because I am not good at programming in PHP. JavaScript is considered a &ldquo;client side&rdquo;
     programming language, which means all the code runs on your computer without transferring data anywhere else.</p>
@@ -68,7 +70,7 @@
     Quarter 1: 08/19/19 &ndash; 10/18/19<br>
     Quarter 2: 10/21/19 &ndash; 12/20/19<br>
     Quarter 3: 01/06/20 &ndash; 03/13/20<br>
-    Quarter 4: 03/16/20 &ndash; 05/28/20
+    Quarter 4: 03/<b>30</b>/20 &ndash; 05/28/20 (updated for COVID-19)
   </p><br>
   <p>Did you know that Fritzgerald Duvigneaud got into Caltech, MIT, and UChicago?</p>
 </div>
@@ -120,14 +122,14 @@
     </select><br>
     <br><br><div class="button" onclick="addAssignment()">Add Assignment</div>
     <div class="button" onclick="deleteAssignment()">Delete Assignment</div><br>
-    <input name="percent" type="number" size="5"></input>%<br>
-    <div class="button" onclick="changePercent()">Change Percentage</div><br><br>
     <h4>What do I need on an upcoming assignment?</h4>
     <p>Credit to Cathy T. Quan for this idea</p>
     Grade desired in the class: <input name="keepGrade" type="number"></input>%<br>
     Number of points the assignment is worth: <input name="worthPoints" type="number"></input><br><br>
     <div class="button" onclick="calcRequired()">Calculate required score</div>
-    <span id="required_score"></span>
+    <span id="required_score"></span><br><br>
+    <input name="percent" type="number" size="5"></input>%<br>
+    <div class="button" onclick="changePercent()">Change Weighting</div>
   </form>
 </div>
 <div class="main" id="auto">
