@@ -546,9 +546,16 @@ function calcRequired() {
   var increase = req_grade - totalClassScore();
   var category_increase = increase / currentCategory.percentage;
   var category_increase_pts = category_increase * currentCategory.possible;
-  document.getElementById("required_score").innerHTML = "You must receive " +
-    roundDecimal(category_increase_pts, 2) + "/" + roundDecimal(worthPoints, 2) +
-    " to have " + req_grade + "% in the class";
+  if (worthPoints == 0) {
+    document.getElementById("required_score").innerHTML = "You must receive " +
+      roundDecimal(category_increase_pts, 2) + "/" + roundDecimal(worthPoints, 2) +
+      "  to have " + req_grade + "% in the class";
+  } else {
+    document.getElementById("required_score").innerHTML = "You must receive " +
+      roundDecimal(category_increase_pts, 2) + "/" + roundDecimal(worthPoints, 2) +
+      " (" + roundDecimal(category_increase_pts*100.0/worthPoints, 2) + "%) to have " +
+      req_grade + "% in the class";
+  }
   currentCategory.total = initial_score[0];
   currentCategory.possible = initial_score[1];
 }
