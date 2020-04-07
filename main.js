@@ -346,7 +346,7 @@ var classes = {
   "english 1": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
   "ap human": [["h", "p", "q", "t"], [false, 10, 20, 30, 40]],
   "ap psych": [["h", "p", "q", "t"], [false, 25, 10, 25, 40]],
-  "precalc adv": [["h", "t", "s"], [false, 20, 75, 5]];
+  "precalc adv": [["h", "t", "s"], [false, 20, 75, 5]]
 };
 function setclass() {
   if (document.classes.class.value == "add class") {
