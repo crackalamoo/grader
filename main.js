@@ -102,7 +102,7 @@ function updateCategories() {
   document.getElementById("beginCategories").innerHTML = categories.length > 0 ? "" :
     "Begin by creating categories for grades. If the class is based on point system, make a category called something like \"Total\" and consider it 100% of your grade.";
   categoryList.innerHTML = "<strong>Click a category</strong> to add or remove assignments and to see that category's score.<br><br>Categories:<br>";
-  var totalPercent = 0;
+  let totalPercent = 0;
   var categoryScore = 0;
   var totalScore = 0;
   for (var i = 0; i < categories.length; i++) {
@@ -530,7 +530,7 @@ function clearGpa() {
 }
 function totalClassScore() {
   var totalScore = 0;
-  var totalPercent = 0;
+  let totalPercent = 0;
   for (var i = 0; i < categories.length; i++) {
     totalPercent += categories[i].percentage;
     totalScore += categories[i].score()*categories[i].percentage/100.0;
@@ -543,9 +543,13 @@ function calcRequired() {
   var req_grade = new Number(document.editCategory.keepGrade.value);
   var worthPoints = new Number(document.editCategory.worthPoints.value);
   var reqPoints = 0;
+  let totalPercent = 0;
+  for (var i = 0; i < categories.length; i++)
+    totalPercent += categories[i].percentage;
+  console.log(totalPercent);
   currentCategory.possible += worthPoints;
   var increase = req_grade - totalClassScore();
-  var category_increase = increase / currentCategory.percentage;
+  var category_increase = increase / (currentCategory.percentage / totalPercent * 100);
   var category_increase_pts = category_increase * currentCategory.possible;
   if (worthPoints == 0) {
     document.getElementById("required_score").innerHTML = "You must receive " +
