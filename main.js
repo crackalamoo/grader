@@ -316,7 +316,6 @@ function autoCalc2() {
   document.getElementById("autoCalculation").innerHTML = "New class (automatic)";
 }
 var classes = {
-  "ap lang brown": [["h", "m", "q", "t"], [false, 20, 5, 25, 50]],
   "ap lang meyer": [["a", "g", "q", "t"], [false, 5, 20, 25, 50]],
   "ap chem": [["h", "l", "q", "t"], [false, 10, 25, 15, 50]],
   "ap bio": [[], [true]],
@@ -327,7 +326,7 @@ var classes = {
   "precalc": [[], [true]],
   "mandarin 3": [["h", "p", "q", "t"], [false, 10, 30, 25, 35]],
   "stats": [["f", "m", "s", "t"], [false, 18, 20, 2, 60]],
-  "alice": [["a", "h", "ta", "te"], [false, 25, 20, 20, 35]],
+  "java hh": [["a", "h", "ta", "te"], [false, 25, 20, 20, 35]],
   "ap macro": [["h", "p", "q", "t"], [false, 20, 10, 30, 40]],
   "apush": [["c", "f", "q", "t"], [false, 20, 20, 20, 40]],
   "english 2": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
