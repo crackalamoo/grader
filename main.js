@@ -332,7 +332,7 @@ var classes = {
   "english 2": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
   "english 3 cp": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
   "calc": [["h", "t"], [false, 10, 90]],
-  "ap lit": [["c", "m", "q", "t"], [false, 15, 5, 30, 50]],
+  "ap lit": [["c", "q", "t"], [false, 15, 35, 50]],
   "ap gov": [["c", "f", "q", "t", "p"], [false, 10, 20, 20, 40, 10]],
   "ap comparative": [["c", "q", "t", "f", "p"], [false, 10, 20, 40, 20, 10]],
   "ap world": [["e", "h", "q", "t"], [false, 15, 20, 25, 40]],
