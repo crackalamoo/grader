@@ -345,7 +345,9 @@ var classes = {
   "english 1": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
   "ap human": [["h", "p", "q", "t"], [false, 10, 20, 30, 40]],
   "ap psych": [["h", "p", "q", "t"], [false, 25, 10, 25, 40]],
-  "precalc adv": [["h", "t", "s"], [false, 20, 75, 5]]
+  "precalc adv": [["h", "t", "s"], [false, 20, 75, 5]],
+  "mechanics": [["c", "l", "t"], [false, 10, 25, 65]],
+  "physics em": [["c", "l", "t"], [false, 10, 25, 65]]
 };
 function setclass() {
   if (document.classes.class.value == "add class") {
@@ -375,9 +377,16 @@ function setclass() {
         "TREINTA Y UNO"][date.getDate() - 1] +
         " DE " + ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO",
         "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"][date.getMonth()] + " DE "
-        + date.getFullYear() + "!!!!!";
+        + date.getFullYear() + "!!!!!<br>NO OLVIDE ESCRIBIR SU NOMBRE!!!!!";
     } else if (document.classes.class.value == "ap world") {
       document.getElementById("hoyesel").innerHTML = "Clear your desks, please.";
+    } else if (document.classes.class.value == "mechanics" || document.classes.class.value == "physics em") {
+      document.getElementById("hoyesel").innerHTML = "&#129506;&#129506;&#129506;<br>" +
+        "Always include uncertainty on your measurements. Use population standard deviations for your samples: <i>s</i> = <i>σ</i>, <i>N</i>-1 = <i>N</i>. Bessel's correction is gone.<br>" +
+        "You can pick your coordinate system, but the sign of <i>ma</i> must equal the sign of <i>mg&nbsp;sinθ</i>. Therefore, things can fall up or down depending on what you prefer. Taking down as -<i>x</i> for example:"
+        + "<br><i>µmg&nbsp;cosθ</i> - <i>mg&nbsp;sinθ</i> = -<i>ma</i> &#8756;<i>a</i> = <i>g&nbsp;sinθ</i> - <i>µg&nbsp;cosθ</i> > 0. Since down is -ve, and acceleration is +ve, things fall up."
+        + " (This is from an experimental perspective. All the &ldquo;spherical cow&rdquo; models were derived from experimentation anyways. Sometimes the models are wrong.)"
+        + "<br>Be happy!<br>&#129506;&#129506;&#129506;👳🏾&#x200D;♂️&#x1F54B;☪️";
     } else {
       document.getElementById("hoyesel").innerHTML = "";
     }
