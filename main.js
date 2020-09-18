@@ -325,7 +325,7 @@ var classes = {
   "research": [[], [true]],
   "precalc": [[], [true]],
   "mandarin 3": [["h", "p", "q", "t"], [false, 10, 30, 25, 35]],
-  "stats": [["f", "m", "s", "t"], [false, 18, 20, 2, 60]],
+  "stats": [["f", "sa", "st", "t"], [false, 18, 20, 2, 60]],
   "java hh": [["a", "h", "ta", "te"], [false, 25, 20, 20, 35]],
   "ap macro": [["h", "p", "q", "t"], [false, 20, 10, 30, 40]],
   "apush": [["c", "f", "q", "t"], [false, 20, 20, 20, 40]],
@@ -347,7 +347,8 @@ var classes = {
   "ap psych": [["h", "p", "q", "t"], [false, 25, 10, 25, 40]],
   "precalc adv": [["h", "t", "s"], [false, 20, 75, 5]],
   "mechanics": [["c", "l", "t"], [false, 10, 25, 65]],
-  "physics em": [["c", "l", "t"], [false, 10, 25, 65]]
+  "physics em": [["c", "l", "t"], [false, 10, 25, 65]],
+  "honors gov": [["h", "q", "t"], [false, 25, 35, 40]]
 };
 function setclass() {
   if (document.classes.class.value == "add class") {
