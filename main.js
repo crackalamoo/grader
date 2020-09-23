@@ -273,14 +273,6 @@ function autoCats() {
   form.innerHTML += '<br><div class="button" onclick="autoCalc2();" id="continueClass">Next</div>';
   if (RAMPAL) {
     form.point.checked = false;
-    if (cats.length == 2) {
-      form[0].value = 10;
-      form[1].value = 90;
-    } if (cats.length == 3) {
-      form[0].value = 10;
-      form[1].value = 10;
-      form[2].value = 80;
-    }
   }
 }
 function categoryByName(name) {
@@ -332,6 +324,7 @@ var classes = {
   "english 2": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
   "english 3 cp": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
   "calc": [["h", "t"], [false, 10, 90]],
+  "calc ab": [["h", "t"], [false, 15, 85]],
   "ap lit": [["c", "q", "t"], [false, 15, 35, 50]],
   "ap gov": [["c", "f", "q", "t", "p"], [false, 10, 20, 20, 40, 10]],
   "ap comparative": [["c", "q", "t", "f", "p"], [false, 10, 20, 40, 20, 10]],
