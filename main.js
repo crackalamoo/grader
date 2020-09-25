@@ -317,7 +317,7 @@ var classes = {
   "research": [[], [true]],
   "precalc": [[], [true]],
   "mandarin 3": [["h", "p", "q", "t"], [false, 10, 30, 25, 35]],
-  "stats": [["f", "sa", "st", "t"], [false, 18, 20, 2, 60]],
+  "stats": [["f", "s", "t"], [false, 5, 25, 70]],
   "java hh": [["a", "h", "ta", "te"], [false, 25, 20, 20, 35]],
   "ap macro": [["h", "p", "q", "t"], [false, 20, 10, 30, 40]],
   "apush": [["c", "f", "q", "t"], [false, 20, 20, 20, 40]],
