@@ -319,7 +319,7 @@ var classes = {
   "mandarin 3": [["h", "p", "q", "t"], [false, 10, 30, 25, 35]],
   "stats": [["f", "s", "t"], [false, 5, 25, 70]],
   "java hh": [["a", "h", "ta", "te"], [false, 25, 20, 20, 35]],
-  "ap macro": [["h", "p", "q", "t"], [false, 20, 10, 30, 40]],
+  "ap macro": [["g", "m", "t"], [false, 30, 30, 40]],
   "apush": [["c", "f", "q", "t"], [false, 20, 20, 20, 40]],
   "english 2": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
   "english 3 cp": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
@@ -341,7 +341,8 @@ var classes = {
   "precalc adv": [["h", "t", "s"], [false, 20, 75, 5]],
   "mechanics": [["c", "l", "t"], [false, 10, 25, 65]],
   "physics em": [["c", "l", "t"], [false, 10, 25, 65]],
-  "honors gov": [["h", "q", "t"], [false, 25, 35, 40]]
+  "honors gov": [["h", "q", "t"], [false, 25, 35, 40]],
+  "ap mandarin": [["i", "q", "p"], [false, 20, 35, 45]]
 };
 function setclass() {
   if (document.classes.class.value == "add class") {
