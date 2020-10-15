@@ -339,10 +339,10 @@ var classes = {
   "ap human": [["h", "p", "q", "t"], [false, 10, 20, 30, 40]],
   "ap psych": [["h", "p", "q", "t"], [false, 25, 10, 25, 40]],
   "precalc adv": [["h", "t", "s"], [false, 20, 75, 5]],
-  "mechanics": [["c", "l", "t"], [false, 10, 25, 65]],
-  "physics em": [["c", "l", "t"], [false, 10, 25, 65]],
+  "physics c": [["c", "l", "t"], [false, 10, 25, 65]],
   "honors gov": [["h", "q", "t"], [false, 25, 35, 40]],
-  "ap mandarin": [["i", "q", "p"], [false, 20, 35, 45]]
+  "ap mandarin": [["i", "q", "p"], [false, 20, 35, 45]],
+  "honors econ": [["h", "q", "t", "d"], [false, 20, 25, 40, 15]]
 };
 function setclass() {
   if (document.classes.class.value == "add class") {
@@ -375,7 +375,7 @@ function setclass() {
         + date.getFullYear() + "!!!!!<br>NO OLVIDE ESCRIBIR SU NOMBRE!!!!!";
     } else if (document.classes.class.value == "ap world") {
       document.getElementById("hoyesel").innerHTML = "Clear your desks, please.";
-    } else if (document.classes.class.value == "mechanics" || document.classes.class.value == "physics em") {
+    } else if (document.classes.class.value == "physics c") {
       document.getElementById("hoyesel").innerHTML = "&#129506;&#129506;&#129506;" +
         "<ol><li>Always include uncertainty on your measurements. Use population standard deviations for your samples: <i>s</i> = <i>σ</i>, <i>N</i>-1 = <i>N</i>. Bessel's correction is gone.</li>" +
         "<li>You can pick your coordinate system, but the sign of <i>ma</i> must equal the sign of <i>mg&nbsp;sinθ</i>. Therefore, things can fall up or down depending on what you prefer. Taking down as -<i>x</i> for example:"
