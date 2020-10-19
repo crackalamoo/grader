@@ -188,6 +188,7 @@ if (typeof(Storage) !== "undefined") {
 }
 var previousInput = "";
 var RAMPAL = false;
+var MACRO = false;
 function auto_filter(el) {
   return el != "" && el != " ";
 }
@@ -301,6 +302,28 @@ function autoCalc2() {
     }
     currentCategory = null;
   }
+  if (MACRO) {
+    var quiz1,quiz2 = null;
+    for (var i = 0; i < categories.length; i++) {
+      if (categories[i].toLowerCase().startsWith("g"))
+        quiz1 = categories[i];
+      else if (categories[i].toLowerCase().startsWith("m"))
+        quiz2 = categories[i];
+    }
+    if (quiz1 != null) {
+      if (quiz2 != null) {
+        var quizCat = new Category("Quizzes", 30);
+        quizCat.add(quiz1.total, quiz1.possible);
+        quizCat.add(quiz2.total, quiz2.possible);
+        categories.splice(categories.indexOf(quiz1));
+        categories.splice(categories.indexOf(quiz2));
+      } else {
+        quiz1.name = "Quizzes";
+      }
+    } else if (quiz2 != null) {
+      quiz2.name = "Quizzes";
+    }
+  }
   updateCategories();
   changeMode("manual");
   document.getElementById("manualInput").style.display = "block";
@@ -310,7 +333,7 @@ function autoCalc2() {
 var classes = {
   "ap lang meyer": [["a", "g", "q", "t"], [false, 5, 20, 25, 50]],
   "ap chem": [["h", "l", "q", "t"], [false, 10, 25, 15, 50]],
-  "ap bio": [[], [true]],
+  "bio": [[], [true]],
   "ap enviro": [[], [true]],
   "ap physics 1": [[], [true]],
   "spanish 4": [["h", "p", "q", "t"], [false, 10, 30, 25, 35]],
@@ -332,7 +355,7 @@ var classes = {
   "physics h": [[], [true]],
   "stats adv": [["a", "g", "m", "t"], [false, 2, 20, 18, 60]],
   "intro code": [["h", "q", "t", "p"], [false, 20, 20, 30, 30]],
-  "chem": [["h", "l", "q", "s", "t"], [false, 10, 35, 15, 20, 20]],
+  "chem q3": [["h", "l", "q", "s", "t"], [false, 10, 35, 15, 20, 20]],
   "spanish 3": [["h", "p", "q", "t"], [false, 10, 30, 25, 35]],
   "principles": [["c", "t", "w"], [false, 50, 20, 30]],
   "english 1": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
@@ -342,7 +365,8 @@ var classes = {
   "physics c": [["c", "l", "t"], [false, 10, 25, 65]],
   "honors gov": [["h", "q", "t"], [false, 25, 35, 40]],
   "ap mandarin": [["i", "q", "p"], [false, 20, 35, 45]],
-  "honors econ": [["h", "q", "t", "d"], [false, 20, 25, 40, 15]]
+  "honors econ": [["h", "q", "t", "d"], [false, 20, 25, 40, 15]],
+  "english 4 h": [["c", "l", "w"], [false, 20, 40, 40]]
 };
 function setclass() {
   if (document.classes.class.value == "add class") {
@@ -364,7 +388,7 @@ function setclass() {
     }
     if (document.classes.class.value == "spanish 4") {
       date = new Date();
-      document.getElementById("hoyesel").innerHTML = "HOY ES EL " +
+      document.getElementById("classmeme").innerHTML = "HOY ES EL " +
         ["PRIMERO", "DOS", "TRES", "CUATRO", "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE", "DIEZ",
         "ONCE", "DOCE", "TRECE", "CATORCE", "QUINCE", "DIECISÉIS", "DIECISIETE", "DIECIOCHO",
         "DIECINUEVE", "VEINTE", "VEINTIUNO", "VEINTIDÓS", "VEINTITRES", "VEINTICUATRO",
@@ -374,16 +398,23 @@ function setclass() {
         "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"][date.getMonth()] + " DE "
         + date.getFullYear() + "!!!!!<br>NO OLVIDE ESCRIBIR SU NOMBRE!!!!!";
     } else if (document.classes.class.value == "ap world") {
-      document.getElementById("hoyesel").innerHTML = "Clear your desks, please.";
+      document.getElementById("classmeme").innerHTML = "Clear your desks, please.";
     } else if (document.classes.class.value == "physics c") {
-      document.getElementById("hoyesel").innerHTML = "&#129506;&#129506;&#129506;" +
+      document.getElementById("classmeme").innerHTML = "&#129506;&#129506;&#129506;" +
         "<ol><li>Always include uncertainty on your measurements. Use population standard deviations for your samples: <i>s</i> = <i>σ</i>, <i>N</i>-1 = <i>N</i>. Bessel's correction is gone.</li>" +
         "<li>You can pick your coordinate system, but the sign of <i>ma</i> must equal the sign of <i>mg&nbsp;sinθ</i>. Therefore, things can fall up or down depending on what you prefer. Taking down as -<i>x</i> for example:"
         + "<br><i>µmg&nbsp;cosθ</i> - <i>mg&nbsp;sinθ</i> = -<i>ma</i> &#8756;<i>a</i> = <i>g&nbsp;sinθ</i> - <i>µg&nbsp;cosθ</i> > 0. Since down is -ve, and acceleration is +ve, things fall up."
         + " (This is from an experimental perspective. All the &ldquo;spherical cow&rdquo; models were derived from experimentation anyways. Sometimes the models are wrong.)</li>"
         + "<li>Be Happy</li></ol>&#129506;&#129506;&#129506;👳🏾&#x200D;♂️&#x1F54B;☪️";
     } else {
-      document.getElementById("hoyesel").innerHTML = "";
+      document.getElementById("classmeme").innerHTML = "";
+    }
+    if (document.classes.class.value == "ap macro") {
+      document.getElementById("classError").innerHTML = "<b>Both types of quizzes will count as one category</b> worth 30% of the overall grade.";
+      MACRO = true;
+    } else {
+      document.getElementById("classError").innerHTML = "";
+      MACRO = false;
     }
     document.classes.class.value = "";
   }
