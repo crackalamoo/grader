@@ -188,7 +188,6 @@ if (typeof(Storage) !== "undefined") {
 }
 var previousInput = "";
 var RAMPAL = false;
-var MACRO = false;
 function auto_filter(el) {
   return el != "" && el != " ";
 }
@@ -302,28 +301,6 @@ function autoCalc2() {
     }
     currentCategory = null;
   }
-  if (MACRO) {
-    var quiz1,quiz2 = null;
-    for (var i = 0; i < categories.length; i++) {
-      if (categories[i].toLowerCase().startsWith("g"))
-        quiz1 = categories[i];
-      else if (categories[i].toLowerCase().startsWith("m"))
-        quiz2 = categories[i];
-    }
-    if (quiz1 != null) {
-      if (quiz2 != null) {
-        var quizCat = new Category("Quizzes", 30);
-        quizCat.add(quiz1.total, quiz1.possible);
-        quizCat.add(quiz2.total, quiz2.possible);
-        categories.splice(categories.indexOf(quiz1));
-        categories.splice(categories.indexOf(quiz2));
-      } else {
-        quiz1.name = "Quizzes";
-      }
-    } else if (quiz2 != null) {
-      quiz2.name = "Quizzes";
-    }
-  }
   updateCategories();
   changeMode("manual");
   document.getElementById("manualInput").style.display = "block";
@@ -342,7 +319,7 @@ var classes = {
   "mandarin 3": [["h", "p", "q", "t"], [false, 10, 30, 25, 35]],
   "stats": [["f", "s", "t"], [false, 5, 25, 70]],
   "java hh": [["a", "h", "ta", "te"], [false, 25, 20, 20, 35]],
-  "ap macro": [["g", "m", "t"], [false, 30, 30, 40]],
+  "ap macro": [["g", "m", "t", "h", "p"], [false, 5, 25, 40, 20, 10]],
   "apush": [["c", "f", "q", "t"], [false, 20, 20, 20, 40]],
   "english 2": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
   "english 3 cp": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
@@ -408,13 +385,6 @@ function setclass() {
         + "<li>Be Happy</li></ol>&#129506;&#129506;&#129506;👳🏾&#x200D;♂️&#x1F54B;☪️";
     } else {
       document.getElementById("classmeme").innerHTML = "";
-    }
-    if (document.classes.class.value == "ap macro") {
-      document.getElementById("classError").innerHTML = "<b>Both types of quizzes will count as one category</b> worth 30% of the overall grade.";
-      MACRO = true;
-    } else {
-      document.getElementById("classError").innerHTML = "";
-      MACRO = false;
     }
     document.classes.class.value = "";
   }
