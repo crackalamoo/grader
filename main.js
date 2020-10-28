@@ -320,7 +320,7 @@ var classes = {
   "stats": [["f", "s", "t"], [false, 5, 25, 70]],
   "java hh": [["a", "h", "ta", "te"], [false, 25, 20, 20, 35]],
   "ap macro": [["g", "m", "t", "h", "p"], [false, 5, 25, 40, 20, 10]],
-  "american history": [["h", "p", "q", "t"], [false, 20, 10, 30, 40]]
+  "american history": [["h", "p", "q", "t"], [false, 20, 10, 30, 40]],
   "apush": [["c", "f", "q", "t"], [false, 20, 20, 20, 40]],
   "english 2": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
   "english 3 cp": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
