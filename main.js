@@ -378,12 +378,7 @@ function setclass() {
     } else if (document.classes.class.value == "ap world") {
       document.getElementById("classmeme").innerHTML = "Clear your desks, please.";
     } else if (document.classes.class.value == "physics c") {
-      document.getElementById("classmeme").innerHTML = "&#129506;&#129506;&#129506;" +
-        "<ol><li>Always include uncertainty on your measurements. Use population standard deviations for your samples: <i>s</i> = <i>σ</i>, <i>N</i>-1 = <i>N</i>. Bessel's correction is gone.</li>" +
-        "<li>You can pick your coordinate system, but the sign of <i>ma</i> must equal the sign of <i>mg&nbsp;sinθ</i>. Therefore, things can fall up or down depending on what you prefer. Taking down as -<i>x</i> for example:"
-        + "<br><i>µmg&nbsp;cosθ</i> - <i>mg&nbsp;sinθ</i> = -<i>ma</i> &#8756;<i>a</i> = <i>g&nbsp;sinθ</i> - <i>µg&nbsp;cosθ</i> > 0. Since down is -ve, and acceleration is +ve, things fall up."
-        + " (This is from an experimental perspective. All the &ldquo;spherical cow&rdquo; models were derived from experimentation anyways. Sometimes the models are wrong.)</li>"
-        + "<li>Be Happy</li></ol>&#129506;&#129506;&#129506;👳🏾&#x200D;♂️&#x1F54B;☪️";
+      document.getElementById("classmeme").innerHTML = "<ol><li>Be Happy</li></ol>";
     } else {
       document.getElementById("classmeme").innerHTML = "";
     }
