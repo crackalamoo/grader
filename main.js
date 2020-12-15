@@ -344,7 +344,8 @@ var classes = {
   "honors gov": [["h", "q", "t"], [false, 25, 35, 40]],
   "ap mandarin": [["i", "q", "p"], [false, 20, 35, 45]],
   "honors econ": [["h", "q", "t", "d"], [false, 20, 25, 40, 15]],
-  "english 4 h": [["c", "l", "w"], [false, 20, 40, 40]]
+  "english 4 h": [["c", "l", "w"], [false, 20, 40, 40]],
+  "stats h": [["g", "s", "t"], [false, 5, 25, 70]]
 };
 function setclass() {
   if (document.classes.class.value == "add class") {
@@ -428,7 +429,8 @@ function mailSent() {
       document.getElementById("mail_sent").innerHTML = "Please enter valid data.";
   else {
     document.getElementById("mail_sent").innerHTML = "Your response was sent and the class should be available shortly. Thank you!" +
-      "<br>For now, go back and enter weightings manually.";
+      "<br>For now, go back and enter weightings manually.<br>If the class isn't available within about three days, please contact" +
+      "me at bd542591@ahschool.com; I may be having trouble understanding your request";
     document.add_class.style.display = "none";
     document.classes.class.remove(1);
   }
