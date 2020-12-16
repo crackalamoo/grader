@@ -345,7 +345,8 @@ var classes = {
   "ap mandarin": [["i", "q", "p"], [false, 20, 35, 45]],
   "honors econ": [["h", "q", "t", "d"], [false, 20, 25, 40, 15]],
   "english 4 h": [["c", "l", "w"], [false, 20, 40, 40]],
-  "stats h": [["g", "s", "t"], [false, 5, 25, 70]]
+  "stats h": [["g", "s", "t"], [false, 5, 25, 70]],
+  "sociology": [["h", "p", "t", "q"], [false, 25, 10, 40, 25]]
 };
 function setclass() {
   if (document.classes.class.value == "add class") {
