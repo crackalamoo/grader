@@ -346,7 +346,8 @@ var classes = {
   "honors econ": [["h", "q", "t", "d"], [false, 20, 25, 40, 15]],
   "english 4 h": [["c", "l", "w"], [false, 20, 40, 40]],
   "stats h": [["g", "s", "t"], [false, 5, 25, 70]],
-  "sociology": [["h", "p", "t", "q"], [false, 25, 10, 40, 25]]
+  "sociology": [["h", "p", "t", "q"], [false, 25, 10, 40, 25]],
+  "alg 2": [["c", "h", "q", "t"], [false, 15, 15, 30, 40]]
 };
 function setclass() {
   if (document.classes.class.value == "add class") {
