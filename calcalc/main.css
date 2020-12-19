@@ -1,0 +1,292 @@
+body {
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+@font-face {
+  font-family: DevanagariFont;
+  src: url('fonts/itfdevanagari.ttc');
+}
+@font-face {
+  font-family: Naskh;
+  src: url('fonts/geezapro.ttc');
+}
+@font-face {
+  font-family: Nastaliq;
+  src: url('fonts/nastaliq.ttf');
+}
+@font-face {
+  font-family: DevanagariSans;
+  src: url('fonts/kohinoor.ttc');
+}
+
+select {
+  height: 25px;
+  background-color: #FFFFFF;
+}
+select:hover,button:hover {
+  background-color: #CCFFEE;
+}
+select.islamicSelect {
+  font-family: "Geeza Pro", Naskh, serif;
+  direction: rtl;
+}
+
+dt {
+  margin-top: 1ex;
+}
+
+input {
+  direction: ltr;
+}
+input.ctr {
+    text-align: center
+}
+
+p {
+  text-align: justify;
+}
+
+p.c {
+  text-align: center;
+}
+p.small {
+  font-size: 12px;
+}
+
+span.bcad {
+  font-variant: small-caps;
+text-transform: lowercase;
+}
+
+a {
+  text-decoration: none;
+  color: #0A0AFF;
+}
+a:visited {
+  color: #0A0AFF;
+}
+a:hover {
+  color: #0AFF0A;
+}
+h3 a {
+  color: #000000;
+}
+h3 a:hover {
+  color: #FF8811;
+}
+a.button {
+  cursor: pointer;
+}
+
+table.a {
+  float: right;
+  margin-left: 12px;
+  width: 170px;
+}
+
+table.l {
+  border: 1px outset black;
+  float: left;
+  margin-right: 8px;
+  background-color: #C0E0F0;
+  color: #000000;
+  width: 45%;
+  min-width: 400px;
+}
+
+table.l td, table.l th {
+  border: 1px inset;
+  padding: 5px;
+}
+
+table.r {
+  line-height: 1.5;
+  border: 1px outset black;
+  float: right;
+  margin-left: 8px;
+  background-color: #FFB630;
+  color: #000000;
+}
+
+table.r td, table.r th {
+  border: 1px inset;
+}
+
+table.l td, table.l th, h3 {
+  font-family: Nastaliq, Naskh, "Times New Roman",
+  DevanagariFont, "Bangla MN", "Tamil MN";
+}
+span#showIslamicInfo:lang(ur) {
+  float: right;
+}
+:lang(ur) {
+  direction: rtl;
+  text-align: right;
+  font-family: Nastaliq, Naskh, "Times New Roman", serif;
+}
+:lang(hi) {
+  font-family: DevanagariFont, "Devanagari MT", DevanagariSans, serif;
+}
+:lang(sa) {
+  font-family: "Devanagari MT", DevanagariFont, DevanagariSans, serif;
+}
+:lang(he) {
+  direction: rtl;
+  text-align: right;
+  font-family: "Raanana", "Times New Roman", serif;
+}
+:lang(fa),.naskh:lang(ur),:lang(ar) {
+  direction: rtl;
+  text-align: right;
+  font-family: Naskh, "Times New Roman", serif;
+}
+p.reference {
+  text-align: center;
+  font-size: 12px;
+}
+p.reference span:lang(ar) {
+  font-family: "Diwan Thuluth", "Baghdad", Naskh, "Times New Roman", serif;
+  font-size: 30px;
+}
+p.reference span:lang(sa) {
+  font-family: "Devanagari MT", DevanagariFont, serif;
+}
+span.noItalics {
+  font-style: normal;
+}
+button {
+  background-color: #FEFEFE;
+  color: #000000;
+  border: 1px solid #444444;
+  border-radius: 5px;
+  font-family: system-ui, sans-serif;
+}
+button:lang(ur) {
+  font-family: "Times New Roman", serif;
+}
+button:lang(hi),input:lang(hi),select:lang(hi) {
+  font-family: DevanagariSans, sans-serif;
+}
+button:active {
+  background-color: #3366FF;
+  color: #FFFFFF;
+}
+input.tall {
+  height: 17px;
+  text-align: center;
+}
+div.calendarList {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  flex-wrap: wrap;
+}
+div.calendarList a {
+  margin: 10px;
+  font-size: 18px;
+}
+div#calendarBox {
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+div.calendarHeading {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+}
+table.calendar {
+  background-color: #FFFFFF;
+  border: 2px outset black;
+  float: center;
+  width: 77vw;
+  border-collapse: collapse;
+}
+table.calendar th {
+  background-color: #851200;
+  color: #FFFFFF;
+  width: 11vw;
+  margin: 0px;
+  font-size: 14px;
+  width: 50px;
+  border: 1px outset #FFFFFF;
+}
+table.calendar td {
+  width: 11vw;
+  height: 80px;
+  border: 1px outset #FFFFFF;
+  position: relative;
+  font-size: 11px;
+  cursor: pointer;
+}
+table.calendar td div.dayNum {
+  position: absolute;
+  top: 1px;
+  right: 3px;
+  font-size: 16px;
+  font-weight: bold;
+}
+table.calendar td div.dayNum.left {
+  left: 3px;
+  right: auto;
+  font-size: 12px;
+}
+table.calendar td.today {
+  border: 2px solid #AA0000;
+  background-color: #DDFFEE;
+}
+table.calendar td.extra,table.calendar td.extra:hover {
+  background-color: #EEEEEE;
+  cursor: auto;
+}
+table.calendar td.today div.dayNum {
+  color: #AA0000;
+}
+table.calendar td:hover {
+  background-color: #EEEEFF;
+}
+table.calendar td.today:hover {
+  border: 2px solid #CC3300;
+  background-color: #AAFFBB;
+}
+table.calendar td.extra {
+  color: #AAAAAA;
+}
+span#savedDay {
+  font-size: 12px;
+}
+div#coords {
+  line-height: 0px;
+  margin: 0;
+}
+canvas#map {
+  cursor: pointer;
+}
+div#moonDrawing {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+canvas#moon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+}
+canvas#moon2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+span.arrow {
+  font-weight: bold;
+  border: 1px solid #000000;
+  padding: 5px;
+  cursor: pointer;
+}

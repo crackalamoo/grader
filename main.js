@@ -306,6 +306,7 @@ function autoCalc2() {
   document.getElementById("manualInput").style.display = "block";
   document.getElementById("manualInput").innerHTML = "Edit grades";
   document.getElementById("autoCalculation").innerHTML = "New class (automatic)";
+  document.getElementById("classmeme").innerHTML = "";
 }
 var classes = {
   "ap lang meyer": [["a", "g", "q", "t"], [false, 5, 20, 25, 50]],
@@ -318,7 +319,7 @@ var classes = {
   "precalc": [[], [true]],
   "mandarin 3": [["h", "p", "q", "t"], [false, 10, 30, 25, 35]],
   "stats": [["f", "s", "t"], [false, 5, 25, 70]],
-  "java hh": [["a", "h", "ta", "te"], [false, 25, 20, 20, 35]],
+  "java hh": [["a", "h", "p", "t"], [false, 25, 20, 20, 35]],
   "ap macro": [["g", "m", "t", "h", "p"], [false, 5, 25, 40, 20, 10]],
   "american history": [["h", "p", "q", "t"], [false, 20, 10, 30, 40]],
   "apush": [["c", "f", "q", "t"], [false, 20, 20, 20, 40]],
@@ -427,9 +428,9 @@ function calculateSemester() {
 function mailSent() {
   if (document.add_class["entry.1399913855"].value == "" ||
     document.add_class["entry.1953535029"].value == "" ||
-    document.add_class["entry.1262923778"].value == "")
+    document.add_class["entry.1262923778"].value == "") {
       document.getElementById("mail_sent").innerHTML = "Please enter valid data.";
-  else {
+  } else {
     document.getElementById("mail_sent").innerHTML = "Your response was sent and the class should be available shortly. Thank you!" +
       "<br>For now, go back and enter weightings manually.<br>If the class isn't available within about three days, please contact" +
       "me at bd542591@ahschool.com; I may be having trouble understanding your request";
