@@ -1,0 +1,2592 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Calendar Converter</title>
+<meta charset="UTF-8">
+<link rel="shortcut icon" href="icon.png">
+
+<link rel="stylesheet" type="text/css" href="main.css">
+<link rel="stylesheet" type="text/css" href="night.css">
+<link rel="stylesheet" type="text/css" href="silver.css">
+<link rel="stylesheet" type="text/css" href="ocean.css">
+
+<meta name="keywords" content="calendar, converter, Gregorian, Islamic, Hebrew, Persian, Hindu, Indian, Mayan, Mars" />
+<meta name="description" content="Calendar Converter" />
+<meta name="author" content="John Walker and Harys Dalvi" />
+<meta name="robots" content="index" />
+
+<script type="text/javascript" language="JavaScript" src="lang1.js"></script>
+<script type="text/javascript" language="JavaScript" src="lang2.js"></script>
+<script type="text/javascript" language="JavaScript" src="lang3.js"></script>
+<script type="text/javascript" language="JavaScript" src="lang4.js"></script>
+<script type="text/javascript" language="JavaScript" src="lang5.js"></script>
+<script type="text/javascript" language="JavaScript" src="lang6.js"></script>
+
+<script type="text/javascript" language="JavaScript" src="settings.js"></script>
+<script type="text/javascript" language="JavaScript" src="astro.js"></script>
+<script type="text/javascript" language="JavaScript" src="calendar.js"></script>
+<!-- <script type="text/javascript" language="JavaScript" src="../services.js"></script> -->
+
+</head>
+
+<body class="">
+
+<h1>Calendar Converter</h1>
+<h2>Fourmilab</h2>
+
+<hr />
+
+<p />
+
+<center>
+
+<form name="warning" action="javascript:void(0);">
+<input type="text" name="warning" style="background-color: #FFA0A0; color: #000000;"
+    value="Your browser doesn't support JavaScript or it is disabled — you cannot use this calculator."
+    size="90" class="ctr" readonly="readonly" />
+</form>
+</center>
+
+
+<script type="text/javascript" language="JavaScript">
+//  Clear out "sorry, no JavaScript" message from text box.
+document.warning.warning.value = "Your browser supports JavaScript" +
+	" — you can use this calculator.";
+document.warning.warning.style.backgroundColor = "#A0FFA0";
+var backButton = document.getElementById("backButton");
+var lang = getLang()[1];
+backButton.innerHTML = BACK[lang];
+setAnchorProperties(backButton);
+</script>
+
+<br><br>
+
+<table id="holidays" class="r">
+</table>
+
+<form name="language" action="javascript:void(0);">
+<table class="l">
+  <tr>
+    <th id="lWord1">
+      Language
+    </th>
+    <td align="center">
+      <select name="language1" size="1" onchange="changeLanguage1();">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="hi">हिन्दी</option>
+        <option value="ur">اردو</option>
+      </select>
+    </td>
+  </tr>
+
+  <tr>
+    <th id="lWord2">
+      زبان
+    </th>
+    <td align="center">
+      <select class="islamicSelect" name="language2" size="1" onchange="changeLanguage2();">
+        <option value="ur">اردو</option>
+        <option value="ar">العربية</option>
+        <option value="fa">فارسی</option>
+        <option value="id">Bahasa Indonesia</option>
+        <option value="hi">हिन्दी</option>
+        <option value="en">English</option>
+      </select>
+    </td>
+  </tr>
+
+  <tr>
+    <th id="lWord3">
+      भाषा
+    </th>
+    <td align="center">
+      <select name="language3" size="1" onchange="changeLanguage3();">
+        <option value="hi">हिन्दी</option>
+        <option value="ur">اردو</option>
+        <option value="pa-PK">پنجابی</option>
+        <option value="pa-IN">ਪੰਜਾਬੀ</option>
+        <option value="bn">বাংলা</option>
+        <option value="mr">मराठी</option>
+        <option value="ta">தமிழ்</option>
+        <option value="gu">ગુજરાતી</option>
+        <option value="sa">संस्कृतम्</option>
+        <option value="en">English</option>
+      </select>
+    </td>
+  </tr>
+
+  <tr>
+    <th id="lWord4" style="font-family: 'Times New Roman'">
+      زبان
+    </th>
+    <td align="center">
+      <select name="language4" size="1" style="font-family: 'Times New Roman'" onchange="changeLanguage4();">
+        <option value="fa">فارسی</option>
+        <option value="ps">پښتو</option>
+        <option value="ku_kmr">Kurdî Kurmancî</option>
+        <option value="ku_ckb">کوردیی سۆرانی</option>
+        <option value="en">English</option>
+      </select>
+    </td>
+  </tr>
+
+  <tr>
+    <th id="lWord5">
+      Language
+    </th>
+    <td align="center">
+      <select name="language5" size="1" onchange="changeLanguage5();">
+        <option value="he">עברית</option>
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+      </select>
+    </td>
+  </tr>
+
+  <!-- <tr>
+    <th id="lWord6"></th>
+    <td align="center">
+      <select name="language6" size="1" onchange="changeLanguage6();">
+        <option value="zh">中文</option>
+        <option value="en">English</option>
+      </select>
+    </td>
+  </tr> -->
+</table>
+</form>
+<br clear="left" />
+<br><br>
+
+<form name="basic" action="javascript:void(0);">
+<table class="l">
+<tr>
+  <th>
+    Color Scheme
+  </th>
+  <td align="center">
+    <select name="theme" size="1" onchange="changeTheme();">
+      <option value="">Normal</option>
+      <option value="night">Night</option>
+      <option value="silver">Silver</option>
+      <option value="ocean">Ocean</option>
+    </select>
+  </td>
+</tr>
+<tr>
+  <a name="coordinates"></a>
+  <th>Coordinates</th>
+<td align="center">
+  <div id="coords"><input type="text" name="latitude" value="26" size="10" onchange="changeCoords();">
+  &nbsp;<select name="NS" onchange="changeCoords();">
+    <option value="N">°N</option>
+    <option value="S">°S</option>
+  </select><br>
+  <input type="text" name="longitude" value="80" size="10" onchange="changeCoords();">
+  &nbsp;<select name="EW" onchange="changeCoords();">
+    <option value="E">°E</option>
+    <option value="W">°W</option>
+  </select></div>
+  <select name="city" onchange="changeCity();">
+    <option value="other">-- Pick a city --</option>
+    <option value="boynton">Boynton Beach</option>
+    <option value="delray">Delray Beach</option>
+    <option value="mumbai">मुंबई (Mumbai/Bombay)</option>
+    <option value="lahore">لاہور (Lahore)</option>
+    <option value="chicago">Chicago</option>
+    <option value="nyc">New York City</option>
+    <option value="karachi">کراچی (Karachi)</option>
+    <option value="islamabad">اسلام آباد (Islamabad)</option>
+    <option value="tokyo">東京 (Tokyo)</option>
+    <option value="jakarta">Jakarta</option>
+    <option value="delhi">दिल्ली (Delhi)</option>
+    <option value="manila">Maynilà (Manila)</option>
+    <option value="seoul">서울 (Seoul)</option>
+    <option value="shanghai">上海 (Shanghai)</option>
+    <option value="beijing">北京 (Beijing)</option>
+    <option value="mexico city">Ciudad de México (Mexico City)</option>
+    <option value="sao paulo">São Paulo</option>
+    <option value="lagos">Èkó (Lagos)</option>
+    <option value="cairo">القاهرة‎ (Cairo)</option>
+    <option value="guangzhou">广州 (Guangzhou)</option>
+    <option value="dhaka">ঢাকা (Dhaka)</option>
+    <option value="osaka">大阪 (Osaka)</option>
+    <option value="moscow">Москва (Moscow)</option>
+    <option value="istanbul">İstanbul</option>
+    <option value="bangkok">บางกอก (Bangkok)</option>
+    <option value="la">Los Angeles</option>
+    <option value="tehran">تهران (Tehran)</option>
+    <option value="london">London</option>
+    <option value="paris">Paris</option>
+    <option value="chennai">சென்னை (Chennai/Madras)</option>
+    <option value="lima">Lima</option>
+    <option value="washington">Washington, D.C.</option>
+    <option value="johannesburg">Johannesburg</option>
+    <option value="san francisco">San Francisco</option>
+    <option value="sydney">Sydney</option>
+    <option value="dubai">دبي (Dubai)</option>
+    <option value="rome">Roma (Rome)</option>
+    <option value="accra">Accra</option>
+    <option value="ujjain">उज्जैन (Ujjain)</option>
+  </select><br>
+  <button name="getLocation" onclick="setLocation();">Set to current location</button><br>
+  <span id="showMap"></span>
+  <canvas id="map" height="540px" width="270px"></canvas>
+</td>
+</tr>
+<tr>
+  <th>
+      Time
+  </th>
+  <td align="center">
+      <input type="text" name="hour" value="00" size="2" onchange="drawClock();"/>:<input
+      	   type="text" name="min" value="00" size="2" onchange="drawClock();"/>:<input
+  	   type="text" name="sec" value="00" size="2" onchange="drawClock();"/>
+      <br>
+      UTC&emsp;<select name="timezone1" onchange="updateSun(); updateDst();">
+        <option value="+">+</option>
+        <option value="-">-</option>
+      </select> <input type="text" name="timezone2" value="" size="4" onchange="updateSun(); updateDst();" /><br>
+      DST:&ensp;<select name="dst" onchange="updateSun(); updateDst();">
+        <option value="none">None</option>
+        <option value="uscanada">US/Canada</option>
+        <option value="europe">Europe</option>
+        <option value="mexico">México</option>
+        <option value="iran">ایران (Iran)</option>
+        <option value="syriajordan">سوريا/الأردن (Syria/Jordan)</option>
+        <option value="australia">Australia</option>
+        <option value="permanent">Permanent</option>
+      </select><br><span id="dstActive"></span><br>
+      <canvas id="clock" width="100" height="100"></canvas>
+  </td>
+  </tr>
+<tr>
+  <th>
+      Moon
+  </th>
+  <td align="center">
+    Phase: <input type="text" class="ctr" name="moon" value="00" size="12" readonly="readonly"/><br>
+    <div id="moonInfo">
+      Rise: <input type="text" name="hourM0" value="06" size="2" readonly="readonly" />:<input
+        type="text" name="minM0" value="00" size="2" readonly="readonly" /><span id="M0"></span><br>
+      Peak: <input type="text" name="hourM1" value="12" size="2" readonly="readonly" />:<input
+        type="text" name="minM1" value="00" size="2" readonly="readonly" /><span id="M1"></span><br>
+      Set: <input type="text" name="hourM2" value="18" size="2" readonly="readonly" />:<input
+      	   type="text" name="minM2" value="00" size="2" readonly="readonly" /><span id="M2"></span><br>
+      <div id="moonDrawing">
+        <canvas id="moon" width="100" height="100"></canvas>
+      </div>
+      Lunar elevation: <input type="text" name="moonElevation" value="0" size="6" readonly="readonly" /><br>
+      Azimuth: <input type="text" name="moonAzimuth" value="0" size="12" readonly="readonly" /><br>
+      Next full moon: <input type="text" name="nextFull" value="0" size="8" readonly="readonly" /><br>
+      Next new moon: <input type="text" name="nextNew" value="0" size="8" readonly="readonly" /><br>
+      Distance: <input type="text" name="moonDistance" value="0" size="14" readonly="readonly" />
+    </div><span id="showMoonInfo"></span>
+  </td>
+</tr>
+<tr>
+  <th>
+      Sun
+  </th>
+  <td align="center">
+    <span id="sunInfoDawn">Dawn: <input type="text" name="hourS4" value="18" size="2" readonly="readonly" />:<input
+         type="text" name="minS4" value="00" size="2" readonly="readonly" /><br></span>
+      Rise: <input type="text" name="hourS2" value="06" size="2" readonly="readonly" />:<input
+        type="text" name="minS2" value="00" size="2" readonly="readonly" /><br>
+      Noon: <input type="text" name="hourS3" value="12" size="2" readonly="readonly" />:<input
+        type="text" name="minS3" value="00" size="2" readonly="readonly" /><br>
+      Set: <input type="text" name="hourS" value="18" size="2" readonly="readonly" />:<input
+      	   type="text" name="minS" value="00" size="2" readonly="readonly" /><br>
+      <div id="sunInfo">
+        Dusk: <input type="text" name="hourS5" value="18" size="2" readonly="readonly" />:<input
+         	  type="text" name="minS5" value="00" size="2" readonly="readonly" /><br>
+        Day length: <input type="text" name="hourS6" value="18" size="2" readonly="readonly" />:<input
+             type="text" name="minS6" value="00" size="2" readonly="readonly" /><br><br>
+        Hour angle: <input type="text" name="hourAngle" value="0" size="8" readonly="readonly" /><br>
+        Solar elevation: <input type="text" name="elevationAngle" value="0" size="8" readonly="readonly" /><br>
+        Azimuth: <input type="text" name="azimuthAngle" value="0" size="15" readonly="readonly" /><br>
+        Shadow direction: <input type="text" name="shadow" value="0" size="15" readonly="readonly" /><br>
+        Shadow length: <input type="text" name="shadowL" value="0" size="15" readonly="readonly" /><br>
+        Declination: <input type="text" name="declination" value="0" size="8" readonly="readonly" /><br>
+        <div id="sunDrawing">
+          <canvas id="sundial" width="200" height="200"></canvas>
+        </div>
+      </div><span id="showSunInfo"></span><br>
+      <button onclick="updateSun();">Calculate</button>
+  </td>
+</tr>
+</table>
+</form>
+<br clear="left" /><br><br><br>
+
+<div class="calendarList">
+  <a href="#julianday">Julian Day</a>
+  <a href="#gregorian">Gregorian</a>
+  <a href="#islamic">Islamic</a>
+  <a href="#hindu">Hindu</a>
+  <a href="#hebrew">Hebrew</a>
+  <a href="#persiana">Persian</a>
+  <!-- <a href="#chinese">Chinese</a> -->
+  <a href="#indian">Indian Civil</a>
+  <a href="#mesoamerican">Mayan/Mesoamerican</a>
+  <a href="#juliancalendar">Julian</a>
+  <a href="#ISO8601">ISO-8601</a>
+  <a href="#mangli">Martian</a>
+  <a href="#calendarmaker">Calendar Maker</a>
+</div>
+
+<h3 style="font-family: 'Times New Roman';"><a name="julianday">Julian Day</a></h3>
+
+<form name="julianday" action="javascript:void(0);">
+<table class="r">
+
+<tr>
+<td align="center">
+    <b>Julian day:</b>
+
+    <input type="text" name="day" value="" size="20" />
+</td>
+</tr>
+<tr>
+  <td align="center">
+    <button onclick="saveJulian(true);">Save day</button><br>
+    <span id="savedDay"></span>
+  </td>
+</tr>
+<tr>
+  <td align="center">
+    <input type="text" name="change" value="0" size="10" />
+    &emsp;<button onclick="changeJulian();">Add days</button>&ensp;<button onclick="subtractJulian();">Subtract days</button><br>
+    <button name="playPause" onclick="playPauseJulian();">Play</button>
+  </td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<button onclick="calcJulian();">Calculate</button>
+&nbsp; &nbsp;
+<button name="today" onclick="setDateToToday(); calcGregorian();">Today</button>
+</td>
+</tr>
+</table>
+</form>
+<p>
+Astronomers, unlike historians, frequently need to do arithmetic
+with dates. For example: a double star goes into eclipse every
+1583.6 days and its last mid-eclipse was measured to be on
+October 17, 2003 at 21:17 UTC.  When is the next?  Well, you could
+get out your calendar and count days, but it's far easier
+to convert all the quantities in question to Julian day numbers
+and simply add or subtract.</p>
+<div id="julianDayInfo">
+<p>Julian days simply enumerate the days
+and fraction which have elapsed since the start of the
+<i>Julian era</i>, which is defined as beginning at noon
+on Monday, 1st January of year 4713 <span class="bcad">B.C.E.</span> in the Julian
+calendar.  This date is defined in terms of a cycle of years,
+but has the additional advantage that all known historical astronomical
+observations bear positive Julian day numbers, and periods can
+be determined and events extrapolated by simple addition and
+subtraction.  Julian dates are a tad eccentric in starting at
+noon, but then so are astronomers (and systems programmers!)—when
+you've become accustomed to rising after the “crack of noon” and
+doing most of your work when the Sun is down, you appreciate
+recording your results in a calendar where the date doesn't change
+in the middle of your workday.  But even the Julian day convention
+bears witness to the eurocentrism of 19<sup>th</sup> century astronomy&mdash;noon
+at Greenwich is midnight on the other side of the world.  But the Julian
+day notation is so deeply embedded in astronomy that it is unlikely
+to be displaced at any time in the foreseeable future.  It is an ideal
+system for storing dates in computer programs, free of cultural bias
+and discontinuities at various dates, and can be readily transformed
+into other calendar systems, as the source code for this page illustrates.
+Use Julian days and fractions (stored in 64 bit or longer floating
+point numbers) in your programs, and be ready for Y10K, Y100K,
+and Y1MM!
+</p>
+<form name="modifiedjulianday" action="javascript:void(0);">
+<table class="r">
+
+<tr>
+<td align="center">
+    <b>Modified Julian day:</b>
+    <input type="text" name="day" value="" size="20" />
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<button onclick="calcModifiedJulian();">Calculate</button>
+</td>
+</tr>
+</table>
+</form>
+<p>While any event in recorded human history can be written as
+a positive Julian day number, when working with contemporary
+events all those digits can be cumbersome.  A <i>Modified
+Julian Day</i> (MJD) is created by subtracting 2400000.5
+from a Julian day number, and thus represents the number of
+days elapsed since midnight (00:00) Universal Time on
+November 17, 1858.  Modified Julian Days are widely used to
+specify the epoch in tables of orbital elements of
+artificial Earth satellites.  Since no such objects existed
+prior to October 4, 1957, all satellite-related MJDs are
+positive.
+</p></div><span id="showJulianDayInfo"></span><br><br clear="all"><br clear="all">
+
+<h3><a name="gregorian" id="gregCalName">Gregorian Calendar</a></h3>
+
+<form name="gregorian" action="javascript:void(0);">
+<table class="l">
+
+<tr>
+<th id="gregorianDate">
+    Date:
+</th>
+<td align="center">
+
+    <input type="text" name="year" value="1998" size="5" />
+    <select name="month" size="1">
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+    </select>
+    <input type="text" name="day" value="1" size="3" />
+
+    <br />
+
+    <input type="text" name="leap" value="" size="14" class="ctr" readonly="readonly" />
+</td>
+</tr>
+
+<tr>
+<th id="gregorianWeekdays">
+    Weekday:
+</th>
+<td align="center">
+    <input type="text" name="wday" value="" size="10" class="ctr" readonly="readonly" />
+</td>
+</tr>
+
+<tr>
+<td colspan="2" align="center">
+<button name="calculate" onclick="calcGregorian();">Calculate</button>
+</td>
+</tr>
+</table>
+</form>
+
+<script type="text/javascript" language="JavaScript"></script>
+
+<p>
+The Gregorian calendar was <a href="https://www.fourmilab.ch/documents/calendar/IG_Latin.html" target="_blank">proclaimed</a>
+by Pope Gregory XIII and took effect in most Catholic states
+in 1582, in which October 4, 1582 of the Julian calendar
+was followed by October 15 in the new calendar, correcting
+for the accumulated discrepancy between the Julian calendar
+and the equinox as of that date.  When comparing historical dates,
+it's important to note that the Gregorian calendar, used universally
+today in Western countries and in international commerce, was
+adopted at different times by different countries.  Britain and
+her colonies (including what is now the United States), did not switch
+to the Gregorian calendar until 1752, when Wednesday 2nd September
+in the Julian calendar dawned as Thursday the 14th in the Gregorian.
+</p>
+<div id="gregorianInfo"><p>
+The Gregorian calendar is a minor correction to the Julian.  In the
+Julian calendar every fourth year is a leap year in which February has
+29, not 28 days, but in the Gregorian, years divisible by 100 are
+<em>not</em> leap years unless they are also divisible by 400.  How
+prescient was Pope Gregory!  Whatever the problems of Y2K, they won't
+include sloppy programming which assumes every year divisible by 4 is
+a leap year since 2000, unlike the previous and subsequent years
+divisible by 100, <em>is</em> a leap year.  As in the Julian calendar,
+days are considered to begin at midnight.
+</p><p>
+The average length of a year in the Gregorian calendar is 365.2425
+days compared to the actual solar tropical year (time from equinox to
+equinox) of 365.24219878 days, so the calendar accumulates one day of
+error with respect to the solar year about every 3300 years.  As a purely
+solar calendar, no attempt is made to synchronise the start of months
+to the phases of the Moon.
+</p><p>
+While one can't properly speak of “Gregorian dates” prior to
+the adoption of the calendar in 1582, the calendar can be
+extrapolated to prior dates.  In doing so, this
+implementation uses the convention that the year prior to
+year 1 is year 0.  This differs from the Julian calendar in
+which there is no year 0—the year before year 1 in the Julian
+calendar is year −1.  The date December 30th, 0 in the Gregorian
+calendar corresponds to January 1st, 1 in the Julian calendar.
+</p><p>
+A slight modification of the Gregorian calendar would make it even more
+precise.  If you add the additional rule that years evenly divisible
+by 4000 are <em>not</em> leap years, you obtain an average solar year
+of 365.24225 days per year which, compared to the actual mean year
+of 365.24219878, is equivalent to an error of one day over a period
+of about 19,500 years; this is comparable to errors due to tidal
+braking of the rotation of the Earth.
+</p></div><span id="showGregorianInfo"></span>
+<br clear="left" />
+
+<h3><a name="islamic" id="islamicCalName">اسلامی تقویم</a></h3>
+
+<form name="islamic" action="javascript:void(0);">
+<table class="l">
+
+<tr>
+<th id="islamicDate">
+    تاریخ
+</th>
+<td align="center">
+    <input type="checkbox" name="mecca">
+    <label id="meccaLabel" for="mecca"></label><br>
+    <input type="text" name="year" value="" size="5" dir="ltr" />
+    <select class="islamicSelect" name="month" size="1" dir="rtl">
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
+        <option value="5"></option>
+        <option value="6"></option>
+        <option value="7"></option>
+        <option value="8"></option>
+        <option value="9"></option>
+        <option value="10"></option>
+        <option value="11"></option>
+        <option value="12"></option>
+    </select>
+    <input type="text" name="day" value="" size="3" dir="ltr" />
+
+    <br />
+
+    <input type="text" class="tall" name="leap" value="" size="12" class="ctr" readonly="readonly" />
+</td>
+</tr>
+
+<tr>
+<th id="islamicWeekdays"></th>
+<td align="center">
+    <input type="text" class="tall" name="wday" value="" size="12" class="ctr" readonly="readonly" />
+</td>
+</tr>
+<tr>
+  <th id="qibla"></th>
+  <td align="center">
+    <canvas id="drawQibla"></canvas>
+  </td>
+</tr>
+<tr>
+  <th id="salah"></th>
+  <td align="center">
+    <select class="islamicSelect" name="prayer" size="1" dir="rtl" onchange="updateSun();">
+      <option value="1"></option>
+      <option value="2"></option>
+      <option value="3"></option>
+      <option value="4"></option>
+      <option value="5"></option>
+    </select>&emsp;
+    <span dir="ltr"><input type="text" name="salahHour" value="12" size="2" readonly="readonly" />:<input
+      type="text" name="salahMinute" value="00" size="2" readonly="readonly" /></span><br>
+    <span id="calculation"></span>
+    <select class="islamicSelect" name="calculation" size="1" dir="rtl" onchange="set_islamic_calculation();">
+      <option value="mwl"></option>
+      <option value="karachi"></option>
+      <option value="plainfield"></option>
+      <option value="singapore"></option>
+    </select><br>
+    <span id="asr"></span>
+    <select class="islamicSelect" name="asr" size="1" dir="rtl" onchange="set_islamic_calculation();">
+      <option value="1">Standard</option>
+      <option value="2">Hanafi</option>
+    </select>
+  </td>
+</tr>
+
+<tr>
+<td colspan="2" align="center">
+<button lang="ur" onclick="calcIslamic();">Calculate</button>
+</td>
+</tr>
+</table>
+</form>
+
+<p lang="ur">
+اسلامی تقویم چاند سے جڑا ہے۔ بارہ مہینے ہیں، اور ہر ایک
+میں یا تو ۳۰ یا ۲۹ دن ہوتے ہیں۔ آخری مہینے، ذو الحجہ، میں
+دونوں ۲۹ اور ۳۰ دن ہو سکتے ہیں۔ ہر ۳۰ سالوں میں ذو الحجہ
+میں ۳۰ دن ہوتے ہیں پہلے، 5ویں، 7ویں، 10ویں، 13ویں، 16ویں، 18ویں،
+21ویں، 24ویں، 26ویں، اور 29ویں سالوں میں۔
+اسلامی تقویم کا پہلا دن ہے جمعہ، ۱۹ جولائی، ۶۲۲ء۔
+یہ پہلا نیا چاند ہے محمد  کے مکہ سے مدینے جانے
+کے بعد۔
+</p>
+<div lang="ur" id="islamicInfo">
+<p>
+  عیسوی تقویم میں، دن آدھی رات کو شروع ہوتے ہیں۔
+  اسلامی تقویم میں، سورج کے اترنے سے شروع ہوتے ہیں۔
+  اِس لئے اِس تقویم کے لئے ضروری ہے کہ آپ
+  <a href="#coordinates">ایک جگہ اوپر چن لیں</a>،
+  کیوں کہ ہر جگہ میں سورج الگ-الگ وقتوں
+  پہ اترتا ہے۔
+  اونچے لَیٹِیٹیُوڈوں پہ
+  کئی جگہوں میں گرمیوں اور سردیوں میں سورج عجیب وقتوں پہ
+  اترتا ہے، اور کبھی اترتا ہی نہیں۔ اِن جگہوں میں کئی لوگ مکّے
+  کے تقویم کا استعمال کرتے ہیں۔ اِس لئے اِس تقویم میں آپ کہہ سکتے ہیں
+  کہ تقویم کو ہونا ہے جیسے آپ مکّے میں ہیں۔
+</p>
+<p>
+  اسلامی نماز میں، مسلمان مکّے کی طرف ڈھونڈتے ہیں۔ یہ
+  تقویم مکّے کی طرف ڈھونڈ سکتا ہے اگر آپ اپنی
+  جگہ اوپر دے دیں۔
+  مکہ کی طرف کو
+  &rdquo;قبلہ&ldquo;
+  کہتے ہیں۔
+</p>
+<p>
+  اسلامی تقویم میں اوسط سال 354.365 دن
+  ہے، اور اوسط مہینہ 29.53055 دن ہے۔ اصلی
+  چاند دنیا کا گول کرتا ہے ہر 29.530588 دن۔ اسلامی
+  تقویم اِس سے اتنا قریب ہے کہ ہر 2525 سال، تقویم
+  میں بس ایک دن کی غلطی آتی ہے۔
+  اسلامی تقویم چاند کے ساتھ چلتا ہے اور سورج کے
+  ساتھ نہیں؛ اِس لئے رُتوں سے ہر سال لگبھگ ۱۱ دنوں کا
+  فرق ہو جاتا ہے۔
+</p>
+<p>
+  اِس تقویم کا استعمال اسلامی ملکوں میں ہوتا ہے؛ مذہب کے لئے مہینے
+  چاند کے ہلال کی نظر پہ شروع ہوتے ہیں۔
+</p>
+</div><span lang="ur" id="showIslamicInfo"></span><br><br>
+<div lang="en" id="islamicEnInfo">
+<p>
+The Islamic calendar is purely lunar and consists of twelve
+alternating months of 30 and 29 days, with the final 29 day month
+extended to 30 days during leap years. Leap years follow a 30 year
+cycle and occur in years 1, 5, 7, 10, 13, 16, 18, 21, 24, 26, and 29.
+Days are considered to begin at sunset.  The calendar begins on
+Friday, July 16th, 622 <span class="bcad">C.E.</span> in the Julian calendar, Julian day
+1948439.5, the day of Muhammad's flight from Mecca to Medina, with
+sunset on the preceding day reckoned as the first day of the first
+month of year 1 A.H.—“<i lang="la" xml:lang="la">Anno
+Hegiræ</i>”—the Arabic word for
+&ldquo;separate&rdquo; or &ldquo;go away&rdquo;.
+</p>
+<p>
+In the Gregorian calendar, days begin at midnight. In the Islamic calendar, days begin
+with sunset. For this reason, you should <a href="#coordinates">select coordinates above</a>
+because sunset times vary from place to place. In some places at high latitudes in the winter and summer,
+the sun sets at odd hours or doesn't set at all. In these places some people use a calendar
+from Mecca. For this reason, in this calendar you can specify that the calendar should be
+calculated as if you are in Mecca.
+</p>
+<p>
+In Islamic prayer, Muslims find the direction of Mecca. This calendar can find
+the direction to Mecca if you specify your coordinates above. The direction to Mecca
+is known as the &ldquo;Qibla&rdquo;.
+</p>
+<p>
+Each cycle of 30 years thus contains 19 normal years of 354
+days and 11 leap years of 355, so the average length of a
+year is therefore ((19 × 354) + (11 × 355)) / 30 =
+354.365… days, with a mean length of month of 1/12 this
+figure, or 29.53055… days, which closely approximates the
+mean <i>synodic month</i> (time from new Moon to next new
+Moon) of 29.530588 days, with the calendar only slipping one
+day with respect to the Moon every 2525 years.  Since the calendar
+is fixed to the Moon, not the solar year, the months shift
+with respect to the seasons, with each month beginning about
+11 days earlier in each successive solar year.
+</p>
+<p>
+The calendar presented here is the most commonly used
+civil calendar in the Islamic world; for religious purposes
+months are defined to start with the first observation of
+the crescent of the new Moon.
+</p>
+</div><span lang="en" id="showIslamicEnInfo"></span>
+
+<br clear="left" />
+
+<h3><a name="hindu" id="hinduCalName">हिंदू पंचांग</a></h3>
+
+<form name="hinducalendar" action="javascript:void(0);">
+<table class="l">
+
+<tr>
+<th id="hinduCalEra">
+    संवत:
+</th>
+<td align="center">
+    <select name="era" size="1" onchange="set_hindu_era(); updateFromGregorian();">
+        <option value="vikram"></option>
+        <option value="shaka"></option>
+        <option value="kaliyuga"></option>
+        <option value="bengali"></option>
+        <option value="nanakshahi"></option>
+        <option value="gujarati"></option>
+    </select><br>
+</td>
+</tr>
+<tr>
+<th id="hinduCalMoon">
+</th>
+<td align="center">
+  <select name="moonType" size="1" onchange="set_hindu_moontype(); updateFromGregorian();">
+    <option value="amavas">अमावस</option>
+    <option value="poonam">पूनम</option>
+  </select>
+</td>
+</tr>
+
+<tr>
+<th id="hinduDate">
+    तारीख़:
+</th>
+<td align="center">
+    <input type="checkbox" name="india" checked>
+    <label id="indiaLabel" for="india"></label><br>
+    <input dir="ltr" type="text" name="year" value="" size="5" />
+    <select name="monthType" size=1 style="display: none;" />
+      <option value="shuddh">शुद्ध</option>
+      <option value="adhik">अधिक</option>
+    </select>
+    <select name="month" size="1" onchange="document.hinducalendar.monthType.style.display = 'none'; document.hinducalendar.monthType.selectedIndex = 0;">
+        <option value="1">चैत</option>
+        <option value="2">बैसाख</option>
+        <option value="3">जेठ</option>
+        <option value="4">आसाढ़</option>
+        <option value="5">सावन</option>
+        <option value="6">भादों</option>
+        <option value="7">अश्विन</option>
+        <option value="8">कार्तिक</option>
+        <option value="9">अगहन</option>
+        <option value="10">पूस</option>
+        <option value="11">माघ</option>
+        <option value="12">फाल्गुन</option>
+    </select>
+    <input dir="ltr" type="text" name="day" value="" size="3" /><br>
+    <input type="text" class="ctr" name="solarDay" value="" size="28" readonly="readonly" />
+
+    <br />
+</td>
+</tr>
+
+<tr>
+<th id="hinduWeekdays">
+हफ़्ते का दिन:
+</th>
+<td align="center">
+    <input type="text" name="weekday" value="" size="15" class="ctr" readonly="readonly" />
+</td>
+</tr>
+<tr>
+  <th id="zodiacSign"></th>
+  <td align="center">
+    <input type="text" name="zodiac" value="" size="18" class="ctr" readonly="readonly" /><br>
+    <span id="ayanamsha"></span>: <input type="text" name="ayanamsha" value="" size="10" class="ctr" readonly="readonly" />
+  </td>
+</tr>
+<tr>
+  <th id="ritu"></th>
+  <td align="center">
+    <input type="text" name="ritu" value="" size="18" class="ctr" readonly="readonly" />
+  </td>
+</tr>
+
+<tr>
+<td colspan="2" align="center">
+<button onclick="calcHindu();">Calculate (Tithi)</button>
+<button onclick="calcHinduDivasa();">Calculate (Divasa)</button>
+</td>
+</tr>
+</table>
+</form>
+
+<p lang="hi">
+हिंदू पंचांग दोनों चांद और सूरज से जुड़ा है। कई हिंदू पंचांगों में महीना पूनम
+में शुरू होता है। इस पंचांग में महीना दोनों अमावस और पूनम पे शुरू हो सकता है। जो महीना शुरू होता
+है, ये साल में बदलता रहता राशियों के साथ। तारे एक साल में पूरा गोल करते, और
+इसलिए हिंदू पंचांग भी एक साल में गोल करता है। दोनों तारों और चांद के साथ जाने
+की वजह से, कभी एक महीना दो बार साल में होता है। जब ये होता है, पहला महीना
+&ldquo;अधिक&rdquo; होता है और दूसरा &ldquo;शुद्ध&rdquo;। भारत, पाकिस्तान,
+बांगलादेश, नेपाल, और बाली में इस पंचांग का इस्तेमाल होता है। पूरी दुनिया में हिंदुओं के
+लिए ये पंचांग अहम तारीख़ दिखाता है।
+<div id="hinduInfo" lang="hi">
+<p>
+यहाँ के बक्सों के तारीख़ों को &ldquo;तिथी&rdquo; कहते है। ये चांद का दिन है। चांद के एक गोल में ३० तिथियाँ हैं, मगर ये हमारे दिनों से
+जुदा है: आधी रात को या किसी एक घंटे को नहीं शुरू होते हैं। इसलिए नीचे लिखा है उस दिन का नाम जो था जब सूरज
+पछली बार उग गया, और ऊपर चांद की तिथी लिखी है। एक तिथी हमारे दिन से थोड़ी छोटी है क्योंकि चांद के एक गोल में
+तक़रीबन 29.5 दिन हैं, मगर 30 तिथियाँ हैं। अगर न पूनम न अमावस है, कहना है कि क्या चांद छोटा (कृष्ण) या बड़ा (शुक्ल) हो रहा है।
+जैसे, अगर अमावस से तीन दिन बाद है, दिन का नाम &ldquo;शुक्ल तीज&rdquo; है। अगर पूनम से तीन दिन बाद है,
+दिन का नाम &ldquo;कृष्ण तीज&rdquo; है। ज़्यादातर तिथी का इस्तेमाल नहीं होता है, मगर &ldquo;दिवस&rdquo; का।
+दिवस सूरज के आने पे शुरू होते हैं।
+</p>
+<table class="r">
+<tbody><tr>
+<th>दिन का नंबर</th>
+<th>दिन का नाम (हिन्दी/संस्कृत)</th>
+</tr>
+<tr>
+<td>१/१६</td>
+<td>परिवा/प्रतिपदा</td>
+</tr>
+<tr>
+<td>२/१७</td>
+<td>दूज/द्वितीया</td>
+</tr>
+<tr>
+<td>३/१८</td>
+<td>तीज/तृतीया</td>
+</tr>
+<tr>
+<td>४/१९</td>
+<td>चौथ/चतुर्थी</td>
+</tr>
+<tr>
+<td>५/२०</td>
+<td>पंचमी</td>
+</tr>
+<tr>
+<td>६/२१</td>
+<td>छठ/षष्ठी</td>
+</tr>
+<tr>
+<td>७/२२</td>
+<td>सातें/सप्तमी</td>
+</tr>
+<tr>
+<td>८/२३</td>
+<td>आठें/अष्टमी</td>
+</tr>
+<tr>
+<td>९/२४</td>
+<td>नौमी/नवमी</td>
+</tr>
+<tr>
+<td>१०/२५</td>
+<td>दसमी/दशमी</td>
+</tr>
+<tr>
+<td>११/२६</td>
+<td>ग्यारस/एकादशी</td>
+</tr>
+<tr>
+<td>१२/२७</td>
+<td>बारस/द्वादशी</td>
+</tr>
+<tr>
+<td>१३/२८</td>
+<td>तेरस/त्रयोदशी</td>
+</tr>
+<tr>
+<td>१४/२९</td>
+<td>चौदस/चतुर्दशी</td>
+</tr>
+<tr>
+<td>१५/३०</td>
+<td>अमावस/अमावस्या<br>पूनम/पूर्णिमा</td>
+</tr>
+</tbody></table>
+<p>तारे हर साल
+तक़रीबन 0.014° पीछे हो जाते हैं। जितने पीछे हुए हैं दुनिया और सूरज से,
+हम उसको &ldquo;अयनांश&rdquo; कहते हैं।
+25771.5 सालों बाद, अयनांश पूरा 360° चला होगा! इसलिए रुतों के
+साथ चलने के लिए ज़रूरी है कि महीनों की राशियाँ बदलें लगभग हर 2147.62
+साल। मगर सूर्यसिद्धान्थ में कहा है कि अयनांश 27° और -27° के बीच
+हमेशा रहता है गोल मारके। इधर सूर्यसिद्धान्थ के हिसाब का इस्तेमाल होता है
+रुतों और महीनों के लिए। राशियां सूर्यसिद्धान्थ के हिसाब से नहीं आती हैं।
+</p>
+<p>
+साल का पहला महीना ज़्यादातर चैत है, मगर बंगाली पंचांग में बैसाख है।
+किसी भी संवत में, साल ज़्यादातर ईस्वी कैलेंडर से कोई एक नंबर ज़्यादा या
+कम है। ये नंबर बदलता है जब जनवरी के बाद है मगर चैत अब तक नहीं
+आया है, और अलग-अलग संवतों में। पुराने ज़मानों में बहुत लोग कलियुग का इस्तेमाल करते थे,
+मगर आज कल ज़्यादातर विक्रम और शक इस्तेमाल होते हैं। आज
+<a href="#indian">भारतीय राष्ट्रीय पंचांग</a> में शक संवत का इस्तेमाल होता है,
+मगर कई लोग कहते हैं कि भारत को विक्रम संवत का इस्तेमाल करना है। नेपाल में
+विक्रम संवत का इस्तेमाल होता है। जब भारत सरकार ने ये राष्ट्रीय पंचांग बनाया, तभी कहा कि
+हिंदू पंचांग को 23.2°उ. 82.5°पू. से हिसाब करना है। ज़्यादातर इसी का इस्तेमाल होता
+है, मगर आप इसे बदल सकते हैं &ldquo;भारत में?&rdquo; वाला बटन से।
+</p>
+</div><span lang="hi" id="showHinduInfo"></span><br><br clear="right">
+<div lang="en" id="hinduEnInfo">
+<p>
+The Hindu religious calendar is aligned with both the moon and the sun.
+In some Hindu calendars the month begins with the full moon. In this
+calendar the month can begin with both the new moon and the full moon.
+The month that begins changes through the year based on zodiac signs.
+The stars complete a full revolution in a year, and for this reason the
+Hindu calendar completes a cycle in a year. Since it is aligned with both
+the stars and the moon, sometimes a month must occur twice in a year. When
+this happens, the first is considered &ldquo;extra&rdquo; (<i>adhik</i>)
+and the second &ldquo;pure&rdquo; (<i>shuddh</i>). This calendar is used in
+India, Pakistan, Bangladesh, Nepal, and Bali. The calendar determines important
+dates for Hindus throughout the world.
+</p>
+<table class="r">
+<tbody><tr>
+<th>Day Number</th>
+<th>Day Name (Hindi/Sanskrit)</th>
+</tr>
+<tr>
+<td>1/16</td>
+<td>Pariva/Pratipada</td>
+</tr>
+<tr>
+<td>2/17</td>
+<td>Dooj/Dwitiya</td>
+</tr>
+<tr>
+<td>3/18</td>
+<td>Teej/Tritiya</td>
+</tr>
+<tr>
+<td>4/19</td>
+<td>Chauth/Chaturthi</td>
+</tr>
+<tr>
+<td>5/20</td>
+<td>Panchami</td>
+</tr>
+<tr>
+<td>6/21</td>
+<td>Chhath/Shashthi</td>
+</tr>
+<tr>
+<td>7/22</td>
+<td>Satein/Saptami</td>
+</tr>
+<tr>
+<td>8/23</td>
+<td>Aathein/Ashtami</td>
+</tr>
+<tr>
+<td>9/24</td>
+<td>Naumi/Navami</td>
+</tr>
+<tr>
+<td>10/25</td>
+<td>Dasami/Dashami</td>
+</tr>
+<tr>
+<td>11/26</td>
+<td>Gyaras/Ekadashi</td>
+</tr>
+<tr>
+<td>12/27</td>
+<td>Baras/Dwadashi</td>
+</tr>
+<tr>
+<td>13/28</td>
+<td>Teras/Trayodashi</td>
+</tr>
+<tr>
+<td>14/29</td>
+<td>Chaudas/Chaturdashi</td>
+</tr>
+<tr>
+<td>15/30</td>
+<td>Amavas/Amavasya (New moon)<br>Poonam/Poornima (Full moon)</td>
+</tr>
+</tbody></table>
+<p>
+The dates in the boxes here are called <i>tithis</i>. This is a lunar day. In one cycle of
+the moon there are 30 tithis, but this is separate from our days: they don't
+start at midnight or any one specific time. For this reason, the name of the day
+it was at sunrise is written below, and the tithi of the moon is written
+above. A tithi is slightly shorter than one of our days because one cycle of the
+moon is about 29.5 days, but 30 tithis. If it is neither <i>Amavasya</i> nor
+<i>Poornima</i>, it must be specified whether the moon is waxing (<i>Shukla</i>)
+or waning (<i>Krishna</i>). For example, if it is three days after Amavasya,
+the day is called <i>Shukla Tritiya</i>. If it is three days after Poornima,
+the day is called <i>Krishna Tritiya</i>. Generally tithi is not used, but <i>divasa</i>.
+A divasa begins with sunrise.
+</p>
+<p>
+Every year the stars fall back 0.014°. The amount they have fallen back from the
+Earth and the sun is known as <i>Ayanamsa</i>. After 25771.5 years, ayanamsa will have gone a full 360°! For this reason in order
+to stay with the seasons it is necessary that the months' zodiac signs change about
+every 2147.62 years. However, the <cite>Surya Siddhantha</cite> says that ayanamsa cycles
+between 27° and -27°. The <cite>Surya Siddhantha</cite> values are used here
+for calculating seasons and months. The zodiac signs are not calculated from the
+<cite>Surya Siddhantha</cite>.
+</p>
+<p>
+The first month of the year is usually Chaitra, but in the Bengali calendar it is
+Vaisakh. In any <i>samvat</i> (era) the year is usually some number greater than or
+less than the Gregorian calendar. This number changes when it is after January but
+before Chaitra, and in different eras. In ancient times many used the <i>Kali Yuga</i>
+era, but these days Vikram and Shaka are most used. Today the Shaka era is used in
+the <a href="#indian">Indian National Calendar</a>, but some people say that India
+should use Vikram Samvat. In Nepal, Vikram Samvat is used. When the Indian government
+made this national calendar, it said that the Hindu calendar should be calculated
+from 23.2°N, 82.5°E. Generally this is done, but you can change this with the
+&ldquo;From India?&rdquo; button.
+</p>
+</div><span lang="en" id="showHinduEnInfo"></span>
+<br clear="all" />
+
+<h3 style="font-family: 'Times New Roman'"><a name="hebrew" id="hebCalName">הַלּוּחַ הָעִבְרִי</a></h3>
+
+<form name="hebrew" action="javascript:void(0);">
+
+<table class="l">
+
+<tr>
+<th id="hebrewDate" style="font-family: 'Times New Roman'">
+</th>
+<td align="center">
+  <span id="hebrewStart"></span>&nbsp;
+  <select name="firstmonth" size="1" onchange="set_hebrew_start();">
+    <option value="6"></option>
+    <option value="0"></option>
+  </select><br>
+    <input dir="ltr" type="text" name="year" value="" size="5" />
+    <select name="month" size="1">
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
+        <option value="5"></option>
+        <option value="6"></option>
+        <option value="7"></option>
+        <option value="8"></option>
+        <option value="9"></option>
+        <option value="10"></option>
+        <option value="11"></option>
+        <option value="12"></option>
+        <option value="13"></option>
+    </select>
+    <input dir="ltr" type="text" name="day" value="" size="3" />
+
+    <br />
+
+    <input type="text" name="leap" value="" size="36" class="ctr" readonly="readonly" />
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<button onclick="calcHebrew();">Calculate</button>
+</td>
+</tr>
+</table>
+</form>
+
+<p>
+The Hebrew (or Jewish) calendar attempts to simultaneously
+maintain alignment between the months and the seasons and
+synchronise months with the Moon—it is thus deemed a
+&ldquo;<i>lunisolar calendar</i>&rdquo;.  In addition, there are constraints
+on which days of the week on which a year can begin and to shift
+otherwise required extra days to prior years to keep the
+length of the year within the prescribed bounds.
+This isn't easy, and the
+computations required are correspondingly intricate.
+</p>
+<div id="hebrewInfo">
+<p>
+Years are classified as <i>common</i> (normal) or
+<i>embolismic</i> (leap) years which occur in a 19 year
+cycle in years 3, 6, 8, 11, 14, 17, and 19.  In an
+embolismic (leap) year, an extra <em>month</em> of 29 days,
+&ldquo;Adar Bet&rdquo; (<span lang="he">אֲדָר&nbsp;ב׳</span>), is added to the end of the year after
+the month &ldquo;Adar&rdquo;, which is designated
+&ldquo;Adar&nbsp;Aleph&rdquo; (<span lang="he">אֲדָר&nbsp;א׳</span>) in such
+years.  Further, years may be <i>deficient</i>,
+<i>regular</i>, or <i>complete</i>, having respectively
+353, 354, or 355 days in a common year and 383, 384, or 385
+days in embolismic years.  Days are defined as beginning at
+sunset, and the calendar begins at sunset the night before
+Monday, October 7, 3761 <span class="bcad">B.C.E.</span> in the Julian calendar, or
+Julian day 347995.5.  Days are numbered with Sunday as day 1,
+through Saturday: day 7.
+</p>
+<p>
+The average length of a month is 29.530594 days, extremely close
+to the mean <i>synodic month</i> (time from new Moon to
+next new Moon) of 29.530588 days.  Such is the accuracy that
+more than 13,800 years elapse before a single day
+discrepancy between the calendar's average reckoning of the
+start of months and the mean time of the new Moon.
+Alignment with the solar year is better than the Julian
+calendar, but inferior to the Gregorian.  The average length
+of a year is 365.2468 days compared to the actual solar tropical
+year (time from equinox to equinox) of 365.24219 days, so
+the calendar accumulates one day of error with respect to
+the solar year every 216 years.
+</p></div><span id="showHebrewInfo"></span>
+<br clear="left">
+
+
+<h3 style="font-family: 'Times New Roman'"><a name="persiana" id="persianCalName">گاه‌شماری ایرانی‎</a></h3>
+
+<form name="persiana" action="javascript:void(0);">
+<table class="l">
+
+<tr>
+<th id="persianCalEra" style="font-family: 'Times New Roman'">
+  شروع
+</th>
+<td align="center">
+    <select name="era" size="1" style="font-family: 'Times New Roman'" onchange="set_persian_era(); updateFromGregorian();">
+        <option value="hijri">هجری</option>
+        <option value="kurdish">کرد</option>
+    </select>
+</td>
+</tr>
+
+<tr>
+<th id="persianDate" style="font-family: 'Times New Roman'">
+    تاریخ
+</th>
+<td align="center">
+
+    <input dir="ltr" type="text" name="year" value="" size="5" />
+    <select name="month" size="1" style="font-family: 'Times New Roman';">
+        <option value="1">Farvardin فروردین</option>
+        <option value="2">Ordibehesht اردیبهشت</option>
+        <option value="3">Khordad خرداد</option>
+        <option value="4">Tir تیر</option>
+        <option value="5">Amordad امرداد</option>
+        <option value="6">Shahrivar شهریور</option>
+        <option value="7">Mehr مهر</option>
+        <option value="8">Aban آبان</option>
+        <option value="9">Azar آذر</option>
+        <option value="10">Dey دی</option>
+        <option value="11">Bahman بهمن</option>
+        <option value="12">Esfand اسفند</option>
+    </select>
+    <input dir="ltr" type="text" name="day" value="" size="3"/>
+
+    <br />
+
+    <input type="text" name="leap" value="" size="12" class="ctr" readonly="readonly"/>
+</td>
+</tr>
+
+<tr>
+<th id="persianWeekdays" style="font-family: 'Times New Roman'">
+  روزِ هفته
+</th>
+<td align="center">
+    <input type="text" name="wday" value="" size="13" class="ctr" readonly="readonly" style="font-family: 'Times New Roman'"/>
+</td>
+</tr>
+
+<tr>
+<td colspan="2" align="center">
+<button onclick="calcPersiana();">Calculate</button>
+<!--
+<input type="button" value="+" onclick="document.persiana.year.value++; calcPersiana();" />
+-->
+</td>
+
+</tr>
+</table>
+</form>
+
+<p>
+The modern Persian calendar was adopted in 1925, supplanting
+(while retaining the month names of) a traditional
+calendar dating from the eleventh century.  The calendar
+consists of 12 months, the first six of which are 31
+days, the next five 30 days, and the final month 29
+days in a normal year and 30 days in a leap year.
+</p>
+<div id="persianInfo"><p>
+Each year begins on the day in which the March equinox occurs at or
+after solar noon. Days begin at midnight. There is no leap year rule;
+366 day years do not recur in a regular pattern but instead occur
+whenever that number of days elapse between equinoxes at the reference meridian.
+The calendar therefore stays perfectly aligned with the seasons. No
+attempt is made to synchronise months with the phases of the Moon.
+</p><p>
+There is some controversy about the reference meridian at which the
+equinox is determined in this calendar.  Various sources cite
+Tehran, Esfahan, and the central meridian of Iran Standard Time as
+that where the equinox is determined.
+In this implementation, Iran Standard Time is used.
+In Iran, it appears the Iran Standard Time longitude is used today.
+This is 52°30' E (52.5° E), or GMT+3:30.
+As this calendar is proleptic for all
+years prior to 1925&nbsp;<span class="bcad">C.E.</span>, historical
+considerations regarding the capitals of Persia and Iran do not
+seem to apply.
+</p>
+<p>In Iran, although the Persian calendar is separate from the <a href="#islamic">Islamic calendar</a>,
+  it has the same starting year of 622 <span class="bcad">C.E.</span>
+  marking the <i>Hijra</i> (flight) from Mecca to Medina. The Kurdish calendar
+  is also a version of the Persian calendar, but beginning earlier, in 612
+  <span class="bcad">B.C.E</span>. This year is relevant to Kurdish history
+  because of its importance in the life of the Median king Cyaxares (in Kurdish: <i>Hevexştre</i>).
+  King Phraortes (in Kurdish: <i>Frevertîş</i>),
+  the father of Cyaxares, was killed in battle by Assyrians. Media was then
+  conquered by Scythians. Cyaxares overthrew the Scythians and began to fight against
+  Assyria. In 612 <span class="bcad">B.C.E.</span>, Cyaxares took the Assyrian capital of
+  Nineveh, a crushing defeat for the Assyrians. Because the modern Kurds
+  consider themselves to have a common heritage with the ancient Median people,
+  this date is used for the beginning of the Kurdish calendar.
+</p>
+<p>This implementation allows you to choose between both the Hijri (Islamic) and
+  Kurdish (Median) year counts. Only the year number is affected; months and days remain
+  the same.
+</p>
+</div><span id="showPersianInfo"></span>
+<br clear="left">
+
+<!-- <h3><a style="font-family: 'Times New Roman', 'Songti SC';" name="chinese" id="chineseCalName"></a></h3>
+
+<form name="chinese" action="javascript:void(0);">
+
+<table class="l">
+
+<tr>
+<th id="chineseDate">
+</th>
+<td align="center">
+    <input dir="ltr" type="text" name="year" value="" size="5" />
+    <select name="month" size="1">
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
+        <option value="5"></option>
+        <option value="6"></option>
+        <option value="7"></option>
+        <option value="8"></option>
+        <option value="9"></option>
+        <option value="10"></option>
+        <option value="11"></option>
+        <option value="12"></option>
+        <option value="13"></option>
+    </select>
+    <input dir="ltr" type="text" name="day" value="" size="3" />
+
+    <br />
+
+    <input type="text" name="yearType" value="" size="36" class="ctr" readonly="readonly" />
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<button onclick="calcChinese();">Calculate</button>
+</td>
+</tr>
+</table>
+</form>
+<p>The traditional Chinese calendar is a lunisolar calendar with 12 months plus a repeated
+month in leap years. Unlike most calendars, it does not count years incrementally, but
+rather in two cycles: a ten-year Celestial stem cycle and a twelve-year Earthly branch cycle of
+Chinese zodiac animals. These cycles repeat every 60 years (the lowest common multiple of 10 and 12).
+The era used on this website is from 2698 <span class="bcad">B.C.E.</span>,
+the beginning of the reign of the Yellow Emperor. According to Chinese legend, the
+calendar was invented in 2637 <span class="bcad">B.C.E.</span> by the same Yellow
+Emperor.</p>
+<div id="chineseInfo">
+<p>As a lunisolar calendar, the Chinese calendar is based on both the phase of the
+  moon and the longitude of the sun. The 360 degrees of longitude of the sun are
+  broken up into 12 <i>principal terms</i>, each corresponding to a particular month.
+  The first solar term begins when the sun's longitude is 330 degrees and ends when
+  it is 0 degrees.
+  Sometimes,
+  two lunar months in a row occur with no change in solar term. When this happens,
+  the second of these two months is called <i>Rùn</i> (intercalary) and the year is
+  considered a leap year. There can only be
+  one Run month in a year; so if multiple months fit the criteria, only the first in
+  the year is considered Run.</p>
+<p>The main constraint in the calendar is that the Winter solstice must always
+  occur in the eleventh month. Other months must sometimes be moved around in order to accomplish
+  this.</p>
+<p>Although the <a href="#gregorian">Gregorian calendar</a> has been used for civil purposes
+  in China since 1912, the Chinese calendar is still important for calculating festivals,
+  the most well-known of which is the Chinese New Year. Additionally, cultures
+  influenced by China also sometimes use the Chinese
+  calendar to determine festivals. These cultures include Japan, Vietnam,
+  and Korea.</p>
+</div><span id="showChineseInfo"></span>
+<br clear="left" /> -->
+
+<h3><a name="indian" id="indianCalName">भारतीय राष्ट्रीय पंचांग</a></h3>
+
+<form name="indiancivilcalendar" action="javascript:void(0);">
+<table class="l">
+
+<tr>
+<th id="indianDate">
+    तारीख़:
+</th>
+<td align="center">
+
+    <input type="text" name="year" value="" size="5" />
+    <select name="month" size="1">
+        <option value="1">चैत</option>
+        <option value="2">बैसाख</option>
+        <option value="3">जेठ</option>
+        <option value="4">आसाढ़</option>
+        <option value="5">सावन</option>
+        <option value="6">भादों</option>
+        <option value="7">अश्विन</option>
+        <option value="8">कार्तिक</option>
+        <option value="9">अगहन</option>
+        <option value="10">पूस</option>
+        <option value="11">माघ</option>
+        <option value="12">फाल्गुन</option>
+    </select>
+    <input type="text" name="day" value="" size="3" />
+
+    <br />
+
+    <input type="text" name="leap" value="" size="15" class="ctr" readonly="readonly" />
+</td>
+</tr>
+
+<tr>
+<th id="indianWeekdays">
+हफ़्ते का दिन:
+</th>
+<td align="center">
+    <input type="text" name="weekday" value="" size="15" class="ctr" readonly="readonly" />
+</td>
+</tr>
+
+<tr>
+<td colspan="2" align="center">
+<button onclick="calcIndianCivilCalendar();">Calculate</button>
+</td>
+</tr>
+</table>
+</form>
+
+<p>
+A bewildering variety of calendars have been and continue to be
+used in the Indian subcontinent.  In 1957 the Indian
+government's Calendar Reform Committee adopted the National
+Calendar of India for civil purposes and, in addition,
+defined guidelines to standardise computation of the
+religious calendar, which is based on astronomical
+observations.  The civil calendar is used throughout India
+today for administrative purposes, but a variety of
+<a href="#hindu">religious calendars</a> remain in use.
+We present the civil calendar here.
+</p>
+<div id="indianInfo">
+<p>
+The National Calendar of India is composed of 12 months.
+The first month, <em>Chaitra</em>, is 30 days in normal
+and 31 days in leap years.  This is followed by five
+consecutive 31 day months, then six 30 day months.  Leap
+years in the Indian calendar occur in the same years as
+as in the <a href="#gregorian">Gregorian calendar</a>; the two calendars thus
+have identical accuracy and remain synchronised.
+</p>
+<p>
+Years in the Indian calendar are counted from the start of
+the Shaka Era, the equinox of March 22nd of year 79 in the
+Gregorian calendar, designated day 1 of month
+Chaitra of year 1 in the Shaka Era.  The calendar was
+officially adopted on 1 Chaitra, 1879 Shaka Era, or
+March 22nd, 1957 Gregorian.  Since year 1 of the Indian
+calendar differs from year 1 of the Gregorian, to
+determine whether a year in the Indian calendar is a leap
+year, add 78 to the year of the Shaka era then
+apply the Gregorian calendar rule to the sum.
+<br clear="left">
+</p></div><span id="showIndianInfo"></span>
+<br clear="left" />
+
+
+</p>
+
+<h3 style="font-family: 'Times New Roman';"><a name="mesoamerican">Mesoamerican Calendars</a></h3>
+<form name="mayancount" action="javascript:void(0);">
+<table class="l">
+
+<tbody><tr>
+<td align="center">
+    <b>Mayan Long Count</b>
+    <br>
+
+    <input type="text" name="baktun" value="" size="4">
+    <b>.</b>
+    <input type="text" name="katun" value="" size="3">
+    <b>.</b>
+    <input type="text" name="tun" value="" size="3">
+    <b>.</b>
+    <input type="text" name="uinal" value="" size="3">
+    <b>.</b>
+    <input type="text" name="kin" value="" size="3">
+    <br>
+<div align="left">
+  <b>Calendar type:</b>&nbsp;&nbsp;<select name="type" onchange="calcMayanCount();">
+    <option value="mayan">Mayan</option>
+    <option value="aztec">Aztec</option>
+  </select><br>
+    <b><span id="mesoamericanSolar">Haab:</span></b>&nbsp;&nbsp;<input type="text" name="haab" value="" size="20" class="ctr" readonly="readonly">
+<br>
+    <b><span id="mesoamericanReligious">Tzolkin:</span></b>&nbsp;&nbsp;<input type="text" name="tzolkin" value="" size="20" class="ctr" readonly="readonly">
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" align="center">
+<button onclick="calcMayanCount();">Calculate</button>
+</td>
+</tr>
+</tbody></table>
+</form>
+
+<p>
+The Mayans employed three calendars, all organised as hierarchies
+of cycles of days of various lengths.  The <i>Long Count</i> was
+the principal calendar for historical purposes, the <i>Haab</i>
+was used as the civil calendar, while the <i>Tzolkin</i>
+was the religious calendar.  All of the Mayan calendars
+are based on serial counting of days without means for synchronising
+the calendar to the Sun or Moon, although the Long Count and Haab
+calendars contain cycles of 360 and 365 days, respectively, which
+are roughly comparable to the solar year.  Based purely on counting
+days, the Long Count more closely resembles the
+<a href="#julianday">Julian Day</a> system and contemporary computer representations of
+date and time than other calendars devised in antiquity.
+Also distinctly modern in appearance is that days and
+cycles count from zero, not one as in most other calendars,
+which simplifies the computation of dates, and that numbers
+as opposed to names were used for all of the cycles.
+</p>
+<div id="mayanInfo">
+<p>
+The Long Count calendar is organised into the
+hierarchy of cycles shown at the right.
+Each of the cycles is composed of 20 of the next
+shorter cycle with the exception of the <i>tun</i>,
+which consists of 18 <i>uinal</i> of 20 days each.
+This results in a <i>tun</i> of 360 days, which maintains
+approximate alignment with the solar year over modest
+intervals—the calendar comes undone from the
+Sun 5 days every <i>tun</i>.
+</p>
+<table class="r">
+<tbody><tr>
+<th>Cycle</th>
+<th>Composed of</th>
+<th>Total<br> Days</th>
+<th>Years<br>(approx.)</th>
+</tr>
+<tr>
+<td><b>kin</b></td>
+<td>&nbsp;</td>
+<td align="center">1</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><b>uinal</b></td>
+<td align="center">20 kin</td>
+<td align="center">20</td>
+<td align="center">&nbsp;</td>
+</tr>
+<tr>
+<td><b>tun</b></td>
+<td align="center">18 uinal</td>
+<td align="center">360</td>
+<td align="center">0.986</td>
+</tr>
+<tr>
+<td><b>katun</b></td>
+<td align="center">20 tun</td>
+<td align="center">7200</td>
+<td align="center">19.7</td>
+</tr>
+<tr>
+<td><b>baktun</b></td>
+<td align="center">20 katun</td>
+<td align="center">144,000</td>
+<td align="center">394.3</td>
+</tr>
+<tr>
+<td><b>pictun</b></td>
+<td align="center">20 baktun</td>
+<td align="center">2,880,000</td>
+<td align="center">7,885</td>
+</tr>
+<tr>
+<td><b>calabtun</b></td>
+<td align="center">20 piktun</td>
+<td align="center">57,600,000</td>
+<td align="center">157,704</td>
+</tr>
+<tr>
+<td><b>kinchiltun</b></td>
+<td align="center">20 calabtun</td>
+<td align="center">1,152,000,000</td>
+<td align="center">3,154,071</td>
+</tr>
+<tr>
+<td><b>alautun</b></td>
+<td align="center">20 kinchiltun</td>
+<td align="center">23,040,000,000</td>
+<td align="center">63,081,429</td>
+</tr>
+</tbody></table>
+
+<p>
+The Mayans believed that at the conclusion of each
+<i>pictun</i> cycle of about 7,885 years the universe is
+destroyed and re-created.  Those with apocalyptic
+inclinations will be relieved to observe that the present
+cycle will not end until Columbus Day, October 12, 4772 in
+the <a href="#gregorian">Gregorian calendar</a>.  Speaking of apocalyptic events,
+it's amusing to observe that the longest of the cycles in
+the Mayan calendar, <i>alautun</i>, about 63 million
+years, is comparable to the 65 million years since the
+impact which brought down the curtain on the dinosaurs—an
+impact which occurred near the Yucatán peninsula where,
+almost an <i>alautun</i> later, the Mayan civilisation
+flourished.  If the universe is going to be destroyed at
+the end of the current <i>pictun</i>, there's no point in
+writing dates using the longer cycles, so we dispense
+with them here.
+</p>
+<p>
+Dates in the Long Count calendar are written, by convention,
+as:
+</p>
+<p class="c">
+<i>baktun</i>&nbsp;<b>.</b>&nbsp;<i>katun</i>&nbsp;<b>.</b>&nbsp;<i>tun</i>&nbsp;<b>.</b>&nbsp;<i>uinal</i>&nbsp;<b>.</b>&nbsp;<i>kin</i>
+</p>
+<p>
+and thus resemble present-day Internet IP addresses!
+</p>
+<p>
+For civil purposes the Mayans used the <i>Haab</i>
+calendar in which the year was divided into 18 named periods
+of 20 days each, followed by five <i>Wayeb</i> days
+not considered part of any period.  Dates in this
+calendar are written as a day number (0 to 19 for regular
+periods and 0 to 4 for the days of <i>Wayeb</i>) followed
+by the name of the period.  This calendar has no concept of
+year numbers; it simply repeats at the end of the complete
+365 day cycle.  Consequently, it is not possible, given a
+date in the Haab calendar, to determine the Long
+Count or year in other calendars.  The 365 day cycle
+provides better alignment with the solar year than the 360
+day <i>tun</i> of the Long Count but, lacking a leap year
+mechanism, the Haab calendar shifted one day with
+respect to the seasons about every four years.
+</p>
+<p>
+The Mayan religion employed the <i>Tzolkin</i> calendar,
+composed of 20 named periods of 13 days.  Unlike the
+Haab calendar, in which the day numbers increment
+until the end of the period, at which time the next period
+name is used and the day count reset to 0, the names and numbers
+in the Tzolkin calendar advance in parallel.  On each
+successive day, the day number is incremented by 1, being
+reset to 1 after reaching 13, and the next in the cycle of twenty
+names is affixed to it.  Since 13 does not evenly divide 20,
+there are thus a total of 260 day number and period names before
+the calendar repeats.  As with the Haab calendar, cycles
+are not counted and one cannot, therefore, convert a Tzolkin
+date into a unique date in other calendars.  The 260 day cycle
+formed the basis for Mayan religious events and has no relation
+to the solar year or lunar month.
+</p>
+<p>
+The Mayans frequently specified dates using <em>both</em> the Haab
+and Tzolkin calendars; dates of this form repeat only
+every 52 solar years.
+</p>
+<p>The Aztecs used a calendar very similar to the Mayan calendar.
+They lacked a long count and used different words for days and months.
+Mayan Haab dates do not correspond to their Aztec counterpart,
+called <i lang="nci">Xiuhpōhualli</i> in Nahuatl, although both have 365 days.
+Both had a 260 day religious cycle and a 365 day civil cycle.
+Here you may choose between the Mayan and Aztec calendars.</p>
+<p id="mayanMonths">
+</p>
+<br clear="all">
+</div><span id="showMayanInfo"></span>
+
+<br clear="left" /><br clear="right" /><br>
+
+<h3 style="font-family: 'Times New Roman';"><a name="juliancalendar">Julian Calendar</a></h3>
+<form name="juliancalendar" action="javascript:void(0);">
+<table class="l">
+
+<tbody><tr>
+<th id="julianDate"></th>
+<td align="center">
+
+    <input type="text" name="year" value="" size="5">
+    <select name="month" size="1">
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+    </select>
+    <input type="text" name="day" value="" size="3">
+
+    <br>
+
+    <input type="text" name="leap" value="" size="12" class="ctr" readonly="readonly">
+</td>
+</tr>
+<tr align="center">
+  <th id="julianWeekdays"></th>
+  <td><input type="text" name="wday" value="" size="9" class="ctr" readonly="readonly"></td>
+</tr>
+
+<tr>
+<td colspan="2" align="center">
+<button name="calculate" onclick="calcJulianCalendar();">Calculate</button>
+</td>
+</tr>
+</tbody></table>
+</form>
+<p>
+The Julian calendar was proclaimed by Julius Cæsar in 46 <span class="bcad">B.C.</span>
+and underwent several modifications before reaching its final
+form in 8 <span class="bcad">A.D.</span>  The Julian calendar differs from the Gregorian
+only in the determination of leap years, lacking the correction
+for years divisible by 100 and 400 in the Gregorian calendar.
+In the Julian calendar, any positive year is a leap year if
+divisible by 4.  (Negative years are leap years if the absolute value
+divided by 4 yields a remainder of 1).  Days are considered to
+begin at midnight.
+</p>
+<p>
+In the Julian calendar the average year has a length of 365.25 days.
+compared to the actual solar tropical year
+of 365.24219878 days.  The calendar thus accumulates one day of
+error with respect to the solar year every 128 years.
+Being a purely solar calendar, no attempt is made to synchronise the
+start of months to the phases of the Moon.
+</p>
+<br clear="left">
+
+<h3 style="font-family: 'Times New Roman';"><a name="ISO8601">ISO-8601 Week and Day, and Day of Year</a></h3>
+
+<form name="isoweek" action="javascript:void(0);">
+<table class="l">
+
+<tr>
+<td align="center">
+
+    Day <input type="text" name="day" value="" size="3" /> of
+    week <input type="text" name="week" value="" size="3" /> of
+    year <input type="text" name="year" value="" size="5" />
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<button onclick="calcIsoWeek();">Calculate</button>
+</td>
+</tr>
+</table>
+</form>
+
+<br clear="left" /><br>
+
+<form name="isoday" action="javascript:void(0);">
+<table class="l">
+
+<tr>
+<td align="center">
+
+    Day <input type="text" name="day" value="" size="3" /> of
+    year <input type="text" name="year" value="" size="5" />
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<button onclick="calcIsoDay();">Calculate</button>
+</td>
+</tr>
+</table>
+</form>
+
+<br clear="left" />
+
+<h3 style="font-family: 'Times New Roman';"><a name="mangli">Martian Mangli Calendar</a></h3>
+
+<form name="manglicalendar" action="javascript:void(0);">
+<table class="l">
+
+<tr>
+<th>Date</th>
+<td align="center">
+    <input type="text" name="year" value="" size="5" />
+    <select name="month" size="1">
+        <option value="1">Noroz</option> <!-- Nowruz -->
+        <option value="2">Ayorz</option> <!-- Iyyar -->
+        <option value="3">Paljen</option> <!-- Phalgun -->
+        <option value="4">Parmet</option> <!-- Parmouti -->
+        <option value="5">Prilum</option> <!-- April -->
+        <option value="6">Chetrum</option> <!-- Chaitra -->
+        <option value="7">Cansen</option> <!-- K'ank'in -->
+        <option value="8">Dassem</option> <!-- December -->
+        <option value="9">Shebta</option> <!-- Shevat -->
+        <option value="10">Setsa</option> <!-- Sotz' -->
+        <option value="11">Sawvum</option> <!-- Saavan -->
+        <option value="12">Jeshtum</option> <!-- Jyeshtha -->
+        <option value="13">Shebin</option> <!-- Sha'ban -->
+        <option value="14">Novin</option> <!-- November -->
+        <option value="15">Shivna</option> <!-- Sivan -->
+        <option value="16">Nisna</option> <!-- Nisan -->
+        <option value="17">Abro</option> <!-- Aban -->
+        <option value="18">Azro</option> <!-- Azar -->
+        <option value="19">Septid</option> <!-- September -->
+        <option value="20">Octid</option> <!-- October -->
+        <option value="21">Mawgun</option> <!-- Maagha -->
+        <option value="22">Yawshun</option> <!-- Yaxk'in -->
+        <option value="23">Acacon</option> <!-- Auqakuh -->
+        <option value="24">Arason</option> <!-- Ares -->
+    </select>
+    <input type="text" name="sol" value="" size="3" /><br>
+</td>
+</tr>
+<tr>
+  <th>Solar longitude</th>
+  <td align="center">
+    L<sub>s</sub>: <input type="text" name="Ls" value="" size="7" readonly="readonly" />
+  </td>
+</tr>
+<tr>
+  <th>
+      Time
+  </th>
+  <td align="center">
+      <input type="text" name="hour" value="00" size="2"/>:<input
+      	   type="text" name="min" value="00" size="2"/>
+      <br>
+  </td>
+</tr>
+<tr>
+  <th>
+    Mars Sol Date (MSD)
+  </th>
+  <td align="center">
+    <input type="text" name="msd" value="0" size="15" readonly/>
+  </td>
+<tr>
+<td colspan="2" align="center">
+<button onclick="calcMangli();">Calculate</button>
+</td>
+</tr>
+</table>
+</form>
+
+<p>The Mangli calendar is designed to be used on Mars
+  (Sanskrit: <span lang="sa" xml:lang="sa">मंगल</span><span> <i>mangala</i></span>).
+  Rather than counting Earth days, it counts <em>sols</em>, or the time
+  for Mars to rotate on its axis. One Martian sol is equal to slightly more than
+  an Earth day at 1.02749125170 Earth days (24 hours, 40 minutes). A year on Mars
+  is 668.5991 sols, or about 687 Earth days&mdash;almost twice an Earth year.
+  Because of this, the Mangli calendar has 24 months rather than the 12 in
+  most Earth calendars.</p>
+<div id="mangliInfo">
+<table class="r"><tbody>
+  <tr>
+    <th>Mangli month</th>
+    <th>Etymology</th>
+    <th>Original name</th>
+  </tr>
+  <tr>
+    <td>Noroz</td>
+    <td>Persian</td>
+    <td>Nowruz <span lang="fa">نوروز</span></td>
+  </tr>
+  <tr>
+    <td>Ayorz</td>
+    <td>Hebrew</td>
+    <td>Iyyar <span lang="he">אִיָּר</span></td>
+  </tr>
+  <tr>
+    <td>Paljen</td>
+    <td>Sanskrit</td>
+    <td>Phalguna <span lang="sa">फाल्गुन</span></td>
+  </tr>
+  <tr>
+    <td>Parmet</td>
+    <td>Egyptian</td>
+    <td>Parmouti</td>
+  </tr>
+  <tr>
+    <td>Prilum</td>
+    <td>English</td>
+    <td>April</td>
+  </tr>
+  <tr>
+    <td>Chetrum</td>
+    <td>Sanskrit</td>
+    <td>Chaitra <span lang="sa">चैत्र</span></td>
+  </tr>
+  <tr>
+    <td>Cansen</td>
+    <td>Mayan</td>
+    <td>K'ank'in</td>
+  </tr>
+  <tr>
+    <td>Dassem</td>
+    <td>English</td>
+    <td>December</td>
+  </tr>
+  <tr>
+    <td>Shebta</td>
+    <td>Hebrew</td>
+    <td>Shevat <span lang="he">שְׁבָט</span></td>
+  </tr>
+  <tr>
+    <td>Setsa</td>
+    <td>Mayan</td>
+    <td>Sotz'</td>
+  </tr>
+  <tr>
+    <td>Sawvum</td>
+    <td>Hindi</td>
+    <td>Saavan <span lang="hi">सावन</span></td>
+  </tr>
+  <tr>
+    <td>Jeshtum</td>
+    <td>Sanskrit</td>
+    <td>Jyeshtha <span lang="sa">ज्येष्ठ</span></td>
+  </tr>
+  <tr>
+    <td>Shebin</td>
+    <td>Arabic</td>
+    <td>Sha'ban <span lang="ar">شعبان</span></td>
+  </tr>
+  <tr>
+    <td>Novin</td>
+    <td>English</td>
+    <td>November</td>
+  </tr>
+  <tr>
+    <td>Shivna</td>
+    <td>Hebrew</td>
+    <td>Sivan <span lang="he">סִיוָן</span></td>
+  </tr>
+  <tr>
+    <td>Nisna</td>
+    <td>Hebrew</td>
+    <td>Nisan <span lang="he">נִיסָן‬</span></td>
+  </tr>
+  <tr>
+    <td>Abro</td>
+    <td>Persian</td>
+    <td>Aban <span lang="fa">آبان</span></td>
+  </tr>
+  <tr>
+    <td>Azro</td>
+    <td>Persian</td>
+    <td>Azar <span lang="fa">آذر</span></td>
+  </tr>
+  <tr>
+    <td>Septid</td>
+    <td>English</td>
+    <td>September</td>
+  </tr>
+  <tr>
+    <td>Octid</td>
+    <td>English</td>
+    <td>October</td>
+  </tr>
+  <tr>
+    <td>Mawgun</td>
+    <td>Sanskrit</td>
+    <td>Maagha <span lang="sa">माघ</span></td>
+  </tr>
+  <tr>
+    <td>Yawshun</td>
+    <td>Mayan</td>
+    <td>Yaxk'in</td>
+  </tr>
+  <tr>
+    <td>Acacon</td>
+    <td>Quechua</td>
+    <td>Auqakuh</td>
+  </tr>
+  <tr>
+    <td>Arason</td>
+    <td>Greek</td>
+    <td>Ares <span lang="el">Άρης</span></td>
+  </tr>
+</tbody></table>
+<p>By default, in the Mangli calendar, all months are 28 days except the first
+  four which are 27 days each. This gives a year length of 668 sols. However,
+  in even numbered years, the fourth month (Parmet) has 28 days; and in years
+  divisible by 10, the third month (Paljen) has 28 days as well. Finally, in
+  years divisible by 1111, the last month (Arason) has only 27 days rather than
+  28. This gives an average year length of 668.5990999 sols, close to the
+  668.5991 of the Martian orbit.
+</p>
+<p>Month names in the Mangli calendar are adapted from month names in various
+  other calendars of the world, although the names are changed significantly.
+  Only calendars that maintain alignment with the seasons were used, as the Mangli
+  calendar follows the orbit of Mars around the sun and seasons on Mars.
+  Three month names are not from other month names but are from other cultural aspects.
+  The first month, Noroz, is from <span lang="fa">نوروز <i>Nowruz</i></span>, a
+  new year festival of Persian origin occuring during the spring equinox. The
+  23<sup>rd</sup> month, Acacon, is from Auqakuh, the Quechua word for Mars. The last
+  month, Arason, is from the Greek god of war Ares, associated with the Roman Mars.
+  Month names are in pairs with similar-sounding endings, although two months
+  in a pair do not necessarily share an origin.</p>
+<p>Like Earth, Mars has seasons, as it has a tilt of 25°. Since the Northern and Southern
+  hemispheres of Mars have opposite seasons, month names can be inspired
+  by the season of either hemisphere at that time of the year. A notable difference between Earth and Mars is that
+  Mars has a much more elliptical orbit. Perihelion (when Mars is closest to the sun)
+  occurs when it is winter in the North, summer in the South. Apehelion (when Mars is
+  farthest from the sun) occurs when it is summer in the North, winter in the South.
+  The effect of this is that seasons in the Southern hemisphere are more extreme than
+  in the Northern hemisphere.
+</p>
+<p>The Mangli calendar begins with the equinox on Mars on April 11, 1955
+  (on Mars, this was the spring equinox in the North and the autumn equinox in the South).
+  Going by this calendar beginning, a major dust storm occured in year 1 of the Mangli calendar
+  (1956 in the <a href="#gregorian">Gregorian calendar</a>). This start date is not unique to
+  the Mangli calendar but was proposed by Dr. R. Todd Clancy of the Space Science Institute
+  and is commonly used by scientists for tracking time on Mars.
+</p>
+<p>Times given are local times for the prime meridian of Mars.</p>
+</div><span id="showMangliInfo"></span>
+<br clear="all">
+
+<h3 style="font-family: 'Times New Roman';"><a name="calendarmaker">Calendar Maker</a></h3>
+<form name="calendarMaker" action="javascript:void(0);">
+<table class="l">
+  <tr><td align="center">
+    <input type="text" name="year" value="2019" size="5" />
+    <select name="month" size="1">
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+        <option value="all">Full Year</option>
+    </select><br>
+    Start of Week:&nbsp;
+    <select name="weekstart">
+      <option value="0">Sunday</option>
+      <option value="1">Monday</option>
+      <option value="2">Tuesday</option>
+      <option value="3">Wednesday</option>
+      <option value="4">Thursday</option>
+      <option value="5">Friday</option>
+      <option value="6">Saturday</option>
+    </select><br>
+    Additional calendar: <select name="additionalCal">
+      <option value="none">None</option>
+      <option value="islamic">Islamic</option>
+      <option value="hindu">Hindu</option>
+      <option value="hebrew">Hebrew</option>
+      <option value="persian">Persian</option>
+      <!-- <option value="chinese">Chinese</option> -->
+      <option value="moon">Moon phases</option>
+    </select>
+  </td></tr>
+  <tr><td>
+    <p>
+      Include:<br>
+      <input type="checkbox" name="gregorian" checked>&nbsp;Gregorian (After 1582) or Julian (Before 1582) events<br>
+      <input type="checkbox" name="muslim" checked>&nbsp;Muslim events<br>
+      <input type="checkbox" name="hindu" checked>&nbsp;Hindu events<br>
+      <input type="checkbox" name="jewish" checked>&nbsp;Jewish events<br>
+      <input type="checkbox" name="julian" checked>&nbsp;Julian events (After 1582)<br>
+      <!-- <input type="checkbox" name="chinese" checked>&nbsp;Chinese events<br> -->
+      <input type="checkbox" name="astro" checked>&nbsp;Astronomical events<br>
+      <input type="checkbox" name="longPeriods" checked>&nbsp;Include multiple-day periods
+    </p>
+  </td></tr>
+  <tr><td align="center">
+    <button name="make" onclick="makeCalendar();">Make Calendar</button>&nbsp;&nbsp;
+    <button name="toggle" onclick="toggleCalendar();">Hide Calendar</button>
+  </td></tr>
+</table><br clear="all"><br><br>
+<div id="calendarBox">
+  <!-- <div>
+  <div id="calendarHeading"></div><br>
+  <table class="calendar"><tbody id="calendar">
+  </tbody></table>
+</div> -->
+</div>
+</form>
+<br clear="all" />
+
+<br><br><hr /><br><br><br>
+
+<script type="text/javascript" language="JavaScript">
+// <!--
+
+var calendarBox = document.getElementById("calendarBox");
+document.language.language1.value = language1;
+document.language.language2.value = language2;
+document.language.language3.value = language3;
+document.language.language4.value = language4;
+document.language.language5.value = language5;
+document.basic.theme.value = theme;
+changeLanguage1(null, true);
+changeLanguage2(null, true);
+changeLanguage3(null, true);
+changeLanguage4(null, true);
+changeLanguage5(null, true);
+//changeLanguage6(null, true);
+changeTheme();
+setDateToToday();
+document.basic.latitude.value = coordinates[0];
+document.basic.NS.selectedIndex = coordinates[1];
+document.basic.longitude.value = coordinates[2];
+document.basic.EW.selectedIndex = coordinates[3];
+document.basic.timezone1.selectedIndex = coordinates[3];
+document.basic.dst.value = dst;
+document.hinducalendar.moonType.selectedIndex = hinduSettings[0];
+document.hinducalendar.era.value = hinduSettings[1];
+set_hindu_moontype();
+set_hindu_era();
+document.persiana.era.value = persian_era;
+set_persian_era();
+set_hebrew_start();
+document.islamic.calculation.value = islcalc;
+document.islamic.asr.value = islasr;
+var today = new Date();
+var todayJ = gregorian_to_jd(today.getFullYear(),
+    (today.getMonth() + 1),
+    today.getDate())
+    + (today.getHours()/24.0);
+document.basic.timezone2.value = (today.getTimezoneOffset())/60.0;
+if (is_dst(todayJ)) {
+  if (document.basic.timezone2.value == 0) {
+    document.basic.timezone1.selectedIndex = 0;
+    document.basic.timezone2.value = 1;
+  } else if (document.basic.timezone1.selectedIndex == 0) {
+    document.basic.timezone2.value--;
+  } else {
+    document.basic.timezone2.value++;
+  }
+}
+
+function toggleInfo(calendar, more="Read more", less="Read less", forceClose=false) {
+  let info = document.getElementById(calendar + "Info");
+  let buttonId = "show" + calendar.charAt(0).toUpperCase() + calendar.slice(1) + "Info";
+  let button = document.getElementById(buttonId);
+  if (info.style.display == "none" && !forceClose) {
+    info.style.display = "block";
+    if (calendar == "sun")
+      document.getElementById("sunInfoDawn").style.display = "inline";
+    button.innerHTML = "(<a class=\"button\" onclick=\"toggleInfo('" +
+      calendar + "', '" + more + "', '" + less + "')\">" + less + "</a>)";
+  } else {
+    info.style.display = "none";
+    if (calendar == "sun")
+      document.getElementById("sunInfoDawn").style.display = "none";
+    button.innerHTML = "(<a class=\"button\" onclick=\"toggleInfo('" +
+      calendar + "', '" + more + "', '" + less + "')\">" + more + "</a>)";
+  }
+}
+toggleInfo("gregorian", "Read more", "Read less", true);
+toggleInfo("persian", "Read more", "Read less", true);
+toggleInfo("mayan", "Read more", "Read less", true);
+toggleInfo("mangli", "Read more", "Read less", true);
+toggleInfo("indian", "Read more", "Read less", true);
+toggleInfo("hindu", "ज़्यादा पढ़ें", "कम पढ़ें", true);
+toggleInfo("hinduEn", "Read in English", "Read less", true);
+toggleInfo("islamic", "زیادہ پڑھیں",
+  "کم پڑھیں", true);
+toggleInfo("islamicEn", "Read in English", "Read less", true);
+toggleInfo("julianDay", "Show more", "Show less", true);
+toggleInfo("hebrew", "Read more", "Read less", true);
+//toggleInfo("chinese", "Read more", "Read less", true);
+toggleInfo("sun", "more", "less", true);
+toggleInfo("moon", "more", "less", true);
+function toggleMap(forceClose=false) {
+  let map = document.getElementById("map");
+  let button = document.getElementById("showMap");
+  if (map.style.display == "none" && !forceClose) {
+    map.style.display = "block";
+    button.innerHTML = "<a class=\"button\" onclick=\"toggleMap()\">Hide map</a>";
+  } else {
+    map.style.display = "none";
+    button.innerHTML = "<a class=\"button\" onclick=\"toggleMap()\">Show map</a>";
+  }
+}
+toggleMap(true);
+
+document.calendarMaker.toggle.style.display = "none";
+calendarBox.style.display = "none";
+function makeMonthCalendar(month) {
+  let equinoxes = ["Spring equinox", "Summer solstice", "Autumn equinox", "Winter solstice"];
+  var calendar2 = document.calendarMaker.additionalCal.value;
+  document.calendarMaker.toggle.style.display = "inline-block";
+  calendarBox.style.display = "flex";
+  document.calendarMaker.toggle.innerHTML = "Hide Calendar";
+  let calendarTable = document.createElement("TABLE");
+  calendarTable.classList.add("calendar");
+  let calendar = document.createElement("TBODY");
+  calendarTable.appendChild(calendar);
+  let year = document.calendarMaker.year.value;
+  let daysInMonth = [31, leap_gregorian(year) ? 29 : 28, 31, 30, 31, 30,
+          31, 31, 30, 31, 30, 31][month-1];
+  let weekStart = document.calendarMaker.weekstart.selectedIndex;
+  let longPeriods = document.calendarMaker.longPeriods.checked;
+  let j = gregorian_to_jd(year, month, 1);
+  let firstDay = (jwday(j)-weekStart+1) % 7.0;
+  if (firstDay < 1) firstDay += 7;
+  let calendarHTML = "<tr>";
+  for (var i = 0; i < 7; i++)
+    calendarHTML += "<th>" + lang1Data.weekdayCodes[mod(i+weekStart, 7)] + "</th>";
+  calendarHTML += "</tr>";
+  calendar.innerHTML = calendarHTML;
+  let dayNum = 0;
+  var months = [];
+  var years = [];
+  while (dayNum < firstDay+daysInMonth-1) {
+    let dayRow = document.createElement("TR");
+    calendar.appendChild(dayRow);
+    for (var i = 0; i < 7; i++) {
+      dayNum++;
+      let jd = gregorian_to_jd(year, month, (dayNum - firstDay + 1));
+      var gregcal = jd_to_gregorian(jd);
+      let day = document.createElement("TD");
+      let inMonth = true;
+      if (dayNum < firstDay || dayNum - firstDay + 1 > daysInMonth) {
+        day.classList.add("extra");
+        inMonth = false;
+      }
+      day.innerHTML = '<div class="dayNum">' + gregcal[2] + "</div><br><br>";
+      if ((dayNum - firstDay + 1) == document.gregorian.day.value
+          && month == document.gregorian.month.selectedIndex+1
+          && year == document.gregorian.year.value)
+        day.classList.add("today");
+      if (inMonth) {
+        day.onclick = function(day) { return function() {
+          document.gregorian.year.value = year;
+          document.gregorian.month.selectedIndex = month-1;
+          document.gregorian.day.value = day;
+          updateFromGregorian();
+          makeCalendar();
+        }}(dayNum - firstDay + 1);
+      }
+      let dayHolidays = [];
+      let daySunset = sunTimes_jd(jd, 1);
+      if (calendar2 == "islamic") {
+        FORCE_MECCA = document.islamic.mecca.checked;
+        var secondDayNum = jd_to_islamic(jd)[2];
+        var secondMonthName = lang2Data.months[jd_to_islamic(jd)[1] - 1];
+        if (inMonth) {
+          months.push(jd_to_islamic(jd)[1] - 1);
+          years.push(jd_to_islamic(jd)[0]);
+        }
+        FORCE_MECCA = false;
+      }
+      if (calendar2 == "hebrew") {
+        let hebcal = jd_to_hebrew(jd);
+        var secondDayNum = hebcal[2];
+        let monthNum = hebcal[1];
+        if (hebrew_year_days(hebcal[0]) > 370 && monthNum >= 12)
+          monthNum++;
+        var secondMonthName = lang5Data.months[monthNum - 1];
+        if (inMonth) {
+          months.push(monthNum - 1);
+          years.push(hebcal[0]);
+        }
+      }
+      if (calendar2 == "persian") {
+        let perscal = jd_to_persiana(jd);
+        var secondDayNum = perscal[2];
+        var secondMonthName = lang4Data.months[perscal[1] - 1];
+        if (inMonth) {
+          months.push(perscal[1]);
+          years.push(perscal[0]);
+        }
+      }
+      /* var chlcal = jd_to_chinese(jd);
+      if (calendar2 == "chinese") {
+        var secondDayNum = chlcal[2];
+        var secondMonthName = "";
+        let monthNum = chlcal[1];
+        if (monthNum == chlcal[4]+1 && chlcal[4] != 0)
+          secondMonthName = lang6Data.months[12]+lang6Data.months[monthNum-2];
+        else if (monthNum > chlcal[4]+1 && chlcal[4] != 0) {
+          secondMonthName = lang6Data.months[monthNum-2];
+          if (monthNum == 12) secondMonthName = lang6Data.month12;
+        } else
+          secondMonthName = lang6Data.months[monthNum-1];
+        if (inMonth) {
+          months.push(secondMonthName);
+          years.push(lang6Data.stems[modPos(chlcal[0] - 2, 10)] +
+                     lang6Data.zodiac[modPos(chlcal[0]-2, 12)]);
+        }
+      } */
+      if (calendar2 == "hindu") {
+        var j2 = jd;
+        j2 = Math.floor(jd-0.5)+0.5+sunTimes_jd(jd, 0, true);
+        var date = jd_to_hindu(j2);
+        var secondDayNum = date[2];
+        var secondMonthName = lang3Data.months[date[1] - 1];
+        if (date[3] == 1)
+          secondMonthName = lang3Data.adhik + " " + secondMonthName;
+        if (date[3] == 2)
+          secondMonthName = lang3Data.shuddh + " " + secondMonthName;
+        if (inMonth) {
+          months.push(date[1] - 1);
+          years.push(date[0]);
+        }
+      }
+      if (calendar2 == "moon") {
+        secondDayNum = 0.5*(1 + dcos(180.0 + tithi(jd)*12.0));
+        secondDayNum = Math.round(secondDayNum*100.0) + "%-";
+        secondDayNum += Math.round(50*(1 + dcos(180.0 + tithi(jd+1)*12.0)))+"%";
+      }
+      if (calendar2 != "none") {
+        if (secondDayNum == 1)
+          day.innerHTML += '<div class="dayNum left">' + secondDayNum + " " + secondMonthName + "</div>"
+        else if (calendar2 == "hindu" && secondDayNum == 2 && jd_to_hindu(jd + sunTimes_jd(jd-1,0) - 1)[2] != 1)
+          day.innerHTML += '<div class="dayNum left">2 ' + secondMonthName + "</div>";
+        else
+          day.innerHTML += '<div class="dayNum left">' + secondDayNum + "</div>"
+      }
+      if (document.calendarMaker.gregorian.checked) {
+        dayHolidays = dayHolidays.concat(gregorianHolidays(gregcal[0], gregcal[1]-1, gregcal[2], jd, longPeriods));
+      }
+      if (document.calendarMaker.muslim.checked) {
+        let islcal = jd_to_islamic(jd);
+        dayHolidays = dayHolidays.concat(islamicHolidays(islcal, longPeriods));
+        if (dayHolidays.indexOf("Laylat al-Mi'raj") != -1)
+          dayHolidays.splice(dayHolidays.indexOf("Laylat al-Mi'raj"), 1);
+        if (dayHolidays.indexOf("Laylat al-Qadr (Traditional date)") != -1)
+          dayHolidays.splice(dayHolidays.indexOf("Laylat al-Qadr (Traditional date)"), 1);
+        if (dayHolidays.indexOf("Chaand Raat") != -1)
+          dayHolidays.splice(dayHolidays.indexOf("Chaand Raat"), 1);
+        if (islcal[1] == 7 && islcal[2] == 26 && islcal[0] >= -1)
+          dayHolidays.push("Laylat al-Mi'raj");
+        if (islcal[1] == 9 && islcal[2] == 26 && islcal[0] >= -12)
+          dayHolidays.push("Laylat al-Qadr (Traditional date)");
+        if (islcal[1] == 9 && islcal[2] == 30 && islcal[0] >= 600)
+          dayHolidays.push("Chaand Raat");
+      }
+      if (document.calendarMaker.jewish.checked) {
+        dayHolidays = dayHolidays.concat(hebrewHolidays(jd_to_hebrew(jd), longPeriods));
+      }
+      if (document.calendarMaker.hindu.checked) {
+        // Get holidays for multiple tithis on the same Gregorian date
+        FORCE_INDIA = document.hinducalendar.india.checked;
+        if (!isNaN(sunTimes_jd(jd, 0, true))) {
+          let jd2 = jd + sunTimes_jd(jd, 0, true);
+          let hinducal2 = jd_to_hindu(jd2);
+          let hinducal3 = jd_to_hindu(jd+1+sunTimes_jd(jd+1, 0, true));
+          dayHolidays = dayHolidays.concat(hinduHolidays(hinducal2, jd2, longPeriods));
+          if (hinducal2[2] != hinducal3[2]-1 && hinducal2[2] != hinducal3[2] && hinducal2[2] != 30)
+            dayHolidays = dayHolidays.concat(hinduHolidays(jd_to_hindu(jd+0.8), jd+0.8, longPeriods));
+        } else {
+          dayHolidays = dayHolidays.concat(hinduHolidays(jd_to_hindu(jd), jd, longPeriods));
+          dayHolidays = dayHolidays.concat(hinduHolidays(jd_to_hindu(jd+0.5), jd+0.5, longPeriods));
+          dayHolidays = dayHolidays.concat(hinduHolidays(jd_to_hindu(jd+1), jd+1, longPeriods));
+        }
+        FORCE_INDIA = false;
+      }
+      if (document.calendarMaker.julian.checked)
+        dayHolidays = dayHolidays.concat(julianHolidays(jd_to_julian(jd)));
+      /* if (document.calendarMaker.chinese.checked)
+        dayHolidays = dayHolidays.concat(chineseHolidays(chlcal)); */
+      if (document.calendarMaker.astro.checked) {
+        for (var k = 0; k < 4; k++) {
+          if (local_equinox_jd(year, true, k) == jd) {
+            dayHolidays.push(equinoxes[modPos(k + document.basic.NS.selectedIndex*2, 4)]);
+            if (k == 0) dayHolidays.push("Nowruz");
+          }
+        }
+      }
+      dayHolidays.sort();
+      dayHolidays = new Set(dayHolidays);
+      dayHolidays.forEach(function(holiday) {
+        day.innerHTML += holiday + "<br><br>";
+      });
+      dayRow.appendChild(day);
+    }
+  }
+  let calendarHeading = document.createElement("div");
+  calendarHeading.classList.add("calendarHeading");
+  calendarHeading.innerHTML = lang1Data.months[month-1].toUpperCase() + " ";
+  if (year > 0) {
+    if (lang1Data.romanNumerals)
+      calendarHeading.innerHTML += roman_numeral(year);
+    else
+      calendarHeading.innerHTML += year + lang1Data.CE;
+  }
+  else calendarHeading.innerHTML += (Math.abs(year) + 1) + lang1Data.BCE;
+  if (calendar2 != "none" && calendar2 != "moon") {
+    let firstYear = years[0];
+    let lastYear = years[years.length - 1];
+    if (calendar2 == "islamic") {
+      var monthNames = lang2Data.months;
+      var yearMark = lang2Data.yearMark;
+      var numberMap = lang2Data.numberMap;
+    }
+    if (calendar2 == "hebrew") {
+      var monthNames = lang5Data.months;
+      var yearMark = lang5Data.yearMark;
+      var numberMap = lang5Data.numberMap;
+    }
+    if (calendar2 == "persian") {
+      var monthNames = lang4Data.months;
+      var yearMark = " " + (PERSIAN_EPOCH == 1948320.5 ? lang4Data.hijri : lang4Data.kurdish).toUpperCase();
+      var numberMap = lang4Data.numberMap;
+    }
+    if (calendar2 == "hindu") {
+      var monthNames = lang3Data.months;
+      var yearMark = " " + document.hinducalendar.era[document.hinducalendar.era.selectedIndex].innerHTML.toUpperCase();
+      var numberMap = lang3Data.numberMap;
+    }
+    /* if (calendar2 == "chinese") {
+      var yearMark = "";
+      var numberMap = null;
+      var firstMonth = months[0].toUpperCase();
+      var lastMonth = months[months.length - 1].toUpperCase();
+    } else {
+      var firstMonth = monthNames[months[0]].toUpperCase();
+      var lastMonth = monthNames[months[months.length - 1]].toUpperCase();
+    } */
+    var firstMonth = monthNames[months[0]].toUpperCase();
+    var lastMonth = monthNames[months[months.length - 1]].toUpperCase();
+    if (firstMonth == lastMonth) {
+      calendarHeading.innerHTML += "<br>" + firstMonth + " ";
+      if (calendar2 == "chinese" || firstYear > 0) {
+        if (numberMap == null)
+          calendarHeading.innerHTML += firstYear + yearMark;
+        else
+          calendarHeading.innerHTML += mapNumberStr(firstYear.toString(), numberMap) + yearMark;
+      }
+    } else {
+      if (firstYear == lastYear) {
+        calendarHeading.innerHTML += "<br>" + firstMonth + "&ndash;" +
+          lastMonth + " ";
+        if (calendar2 == "chinese" || firstYear > 0) {
+          if (numberMap == null)
+            calendarHeading.innerHTML += firstYear + yearMark;
+          else
+            calendarHeading.innerHTML += mapNumberStr(firstYear.toString(), numberMap) + yearMark;
+        }
+      } else {
+        if (calendar2 == "chinese" || firstYear > 0) {
+          calendarHeading.innerHTML += "<br>" + firstMonth + " ";
+          if (numberMap == null)
+            calendarHeading.innerHTML += firstYear + yearMark;
+          else
+            calendarHeading.innerHTML += mapNumberStr(firstYear.toString(), numberMap) + yearMark;
+          calendarHeading.innerHTML += "&ndash;" + lastMonth + " ";
+          if (numberMap == null)
+            calendarHeading.innerHTML += lastYear + yearMark;
+          else
+            calendarHeading.innerHTML += mapNumberStr(lastYear.toString(), numberMap) + yearMark;
+        } else {
+          calendarHeading.innerHTML += "<br>" + firstMonth + "&ndash;" +
+            lastMonth + " ";
+        }
+      }
+    }
+  }
+  /* if (lang6Data.chinese == "农历" && calendar2 == "chinese") {
+    let heading1 = calendarHeading.innerHTML.slice(0, calendarHeading.innerHTML.indexOf("<br>"));
+    let heading2 = calendarHeading.innerHTML.slice(calendarHeading.innerHTML.indexOf("<br>"));
+    calendarHeading.innerHTML = heading1 + heading2.replace(/&ndash;/g, "到").replace(/–/g, "到").replace(/ /g, "");
+  } */
+  let containerDiv = document.createElement("div");
+  containerDiv.appendChild(calendarHeading);
+  containerDiv.appendChild(document.createElement("br"));
+  containerDiv.appendChild(calendarTable);
+  return containerDiv;
+}
+function makeCalendar() {
+  let calendarBox = document.getElementById("calendarBox");
+  calendarBox.innerHTML = "";
+  let month = document.calendarMaker.month.selectedIndex + 1;
+  if (month == 13) {
+    for (var i = 1; i <= 12; i++) {
+      calendarBox.appendChild(makeMonthCalendar(i));
+      calendarBox.appendChild(document.createElement("BR"));
+      calendarBox.appendChild(document.createElement("BR"));
+    }
+  } else {
+    let arrows = document.createElement("DIV");
+    calendarBox.appendChild(arrows);
+    arrows.style.margin = "auto";
+    arrows.innerHTML = '<span class="arrow" style="margin-left: 0" onclick="changeCalendar(-1)"><</span>' +
+                       '<span style="display: inline-block; width: 50vw">&emsp;</span>' +
+                       '<span class="arrow" style="margin-right: 0" onclick="changeCalendar(1)">></span>';
+    calendarBox.appendChild(makeMonthCalendar(month));
+  }
+}
+function toggleCalendar() {
+  if (calendarBox.style.display == "flex") {
+    calendarBox.style.display = "none";
+    document.calendarMaker.toggle.innerHTML = "Show Calendar";
+  } else {
+    calendarBox.style.display = "flex";
+    document.calendarMaker.toggle.innerHTML = "Hide Calendar";
+  }
+}
+function changeCalendar(byMonths) {
+  if (document.calendarMaker.month.selectedIndex >= 12)
+    document.calendarMaker.month.selectedIndex = 0;
+  else {
+    let month = document.calendarMaker.month.selectedIndex+1;
+    month += byMonths;
+    if (month >= 13) {
+      month = 1;
+      document.calendarMaker.year.value = new Number(document.calendarMaker.year.value)+1;
+    }
+    if (month <= 0) {
+      month = 12;
+      document.calendarMaker.year.value = new Number(document.calendarMaker.year.value)-1;
+    }
+    document.calendarMaker.month.selectedIndex = month-1;
+  }
+  makeCalendar();
+}
+
+document.getElementById("map").addEventListener("click", function(e) {
+  var map = document.getElementById("map");
+  var c = map.getBoundingClientRect();
+  var x = e.x - c.left;
+  var y = e.y - c.top;
+  var w = parseInt(map.style.width.slice(0, map.style.width.length-2));
+  var h = parseInt(map.style.height.slice(0, map.style.height.length-2));
+  x = x/w * 360.0 - 180.0;
+  y = (h-y)/h * 180.0 - 90.0;
+  x = Math.round(x*1000)/1000.0;
+  y = Math.round(y*1000)/1000.0;
+  document.basic.NS.selectedIndex = 0;
+  document.basic.latitude.value = Math.abs(y);
+  if (y < 0) document.basic.NS.selectedIndex = 1;
+  document.basic.EW.selectedIndex = 0;
+  document.basic.longitude.value = Math.abs(x);
+  if (x < 0) document.basic.EW.selectedIndex = 1;
+  drawMap();
+  changeCoords();
+}, false);
+
+/* if (location.search != "") {
+	presetDataToRequest(location.search.substring(1));
+} else {
+	calcGregorian();
+} */
+calcGregorian();
+window.onload = function() {
+  drawQibla();
+  drawMap();
+};
+
+updateMayanDesc();
+// -->
+</script>
+
+<h3>References</h3>
+
+<dl>
+
+<dt>Meeus, Jean.
+<cite><a href="http://www.amazon.com/exec/obidos/ASIN/0943396611/fourmilabwwwfour"
+    target="Amazon_Fourmilab">Astronomical Algorithms</a></cite> 2nd ed.
+Richmond: Willmann-Bell, 1998.
+ISBN 0943396-61-1.</dt>
+<dd>The essential reference for computational positional
+astronomy.</dd>
+
+<dt>P. Kenneth Seidelmann (ed.)
+<cite><a href="http://www.amazon.com/exec/obidos/ASIN/1891389459/fourmilabwwwfour"
+    target="Amazon_Fourmilab">Explanatory Supplement to
+    	the Astronomical Almanac </a></cite>.
+Sausalito CA: University Science Books,
+[1992] 2005.  ISBN 1-891389-45-9.</dt>
+<dd>Authoritative reference on a wealth of topics related to
+    computational geodesy and astronomy.  Various calendars
+    are described in depth, including techniques for
+    interconversion.</dd>
+<dt>The <a href="http://www.imcce.fr/imcce_en.html" target="_blank">Institut de mécanique céleste
+    et de calcul des éphémérides</a> in Paris provides excellent
+    on-line descriptions of a variety of
+    <a href="http://www.imcce.fr/page.php?nav=fr/ephemerides/astronomie/Promenade/pages2/277.html" target="_blank">calendars</a>.</dt>
+<dt><a href="http://www.planetary.org" target="_blank">The Planetary Society</a>:
+  <a href="http://www.planetary.org/explore/space-topics/mars/mars-calendar.html" target="_blank">Mars' Calendar</a>
+  provides information on timekeeping and seasons on Mars used for the Mangli calendar.</dt>
+<dt><a href="https://en.wikipedia.org/" target="_blank">Wikipedia</a>: <a href="https://en.wikipedia.org/wiki/Mars" target="_blank">Mars</a>
+  and other pages provide essential information on the orbit of Mars.</a></dt>
+<dt><cite><a href="https://www.britannica.com" target="_blank">Encyclopædia Britannica</a></cite> provides the historical background on
+  <a href="https://www.britannica.com/biography/Cyaxares" target="_blank">King Cyaxares</a> (<i>Hevexştre</i>) for the
+  description of the Persian/Kurdish calendar.</dt>
+<dt>R. Stöckli, E. Vermote, N. Saleous, R. Simmon and D. Herring (2005). <a href="https://visibleearth.nasa.gov/view_cat.php?categoryID=1484" target="_blank">The Blue
+  Marble</a> Next Generation - A true color earth dataset
+  including seasonal dynamics from MODIS.
+  Published by the <a href="https://earthobservatory.nasa.gov" target="_blank">NASA Earth Observatory</a>.
+  Corresponding author: rstockli@climate.gsfc.nasa.gov</dt>
+<dd>Maps from <a href="https://www.nasa.gov" target="_blank">NASA</a> for drawing the coordinate map</dd>
+<dt><a href="https://www.movable-type.co.uk" target="_blank">Moveable Type</a> on the
+  <a href="https://www.movable-type.co.uk/scripts/latlong.html" target="_blank">distance and bearing</a> for
+  great circle routes, used in the Qibla calculation</dt>
+<dt>Alan Eliasen's <a href="https://futureboy.us/fsp/moon.fsp" target="_blank">Moon Locator</a> for various algorithms for the position of the moon</dt>
+<dt><a href="http://www.webexhibits.org/calendars/" target="_blank">Calendars through the Ages</a> from webexhibits for information on various calendars</dt>
+
+<dt>The original <b><a href="https://www.fourmilab.ch/documents/calendar/" target="_blank">Fourmilab Calendar Converter</a></b></dt>
+<dd>A huge thanks to this Fourmilab page and John Walker
+  for basically making this site and for putting it into the public domain
+  for me to build on.
+</dd>
+</dl>
+<br clear="right" />
+
+<hr />
+<p />
+<table align="right">
+<tr><td align="center">
+  <address><span class="noItalics">
+    <span lang="en">Harys Dalvi</span><br>
+    <span lang="ur">حارث دلوی</span><br>
+    <span lang="hi">हारिस दळवी</span><br>
+    <span lang="en">December, MMXVIII&nbsp;&ndash;&nbsp;December, MMXX</span><br>
+    <span lang="ur">دسمبر  ۲۰۱۷ء&nbsp;&ndash;&nbsp;دسمبر ۲۰۲۰ء<br>
+    اگہن ۱۹۴۰&nbsp;&ndash;&nbsp;اگہن ۱۹۴۲</span><br>
+    <span lang="hi">दिसंबर २०१८&nbsp;&ndash;&nbsp;दिसंबर २०२०<br>अगहन १९४०&nbsp;&ndash;&nbsp;अगहन १९४१</span><br>
+  </div>
+  </span></address>
+</td></tr>
+<tr><td align="center">
+</td></tr>
+</table>
+<address>
+by John Walker<br />
+September, MMXV
+</address>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<center>
+<i>This document is in the public domain.</i>
+</center>
+</body>
+</html>
