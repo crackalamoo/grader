@@ -314,7 +314,7 @@ var classes = {
   "bio": [[], [true]],
   "ap enviro": [[], [true]],
   "ap physics 1": [[], [true]],
-  "spanish 4": [["h", "p", "q", "t"], [false, 10, 30, 25, 35]],
+  "spanish 4": [["f", "pe", "po"], [false, 25, 35, 40]],
   "research": [[], [true]],
   "precalc": [[], [true]],
   "mandarin 3": [["h", "p", "q", "t"], [false, 10, 30, 25, 35]],
