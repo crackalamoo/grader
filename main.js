@@ -342,7 +342,7 @@ var classes = {
   "ap psych": [["h", "p", "q", "t"], [false, 25, 10, 25, 40]],
   "precalc adv": [["h", "t", "s"], [false, 20, 75, 5]],
   "physics c": [["c", "l", "t"], [false, 10, 25, 65]],
-  "honors gov": [["h", "q", "t"], [false, 25, 35, 40]],
+  "honors gov": [["h", "q", "t", "p"], [false, 20, 30, 40, 10]],
   "ap mandarin": [["i", "q", "p"], [false, 20, 35, 45]],
   "honors econ": [["h", "q", "t", "d"], [false, 20, 25, 40, 15]],
   "english 4 h": [["c", "l", "w"], [false, 20, 40, 40]],
