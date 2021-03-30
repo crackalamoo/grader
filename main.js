@@ -371,7 +371,7 @@ function setclass() {
     }
     if (document.classes.class.value == "spanish 4") {
       date = new Date();
-      document.getElementById("classmeme").innerHTML = "HOY ES EL " +
+      document.getElementById("classmeme").innerHTML = "¡¡¡¡¡HOY ES EL " +
         ["PRIMERO", "DOS", "TRES", "CUATRO", "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE", "DIEZ",
         "ONCE", "DOCE", "TRECE", "CATORCE", "QUINCE", "DIECISÉIS", "DIECISIETE", "DIECIOCHO",
         "DIECINUEVE", "VEINTE", "VEINTIUNO", "VEINTIDÓS", "VEINTITRES", "VEINTICUATRO",
@@ -379,13 +379,18 @@ function setclass() {
         "TREINTA Y UNO"][date.getDate() - 1] +
         " DE " + ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO",
         "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"][date.getMonth()] + " DE "
-        + date.getFullYear() + "!!!!!<br>NO OLVIDE ESCRIBIR SU NOMBRE!!!!!";
+        + date.getFullYear() + "!!!!!<br>¡¡¡¡¡NO olvides escribir tu nombre!!!!!";
     } else if (document.classes.class.value == "ap world") {
-      document.getElementById("classmeme").innerHTML = "Clear your desks, please.";
+      document.getElementById("classmeme").innerHTML = "Clear your desks, please.<br>Say &ldquo;la vie!&rdquo;";
     } else if (document.classes.class.value == "physics c") {
       document.getElementById("classmeme").innerHTML = "<ol><li>Be Happy</li></ol>";
     } else {
       document.getElementById("classmeme").innerHTML = "";
+    }
+    if (catData[0]) {
+      document.getElementById("classError").innerHTML = "Grading set to point system";
+    } else {
+      document.getElementById("classError").innerHTML = "";
     }
     document.classes.class.value = "";
   }
@@ -440,10 +445,15 @@ function mailSent() {
   }
 }
 function calculateExam() {
-  var exam = new Number(document.exam.exam.value);
   var q1 = new Number(document.exam.q1.value);
   var q2 = new Number(document.exam.q2.value);
-  var grade = q1*0.4 + q2*0.4 + exam*0.2;
+  var grade;
+  if (document.exam.exam.value == "N/A") {
+    grade = q1*0.5 + q2*0.5;
+  } else {
+    var exam = new Number(document.exam.exam.value);
+    grade = q1*0.4 + q2*0.4 + exam*0.2;
+  }
   var gradeDisplay = document.getElementById("examGrade");
   examGrade.innerHTML = "Grade for the semester: " + letterGrade(grade) + " (" + roundDecimal(grade, 2) + ")"
 }
