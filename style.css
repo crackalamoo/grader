@@ -55,6 +55,19 @@ div.centerButtons {
   margin-right: 20%;
   justify-content: center;
 }
+div#languageButtons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+div#languageButtons div.button {
+  min-width: 50px;
+  max-width: 150px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 textarea {
   width: 80%;
   margin-left: 10%;
@@ -120,6 +133,10 @@ div#creditInfo,div#manualInput,.hidden {
     padding-left: 10px;
     padding-right: 10px;
     font-size: 80%;
+  }
+  div.centerButtons {
+    margin-left: 10%;
+    margin-right: 10%;
   }
 }
 a {

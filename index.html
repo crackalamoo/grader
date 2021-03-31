@@ -43,6 +43,12 @@
 </p>
 <div id="ahsDiv"><img id="ahs" src="https://www.ahschool.com/data/news/thumbs/1579.full.jpg"></div>
 </div>
+<div id="languageButtons">
+  <div class="button" onclick="changeLanguage('en');">English</div>
+  <div class="button" onclick="changeLanguage('es');">Español</div>
+  <div class="button" onclick='changeLanguage("hi")'>हिन्दी</div>
+  <div class="button" onclick="changeLanguage('ur');">اردو</div>
+</div>
 <form name="setLanguage" action = "javascript:void(0)">
   <span id="langSelect"></span> <select name="language" onchange="languageSelect()">
   <option value="en">English</option>
@@ -51,6 +57,7 @@
   <option value="ur">اردو</option>
   </select>
 </form>
+
 
 <hr>
 <div class="main" id="start">

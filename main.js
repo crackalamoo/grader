@@ -15,13 +15,17 @@ function changeMode(mode) {
   if (mode == "start") {
     document.getElementById("topInfo").style.display = "block";
     document.getElementById("sitename").innerHTML = "AHS* Grade Calculator";
+    document.setLanguage.style.display = "none";
+    document.getElementById("languageButtons").style.display = "flex";
   } else {
     document.getElementById("topInfo").style.display = "none";
     document.getElementById("sitename").innerHTML = "AHS Grade Calculator";
+    document.setLanguage.style.display = "block";
+    document.getElementById("languageButtons").style.display = "none";
   }
 }
 changeMode("start");
-setLanguage("en");
+changeLanguage("en");
 function makeNumber(grade, possible=100.0) {
   switch(grade) {
     case "A+": grade=98.5; break;
