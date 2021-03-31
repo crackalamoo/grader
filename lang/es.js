@@ -40,7 +40,7 @@ langData["es"] = {
   "reqScore": "Debes de recibir $PTS/$TOT ($PERCENT%) para sacar un $GRADE% en la clase",
   "setLang": "Idioma:&nbsp;",
   "welcome": "Bienvenidos a la calculadora de notas. Primero tienes que asegurar que tengas " +
-    "JavaScript. Si no sabes que es eso, no te preocupes. Lo haré por ti:",
+    "JavaScript. Si no sabes que es eso, no te preocupes. Lo hago por ti:",
   "jsSuccess": "Si estás leyendo este mensaje, tienes JavaScript y puedes usar esta página.",
   "quarterGrades": "Notas del cuarto",
   "intro": "<b>NOTA:</b> pese a mi amor para computadoras, también soy humano. Por favor ponte en contacto conmigo en bd542591@ahschool.com si encuentras un error." +
@@ -74,7 +74,7 @@ langData["es"] = {
     " No te preocupes, se puede añadir esa categoría a mano después del cálculo. Tampoco te preocupes si esta clase" +
     " está basada en el <strong>point system</strong> en vez de categorías.",
   "shouldContinue": "¿Debo continuar?",
-  "rampalButton": "Haz clic aquí para la clase de Mr. Rampal",
+  "rampalButton": "Clase de Mr. Rampal o Mrs. Kimpton",
   "manualButton": "Introducir notas a mano",
   "selClass": "<strong>Selecciona una clase</strong> para llenar porcentajes/ponderación automáticamente. (Mérito a <span id=\"seth\">Seth</span> Groper por esta idea)",
   "selClassOption": "Seleccionar una clase",
@@ -101,5 +101,8 @@ langData["es"] = {
   "creditNum": "Crédito número&nbsp;",
   "getCreditButton": "Ver crédito",
   "modifyCreditHeading": "<b>Modificar/borrar notas</b>",
-  "confirm": "¿Estás seguro/a que quieres hacer esto?"
+  "confirm": "¿Estás seguro/a que quieres hacer esto?",
+  "quarter13": "Nota del cuarto 1/3",
+  "quarter24": "Nota del cuarto 2/4",
+  "examGrade": "Nota del examen"
 };

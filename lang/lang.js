@@ -1,5 +1,5 @@
 const SCRIPT_ID = ["javascript", "start", "auto", "finalAuto", "autoCategories", "manual", "category",
-  "editCategory", "addClass", "semester", "gpaCalc", "seth_img", "langSelect"];
+  "editCategory", "addClass", "semester", "gpaCalc", "seth_img", "langSelect", "examGrade", "semesterGrade"];
 function setLanguage(l) {
   lang = l;
   document.getElementById("javascript").innerHTML = langData[lang].jsSuccess;
@@ -69,6 +69,11 @@ function setLanguage(l) {
   langHTML("getCreditButton");
   langHTML("addCreditButton", "add");
   langHTML("modifyCreditHeading");
+  langHTML("q13sem", "quarter13");
+  langHTML("q13exam", "quarter13");
+  langHTML("q24sem", "quarter24");
+  langHTML("q24exam", "quarter24");
+  langHTML("semExam", "examGrade");
   document.getElementById("manualInput").innerHTML = langData[lang].edit;
   for (var i = 0; i < SCRIPT_ID.length; i++) {
     if (lang == "ur") {
