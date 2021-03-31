@@ -1,6 +1,6 @@
 const SCRIPT_ID = ["javascript", "start", "auto", "finalAuto", "autoCategories", "manual", "category",
   "editCategory", "addClass", "semester", "gpaCalc", "seth_img", "langSelect", "examGrade", "semesterGrade"];
-function setLanguage(l) {
+function changeLanguage(l) {
   lang = l;
   document.getElementById("javascript").innerHTML = langData[lang].jsSuccess;
   langHTML("langSelect", "setLang");
@@ -91,7 +91,7 @@ function setLanguage(l) {
   updateCategories();
 }
 function languageSelect() {
-  setLanguage(document.setLanguage.language.value);
+  changeLanguage(document.setLanguage.language.value);
 }
 function langHTML(id, key=null) {
   if (key == null)
