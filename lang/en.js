@@ -182,11 +182,6 @@ function langHTML(id, key=null) {
   } catch(err) {
     document.getElementById(id).innerHTML = langData["en"][key];
   }
-  if (lang == "hi") {
-    document.getElementById(id).style.direction = "rtl";
-  } else {
-    document.getElementById(id).style.direction = "";
-  }
 }
 function langReplace(key, codes, values) {
   var str = langData[lang][key];
