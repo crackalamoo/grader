@@ -13,12 +13,12 @@ langData["es"] = {
   "scoreNaN": "Tienes un denominador de cero u otro error en por lo menos una categoría. Trata de añadir algunas asignaciones.",
   "rampalInstruct": "<b>Haz lo siguiente para <em>cada</em> asignación:</b><br>" +
     "Haz clic en la asignación<br><img src=\"rampal/rampal1.png\"><br><img src=\"rampal/rampal2.png\"><br>Mira el <strong>\"Count as\"</strong> y introdúcelo arriba",
-  "catsFound": "$NUMBER categorías encontradas: $CATEGORIES",
+  "catsFound": "$NUMBER categorías se encontraron: $CATEGORIES",
   "pointCheck": "Esta clase es point system",
   "next": "Adelante",
   "back": "Atrás",
   "done": "Terminado",
-  "continue": "Continúa",
+  "continue": "Continuar",
   "help": "Ayuda",
   "submit": "Enviar",
   "apply": "Aplicar",
@@ -30,7 +30,7 @@ langData["es"] = {
   "minGrade": "Nota mínima necesaria en el examen del semestre: $MIN% (se introduce como $LETTER/$NUMBER%)",
   "fritzExam": "Nota mínima necesaria en el examen del semestre: $MIN% (Espero que no hagas tanto Fritz en el exámen)",
   "validData": "Por favor introduce información válida.",
-  "mailSent": "Tu respuesta fue enviada y la clase deberá ser disponible pronto. ¡Gracias!" +
+  "mailSent": "Tu respuesta fue enviada y la clase deberá ser disponible pronto. ¡Muchas gracias!" +
     "<br>Por ahora, vuelve y introduce las ponderaciones a mano.<br>Si la clase no esté disponible dentro de aproximadamente tres días, por favor ponte en contacto" +
     " conmigo en bd542591@ahschool.com; quizás yo tenga problemas en entender tu solicitud",
   "semGrade": "Nota para el semestre: $LETTER ($NUMBER%)",
@@ -59,7 +59,7 @@ langData["es"] = {
     "Para <strong>cambiar la nota de una asignación</strong>, añade o borra una asignación de 0 puntos (ej: 5/0).",
   "letterGrade": "Nota de letra:&nbsp;",
   "selectLetter": "Selecciona una nota de letra",
-  "whatNeed": "¿Qué necesito en una asignación que está yendo?",
+  "whatNeed": "¿Qué necesito en una asignación que viene?",
   "creditCathy": "Mérito a Cathy T. Quan por esta idea",
   "desiredGrade": "Nota deseada en la clase:&nbsp;",
   "numPointsWorth": "Número de puntos del valor de la asignación:&nbsp;",
@@ -75,7 +75,7 @@ langData["es"] = {
     " está basada en el <strong>point system</strong> en vez de categorías.",
   "shouldContinue": "¿Debo continuar?",
   "rampalButton": "Haz clic aquí para la clase de Mr. Rampal",
-  "manualButton": "Introduce notas a mano",
+  "manualButton": "Introducir notas a mano",
   "selClass": "<strong>Selecciona una clase</strong> para llenar porcentajes/ponderación automáticamente. (Mérito a <span id=\"seth\">Seth</span> Groper por esta idea)",
   "selClassOption": "Seleccionar una clase",
   "addClassOption": "Añadir una clase a esta lista",

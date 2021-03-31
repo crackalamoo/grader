@@ -15,6 +15,7 @@
   <script src="lang/es.js"></script>
   <script src="lang/hi.js"></script>
   <script src="lang/ur.js"></script>
+  <script src="lang/lang.js"></script>
 </head>
 <body>
 
@@ -41,6 +42,7 @@
   steal rights to administer American Heritage School or any of its affiliates.
 </p>
 <div id="ahsDiv"><img id="ahs" src="https://www.ahschool.com/data/news/thumbs/1579.full.jpg"></div>
+</div>
 <form name="setLanguage" action = "javascript:void(0)">
   <span id="langSelect"></span> <select name="language" onchange="languageSelect()">
   <option value="en">English</option>
@@ -49,7 +51,6 @@
   <option value="ur">اردو</option>
   </select>
 </form>
-</div>
 
 <hr>
 <div class="main" id="start">
@@ -151,7 +152,7 @@
   <p id="superAlgorithm"></p>
   <form name="gradesList"></form>
   <p id="dontWorry"></p><br>
-  <p id="shouldContinue">Should I continue?</p>
+  <p id="shouldContinue"></p>
   <div class="centerButtons">
     <div class="button" id="rampalButton" onclick="autoGrade(rampal=true);"></div>
   </div>
@@ -225,7 +226,7 @@
   </span>
 </div>
 <div class="main" id="addClass">
-  <div class="button" onclick="changeMode('autoCategories')">Back</div>
+  <div class="button" onclick="changeMode('autoCategories')" id="mailBack">Back</div>
   <iframe width="0" height="0" border="0" name="hidden_iframe" id="hidden_iframe"></iframe><br>
   <span id="mail_sent"></span><br>
   <form name="add_class" autocomplete="off" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScQ5kMZk6A-iFj88TgNe8iPgKBQ6TwhIZH4dYZfHi7rreipSQ/formResponse" method="POST" onsubmit="submitted=!0" target="hidden_iframe">
