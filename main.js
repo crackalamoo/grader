@@ -21,6 +21,7 @@ function changeMode(mode) {
   }
 }
 changeMode("start");
+setLanguage("en");
 function makeNumber(grade, possible=100.0) {
   switch(grade) {
     case "A+": grade=98.5; break;
@@ -99,9 +100,8 @@ function letterGrade(num) {
 function updateCategories() {
   var categoryP = document.getElementById("manualCategory");
   var categoryList = document.getElementById("manualCategories");
-  document.getElementById("beginCategories").innerHTML = categories.length > 0 ? "" :
-    "Begin by creating categories for grades. If the class is based on point system, make a category called something like \"Total\" and consider it 100% of your grade.";
-  categoryList.innerHTML = "<strong>Click a category</strong> to add or remove assignments and to see that category's score.<br><br>Categories:<br>";
+  document.getElementById("beginCategories").innerHTML = categories.length > 0 ? "" : langData[lang].begin;
+  categoryList.innerHTML = langData[lang].catList;
   let totalPercent = 0;
   var categoryScore = 0;
   var totalScore = 0;
@@ -114,8 +114,7 @@ function updateCategories() {
       currentCategory = cat;
       document.editCategory.percent.value = currentCategory.percentage;
       changeMode("editCategory");
-      document.getElementById("editCategoryInfo").innerHTML = "Average in " + currentCategory.name +
-        ": " + roundDecimal(currentCategory.score(), 2) + "%";
+      document.getElementById("editCategoryInfo").innerHTML = langReplace("catAvg", ["$CATEGORY", "$NUMBER"], [currentCategory.name, roundDecimal(currentCategory.score(), 2)]);
       document.getElementById("required_score").innerHTML = "";
     }}(categories[i]);
     if (currentCategory != null && categories[i].name == currentCategory.name) {
@@ -126,17 +125,15 @@ function updateCategories() {
     totalScore += categories[i].score()*categories[i].percentage/100.0;
   }
   totalScore /= (totalPercent/100.0);
-  categoryP.innerHTML = "Score so far in this class: " + roundDecimal(totalScore, 2) + "% (Letter grade: " + letterGrade(totalScore) + ")<br>" +
-    "Unweighted GPA: " + roundDecimal(totalScore/20.0 - 1, 2) +
-    "<br>Sum of all categories: " + Math.round(totalPercent) + "% (Should be 100%)<br>";
+  categoryP.innerHTML = langReplace("avg", ["$SCORE", "$LETTER", "$GPA", "$SUM"],
+    [roundDecimal(totalScore, 2), letterGrade(totalScore), roundDecimal(totalScore/20.0 - 1, 2), Math.round(totalPercent)]);
   if (currentCategory == null)
-    categoryP.innerHTML += "No category is currently selected";
+    categoryP.innerHTML += langData[lang].noCat;
   else {
-    categoryP.innerHTML += "Score so far in " + currentCategory.name + ": " + roundDecimal(categoryScore, 2) + "%";
+    categoryP.innerHTML += langReplace("selCat", ["$CATEGORY", "$SCORE"], [currentCategory.name, roundDecimal(categoryScore, 2)]);
   }
   if (isNaN(totalScore))
-    categoryP.innerHTML += "<br><b>You have a denominator of zero or another error in at least one category." +
-      " Try adding some assignments.</b>";
+    categoryP.innerHTML += "<br><b>" + langData[lang].scoreNaN + "</b>";
 }
 function createCategory() {
   currentCategory = new Category(document.category.name.value, new Number(document.category.percent.value));
@@ -150,16 +147,14 @@ function addAssignment() {
   document.editCategory.score.type = "number";
   document.editCategory.score.value = "";
   document.editCategory.possible.value = "";
-  document.getElementById("editCategoryInfo").innerHTML = "Average in " + currentCategory.name +
-    ": " + roundDecimal(currentCategory.score(), 2) + "%";
+  document.getElementById("editCategoryInfo").innerHTML = langReplace("catAvg", ["$CATEGORY", "$NUMBER"], [currentCategory.name, roundDecimal(currentCategory.score(), 2)]);
 }
 function deleteAssignment() {
   currentCategory.remove(document.editCategory.score.value, document.editCategory.possible.value);
   document.editCategory.score.type = "number";
   document.editCategory.score.value = "";
   document.editCategory.possible.value = "";
-  document.getElementById("editCategoryInfo").innerHTML = "Average in " + currentCategory.name +
-    ": " + roundDecimal(currentCategory.score(), 2) + "%";
+  document.getElementById("editCategoryInfo").innerHTML = langReplace("catAvg", ["$CATEGORY", "$NUMBER"], [currentCategory.name, roundDecimal(currentCategory.score(), 2)]);
 }
 function changePercent() {
   currentCategory.percentage = new Number(document.editCategory.percent.value);
@@ -253,13 +248,9 @@ function autoGrade(rampal=false) {
         temp2[i][1] + "/" + temp2[i][2] + "<br>";
     }
   }
-  document.gradesList.innerHTML += "<br>" + findCategories(autoCalc).length +
-    " categories found: ";
-  document.gradesList.innerHTML += findCategories(autoCalc);
-  if (RAMPAL) {
-    document.gradesList.innerHTML += "<br><br><b>Do the following for <em>each</em> assignment:</b><br>Click on the assignment<br>" +
-      "<img src=\"rampal/rampal1.png\"><br><img src=\"rampal/rampal2.png\"><br>Look at the <strong>\"Count as\"</strong> and enter it above";
-  }
+  document.gradesList.innerHTML += "<br>" + langReplace("catsFound", ["$NUMBER", "$CATEGORIES"], [findCategories(autoCalc).length, findCategories(autoCalc)]);
+  if (RAMPAL)
+    document.gradesList.innerHTML += langData[lang].rampalInstruct;
   changeMode("finalAuto");
 }
 function autoCats() {
@@ -269,8 +260,8 @@ function autoCats() {
   for (var i = 0; i < cats.length; i++) {
     form.innerHTML += cats[i] + ": <input name='" + i + "' type='number'></input>%<br>";
   }
-  form.innerHTML += '<input type="checkbox" name="point"></input> This class is point system<br>'
-  form.innerHTML += '<br><div class="button" onclick="autoCalc2();" id="continueClass">Next</div>';
+  form.innerHTML += '<input type="checkbox" name="point"></input> ' + langData[lang].pointCheck + '<br>'
+  form.innerHTML += '<br><div class="button" onclick="autoCalc2();" id="continueClass">' + langData[lang].next + '</div>';
   if (RAMPAL) {
     form.point.checked = false;
   }
@@ -304,8 +295,8 @@ function autoCalc2() {
   updateCategories();
   changeMode("manual");
   document.getElementById("manualInput").style.display = "block";
-  document.getElementById("manualInput").innerHTML = "Edit grades";
-  document.getElementById("autoCalculation").innerHTML = "New class (automatic)";
+  document.getElementById("manualInput").innerHTML = langData[lang].edit;
+  document.getElementById("autoCalculation").innerHTML = langData[lang].newClass;
   document.getElementById("classmeme").innerHTML = "";
 }
 var classes = {
@@ -419,27 +410,24 @@ function calculateSemester() {
   }
   var gradeDisplay = document.getElementById("semesterGrade");
   if (required == -1)
-    gradeDisplay.innerHTML = "Unfortunately this grade is not possible for you this semester. Good luck for next semester!";
+    gradeDisplay.innerHTML = langData[lang].notPossibleGrade;
   else
-    gradeDisplay.innerHTML = "Minimum grade required on semester exam: " + min[required] + "% (goes in as " + letterGrade(grades[required]) +
-      "/" + grades[required] + "%)";
+    gradeDisplay.innerHTML = langReplace("minGrade", ["$MIN", "$LETTER", "$NUMBER"], [min[required], letterGrade(grades[required]), grades[required]]);
   var fail = -1;
   for (var i = 59; i >= 0; i--) {
     if (grade + i*0.2 >= target)
       fail = i;
   }
   if (fail != -1)
-    gradeDisplay.innerHTML = "Minimum grade required on semester exam: " + fail + "% (I hope you don't Fritz the exam that badly)";
+    gradeDisplay.innerHTML = langRepace("fritzExam", ["$MIN"], [fail]);
 }
 function mailSent() {
   if (document.add_class["entry.1399913855"].value == "" ||
     document.add_class["entry.1953535029"].value == "" ||
     document.add_class["entry.1262923778"].value == "") {
-      document.getElementById("mail_sent").innerHTML = "Please enter valid data.";
+      document.getElementById("mail_sent").innerHTML = langData[lang].validData;
   } else {
-    document.getElementById("mail_sent").innerHTML = "Your response was sent and the class should be available shortly. Thank you!" +
-      "<br>For now, go back and enter weightings manually.<br>If the class isn't available within about three days, please contact" +
-      "me at bd542591@ahschool.com; I may be having trouble understanding your request";
+    document.getElementById("mail_sent").innerHTML = langData[lang].mailSent;
     document.add_class.style.display = "none";
     document.classes.class.remove(1);
   }
@@ -455,7 +443,7 @@ function calculateExam() {
     grade = q1*0.4 + q2*0.4 + exam*0.2;
   }
   var gradeDisplay = document.getElementById("examGrade");
-  examGrade.innerHTML = "Grade for the semester: " + letterGrade(grade) + " (" + roundDecimal(grade, 2) + ")"
+  examGrade.innerHTML = langReplace("semGrade", ["$LETTER", "$NUMBER"], [letterGrade(grade), roundDecimal(grade, 2)]);
 }
 function updateGpa() {
   var g = document.getElementById("gpaData");
@@ -492,11 +480,11 @@ function updateGpa() {
     gpa /= 3.0;
     totalGpa += (Math.round(gpa*100)/100.0)*gpaData[i][2];
     totalCredits += gpaData[i][2];
-    g.innerHTML += "" + (i+1) + ": " + roundDecimal(gpa, 2) + " (" +
-      gpaData[i][0] + ", " + gpaData[i][1] + ", " + gpaData[i][2] + " credits)<br>";
+    g.innerHTML += langReplace("gpaClass", ["$INDEX", "$GPA", "$GRADE", "$LEVEL", "$CREDITS"],
+      [i+1, roundDecimal(gpa, 2), gpaData[i][0], gpaData[i][1], gpaData[i][2]]) + "<br>";
   }
-  g.innerHTML += "<b>GPA sum: " + roundDecimal(totalGpa, 2) + "<br>Total credits: " + roundDecimal(totalCredits, 1) +
-   "<br>Cumulative GPA: " + roundDecimal(totalGpa/totalCredits, 4) + "</b>";
+  g.innerHTML += langReplace("gpaSum", ["$SUM", "$CREDITS", "$GPA"],
+    [roundDecimal(totalGpa, 2), roundDecimal(totalCredits, 1), roundDecimal(totalGpa/totalCredits, 4)]);
   if (typeof(Storage) !== "undefined") {
     localStorage.setItem("gpaData", JSON.stringify(gpaData));
     document.getElementById("clearLocalStorage").style.display = "block";
@@ -541,8 +529,11 @@ function addLetterGrade() {
   document.editCategory["letter"].value = "";
 }
 function clearGpa() {
-  localStorage.clear();
-  document.getElementById("clearLocalStorage").style.display = "none";
+  var sure = confirm(langData[lang].confirm);
+  if (sure) {
+    localStorage.clear();
+    document.getElementById("clearLocalStorage").style.display = "none";
+  }
 }
 function totalClassScore() {
   var totalScore = 0;
@@ -568,14 +559,13 @@ function calcRequired() {
   var category_increase = increase / (currentCategory.percentage / totalPercent * 100);
   var category_increase_pts = category_increase * currentCategory.possible;
   if (worthPoints == 0) {
-    document.getElementById("required_score").innerHTML = "You must receive " +
-      roundDecimal(category_increase_pts, 2) + "/" + roundDecimal(worthPoints, 2) +
-      "  to have " + req_grade + "% in the class";
+    document.getElementById("required_score").innerHTML = langReplace("reqScore_0",
+      ["$PTS", "$TOT", "$GRADE"], [roundDecimal(category_increase_pts, 2), roundDecimal(worthPoints, 2),
+      req_grade]);
   } else {
-    document.getElementById("required_score").innerHTML = "You must receive " +
-      roundDecimal(category_increase_pts, 2) + "/" + roundDecimal(worthPoints, 2) +
-      " (" + roundDecimal(category_increase_pts*100.0/worthPoints, 2) + "%) to have " +
-      req_grade + "% in the class";
+    document.getElementById("required_score").innerHTML = langReplace("reqScore",
+      ["$PTS", "$TOT", "$GRADE", "$PERCENT"], [roundDecimal(category_increase_pts, 2), roundDecimal(worthPoints, 2),
+      req_grade, roundDecimal(category_increase_pts*100.0/worthPoints, 2)]);
   }
   currentCategory.total = initial_score[0];
   currentCategory.possible = initial_score[1];
