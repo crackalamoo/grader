@@ -147,9 +147,12 @@ img#seth_img {
 img#seth_img[style*="direction: rtl"] {
   float: left;
 }
-#bottomIntro {
+#bottomIntro, #manualCategories div.button {
   direction: ltr;
   font-family: "";
+}
+input,select {
+  direction: ltr;
 }
 @font-face {
   font-family: DevanagariFont;

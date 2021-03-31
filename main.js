@@ -419,7 +419,7 @@ function calculateSemester() {
       fail = i;
   }
   if (fail != -1)
-    gradeDisplay.innerHTML = langRepace("fritzExam", ["$MIN"], [fail]);
+    gradeDisplay.innerHTML = langReplace("fritzExam", ["$MIN"], [fail]);
 }
 function mailSent() {
   if (document.add_class["entry.1399913855"].value == "" ||
@@ -553,7 +553,6 @@ function calcRequired() {
   let totalPercent = 0;
   for (var i = 0; i < categories.length; i++)
     totalPercent += categories[i].percentage;
-  console.log(totalPercent);
   currentCategory.possible += worthPoints;
   var increase = req_grade - totalClassScore();
   var category_increase = increase / (currentCategory.percentage / totalPercent * 100);
