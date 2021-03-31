@@ -248,9 +248,9 @@ function autoGrade(rampal=false) {
         temp2[i][1] + "/" + temp2[i][2] + "<br>";
     }
   }
-  document.gradesList.innerHTML += "<br>" + langReplace("catsFound", ["$NUMBER", "$CATEGORIES"], [findCategories(autoCalc).length, findCategories(autoCalc)]);
+  document.gradesList.innerHTML += langReplace("catsFound", ["$NUMBER", "$CATEGORIES"], [findCategories(autoCalc).length, findCategories(autoCalc)]);
   if (RAMPAL)
-    document.gradesList.innerHTML += langData[lang].rampalInstruct;
+    document.gradesList.innerHTML += "<br>" + langData[lang].rampalInstruct;
   changeMode("finalAuto");
 }
 function autoCats() {

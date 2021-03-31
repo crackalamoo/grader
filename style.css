@@ -17,6 +17,10 @@ p#javascript {
   font-weight: bold;
   color: #0088AA;
 }
+p#javascript[style*="direction: rtl"] {
+  margin-left: inherit;
+  margin-right: 40px;
+}
 .button {
   color: #FFFFFF;
   background-color: #0088AA;
@@ -133,4 +137,14 @@ span#seth {
 img#seth_img {
   width: 30%;
   float: right;
+}
+img#seth_img[style*="direction: rtl"] {
+  float: left;
+}
+#bottomIntro {
+  direction: ltr;
+  font-family: "";
+}
+#gpaData {
+  font-family: "";
 }
