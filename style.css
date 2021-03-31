@@ -5,9 +5,14 @@ body {
   padding-right: 10%;
   padding-top: 30px;
   padding-bottom: 70px;
+  font-size: 18px;
 }
 h1,h2,h3 {
   margin-left: 30%;
+}
+h1[style*="direction: rtl"],h2[style*="direction: rtl"],h3[style*="direction: rtl"] {
+  margin-left: inherit;
+  margin-right: 30%;
 }
 iframe#hidden_iframe {
   display: none;
@@ -58,6 +63,7 @@ textarea {
   min-height: 500px;
   font-family: "Courier New", "Courier", monospace;
   resize: none;
+  text-align: left;
 }
 img {
   width: 100%;
@@ -145,6 +151,23 @@ img#seth_img[style*="direction: rtl"] {
   direction: ltr;
   font-family: "";
 }
-#gpaData {
-  font-family: "";
+@font-face {
+  font-family: DevanagariFont;
+  src: url('lang/itfdevanagari.ttc') format("ttc");
+  font-display: block;
+}
+@font-face {
+  font-family: Nastaliq;
+  src: url('lang/jameelnoorinastaleeq.ttf') format("truetype");
+  font-weight: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: Nastaliq;
+  src: url('lang/jameelnoorikasheeda.ttf') format("truetype");
+  font-weight: bold;
+  font-display: block;
+}
+*[style*="font-family: Nastaliq"] {
+  word-spacing: 2px;
 }
