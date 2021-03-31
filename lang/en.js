@@ -44,6 +44,7 @@ langData["en"] = {
   "jsSuccess": "If you're reading this message, you have JavaScript and can use this page.",
   "quarterGrades": "Quarter grades",
   "intro": "<b>NOTE:</b> Despite my love of computers, I am also human. Please contact me at bd542591@ahschool.com if you catch a mistake." +
+    "<br><strong>Bookmark this page</strong> so you can find it easily." +
     "<br><br>Begin by selecting a calculation:",
   "semGradesButton": "Semester/Exam grades",
   "gpaCalcButton": "GPA calculator",
@@ -102,6 +103,8 @@ langData["en"] = {
   "modifyCreditHeading": "<b>Modify/delete grades</b>",
   "confirm": "Are you sure you want to do this?"
 };
+const SCRIPT_ID = ["javascript", "start", "auto", "finalAuto", "autoCategories", "manual", "category",
+  "editCategory", "addClass", "semester", "gpaCalc", "seth_img"];
 function setLanguage(l) {
   lang = l;
   document.getElementById("javascript").innerHTML = langData[lang].jsSuccess;
@@ -170,6 +173,19 @@ function setLanguage(l) {
   langHTML("getCreditButton");
   langHTML("addCreditButton", "add");
   langHTML("modifyCreditHeading");
+  for (var i = 0; i < SCRIPT_ID.length; i++) {
+    if (lang == "ur") {
+      document.getElementById(SCRIPT_ID[i]).style.direction = "rtl";
+      document.getElementById(SCRIPT_ID[i]).style.fontFamily = "Noto Nastaliq Urdu";
+    } else if (lang == "hi") {
+      document.getElementById(SCRIPT_ID[i]).style.direction = "";
+      document.getElementById(SCRIPT_ID[i]).style.fontFamily = "ITF Devanagari";
+    } else {
+      document.getElementById(SCRIPT_ID[i]).style.direction = "";
+      document.getElementById(SCRIPT_ID[i]).style.fontFamily = "";
+    }
+  }
+  updateGpa();
 }
 function languageSelect() {
   setLanguage(document.setLanguage.language.value);
@@ -181,6 +197,11 @@ function langHTML(id, key=null) {
     document.getElementById(id).innerHTML = langData[lang][key];
   } catch(err) {
     document.getElementById(id).innerHTML = langData["en"][key];
+  }
+  if (lang == "ur") {
+    document.getElementById(id).style.direction = "rtl";
+  } else {
+    document.getElementById(id).style.direction = "";
   }
 }
 function langReplace(key, codes, values) {

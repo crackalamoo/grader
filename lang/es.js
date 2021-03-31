@@ -1,6 +1,6 @@
 langData["es"] = {
-  "begin": "Para empezar, crea categorías para las notas. Si la clase está basada en point system, haz una categoría llamado algo como \"Total\" y considérala 100% de tu nota.",
-  "catInstruct": "Si la clase está basada en point system, haz una categoría " +
+  "begin": "Para empezar, crea categorías para las notas. Si la clase está basada en el point system, haz una categoría llamado algo como \"Total\" y considérala 100% de tu nota.",
+  "catInstruct": "Si la clase está basada en el point system, haz una categoría " +
     "llamado algo como \"Total\" y considérala 100% de tu nota. " +
     "Por favor no hagas ninguna categoría con un nombre que ya existe, como soy demasiado " +
     "perezoso para asegurar que no hagas esto.",
@@ -44,6 +44,7 @@ langData["es"] = {
   "jsSuccess": "Si estás leyendo este mensaje, tienes JavaScript y puedes usar esta página.",
   "quarterGrades": "Notas del cuarto",
   "intro": "<b>NOTA:</b> pese a mi amor para computadoras, también soy humano. Por favor ponte en contacto conmigo en bd542591@ahschool.com si encuentras un error." +
+    "<br><strong>Añade esta página a favoritos</strong> para que puedas encontrarla fácilmente." +
     "<br><br>Para empezar, selecciona un cálculo:",
   "semGradesButton": "Notas de semestre/examen",
   "gpaCalcButton": "Calculadora de GPA",
@@ -71,18 +72,18 @@ langData["es"] = {
   "superAlgorithm": "Mi algoritmo supergenial simplificó tus notas a lo siguiente (categoría, nota/posible):",
   "dontWorry": "<strong>Si ya no se han introducido notas</strong> de una categoría, esa categoría no estará en la lista arriba." +
     " No te preocupes, se puede añadir esa categoría a mano después del cálculo. Tampoco te preocupes si esta clase" +
-    " está basada en <strong>point system</strong> en vez de categorías.",
+    " está basada en el <strong>point system</strong> en vez de categorías.",
   "shouldContinue": "¿Debo continuar?",
   "rampalButton": "Haz clic aquí para la clase de Mr. Rampal",
   "manualButton": "Introduce notas a mano",
   "selClass": "<strong>Selecciona una clase</strong> para llenar porcentajes/ponderación automáticamente. (Mérito a <span id=\"seth\">Seth</span> Groper por esta idea)",
   "selClassOption": "Seleccionar una clase",
   "addClassOption": "Añadir una clase a esta lista",
-  "sethClassInstruct": "Por favor introduces un porcentaje para cada categoría <strong><i>o</i></strong> marca que esta clase usa point system:",
-  "pointSystemInstruct": "Para averiguar si una clase usa point system o categorías, mira cuánto valen pruebas, tareas, y exámenes." +
-    " Si valen aproximadamente el mismo número de puntos, es categorías. Si no, tal vez es point system.",
+  "sethClassInstruct": "Por favor introduces un porcentaje para cada categoría <strong><i>o</i></strong> marca que esta clase usa el point system:",
+  "pointSystemInstruct": "Para averiguar si una clase usa el point system o categorías, mira cuánto valen pruebas, tareas, y exámenes." +
+    " Si valen aproximadamente el mismo número de puntos, es categorías. Si no, tal vez es el point system.",
   "nameOfClass": "Nombre de la clase:&nbsp;",
-  "pointSystemInstruct2": "Para <strong>point system</strong>, teclea &ldquo;point system&rdquo; para nombres y ponderaciones.",
+  "pointSystemInstruct2": "Para el <strong>point system</strong>, teclea &ldquo;point system&rdquo; para nombres y ponderaciones.",
   "enterCatNames": "Nombres EXACTOS de las categorías como se ven en MyBackpack:&nbsp;",
   "enterWeights": "Ponderaciones de cada categoría en el orden arriba:&nbsp;",
   "enterNotes": "Apuntes (opcional):&nbsp;",
