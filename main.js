@@ -75,7 +75,7 @@ class Category {
   }
 }
 function roundDecimal(num, places) {
-  if (isNaN(num)) return langData[lang].error;
+  if (isNaN(num)) return "???";
   var n = Math.round(num*Math.pow(10.0, places))/Math.pow(10.0, places);
   n = n.toString();
   var decimals = n.slice(n.indexOf(".") + 1).length;
@@ -87,6 +87,7 @@ function roundDecimal(num, places) {
   return n;
 }
 function letterGrade(num) {
+  if (isNaN(num)) return "???";
   num = Math.round(num*100)/100.0;
   if (num >= 96.5) return "A+";
   if (num >= 92.5) return "A";
@@ -121,6 +122,7 @@ function updateCategories() {
       changeMode("editCategory");
       document.getElementById("editCategoryInfo").innerHTML = langReplace("catAvg", ["$CATEGORY", "$NUMBER"], [currentCategory.name, roundDecimal(currentCategory.score(), 2)]);
       document.getElementById("required_score").innerHTML = "";
+      document.getElementById("changedWeight").innerHTML = "";
     }}(categories[i]);
     if (currentCategory != null && categories[i].name == currentCategory.name) {
       newCategory.className = "button selected";
@@ -163,6 +165,7 @@ function deleteAssignment() {
 }
 function changePercent() {
   currentCategory.percentage = new Number(document.editCategory.percent.value);
+  document.getElementById("changedWeight").innerHTML = langReplace("weightChanged", ["$WEIGHT"], [new Number(document.editCategory.percent.value)]);
 }
 function findCategories(autoResult) {
   var cats = [];
@@ -263,7 +266,7 @@ function autoCats() {
   var cats = findCategories(autoCalc);
   form.innerHTML = "";
   for (var i = 0; i < cats.length; i++) {
-    form.innerHTML += cats[i] + ": <input name='" + i + "' type='number'></input>%<br>";
+    form.innerHTML += cats[i] + ": <span dir=\"ltr\"><input name='" + i + "' type='number'></input>%</span><br>";
   }
   form.innerHTML += '<input type="checkbox" name="point"></input> ' + langData[lang].pointCheck + '<br>'
   form.innerHTML += '<br><div class="button" onclick="autoCalc2();" id="continueClass">' + langData[lang].next + '</div>';
