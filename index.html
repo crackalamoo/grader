@@ -372,9 +372,9 @@
   <h3 class="noTopMargin" id="ritvikHonor"></h3>
   <div id="gpaData"></div>
   <form name="addCredit">
-    <input type="radio" name="weights" value="weighted" onchange="updateGpa()" checked></input>Weighted GPA (AHS weighting)<br>
-    <input type="radio" name="weights" value="fivescale" onchange="updateGpa()"></input>5.0 Scale<br>
-    <input type="radio" name="weights" value="fourscale" onchange="updateGpa()"></input>4.0 Scale<br>
+    <input type="radio" name="weights" value="weighted" onchange="updateGpa()" checked></input><span id="ahsWeighted">Weighted GPA (AHS weighting)</span><br>
+    <input type="radio" name="weights" value="fivescale" onchange="updateGpa()"></input><span id="5scale">5.0 Scale</span><br>
+    <input type="radio" name="weights" value="fourscale" onchange="updateGpa()"></input><span id="4scale">4.0 Scale</span><br>
     <select name="letterGrade">
       <option value="A+">A+</option>
       <option value="A">A</option>
