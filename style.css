@@ -173,8 +173,15 @@ input,select {
 }
 @font-face {
   font-family: devanagari;
-  src: url('lang/itfdevanagari.ttc') format("ttc");
-  font-display: block;
+  src: url('lang/ITFDevanagari-Regular-01.otf') format("otf");
+  font-weight: normal;
+  unicode-range: U+900-97F;
+}
+@font-face {
+  font-family: devanagari;
+  src: url('lang/ITFDevanagari-Bold-02.otf') format("otf");
+  font-weight: bold;
+  unicode-range: U+900-97F;
 }
 @font-face {
   font-family: nastaliq;
