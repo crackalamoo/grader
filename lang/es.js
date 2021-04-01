@@ -26,7 +26,7 @@ langData["es"] = {
   "delete": "Borrar",
   "edit": "Editar las notas",
   "newClass": "Nueva clase (automático)",
-  "notPossibleGrade": "Desafortunadamente esta nota no es posible para ti en este semestre. ¡Buena suerte para el próximo semestre!",
+  "notPossibleGrade": "Desafortunadamente esta nota no es posible para ti este semestre. ¡Buena suerte en el próximo semestre!",
   "minGrade": "Nota mínima necesaria en el examen del semestre: $MIN% (se introduce como $LETTER/$NUMBER%)",
   "fritzExam": "Nota mínima necesaria en el examen del semestre: $MIN% (Espero que no hagas tanto Fritz en el exámen)",
   "validData": "Por favor introduce información válida.",
@@ -43,7 +43,7 @@ langData["es"] = {
     "JavaScript. Si no sabes que es eso, no te preocupes. Lo hago por ti:",
   "jsSuccess": "Si estás leyendo este mensaje, tienes JavaScript y puedes usar esta página.",
   "quarterGrades": "Notas del cuarto",
-  "intro": "<b>NOTA:</b> pese a mi amor para computadoras, también soy humano. Por favor ponte en contacto conmigo en bd542591@ahschool.com si encuentras un error." +
+  "intro": "<b>NOTA:</b> pese a mi amor por computadoras, yo también soy humano. Por favor ponte en contacto conmigo en bd542591@ahschool.com si encuentras un error." +
     "<br><strong>Añade esta página a favoritos</strong> para que puedas encontrarla fácilmente." +
     "<br><br>Para empezar, selecciona un cálculo:",
   "semGradesButton": "Notas de semestre/examen",
@@ -74,7 +74,7 @@ langData["es"] = {
     " No te preocupes, se puede añadir esa categoría a mano después del cálculo. Tampoco te preocupes si esta clase" +
     " está basada en el <strong>point system</strong> en vez de categorías.",
   "shouldContinue": "¿Debo continuar?",
-  "rampalButton": "Clase de Mr. Rampal o Mrs. Kimpton",
+  "rampalButton": "Clase de Mr. Rampal o Dr. Kimpton",
   "manualButton": "Introducir notas a mano",
   "selClass": "<strong>Selecciona una clase</strong> para llenar porcentajes/ponderación automáticamente. (Mérito a <span id=\"seth\">Seth</span> Groper por esta idea)",
   "selClassOption": "Seleccionar una clase",
@@ -84,25 +84,31 @@ langData["es"] = {
     " Si valen aproximadamente el mismo número de puntos, es categorías. Si no, tal vez es el point system.",
   "nameOfClass": "Nombre de la clase:&nbsp;",
   "pointSystemInstruct2": "Para el <strong>point system</strong>, teclea &ldquo;point system&rdquo; para nombres y ponderaciones.",
-  "enterCatNames": "Nombres EXACTOS de las categorías como se ven en MyBackpack:&nbsp;",
+  "enterCatNames": "Nombres de las categorías EXACTAMENTE como se ven en MyBackpack:&nbsp;",
   "enterWeights": "Ponderaciones de cada categoría en el orden arriba:&nbsp;",
   "enterNotes": "Apuntes (opcional):&nbsp;",
   "minExam": "Nota mínima necesaria en el examen",
   "wantAtLeast": "Quiero por lo menos:&nbsp;",
-  "selectAbove": "Selecciona apuntes arriba para calcular",
+  "selectAbove": "Selecciona notas arriba para calcular",
   "semWithExam": "Nota del semestre con exámen",
   "ritvikCalc": "Calculadora de GPA de AHS de Ritvik Teegavarapu",
   "ritvikHonor": "Sugerido por y llamado en honor de Ritvik Teegavarapu",
   "clearDataButton": "Borrar información de GPA",
-  "clearDataExp": "Esto te forcerá a introducir otra vez tu GPA la próxima vez que visitas esta página." +
+  "clearDataExp": "Esto te obligará a introducir otra vez tu GPA la próxima vez que visites esta página." +
     " Esto NO borrará la información de la página ahora.<br><br>" +
     "Si dejas la información en vez de borrarla, todo será guardado " +
-    "para la próxima vez que visitas esta página.",
+    "para la próxima vez que visites esta página.",
   "creditNum": "Crédito número&nbsp;",
   "getCreditButton": "Ver crédito",
   "modifyCreditHeading": "<b>Modificar/borrar notas</b>",
   "confirm": "¿Estás seguro/a que quieres hacer esto?",
   "quarter13": "Nota del cuarto 1/3",
   "quarter24": "Nota del cuarto 2/4",
-  "examGrade": "Nota del examen"
+  "examGrade": "Nota del examen",
+  "semester": "Semestre",
+  "quarter": "Cuarto",
+  "ahsWeighted": "GPA ponderado (ponderación de AHS)",
+  "5scale": "Escala 5.0",
+  "4scale": "Escala 4.0",
+  "error": "ERROR"
 };

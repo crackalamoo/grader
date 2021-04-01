@@ -47,6 +47,7 @@ function makeNumber(grade, possible=100.0) {
     case "LATE": grade = 50; break;
     case "AB": grade = 0; break;
     case "P": grade = 0; break;
+    case "PEND": grade = 0; break;
     case "": grade = 0; break;
     case " ": grade = 0; break;
     default: return new Number(grade);
@@ -74,7 +75,7 @@ class Category {
   }
 }
 function roundDecimal(num, places) {
-  if (isNaN(num)) return "ERROR";
+  if (isNaN(num)) return langData[lang].error;
   var n = Math.round(num*Math.pow(10.0, places))/Math.pow(10.0, places);
   n = n.toString();
   var decimals = n.slice(n.indexOf(".") + 1).length;
@@ -192,7 +193,7 @@ function auto_filter(el) {
 }
 function isNotGrade(g) {
   if (isNaN(makeNumber(g, 100.0))) {
-    if (["", " ", "P", "EXC", "EX"].indexOf(g) == -1)
+    if (["", " ", "P", "EXC", "EX", "PEND"].indexOf(g) == -1)
       return true;
     else
       return false;
@@ -236,9 +237,9 @@ function autoGrade(rampal=false) {
     temp.push(splitArray[0]);
     temp.push(splitArray[1]);
     temp.push(splitArray[2]);
-    if (["", " ", "P", "EXC", "EX"].indexOf(temp[1]) == -1)
+    if (["", " ", "P", "EXC", "EX", "PEND"].indexOf(temp[1]) == -1)
       temp2.push(temp);
-    if (["", " ", "P"].indexOf(temp[1]) != -1)
+    if (["", " ", "P", "PEND"].indexOf(temp[1]) != -1)
       if (splitArray[3] == "0.00%") temp2.push(temp);
   }
   autoCalc = temp2;

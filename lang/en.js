@@ -74,7 +74,7 @@ langData["en"] = {
     " Don't worry, you can manually add that category after the calculation. Also don't worry if this class" +
     " is based on <strong>point system</strong> rather than categories.",
   "shouldContinue": "Should I continue?",
-  "rampalButton": "Mr. Rampal's or Mrs. Kimpton's class",
+  "rampalButton": "Mr. Rampal or Dr. Kimpton's class",
   "manualButton": "Manually enter grades",
   "selClass": "<strong>Select a class</strong> to automatically fill in percentages/weighting. (Credit to <span id=\"seth\">Seth</span> Groper for this idea)",
   "selClassOption": "Select a class",
@@ -104,5 +104,11 @@ langData["en"] = {
   "confirm": "Are you sure you want to do this?",
   "quarter13": "Quarter 1/3 grade",
   "quarter24": "Quarter 2/4 grade",
-  "examGrade": "Exam grade"
+  "examGrade": "Exam grade",
+  "semester": "Semester",
+  "quarter": "Quarter",
+  "ahsWeighted": "Weighted GPA (AHS Weighting)",
+  "5scale": "5.0 scale",
+  "4scale": "4.0 scale",
+  "error": "ERROR"
 };

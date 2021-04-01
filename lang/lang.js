@@ -2,6 +2,7 @@ const SCRIPT_ID = ["javascript", "start", "auto", "finalAuto", "autoCategories",
   "editCategory", "addClass", "semester", "gpaCalc", "seth_img", "langSelect", "examGrade", "semesterGrade"];
 function changeLanguage(l) {
   lang = l;
+  document.setLanguage.language.value = lang;
   document.getElementById("javascript").innerHTML = langData[lang].jsSuccess;
   langHTML("langSelect", "setLang");
   langHTML("welcome");
@@ -60,6 +61,13 @@ function changeLanguage(l) {
   langHTML("semWithExam");
   document.getElementById("examGrade").innerHTML = langReplace("semGrade", ["$LETTER", "$NUMBER"], ["A+", 98.50]);
   document.getElementById("examGrade").innerHTML += "<br>" + langData[lang].selectAbove;
+  document.modifyCredit.numCredits.options[0].innerHTML = langData[lang].semester;
+  document.modifyCredit.numCredits.options[1].innerHTML = langData[lang].quarter;
+  document.addCredit.numCredits.options[0].innerHTML = langData[lang].semester;
+  document.addCredit.numCredits.options[1].innerHTML = langData[lang].quarter;
+  langHTML("ahsWeighted");
+  langHTML("5scale");
+  langHTML("4scale");
   langHTML("ritvikCalc");
   langHTML("ritvikHonor");
   langHTML("editCreditButton", "apply");
@@ -78,10 +86,10 @@ function changeLanguage(l) {
   for (var i = 0; i < SCRIPT_ID.length; i++) {
     if (lang == "ur") {
       document.getElementById(SCRIPT_ID[i]).style.direction = "rtl";
-      document.getElementById(SCRIPT_ID[i]).style.fontFamily = 'Nastaliq';
+      document.getElementById(SCRIPT_ID[i]).style.fontFamily = 'nastaliq';
     } else if (lang == "hi") {
       document.getElementById(SCRIPT_ID[i]).style.direction = "";
-      document.getElementById(SCRIPT_ID[i]).style.fontFamily = "DevanagariFont";
+      document.getElementById(SCRIPT_ID[i]).style.fontFamily = 'devanagari';
     } else {
       document.getElementById(SCRIPT_ID[i]).style.direction = "";
       document.getElementById(SCRIPT_ID[i]).style.fontFamily = "";

@@ -172,21 +172,28 @@ input,select {
   direction: ltr;
 }
 @font-face {
-  font-family: DevanagariFont;
+  font-family: devanagari;
   src: url('lang/itfdevanagari.ttc') format("ttc");
   font-display: block;
 }
 @font-face {
-  font-family: Nastaliq;
+  font-family: nastaliq;
   src: url('lang/jameelnoorinastaleeq.ttf') format("truetype");
   font-weight: normal;
   font-display: block;
+  unicode-range: U+600-6FF;
 }
 @font-face {
-  font-family: Nastaliq;
+  font-family: nastaliq;
   src: url('lang/jameelnoorikasheeda.ttf') format("truetype");
   font-weight: bold;
   font-display: block;
+  unicode-range: U+600-6FF;
+}
+@font-face {
+  font-family: nastaliq;
+  src: local("Baskerville"), local("Times New Roman");
+  unicode-range: U+0-599;
 }
 *[style*="font-family: Nastaliq"] {
   word-spacing: 2px;
