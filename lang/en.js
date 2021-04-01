@@ -65,8 +65,9 @@ langData["en"] = {
   "numPointsWorth": "Number of points the assignment is worth:&nbsp;",
   "calcRequiredButton": "Calculate Required Score",
   "changeWeightButton": "Change Weighting",
+  "weightChanged": "Weighting changed to $WEIGHT%",
   "copyGradesInstruct": "Simply copy your grades from MyBackpack as shown in the image below.",
-  "mobileCopyInstruct": "(If you are on a <strong>mobile device</strong>, including iPads, you should select <i>" +
+  "mobileCopyInstruct": "(If you are on a <strong>mobile device</strong>, including iPads, you can select <i>" +
     "Assignment</i>, then select all the grades)",
   "pasteGradesInstruct": "Now paste them into the box below and click <strong>Next</strong> under the box:",
   "superAlgorithm": "My super cool algorithm simplified your grades to the following (Category, Score/Possible):",
@@ -109,6 +110,5 @@ langData["en"] = {
   "quarter": "Quarter",
   "ahsWeighted": "Weighted GPA (AHS Weighting)",
   "5scale": "5.0 scale",
-  "4scale": "4.0 scale",
-  "error": "ERROR"
+  "4scale": "4.0 scale"
 };

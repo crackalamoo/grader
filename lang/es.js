@@ -40,7 +40,7 @@ langData["es"] = {
   "reqScore": "Debes de recibir $PTS/$TOT ($PERCENT%) para sacar un $GRADE% en la clase",
   "setLang": "Idioma:&nbsp;",
   "welcome": "Bienvenidos a la calculadora de notas. Primero tienes que asegurar que tengas " +
-    "JavaScript. Si no sabes que es eso, no te preocupes. Lo hago por ti:",
+    "JavaScript. Si no sabes lo que eso es, no te preocupes. Lo hago por ti:",
   "jsSuccess": "Si estás leyendo este mensaje, tienes JavaScript y puedes usar esta página.",
   "quarterGrades": "Notas del cuarto",
   "intro": "<b>NOTA:</b> pese a mi amor por computadoras, yo también soy humano. Por favor ponte en contacto conmigo en bd542591@ahschool.com si encuentras un error." +
@@ -62,12 +62,13 @@ langData["es"] = {
   "whatNeed": "¿Qué necesito en una asignación que viene?",
   "creditCathy": "Mérito a Cathy T. Quan por esta idea",
   "desiredGrade": "Nota deseada en la clase:&nbsp;",
-  "numPointsWorth": "Número de puntos del valor de la asignación:&nbsp;",
+  "numPointsWorth": "Cuántos puntos son el valor de la asignación:&nbsp;",
   "calcRequiredButton": "Calcular nota necesaria",
   "changeWeightButton": "Cambiar ponderación",
+  "weightChanged": "La ponderación fue cambiada a $WEIGHT%",
   "copyGradesInstruct": "Sencillamente copia tus notas de MyBackpack como se muestra en el imágen más abajo.",
-  "mobileCopyInstruct": "(Si estás usando un <strong>dispositivo móvil</strong>, incluso iPads, debes seleccionar <i>" +
-    "Assignment</i>, y después seleccionar todas las apuntes)",
+  "mobileCopyInstruct": "(Si estás usando un <strong>dispositivo móvil</strong>, incluso iPads, puedes seleccionar <i>" +
+    "Assignment</i> y después seleccionar todas las notas)",
   "pasteGradesInstruct": "Ahora pégalas en la casilla más abajo y haz clic en <strong>Adelante</strong> debajo de la casilla:",
   "superAlgorithm": "Mi algoritmo supergenial simplificó tus notas a lo siguiente (categoría, nota/posible):",
   "dontWorry": "<strong>Si ya no se han introducido notas</strong> de una categoría, esa categoría no estará en la lista arriba." +
@@ -80,7 +81,7 @@ langData["es"] = {
   "selClassOption": "Seleccionar una clase",
   "addClassOption": "Añadir una clase a esta lista",
   "sethClassInstruct": "Por favor introduces un porcentaje para cada categoría <strong><i>o</i></strong> marca que esta clase usa el point system:",
-  "pointSystemInstruct": "Para averiguar si una clase usa el point system o categorías, mira cuánto valen pruebas, tareas, y exámenes." +
+  "pointSystemInstruct": "Para averiguar si una clase usa el point system o categorías, mira cuánto valen pruebas, tareas y exámenes." +
     " Si valen aproximadamente el mismo número de puntos, es categorías. Si no, tal vez es el point system.",
   "nameOfClass": "Nombre de la clase:&nbsp;",
   "pointSystemInstruct2": "Para el <strong>point system</strong>, teclea &ldquo;point system&rdquo; para nombres y ponderaciones.",
@@ -109,6 +110,5 @@ langData["es"] = {
   "quarter": "Cuarto",
   "ahsWeighted": "GPA ponderado (ponderación de AHS)",
   "5scale": "Escala 5.0",
-  "4scale": "Escala 4.0",
-  "error": "ERROR"
+  "4scale": "Escala 4.0"
 };
