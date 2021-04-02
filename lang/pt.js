@@ -1,8 +1,8 @@
 langData["pt"] = {
-  "begin": "Para iniciar, cria categorias para as notas. Se a classe é baseada no sistema de pontos, faça uma categoria chamado algo como \"Total\" y considere-a 100% da sua nota.",
+  "begin": "Para iniciar, cria categorias para as notas. Se a classe é baseada no sistema de pontos, faça uma categoria chamado algo como \"Total\" e considere-a 100% da sua nota.",
   "catInstruct": "Se a classe é baseada no sistema de pontos, faça uma categoria " +
-    "chamado algo como \"Total\" y considere-a 100% da sua nota. " +
-    "Por favor não faça nenhuma categoria com um nome que já existe, como seu demasiado " +
+    "chamado algo como \"Total\" e considere-a 100% da sua nota. " +
+    "Por favor não faça nenhuma categoria com um nome que já existe, como sou demasiado " +
     "preguiçoso para assegurar que não faça isto.",
   "catList": "<strong>Clique em uma categoria</strong> para adicionar ou remover tarefas e para ver a nota dessa categoria.<br><br>Categorias:<br>",
   "catAvg": "Média em $CATEGORY: $NUMBER%",
@@ -43,7 +43,7 @@ langData["pt"] = {
     "JavaScript. Si não sabe o que é isso, não se preocupe. Eu faço isto para você:",
   "jsSuccess": "Se você está lendo esta mensagem, tem JavaScript e pode usar esta página.",
   "quarterGrades": "Notas do quarto",
-  "intro": "<b>NOTA:</b> apesar do meu amor por computadores, eu também seu humano. Por favor contate-me em $EMAIL se você encontrar um erro." +
+  "intro": "<b>NOTA:</b> apesar do meu amor por computadores, eu também sou humano. Por favor contate-me em $EMAIL se você encontrar um erro." +
     "<br><strong>Adicione esta página aos favoritos</strong> para que possa encontrá-la facilmente." +
     "<br><br>Para inicionar, selecione um cálculo:",
   "semGradesButton": "Notas de semestre/exame",
@@ -56,7 +56,7 @@ langData["pt"] = {
   "deleteAssignment": "Deletar tarefa",
   "editInstruct": "Insira nota/possível. Exemplos: 5/6.0, 8.5/9, 3/3.<br>" +
     "Para deletar a uma tarefa, insira a seu nota <strong>do mismo jeito</strong> e clique em \"Deletar tarefa\".<br>" +
-    "Para <strong>alterar a nota de uma tarefa</strong>, adicione o delete uma tarefa de 0 pontos (ex: 5/0).",
+    "Para <strong>alterar a nota de uma tarefa</strong>, adicione ou delete uma tarefa de 0 pontos (ex: 5/0).",
   "letterGrade": "Nota de letra:&nbsp;",
   "selectLetter": "Selecione uma nota de letra",
   "whatNeed": "O que preciso em uma tarefa que vem?",
@@ -70,18 +70,18 @@ langData["pt"] = {
   "mobileCopyInstruct": "(Se você está usando um <strong>dispositivo móvel</strong>, inclusivo iPads, pode selecionar <i>" +
     "Assignment</i> e depois selecionar todas as notas)",
   "pasteGradesInstruct": "Agora cole-as na caixa abaixo e clique em <strong>Seguinte</strong> debaixo da caixa:",
-  "superAlgorithm": "Meu algoritmo legalíssimo simplificou suas notas para o seguinte (categoria, nota/possível):",
-  "dontWorry": "<strong>Se já não há notas inseridas</strong> de uma categoria, essa categoria não será na lista acima." +
-    " No se preocupe, pode adicionar essa categoria à mão depois do cálculo. Também não se preocupe se esta classe" +
+  "superAlgorithm": "Meu algoritmo super legal simplificou suas notas para o seguinte (categoria, nota/possível):",
+  "dontWorry": "<strong>Se ainda não há notas inseridas</strong> de uma categoria, essa categoria não será na lista acima." +
+    " Não se preocupe, pode adicionar essa categoria à mão depois do cálculo. Também não se preocupe se esta classe" +
     " é baseada no <strong>sistema de pontos</strong> em vez de categorias.",
   "shouldContinue": "Devo continuar?",
   "rampalButton": "Classe de Mr. Rampal ou Dr. Kimpton",
   "manualButton": "Inserir notas à mão",
-  "selClass": "<strong>Seleciona uma classe</strong> para preencher percentagens/ponderación automáticamente. (Crédito para <span id=\"seth\">Seth</span> Groper por esta ideia)",
+  "selClass": "<strong>Seleciona uma classe</strong> para preencher percentagens/ponderações automaticamente. (Crédito para <span id=\"seth\">Seth</span> Groper por esta ideia)",
   "selClassOption": "Selecionar uma classe",
   "addClassOption": "Adicionar uma classe a esta lista",
   "sethClassInstruct": "Por favor insira uma percentagem para cada categoria <strong><i>ou</i></strong> marque que esta classe usa o sistema de pontos:",
-  "pointSystemInstruct": "Para descobrir se uma classe usa o sistema de pontos ou categorias, olhe quante valem quizzes, trabalhos de casa e testes." +
+  "pointSystemInstruct": "Para saber se uma classe usa o sistema de pontos ou categorias, olhe quante valem quizzes, trabalhos de casa e testes." +
     " Se valem quase o mesmo número de pontos, é categorias. Se não, talvez é o sistema de pontos.",
   "nameOfClass": "Nome da classe:&nbsp;",
   "pointSystemInstruct2": "Para o <strong>sistema de pontos</strong>, escreva &ldquo;sistema de pontos&rdquo; para nomes e ponderações.",
@@ -95,11 +95,11 @@ langData["pt"] = {
   "noExam": "Sem exame",
   "ritvikCalc": "A calculadora de GPA de AHS de Ritvik Teegavarapu",
   "ritvikHonor": "Sugerido por e nomeado em homenagem a Ritvik Teegavarapu",
-  "clearDataButton": "Deletar informação de GPA",
-  "clearDataExp": "Isto o/a obrigará a inserir outra vez seu GPA a próxima vez que visite esta página." +
+  "clearDataButton": "Deletar dados de GPA",
+  "clearDataExp": "Isto obrigará você a inserir outra vez seu GPA a próxima vez que visite esta página." +
     " Isto NÃO deletará a informação da página agora.<br><br>" +
     "Se você deixa a informação em vez de deletá-la, tudo será guardado " +
-    "para la próxima vez que visites esta página.",
+    "para a próxima vez que visites esta página.",
   "creditNum": "Crédito número&nbsp;",
   "getCreditButton": "Ver crédito",
   "modifyCreditHeading": "<b>Modificar/deletar notas</b>",

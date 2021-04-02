@@ -71,7 +71,7 @@ langData["es"] = {
     "Assignment</i> y después seleccionar todas las notas)",
   "pasteGradesInstruct": "Ahora pégalas en la casilla más abajo y haz clic en <strong>Siguiente</strong> debajo de la casilla:",
   "superAlgorithm": "Mi algoritmo supergenial simplificó tus notas a lo siguiente (categoría, nota/posible):",
-  "dontWorry": "<strong>Si ya no se han introducido notas</strong> de una categoría, esa categoría no estará en la lista arriba." +
+  "dontWorry": "<strong>Si aún no se han introducido notas</strong> de una categoría, esa categoría no estará en la lista arriba." +
     " No te preocupes, se puede añadir esa categoría a mano después del cálculo. Tampoco te preocupes si esta clase" +
     " está basada en el <strong>sistema de puntos</strong> en vez de categorías.",
   "shouldContinue": "¿Debo continuar?",
@@ -95,7 +95,7 @@ langData["es"] = {
   "noExam": "Sin examen",
   "ritvikCalc": "La calculadora de GPA de AHS de Ritvik Teegavarapu",
   "ritvikHonor": "Sugerido por y nombrado en honor a Ritvik Teegavarapu",
-  "clearDataButton": "Borrar información de GPA",
+  "clearDataButton": "Borrar datos de GPA",
   "clearDataExp": "Esto te obligará a introducir otra vez tu GPA la próxima vez que visites esta página." +
     " Esto NO borrará la información de la página ahora.<br><br>" +
     "Si dejas la información en vez de borrarla, todo será guardado " +
@@ -112,5 +112,7 @@ langData["es"] = {
   "ahsWeighted": "GPA ponderado (ponderación de AHS)",
   "5scale": "Escala 5.0",
   "4scale": "Escala 4.0",
+  "announcements": "Envíame un email si quisieras traducir la calculadora de notas" +
+    " a otro idioma o corregir una traducción que ya existe.",
   "languages": ["inglés", "español", "portugués", "hindi", "urdu"]
 };
