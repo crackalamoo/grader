@@ -25,7 +25,21 @@ function changeMode(mode) {
   }
 }
 changeMode("start");
-changeLanguage("en");
+
+var preferredLangs = navigator.languages;
+if (preferredLangs.length == 0)
+  preferredLangs.push(navigator.language);
+for (var i = 0; i < preferredLangs.length; i++) {
+  lang = preferredLangs[i];
+  if (lang.indexOf("-") != -1)
+    lang = lang.slice(0, lang.indexOf("-"));
+  if (LANG_CODES.indexOf(lang) == -1)
+    lang = "en";
+  else
+    break;
+}
+changeLanguage(lang);
+
 function makeNumber(grade, possible=100.0) {
   switch(grade) {
     case "A+": grade=98.5; break;

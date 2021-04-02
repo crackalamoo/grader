@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Harys Dalvi">
   <meta name="description" content="Free Grade Calculator">
+  <meta name="keywords" content="grades, calculator, AHS, school, GPA">
   <meta charset="utf-8">
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
@@ -13,6 +14,7 @@
   </script>
   <script src="lang/en.js"></script>
   <script src="lang/es.js"></script>
+  <script src="lang/pt.js"></script>
   <script src="lang/hi.js"></script>
   <script src="lang/ur.js"></script>
   <script src="lang/lang.js"></script>
@@ -44,15 +46,23 @@
 <div id="ahsDiv"><img id="ahs" src="https://www.ahschool.com/data/news/thumbs/1579.full.jpg"></div>
 </div>
 <div id="languageButtons">
-  <div class="button" onclick="changeLanguage('en');">English</div>
-  <div class="button" onclick="changeLanguage('es');">Español</div>
-  <div class="button" onclick='changeLanguage("hi")'>हिन्दी</div>
-  <div class="button" onclick="changeLanguage('ur');">اردو</div>
+  <span>
+    <div class="button" onclick="changeLanguage('en');">English</div>
+  </span>
+  <span>
+    <div class="button" onclick="changeLanguage('es');">Español</div>
+    <div class="button" onclick="changeLanguage('pt');">Português</div>
+  </span>
+  <span>
+    <div class="button" onclick='changeLanguage("hi")'>हिन्दी</div>
+    <div class="button" onclick="changeLanguage('ur');">اردو</div>
+  </span>
 </div>
 <form name="setLanguage" action = "javascript:void(0)">
   <span id="langSelect"></span> <select name="language" onchange="languageSelect()">
   <option value="en">English</option>
   <option value="es">Español</option>
+  <option value="pt">Português</option>
   <option value="hi">हिन्दी</option>
   <option value="ur">اردو</option>
   </select>
@@ -70,6 +80,8 @@
   document.getElementById("javascript").innerHTML = langData[lang].jsSuccess;
   </script>
   <div class="button" onclick="changeMode('FAQs')" id="help">Help</div><br>
+  <p lang="en" dir="ltr" id="announcements">Email me if you would like to translate the grade
+    calculator into another language.</p>
   <div id="intro"></div><br>
   <div class="centerButtons">
     <div class="button" onclick="changeMode('manual');" id="manualInput">Manual Input</div>
@@ -82,16 +94,37 @@
   <!-- <div class="centerButtons">
     <div class="button"><a href="calc/calc.html">Regular calculator</a></div>
   </div> -->
-  <div id="bottomIntro"><p><b>STAY HEALTHY!</b></p>
+  <div id="bottomIntro" lang="en"><p><b>STAY HEALTHY!</b></p>
   <p>I will never use the information you give here to make fun of you. In fact, I don't know how to. I have
     no way of knowing what you enter here because I am not good at programming in PHP. JavaScript is a &ldquo;client side&rdquo;
     programming language, which means all the code runs on your computer without transferring data anywhere else.</p>
-  <br><p><b>Quarter Dates</b><br>
-    Quarter 1: 08/31/20 &ndash; 10/23/20<br>
-    Quarter 2: 10/26/20 &ndash; 01/08/21<br>
-    Quarter 3: 01/11/21 &ndash; 03/26/21<br>
-    Quarter 4: 03/29/21 &ndash; 06/10/21 (for grades 7-11; 05/07 for seniors)
-  </p><br>
+  </p>
+  <details>
+    <summary><b>Quarter Dates</b></summary>
+    <p>Quarter 1: <time datetime="2020-08-31">08/31/20</time> &ndash; <time datetime="2020-10-23">10/23/20</time><br>
+    Quarter 2: <time datetime="2020-10-26">10/26/20</time> &ndash; <time datetime="2021-01-08">01/08/21</time><br>
+    Quarter 3: <time datetime="2021-11-21">01/11/21</time> &ndash; <time datetime="2021-03-26">03/26/21</time><br>
+    Quarter 4: <time datetime="2021-03-29">03/29/21</time> &ndash; <time datetime="2021-06-21">06/10/21</time>
+      (for grades 7-11; <time datetime="2021-05-07">05/07</time> for seniors)</p>
+  </details><br>
+  <details>
+    <summary><b>Letter grade to number grade correspondence</b></summary>
+    <p> <i>Letter: minimum score required (score entered into gradebook)</i><br>
+    A+: 96.5+ (98.5)<br>
+    A: 92.5+ (95.0)<br>
+    A-: 89.5+ (91.5)<br>
+    B+: 86.5+ (88.5)<br>
+    B: 82.5+ (85.0)<br>
+    B-: 79.5+ (81.5)<br>
+    C+: 76.5+ (78.5)<br>
+    C: 72.5+ (75.0)<br>
+    C-: 69.5+ (71.5)<br>
+    D+: 66.5+ (68.5)<br>
+    D: 62.5+ (65.0)<br>
+    D-: 59.5+ (61.5)<br>
+    </p>
+  </details><br>
+
   <p>Did you know that Fritzgerald Duvigneaud got into Caltech, MIT, and UChicago?</p></div>
 </div>
 <div class="main" id="manual">
@@ -229,8 +262,8 @@
     <img src="rampal/rampal4.jpg"><br>
     <img src="rampal/rampal5.jpg"><br>
     <img src="rampal/rampal6.png"><br>
-    <p>Credit to Gabriel Sun for <cite>No.</cite> and to Josh Doischen for <cite>In loving memory</cite><br><br>
-    जय श्री रामपाल (<i>Jai Shri Rampal</i>)</p>
+    <p lang="en">Credit to Gabriel Sun for <cite>No.</cite> and to Josh Doischen for <cite>In loving memory</cite><br><br>
+    <span lang="hi">जय श्री रामपाल</span> (<i>Jai Shri Rampal</i>)</p>
   </span>
 </div>
 <div class="main" id="addClass">
@@ -247,7 +280,7 @@
     <button class="button" type="submit" value="Send" onclick="mailSent();" id="sendMailButton">Submit</button>
   </form>
 </div>
-<div class="main" id="FAQs">
+<div class="main" id="FAQs" lang="en">
   <div class="button" onclick="changeMode('start')" id="faqBack">Back</div>
   <h3>Frequently Asked Questions</h3>
   <ul class="faq">
@@ -443,6 +476,7 @@
     <img src="ritvik/ritvik1.jpeg">
     <img src="ritvik/ritvik2.jpeg">
     <img src="ritvik/ritvik3.JPG">
+    <img src="ritvik/ritvik4.jpeg">
   </span>
 </div>
 

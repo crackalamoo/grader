@@ -60,7 +60,12 @@ div#languageButtons {
   justify-content: center;
   flex-wrap: wrap;
 }
-div#languageButtons div.button {
+div#languageButtons span {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+div#languageButtons span div.button {
   min-width: 50px;
   max-width: 150px;
   padding-left: 10px;
@@ -126,8 +131,8 @@ div#creditInfo,div#manualInput,.hidden {
 }
 @media only screen and (max-width: 600px) {
   body {
-    padding-left: 6%;
-    padding-right: 6%;
+    padding-left: 5%;
+    padding-right: 5%;
   }
   .button {
     padding-left: 10px;
@@ -139,11 +144,11 @@ div#creditInfo,div#manualInput,.hidden {
     margin-right: 10%;
   }
   h1,h2,h3 {
-    margin-left: 18%;
+    margin-left: 10%
   }
   h1[style*="direction: rtl"],h2[style*="direction: rtl"],h3[style*="direction: rtl"] {
     margin-left: inherit;
-    margin-right: 18%;
+    margin-right: 10%;
   }
 }
 a {

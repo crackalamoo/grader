@@ -32,7 +32,7 @@ langData["en"] = {
   "validData": "Please enter valid data.",
   "mailSent": "Your response was sent and the class should be available shortly. Thank you!" +
     "<br>For now, go back and enter weightings manually.<br>If the class isn't available within about three days, please contact" +
-    "me at bd542591@ahschool.com; I may be having trouble understanding your request",
+    "me at bd542591@ahschool.com; I may be having trouble understanding your request.",
   "semGrade": "Grade for the semester: $LETTER ($NUMBER%)",
   "gpaClass": "$INDEX: $GPA ($GRADE, $LEVEL, $CREDITS credits)",
   "gpaSum": "<b>GPA sum: $SUM<br>Total credits: $CREDITS<br>Cumulative GPA: $GPA</b>",
@@ -43,7 +43,7 @@ langData["en"] = {
     "JavaScript. If you don't know what that is, don't worry. I'll do it for you:",
   "jsSuccess": "If you're reading this message, you have JavaScript and can use this page.",
   "quarterGrades": "Quarter grades",
-  "intro": "<b>NOTE:</b> Despite my love of computers, I am also human. Please contact me at bd542591@ahschool.com if you catch a mistake." +
+  "intro": "<b>NOTE:</b> Despite my love of computers, I am also human. Please contact me at $EMAIL if you catch a mistake." +
     "<br><strong>Bookmark this page</strong> so you can find it easily." +
     "<br><br>Begin by selecting a calculation:",
   "semGradesButton": "Semester/Exam grades",
@@ -92,6 +92,7 @@ langData["en"] = {
   "wantAtLeast": "I want at least:&nbsp;",
   "selectAbove": "Select grades above to calculate",
   "semWithExam": "Semester grade with exam",
+  "noExam": "No exam",
   "ritvikCalc": "Ritvik Teegavarapu AHS GPA Calculator",
   "ritvikHonor": "Suggested by and named in honor of Ritvik Teegavarapu",
   "clearDataButton": "Clear GPA Data",
@@ -110,5 +111,6 @@ langData["en"] = {
   "quarter": "Quarter",
   "ahsWeighted": "Weighted GPA (AHS Weighting)",
   "5scale": "5.0 scale",
-  "4scale": "4.0 scale"
+  "4scale": "4.0 scale",
+  "languages": ["English", "Spanish", "Portuguese", "Hindi", "Urdu"]
 };
