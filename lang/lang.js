@@ -86,6 +86,7 @@ function changeLanguage(l) {
   langHTML("q24sem", "quarter24");
   langHTML("q24exam", "quarter24");
   langHTML("semExam", "examGrade");
+  langHTML("announcements");
   document.exam.exam.options[12].innerHTML = langData[l].noExam;
   document.getElementById("manualInput").innerHTML = langData[l].edit;
   for (var i = 0; i < SCRIPT_ID.length; i++) {
@@ -97,6 +98,7 @@ function changeLanguage(l) {
       document.getElementById(SCRIPT_ID[i]).style.fontFamily = 'devanagari';
     } else {
       document.getElementById(SCRIPT_ID[i]).style.direction = "";
+      document.getElementById(SCRIPT_ID[i]).style.fontFamily = "";
     }
   }
   for (var i = 0; i < LANGUAGES.length; i++) {
@@ -107,15 +109,15 @@ function changeLanguage(l) {
       else
         document.title = "AHS Grade Calculator " + langData[l].languages[i];
     } else {
-      if (RTL_LANG.indexOf(l) != -1)
-        if (RTL_LANG.indexOf(document.setLanguage.language.options[i].value) != -1) {
-          document.setLanguage.language.options[i].innerHTML = langData[l].languages[i] + " &mdash; " +
-            LANGUAGES[i];
-        } else {
-          document.setLanguage.language.options[i].innerHTML = LANGUAGES[i] + " &mdash; " +
+      if (RTL_LANG.indexOf(document.setLanguage.language.options[i].value) != -1) {
+        if (RTL_LANG.indexOf(lang) == -1) {
+          document.setLanguage.language.options[i].innerHTML = "&#x2067;" + LANGUAGES[i] + "&#x2069; &mdash; " +
             langData[l].languages[i];
+        } else {
+          document.setLanguage.language.options[i].innerHTML = "&#x2067;" + LANGUAGES[i] + "&#x2069; &mdash; " +
+            "&#x2067;" + langData[l].languages[i] + "&#x2069;";
         }
-      else {
+      } else {
         document.setLanguage.language.options[i].innerHTML = LANGUAGES[i] + " &mdash; " +
           langData[l].languages[i];
       }
@@ -131,15 +133,17 @@ function languageSelect() {
 function langHTML(id, key=null) {
   if (key == null)
     key = id;
-  try {
+  if (typeof langData[lang][key] != "undefined") {
     document.getElementById(id).innerHTML = langData[lang][key];
-  } catch(err) {
+    document.getElementById(id).lang = lang;
+  } else {
     document.getElementById(id).innerHTML = langData["en"][key];
+    document.getElementById(id).lang = "en";
   }
-  if (lang == "ur") {
+  if (document.getElementById(id).lang == "ur") {
     document.getElementById(id).style.direction = "rtl";
   } else {
-    document.getElementById(id).style.direction = "";
+    document.getElementById(id).style.direction = "ltr";
   }
 }
 function langReplace(key, codes, values) {

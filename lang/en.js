@@ -112,5 +112,7 @@ langData["en"] = {
   "ahsWeighted": "Weighted GPA (AHS Weighting)",
   "5scale": "5.0 scale",
   "4scale": "4.0 scale",
+  "announcements": "Email me if you would like to translate the grade calculator" +
+    " into another language or correct an existing translation.",
   "languages": ["English", "Spanish", "Portuguese", "Hindi", "Urdu"]
 };
