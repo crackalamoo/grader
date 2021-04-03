@@ -17,7 +17,7 @@ langData["es"] = {
   "pointCheck": "Esta clase usa el sistema de puntos",
   "next": "Siguiente",
   "back": "Atrás",
-  "done": "Terminar",
+  "done": "Listo",
   "continue": "Continuar",
   "help": "Ayuda",
   "submit": "Enviar",
@@ -25,7 +25,7 @@ langData["es"] = {
   "add": "Añadir",
   "delete": "Borrar",
   "edit": "Editar las notas",
-  "newClass": "Nueva clase (automático)",
+  "newClass": "Nueva clase",
   "notPossibleGrade": "Desafortunadamente esta nota no es posible para ti este semestre. ¡Buena suerte en el próximo semestre!",
   "minGrade": "Nota mínima necesaria en el examen del semestre: $MIN% (se introduce como $LETTER/$NUMBER%)",
   "fritzExam": "Nota mínima necesaria en el examen del semestre: $MIN% (Espero que no hagas tanto Fritz en el examen)",
@@ -114,5 +114,6 @@ langData["es"] = {
   "4scale": "Escala 4.0",
   "announcements": "Envíame un email si quisieras traducir la calculadora de notas" +
     " a otro idioma o corregir una traducción que ya existe.",
+  "footer": "Harys Dalvi<br>octubre 2019&ndash;abril 2021",
   "languages": ["inglés", "español", "portugués", "hindi", "urdu"]
 };

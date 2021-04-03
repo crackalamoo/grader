@@ -25,7 +25,7 @@ langData["en"] = {
   "add": "Add",
   "delete": "Delete",
   "edit": "Edit grades",
-  "newClass": "New class (automatic)",
+  "newClass": "New class",
   "notPossibleGrade": "Unfortunately this grade is not possible for you this semester. Good luck for next semester!",
   "minGrade": "Minimum grade required on semester exam: $MIN% (goes in as $LETTER/$NUMBER%)",
   "fritzExam": "Minimum grade required on semester exam: $MIN% (I hope you don't Fritz the exam that badly)",
@@ -114,5 +114,6 @@ langData["en"] = {
   "4scale": "4.0 scale",
   "announcements": "Email me if you would like to translate the grade calculator" +
     " into another language or correct an existing translation.",
+  "footer": "Harys Dalvi<br>October 2019&ndash;April 2021",
   "languages": ["English", "Spanish", "Portuguese", "Hindi", "Urdu"]
 };
