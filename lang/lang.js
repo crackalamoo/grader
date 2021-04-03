@@ -87,6 +87,7 @@ function changeLanguage(l) {
   langHTML("q24exam", "quarter24");
   langHTML("semExam", "examGrade");
   langHTML("announcements");
+  langHTML("footer");
   document.exam.exam.options[12].innerHTML = langData[l].noExam;
   document.getElementById("manualInput").innerHTML = langData[l].edit;
   for (var i = 0; i < SCRIPT_ID.length; i++) {

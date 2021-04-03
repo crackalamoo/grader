@@ -591,3 +591,10 @@ function calcRequired() {
   currentCategory.total = initial_score[0];
   currentCategory.possible = initial_score[1];
 }
+function dayNightTheme() {
+  var hour = new Date().getHours();
+  if (hour <= 5 || hour >= 21) {
+    document.write("<link rel='stylesheet' href='night.css'>")
+  }
+}
+dayNightTheme();

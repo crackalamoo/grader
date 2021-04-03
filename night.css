@@ -1,0 +1,22 @@
+body {
+  background-color: #001322;
+  color: #FFFFFF;
+}
+.button {
+  color: #FFFFFF;
+  background-color: #006699;
+  border: 1px solid #001199;
+}
+div#footer {
+  color: #002844;
+}
+textarea {
+  background-color: #000102;
+  color: #FFFFFF;
+}
+a {
+  color: #4477FF;
+}
+a:visited {
+  color: #4477FF;
+}

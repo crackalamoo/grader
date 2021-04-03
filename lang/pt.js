@@ -25,7 +25,7 @@ langData["pt"] = {
   "add": "Adicionar",
   "delete": "Deletar",
   "edit": "Editar as notas",
-  "newClass": "Nova classe (automático)",
+  "newClass": "Nova classe",
   "notPossibleGrade": "Infelizmente esta nota no é possível para você este semestre. Boa sorte no próximo semestre!",
   "minGrade": "Nota mínima necessária no teste do semestre: $MIN% (inserido como $LETTER/$NUMBER%)",
   "fritzExam": "Nota mínima necessária no teste do semestre: $MIN% (Espero que você não faça tanto Fritz no teste)",
@@ -112,5 +112,6 @@ langData["pt"] = {
   "ahsWeighted": "GPA ponderado (ponderação de AHS)",
   "5scale": "Escala 5.0",
   "4scale": "Escala 4.0",
+  "footer": "Harys Dalvi<br>outubre 2019&ndash;abril 2021",
   "languages": ["inglês", "espanhol", "português", "híndi", "urdu"]
 };
