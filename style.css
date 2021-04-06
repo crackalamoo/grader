@@ -173,10 +173,13 @@ a:visited {
   color: #0033FF;
 }
 a:hover {
-  color: #00FF33;
+  color: #00EE33;
 }
 div.button a {
   color: #FFFFFF;
+}
+a:active {
+  color: #FF0033;
 }
 span#seth {
   color: #FF0000;
@@ -231,8 +234,14 @@ input,select {
   src: local("Baskerville"), local("Times New Roman");
   unicode-range: U+0-599;
 }
+.button:lang(hi) {
+  font-family: devanagari;
+}
 .button:lang(ur) {
   font-family: nastaliq;
+}
+div#languageButtons span div.button:lang(hi),div#languageButtons span div.button:lang(ur) {
+  font-family: inherit;
 }
 *[style*="font-family: nastaliq"] {
   word-spacing: 2px;

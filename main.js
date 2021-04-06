@@ -465,7 +465,7 @@ function calculateExam() {
     grade = q1*0.4 + q2*0.4 + exam*0.2;
   }
   var gradeDisplay = document.getElementById("examGrade");
-  examGrade.innerHTML = langReplace("semGrade", ["$LETTER", "$NUMBER"], [letterGrade(grade), roundDecimal(grade, 2)]);
+  gradeDisplay.innerHTML = langReplace("semGrade", ["$LETTER", "$NUMBER"], [letterGrade(grade), roundDecimal(grade, 2)]);
 }
 function updateGpa() {
   var g = document.getElementById("gpaData");
