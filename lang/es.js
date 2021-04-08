@@ -98,7 +98,7 @@ langData["es"] = {
   "clearDataButton": "Borrar datos de GPA",
   "clearDataExp": "Esto te obligará a introducir otra vez tu GPA la próxima vez que visites esta página." +
     " Esto NO borrará la información de la página ahora.<br><br>" +
-    "Si dejas la información en vez de borrarla, todo será guardado " +
+    "Si dejas la información en vez de borrarla, y no estás en modo incógnito, todo será guardado " +
     "para la próxima vez que visites esta página.",
   "creditNum": "Crédito número&nbsp;",
   "getCreditButton": "Ver crédito",
