@@ -6,6 +6,10 @@ var autoCalc = [];
 var semesters = [];
 var gpaData = [];
 
+if (window.location.href.indexOf("harysdalvi.com") == -1 && window.location.href.indexOf("file:///") == -1) {
+  window.location.href = "http://harysdalvi.com/ahsgrades";
+}
+
 function changeMode(mode) {
   for (var i = 0; i < divs.length; i++) {
     if (divs[i].id != mode)
