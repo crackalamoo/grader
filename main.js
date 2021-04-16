@@ -5,6 +5,7 @@ var divs = document.getElementsByClassName("main");
 var autoCalc = [];
 var semesters = [];
 var gpaData = [];
+
 function changeMode(mode) {
   for (var i = 0; i < divs.length; i++) {
     if (divs[i].id != mode)
