@@ -8,7 +8,7 @@ langData["es"] = {
   "catAvg": "Promedio en $CATEGORY: $NUMBER%",
   "avg": "Nota hasta ahora en esta clase: $SCORE% (Nota de letra: $LETTER)<br>" +
     "GPA sin ponderación: $GPA<br>Suma de todas las categorías: $SUM% (Debe ser 100%)<br>",
-  "noCat": "Ninguna categoría está seleccionada actualmente",
+  "noCat": "No hay categoría seleccionada actualmente",
   "selCat": "Nota hasta ahora en $CATEGORY: $SCORE%",
   "scoreNaN": "Tienes un denominador de cero u otro error en por lo menos una categoría. Trata de añadir algunas tareas.",
   "rampalInstruct": "<b>Haz lo siguiente para <em>cada</em> tarea:</b><br>" +
@@ -26,7 +26,7 @@ langData["es"] = {
   "delete": "Borrar",
   "edit": "Editar las notas",
   "newClass": "Nueva clase",
-  "notPossibleGrade": "Desafortunadamente esta nota no es posible para ti este semestre. ¡Buena suerte en el próximo semestre!",
+  "notPossibleGrade": "Por desgracia, esta nota no es posible para ti este semestre. ¡Buena suerte para el próximo semestre!",
   "minGrade": "Nota mínima necesaria en el examen del semestre: $MIN% (se introduce como $LETTER/$NUMBER%)",
   "fritzExam": "Nota mínima necesaria en el examen del semestre: $MIN% (Espero que no hagas tanto Fritz en el examen)",
   "validData": "Por favor introduce información válida.",
@@ -66,7 +66,7 @@ langData["es"] = {
   "calcRequiredButton": "Calcular nota necesaria",
   "changeWeightButton": "Cambiar ponderación",
   "weightChanged": "La ponderación fue cambiada a $WEIGHT%",
-  "copyGradesInstruct": "Solo copia tus notas de MyBackpack como se muestra en el imágen más abajo.",
+  "copyGradesInstruct": "Sencillamente copia tus notas de MyBackpack como se muestra en el imágen más abajo.",
   "mobileCopyInstruct": "(Si estás usando un <strong>dispositivo móvil</strong>, incluso iPads, puedes seleccionar <i>" +
     "Assignment</i> y después seleccionar todas las notas)",
   "pasteGradesInstruct": "Ahora pégalas en la casilla más abajo y haz clic en <strong>Siguiente</strong> debajo de la casilla:",
@@ -115,5 +115,6 @@ langData["es"] = {
   "announcements": "Envíame un email si quisieras traducir la calculadora de notas" +
     " a otro idioma o corregir una traducción que ya existe.",
   "footer": "Harys &ldquo;Hacer&rdquo; Dalvi<br>octubre 2019&ndash;abril 2021",
-  "languages": ["inglés", "español", "portugués", "hindi", "urdu"]
+  "languages": ["inglés", "español", "portugués", "hindi", "urdu"],
+  "numbers": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"]
 };

@@ -5,6 +5,11 @@ var divs = document.getElementsByClassName("main");
 var autoCalc = [];
 var semesters = [];
 var gpaData = [];
+const COMMA_DECIMAL_LANG = ["pt"];
+const URDU_DIGIT_LANG = ["ur"];
+const DEVANAGARI_DIGIT_LANG = ["hi"];
+const URDU_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+const DEVANAGARI_DIGITS = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
 
 function changeMode(mode) {
   for (var i = 0; i < divs.length; i++) {
@@ -98,7 +103,38 @@ function roundDecimal(num, places) {
     decimals = 0;
     n += ".";
   }
+  if (COMMA_DECIMAL_LANG.indexOf(lang) != -1)
+    n = n.replace(".", ",");
   for (var i = 0; i < places-decimals; i++) n += "0";
+
+  return n;
+}
+function formatInt(num, nativeDigits=true, upper=false, gender=null) {
+  if (isNaN(num)) return "???";
+  num = Math.round(num);
+  var n = num.toString();
+  if (1 <= num && num <= 10) {
+    n = langData[lang].numbers[num-1];
+    if (gender != null && ["es", "pt"].indexOf(lang) != -1) {
+      if (num == 1)
+        n = {"es": ["un", "una"], "pt": ["um", "uma"]}[lang][gender];
+    }
+    if (upper)
+      n = n.substring(0, 1).toUpperCase() + n.substring(1);
+    return n;
+  }
+  if (nativeDigits) {
+    if (DEVANAGARI_DIGIT_LANG.indexOf(lang) != -1) {
+      for (var i = 0; i < DEVANAGARI_DIGITS.length; i++)
+        n = n.replaceAll(new RegExp(""+i,"g"), DEVANAGARI_DIGITS[i]);
+    }
+    if (URDU_DIGIT_LANG.indexOf(lang) != -1) {
+      if (num == 0)
+        return "0";
+      for (var i = 0; i < URDU_DIGITS.length; i++)
+        n = n.replaceAll(new RegExp(""+i,"g"), URDU_DIGITS[i]);
+    }
+  }
   return n;
 }
 function letterGrade(num) {
@@ -271,7 +307,17 @@ function autoGrade(rampal=false) {
         temp2[i][1] + "/" + temp2[i][2] + "<br>";
     }
   }
-  document.gradesList.innerHTML += langReplace("catsFound", ["$NUMBER", "$CATEGORIES"], [findCategories(autoCalc).length, findCategories(autoCalc)]);
+  var foundCatText = langReplace("catsFound", ["$NUMBER", "$CATEGORIES"], [formatInt(findCategories(autoCalc).length, true, true, 1),
+    findCategories(autoCalc)]);
+  if (findCategories(autoCalc).length == 1) {
+    foundCatText = foundCatText.replace({"en": "categories", "es": "categorías", "pt": "categorias", "hi": "कैटेगरीज़",
+      "ur": "کیٹیگریز"}[lang], {"en": "category", "es": "categoría", "pt": "categoria", "hi": "कैटेगरी",
+      "ur": "کیٹیگری"}[lang]);
+    foundCatText = foundCatText.replace({"en": "found", "es": "se encontraron", "pt": "encontradas", "hi": "मिलीं",
+      "ur": "ملِیں"}[lang], {"en": "found", "es": "se encontró", "pt": "encontrada", "hi": "मिली",
+      "ur": "ملی"}[lang]);
+  }
+  document.gradesList.innerHTML += foundCatText;
   if (RAMPAL)
     document.gradesList.innerHTML += "<br>" + langData[lang].rampalInstruct;
   changeMode("finalAuto");
@@ -363,7 +409,9 @@ var classes = {
   "stats h": [["g", "s", "t"], [false, 5, 25, 70]],
   "sociology": [["h", "p", "t", "q"], [false, 25, 10, 40, 25]],
   "alg 2": [["c", "h", "q", "t"], [false, 15, 15, 30, 40]],
-  "alg 2 comp": [["h", "q", "t"], [false, 10, 30, 60]]
+  "alg 2 comp": [["h", "q", "t"], [false, 10, 30, 60]],
+  "spanish lit": [["f", "q", "e"], [false, 25, 35, 40]],
+  "world": [["h", "q", "t"], [false, 20, 25, 40]]
 };
 function setclass() {
   if (document.classes.class.value == "add class") {
@@ -383,7 +431,7 @@ function setclass() {
         }
       } catch (err) {}
     }
-    if (document.classes.class.value == "spanish 4") {
+    if (document.classes.class.value == "spanish 4" || document.classes.class.value == "spanish lit") {
       date = new Date();
       document.getElementById("classmeme").innerHTML = "¡¡¡¡¡HOY ES EL " +
         ["PRIMERO", "DOS", "TRES", "CUATRO", "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE", "DIEZ",
