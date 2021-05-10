@@ -114,7 +114,7 @@ langData["es"] = {
   "4scale": "Escala 4.0",
   "announcements": "Envíame un email si quisieras traducir la calculadora de notas" +
     " a otro idioma o corregir una traducción que ya existe.",
-  "footer": "Harys &ldquo;Hacer&rdquo; Dalvi<br>octubre 2019&ndash;abril 2021",
+  "footer": "Harys &ldquo;Hacer&rdquo; Dalvi<br>octubre 2019&ndash;mayo 2021",
   "languages": ["inglés", "español", "portugués", "hindi", "urdu"],
   "numbers": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"]
 };

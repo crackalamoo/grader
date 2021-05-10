@@ -112,7 +112,7 @@ langData["pt"] = {
   "ahsWeighted": "GPA ponderado (ponderação de AHS)",
   "5scale": "Escala 5.0",
   "4scale": "Escala 4.0",
-  "footer": "Harys Dalvi<br>outubre 2019&ndash;abril 2021",
+  "footer": "Harys Dalvi<br>outubre 2019&ndash;maio 2021",
   "languages": ["inglês", "espanhol", "português", "híndi", "urdu"],
   "numbers": ["um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez"]
 };
