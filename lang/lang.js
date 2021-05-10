@@ -105,11 +105,13 @@ function changeLanguage(l) {
   for (var i = 0; i < LANGUAGES.length; i++) {
     if (document.setLanguage.language.options[i].value == l) {
       document.setLanguage.language.options[i].innerHTML = LANGUAGES[i];
+      document.getElementsByClassName("button")[i].classList.add("selected");
       if (l == "en")
         document.title = "AHS Grade Calculator";
       else
         document.title = "AHS Grade Calculator " + langData[l].languages[i];
     } else {
+      document.getElementsByClassName("button")[i].classList.remove("selected");
       if (RTL_LANG.indexOf(document.setLanguage.language.options[i].value) != -1) {
         if (RTL_LANG.indexOf(lang) == -1) {
           document.setLanguage.language.options[i].innerHTML = "&#x2067;" + LANGUAGES[i] + "&#x2069; &mdash; " +
