@@ -416,7 +416,7 @@ var classes = {
 function setclass() {
   if (document.classes.class.value == "add class") {
     document.classes.class.value = "";
-    document.add_class["entry.1953535029"].value = findCategories(autoCalc);
+    document.add_class["cats"].value = findCategories(autoCalc);
     changeMode('addClass');
   } else {
     var catLetters = classes[document.classes.class.value][0];
@@ -493,9 +493,9 @@ function calculateSemester() {
     gradeDisplay.innerHTML = langReplace("fritzExam", ["$MIN"], [fail]);
 }
 function mailSent() {
-  if (document.add_class["entry.1399913855"].value == "" ||
-    document.add_class["entry.1953535029"].value == "" ||
-    document.add_class["entry.1262923778"].value == "") {
+  if (document.add_class["class"].value == "" ||
+    document.add_class["cats"].value == "" ||
+    document.add_class["weights"].value == "") {
       document.getElementById("mail_sent").innerHTML = langData[lang].validData;
   } else {
     document.getElementById("mail_sent").innerHTML = langData[lang].mailSent;
