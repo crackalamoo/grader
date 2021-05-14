@@ -275,14 +275,17 @@
   <div class="button" onclick="changeMode('autoCategories')" id="mailBack">Back</div>
   <iframe width="0" height="0" border="0" name="hidden_iframe" id="hidden_iframe"></iframe><br>
   <span id="mail_sent"></span><br>
-  <form name="add_class" autocomplete="off" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScQ5kMZk6A-iFj88TgNe8iPgKBQ6TwhIZH4dYZfHi7rreipSQ/formResponse" method="POST" onsubmit="submitted=!0" target="hidden_iframe">
+  <!-- <form name="add_class" autocomplete="off" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScQ5kMZk6A-iFj88TgNe8iPgKBQ6TwhIZH4dYZfHi7rreipSQ/formResponse" method="POST" onsubmit="submitted=!0" target="hidden_iframe"> -->
+  <form name="add_class" autocomplete="off" action="addclass.php/" method="REQUEST" target="hidden_iframe">
     <p id="pointSystemInstruct"></p>
-    <span id="nameOfClass"></span><input type="text" name="entry.1399913855" placeholder="ex: AP Chem" required></input><br>
+    <span id="nameOfClass"></span><input type="text" name="class" placeholder="ex: AP Chem" required></input><br>
     <p id="pointSystemInstruct2"></p>
-    <span id="enterCatNames"></span><input type="text" name="entry.1953535029" placeholder="ex: Quizzez, Test, Labs, Homework/Classwork" size="50" required></input><br>
-    <span id="enterWeights"></span><input type="text" name="entry.1262923778" placeholder="ex: 15%, 50%, 25%, 10%" size="25" required></input><br>
-    <span id="enterNotes"></span><input type="text" name="entry.1902727374" size="40" placeholder="ex: Your name or the teacher's name"></input><br>
+    <span id="enterCatNames"></span><input type="text" name="cats" placeholder="ex: Quizzez, Test, Labs, Homework/Classwork" size="50" required></input><br>
+    <span id="enterWeights"></span><input type="text" name="weights" placeholder="ex: 15%, 50%, 25%, 10%" size="25" required></input><br>
+    <span id="enterNotes"></span><input type="text" name="notes" size="40" placeholder="ex: Your name or the teacher's name"></input><br>
+    <input type="hidden" name="form_submitted" value="Submitted"></input>
     <button class="button" type="submit" value="Send" onclick="mailSent();" id="sendMailButton">Submit</button>
+    <!-- <input type="submit" name="submit" onclick="mailSent();" id="sendMailButton">Submit</input> -->
   </form>
 </div>
 <div class="main" id="FAQs" lang="en">

@@ -60,10 +60,10 @@ function changeLanguage(l) {
   langHTML("sendMailButton", "submit");
   langHTML("minExam");
   langHTML("wantAtLeast");
-  document.getElementById("semesterGrade").innerHTML = langReplace("minGrade", ["$MIN", "$LETTER", "$NUMBER"], [86.50, "B+", 88.50]);
+  calculateSemester();
   document.getElementById("semesterGrade").innerHTML += "<br>" + langData[l].selectAbove;
   langHTML("semWithExam");
-  document.getElementById("examGrade").innerHTML = langReplace("semGrade", ["$LETTER", "$NUMBER"], ["A+", 98.50]);
+  calculateExam();
   document.getElementById("examGrade").innerHTML += "<br>" + langData[l].selectAbove;
   document.modifyCredit.numCredits.options[0].innerHTML = langData[l].semester;
   document.modifyCredit.numCredits.options[1].innerHTML = langData[l].quarter;

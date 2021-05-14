@@ -31,7 +31,7 @@ langData["en"] = {
   "fritzExam": "Minimum grade required on semester exam: $MIN% (I hope you don't Fritz the exam that badly)",
   "validData": "Please enter valid data.",
   "mailSent": "Your response was sent and the class should be available shortly. Thank you!" +
-    "<br>For now, go back and enter weightings manually.<br>If the class isn't available within about three days, please contact" +
+    "<br>For now, go back and enter weightings manually.<br>If the class isn't available within about three days, please contact " +
     "me at bd542591@ahschool.com; I may be having trouble understanding your request.",
   "semGrade": "Grade for the semester: $LETTER ($NUMBER%)",
   "gpaClass": "$INDEX: $GPA ($GRADE, $LEVEL, $CREDITS credits)",
