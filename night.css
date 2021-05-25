@@ -1,18 +1,21 @@
 body {
   background-color: #001322;
-  color: #FFFFFF;
+  color: #D0D2D5;
 }
 .button {
-  color: #FFFFFF;
+  color: #D0D2D5;
   background-color: #006699;
   border: 1px solid #001199;
+}
+.button:hover,.button.selected {
+  color: #FFFFFF;
 }
 div#footer {
   color: #002844;
 }
 textarea {
   background-color: #202122;
-  color: #FFFFFF;
+  color: #D0D2D5;
 }
 a {
   color: #4477FF;

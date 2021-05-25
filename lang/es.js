@@ -12,7 +12,7 @@ langData["es"] = {
   "selCat": "Nota hasta ahora en $CATEGORY: $SCORE%",
   "scoreNaN": "Tienes un denominador de cero u otro error en por lo menos una categoría. Trata de añadir algunas tareas.",
   "rampalInstruct": "<b>Haz lo siguiente para <em>cada</em> tarea:</b><br>" +
-    "Haz clic en la tarea<br><img src=\"rampal/rampal1.png\"><br><img src=\"rampal/rampal2.png\"><br>Mira el <strong>\"Count as\"</strong> y introdúcelo arriba",
+    "Haz clic en la tarea<br><img src=\"rampal/rampal1.png\"><br><img src=\"rampal/rampal2.png\"><br>Mira el <strong>\"Count as\"</strong> e introdúcelo arriba",
   "catsFound": "$NUMBER categorías se encontraron: $CATEGORIES",
   "pointCheck": "Esta clase usa el sistema de puntos",
   "next": "Siguiente",
@@ -36,14 +36,14 @@ langData["es"] = {
   "semGrade": "Nota del semestre: $LETTER ($NUMBER%)",
   "gpaClass": "$INDEX: $GPA ($GRADE, $LEVEL, $CREDITS créditos)",
   "gpaSum": "<b>Suma de GPA: $SUM<br>Créditos totales: $CREDITS<br>GPA acumulativo: $GPA</b>",
-  "reqScore_0": "Debes de recibir $PTS/$TOT para sacar un $GRADE% en la clase",
-  "reqScore": "Debes de recibir $PTS/$TOT ($PERCENT%) para sacar un $GRADE% en la clase",
+  "reqScore_0": "Debes recibir $PTS/$TOT para sacar un $GRADE% en la clase",
+  "reqScore": "Debes recibir $PTS/$TOT ($PERCENT%) para sacar un $GRADE% en la clase",
   "setLang": "Idioma:&nbsp;",
   "welcome": "Bienvenidos a la calculadora de notas. Primero tienes que asegurar que tengas " +
     "JavaScript. Si no sabes lo que eso es, no te preocupes. Lo hago por ti:",
   "jsSuccess": "Si estás leyendo este mensaje, tienes JavaScript y puedes usar esta página.",
   "quarterGrades": "Notas del cuarto",
-  "intro": "<b>NOTA:</b> pese a mi amor por computadoras, yo también soy humano. Por favor ponte en contacto conmigo en $EMAIL si encuentras un error." +
+  "intro": "<b>NOTA:</b> pese a mi amor por computadoras, yo también soy humano. Por favor ponte en contacto conmigo en $EMAIL si encuentras algún error." +
     "<br><strong>Añade esta página a favoritos</strong> para que puedas encontrarla fácilmente." +
     "<br><br>Para empezar, selecciona un cálculo:",
   "semGradesButton": "Notas de semestre/examen",
@@ -55,7 +55,7 @@ langData["es"] = {
   "addAssignment": "Añadir tarea",
   "deleteAssignment": "Borrar tarea",
   "editInstruct": "Introduce nota/posible. Ejemplos: 5/6.0, 8.5/9, 3/3.<br>" +
-    "Para borrar a una tarea, introduce su nota <strong>de la misma manera</strong> y haz clic en \"Borrar tarea\".<br>" +
+    "Para borrar a una tarea, introduce tu nota <strong>de la misma manera</strong> y haz clic en \"Borrar tarea\".<br>" +
     "Para <strong>cambiar la nota de una tarea</strong>, añade o borra una tarea de 0 puntos (ej: 5/0).",
   "letterGrade": "Nota de letra:&nbsp;",
   "selectLetter": "Selecciona una nota de letra",
@@ -80,7 +80,7 @@ langData["es"] = {
   "selClass": "<strong>Selecciona una clase</strong> para llenar porcentajes/ponderaciones automaticamente. (Crédito a <span id=\"seth\">Seth</span> Groper por esta idea)",
   "selClassOption": "Seleccionar una clase",
   "addClassOption": "Añadir una clase a esta lista",
-  "sethClassInstruct": "Por favor introduces un porcentaje para cada categoría <strong><i>o</i></strong> marca que esta clase usa el sistema de puntos:",
+  "sethClassInstruct": "Por favor introduce un porcentaje para cada categoría <strong><i>o</i></strong> marca que esta clase usa el sistema de puntos:",
   "pointSystemInstruct": "Para averiguar si una clase usa el sistema de puntos o categorías, mira cuánto valen pruebas, tareas de casa y exámenes." +
     " Si valen aproximadamente el mismo número de puntos, es categorías. Si no, tal vez es el sistema de puntos.",
   "nameOfClass": "Nombre de la clase:&nbsp;",
@@ -112,8 +112,6 @@ langData["es"] = {
   "ahsWeighted": "GPA ponderado (ponderación de AHS)",
   "5scale": "Escala 5.0",
   "4scale": "Escala 4.0",
-  "announcements": "Envíame un email si quisieras traducir la calculadora de notas" +
-    " a otro idioma o corregir una traducción que ya existe.",
   "footer": "Harys &ldquo;Hacer&rdquo; Dalvi<br>octubre 2019&ndash;mayo 2021",
   "languages": ["inglés", "español", "portugués", "hindi", "urdu"],
   "numbers": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"]
