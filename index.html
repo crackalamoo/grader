@@ -83,10 +83,32 @@
     try opening this with a computer. Check your browser settings to make sure
     JavaScript is on.</p><br><br>
   <script>
-  document.getElementById("javascript").innerHTML = langData[lang].jsSuccess;
+  document.getElementById("javascript").innerHTML = currentLangData.jsSuccess;
   </script>
   <div class="button" onclick="changeMode('FAQs')" id="help">Help</div><br>
   <p id="announcements"></p>
+  <form name="refer_hi-ur"> <!-- Hindi-Urdu formality and gender -->
+    <div id="refer_hi-ur_friend"></div>
+    <select name="r_hi-ur" onchange="languageSelect()">
+      <option value="mf0"></option>
+      <option value="ff0"></option>
+      <option value="mf1" selected></option>
+      <option value="ff1"></option>
+      <option value="mf2"></option>
+      <option value="ff2"></option>
+    </select>
+  </form>
+  <form name="refer_es"> <!-- Spanish formality and gender -->
+    <div id="refer_es_friend"></div>
+    <select name="r_es" onchange="languageSelect()">
+      <option value="nf0" selected>Tú eres mi amigo/a</option>
+      <option value="mf0">Tú eres mi amigo</option>
+      <option value="ff0">Tú eres mi amiga</option>
+      <option value="nf1">Usted es mi amigo/a</option>
+      <option value="mf1">Usted es mi amigo</option>
+      <option value="ff1">Usted es mi amiga</option>
+    </select>
+  </form>
   <div id="intro"></div><br>
   <div class="centerButtons">
     <div class="button" onclick="changeMode('manual');" id="manualInput">Manual Input</div>

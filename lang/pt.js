@@ -43,7 +43,7 @@ langData["pt"] = {
     "JavaScript. Si não sabe o que é isso, não se preocupe. Eu faço isto para você:",
   "jsSuccess": "Se você está lendo esta mensagem, tem JavaScript e pode usar esta página.",
   "quarterGrades": "Notas do quarto",
-  "intro": "<b>NOTA:</b> apesar do meu amor por computadores, eu também sou humano. Por favor contate-me em $EMAIL se você encontrar um erro." +
+  "intro": "<b>NOTA:</b> apesar do meu amor por computadores, eu também sou humano. Por favor contate-me em $EMAIL se encontrar algum erro." +
     "<br><strong>Adicione esta página aos favoritos</strong> para que possa encontrá-la facilmente." +
     "<br><br>Para inicionar, selecione um cálculo:",
   "semGradesButton": "Notas de semestre/exame",

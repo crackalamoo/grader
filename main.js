@@ -44,6 +44,7 @@ for (var i = 0; i < preferredLangs.length; i++) {
   else
     break;
 }
+currentLangData = langData[lang];
 changeLanguage(lang);
 
 function makeNumber(grade, possible=100.0) {
@@ -600,7 +601,7 @@ function addLetterGrade() {
   document.editCategory["letter"].value = "";
 }
 function clearGpa() {
-  var sure = confirm(langData[lang].confirm);
+  var sure = confirm(currentLangData.confirm);
   if (sure) {
     localStorage.clear();
     document.getElementById("clearLocalStorage").style.display = "none";
