@@ -115,7 +115,7 @@ function formatInt(num, nativeDigits=true, upper=false, gender=null) {
   num = Math.round(num);
   var n = num.toString();
   if (1 <= num && num <= 10) {
-    n = langData[lang].numbers[num-1];
+    n = currentLangData.numbers[num-1];
     if (gender != null && ["es", "pt"].indexOf(lang) != -1) {
       if (num == 1)
         n = {"es": ["un", "una"], "pt": ["um", "uma"]}[lang][gender];
@@ -158,8 +158,8 @@ function letterGrade(num) {
 function updateCategories() {
   var categoryP = document.getElementById("manualCategory");
   var categoryList = document.getElementById("manualCategories");
-  document.getElementById("beginCategories").innerHTML = categories.length > 0 ? "" : langData[lang].begin;
-  categoryList.innerHTML = langData[lang].catList;
+  document.getElementById("beginCategories").innerHTML = categories.length > 0 ? "" : currentLangData.begin;
+  categoryList.innerHTML = currentLangData.catList;
   let totalPercent = 0;
   var categoryScore = 0;
   var totalScore = 0;
@@ -187,12 +187,12 @@ function updateCategories() {
   categoryP.innerHTML = langReplace("avg", ["$SCORE", "$LETTER", "$GPA", "$SUM"],
     [roundDecimal(totalScore, 2), letterGrade(totalScore), roundDecimal(totalScore/20.0 - 1, 2), Math.round(totalPercent)]);
   if (currentCategory == null)
-    categoryP.innerHTML += langData[lang].noCat;
+    categoryP.innerHTML += currentLangData.noCat;
   else {
     categoryP.innerHTML += langReplace("selCat", ["$CATEGORY", "$SCORE"], [currentCategory.name, roundDecimal(categoryScore, 2)]);
   }
   if (isNaN(totalScore))
-    categoryP.innerHTML += "<br><b>" + langData[lang].scoreNaN + "</b>";
+    categoryP.innerHTML += "<br><b>" + currentLangData.scoreNaN + "</b>";
 }
 function createCategory() {
   currentCategory = new Category(document.category.name.value, new Number(document.category.percent.value));
@@ -320,7 +320,7 @@ function autoGrade(rampal=false) {
   }
   document.gradesList.innerHTML += foundCatText;
   if (RAMPAL)
-    document.gradesList.innerHTML += "<br>" + langData[lang].rampalInstruct;
+    document.gradesList.innerHTML += "<br>" + currentLangData.rampalInstruct;
   changeMode("finalAuto");
 }
 function autoCats() {
@@ -330,8 +330,8 @@ function autoCats() {
   for (var i = 0; i < cats.length; i++) {
     form.innerHTML += cats[i] + ": <span dir=\"ltr\"><input name='" + i + "' type='number'></input>%</span><br>";
   }
-  form.innerHTML += '<input type="checkbox" name="point"></input> ' + langData[lang].pointCheck + '<br>'
-  form.innerHTML += '<br><div class="button" onclick="autoCalc2();" id="continueClass">' + langData[lang].next + '</div>';
+  form.innerHTML += '<input type="checkbox" name="point"></input> ' + currentLangData.pointCheck + '<br>'
+  form.innerHTML += '<br><div class="button" onclick="autoCalc2();" id="continueClass">' + currentLangData.next + '</div>';
   if (RAMPAL) {
     form.point.checked = false;
   }
@@ -365,8 +365,8 @@ function autoCalc2() {
   updateCategories();
   changeMode("manual");
   document.getElementById("manualInput").style.display = "block";
-  document.getElementById("manualInput").innerHTML = langData[lang].edit;
-  document.getElementById("autoCalculation").innerHTML = langData[lang].newClass;
+  document.getElementById("manualInput").innerHTML = currentLangData.edit;
+  document.getElementById("autoCalculation").innerHTML = currentLangData.newClass;
   document.getElementById("classmeme").innerHTML = "";
 }
 var classes = {
@@ -482,7 +482,7 @@ function calculateSemester() {
   }
   var gradeDisplay = document.getElementById("semesterGrade");
   if (required == -1)
-    gradeDisplay.innerHTML = langData[lang].notPossibleGrade;
+    gradeDisplay.innerHTML = currentLangData.notPossibleGrade;
   else
     gradeDisplay.innerHTML = langReplace("minGrade", ["$MIN", "$LETTER", "$NUMBER"], [min[required], letterGrade(grades[required]), grades[required]]);
   var fail = -1;
@@ -497,9 +497,9 @@ function mailSent() {
   if (document.add_class["class"].value == "" ||
     document.add_class["cats"].value == "" ||
     document.add_class["weights"].value == "") {
-      document.getElementById("mail_sent").innerHTML = langData[lang].validData;
+      document.getElementById("mail_sent").innerHTML = currentLangData.validData;
   } else {
-    document.getElementById("mail_sent").innerHTML = langData[lang].mailSent;
+    document.getElementById("mail_sent").innerHTML = currentLangData.mailSent;
     document.add_class.style.display = "none";
     document.classes.class.remove(1);
   }
