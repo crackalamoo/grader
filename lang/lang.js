@@ -221,7 +221,7 @@ function setReference() {
         "copyGradesInstruct", "dontWorry", "intro", "selectAbove"].forEach(
           key => currentLangData[key]=currentLangData[key].replaceAll("करो", "करें"));
         currentLangData["continue"] = currentLangData["continue"].replace("बढ़ो", "बढ़ें");
-        currentLangData["intro"] = currentLangData["intro"].replaceAll("चुन लो", "चुन लें");
+        currentLangData["intro"] = currentLangData["intro"].replaceAll("चुन लो", "चुन लें").replace("करें", "कीजिए");;
         currentLangData["notPossibleGrade"] = currentLangData["notPossibleGrade"].replace("रहो", "रहें");
         currentLangData["fritzExam"] = currentLangData["fritzExam"].replace("करोगे", "करेंगे");
         ["mailSent", "manualButton", "addClassOption", "sethClassInstruct"].forEach(
@@ -274,7 +274,7 @@ function setReference() {
         "copyGradesInstruct", "dontWorry", "intro", "selectAbove"].forEach(
           key => currentLangData[key]=currentLangData[key].replaceAll("کرو", "کریں"));
         currentLangData["continue"] = currentLangData["continue"].replace("بڑھو", "بڑھیں");
-        currentLangData["intro"] = currentLangData["intro"].replaceAll("چن لو", "چن لیں");
+        currentLangData["intro"] = currentLangData["intro"].replaceAll("چن لو", "چن لیں").replace("کریں", "کیجئے");
         currentLangData["notPossibleGrade"] = currentLangData["notPossibleGrade"].replace("رہو", "رہیں");
         currentLangData["fritzExam"] = currentLangData["fritzExam"].replace("کرو گے", "کریں گے");
         ["mailSent", "manualButton", "addClassOption", "sethClassInstruct"].forEach(
