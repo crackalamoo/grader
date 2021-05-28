@@ -412,7 +412,8 @@ var classes = {
   "alg 2": [["c", "h", "q", "t"], [false, 15, 15, 30, 40]],
   "alg 2 comp": [["h", "q", "t"], [false, 10, 30, 60]],
   "spanish lit": [["f", "q", "e"], [false, 25, 35, 40]],
-  "world": [["h", "q", "t"], [false, 20, 25, 40]]
+  "world": [["h", "q", "t"], [false, 20, 25, 40]],
+  "pre alg": [["a", "q", "t"], [false, 30, 30, 40]]
 };
 function setclass() {
   if (document.classes.class.value == "add class") {
