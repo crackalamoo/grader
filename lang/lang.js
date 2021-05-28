@@ -218,7 +218,7 @@ function setReference() {
         currentLangData["catInstruct"] = currentLangData["catInstruct"].replaceAll("बनाओ", "बनाएँ").replaceAll("मानो", "मानें");
         currentLangData["rampalInstruct"] = currentLangData["rampalInstruct"].replace("करो", "कीजिए").replaceAll("करो", "करें").replaceAll("दो", "दें");
         ["catList", "scoreNaN", "submit", "apply", "add", "delete", "edit", "mailSent", "editInstruct",
-        "copyGradesInstruct", "dontWorry", "intro", "selectAbove"].forEach(
+        "copyGradesInstruct", "dontWorry", "intro", "selectAbove", "addClassOption"].forEach(
           key => currentLangData[key]=currentLangData[key].replaceAll("करो", "करें"));
         currentLangData["continue"] = currentLangData["continue"].replace("बढ़ो", "बढ़ें");
         currentLangData["intro"] = currentLangData["intro"].replaceAll("चुन लो", "चुन लें").replace("करें", "कीजिए");;
@@ -271,7 +271,7 @@ function setReference() {
         currentLangData["catInstruct"] = currentLangData["catInstruct"].replaceAll("بناؤ", "بنائیں").replaceAll("مانو", "مانیں");
         currentLangData["rampalInstruct"] = currentLangData["rampalInstruct"].replace("کرو", "کیجئے").replaceAll("کرو", "کریں").replaceAll("دو", "دیں");
         ["catList", "scoreNaN", "submit", "apply", "add", "delete", "edit", "mailSent", "editInstruct",
-        "copyGradesInstruct", "dontWorry", "intro", "selectAbove"].forEach(
+        "copyGradesInstruct", "dontWorry", "intro", "selectAbove", "addClassOption"].forEach(
           key => currentLangData[key]=currentLangData[key].replaceAll("کرو", "کریں"));
         currentLangData["continue"] = currentLangData["continue"].replace("بڑھو", "بڑھیں");
         currentLangData["intro"] = currentLangData["intro"].replaceAll("چن لو", "چن لیں").replace("کریں", "کیجئے");

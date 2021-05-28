@@ -24,7 +24,7 @@ if ($_POST['form_submitted'] == "Submitted") {
 
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= "From: harysdalvi@harysdalvi.com" . "\r\n";
+    $headers .= "From: Harys Dalvi <harysdalvi@harysdalvi.com>" . "\r\n";
 
     if(mail($to,$subject,$message,$headers)){
         echo "success";
