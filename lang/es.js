@@ -82,7 +82,7 @@ langData["es"] = {
   "addClassOption": "Añadir una clase a esta lista (o corregir una clase)",
   "sethClassInstruct": "Por favor introduce un porcentaje para cada categoría <strong><i>o</i></strong> marca que esta clase usa el sistema de puntos:",
   "pointSystemInstruct": "Para averiguar si una clase usa el sistema de puntos o categorías, mira cuánto valen pruebas, tareas de casa y exámenes." +
-    " Si valen aproximadamente el mismo número de puntos, es categorías. Si no, tal vez es el sistema de puntos.",
+    " Si valen aproximadamente el mismo número de puntos, es categorías. Si no, tal vez sea el sistema de puntos.",
   "nameOfClass": "Nombre de la clase:&nbsp;",
   "pointSystemInstruct2": "Para el <strong>sistema de puntos</strong>, teclea &ldquo;sistema de puntos&rdquo; para nombres y ponderaciones.",
   "enterCatNames": "Nombres de las categorías EXACTAMENTE como se ven en MyBackpack:&nbsp;",
@@ -114,5 +114,6 @@ langData["es"] = {
   "4scale": "Escala 4.0",
   "footer": "Harys &ldquo;Hacer&rdquo; Dalvi<br>octubre 2019&ndash;mayo 2021",
   "languages": ["inglés", "español", "portugués", "hindi", "urdu"],
-  "numbers": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"]
+  "numbers": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"],
+  "setPoint": "La calificación fue establecida a sistema de puntos"
 };
