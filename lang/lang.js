@@ -97,6 +97,7 @@ function changeLanguage(l) {
   langHTML("footer");
   document.exam.exam.options[12].innerHTML = d.noExam;
   document.getElementById("manualInput").innerHTML = d.edit;
+  document.classes.search.placeholder = d.search;
   for (var i = 0; i < SCRIPT_ID.length; i++) {
     if (l == "ur") {
       document.getElementById(SCRIPT_ID[i]).style.direction = "rtl";
@@ -221,7 +222,7 @@ function setReference() {
         currentLangData["catInstruct"] = currentLangData["catInstruct"].replaceAll("बनाओ", "बनाएँ").replaceAll("मानो", "मानें");
         currentLangData["rampalInstruct"] = currentLangData["rampalInstruct"].replace("करो", "कीजिए").replaceAll("करो", "करें").replaceAll("दो", "दें");
         ["catList", "scoreNaN", "submit", "apply", "add", "delete", "edit", "mailSent", "editInstruct",
-        "copyGradesInstruct", "dontWorry", "intro", "selectAbove", "addClassOption"].forEach(
+        "copyGradesInstruct", "dontWorry", "intro", "selectAbove", "addClassOption", "search"].forEach(
           key => currentLangData[key]=currentLangData[key].replaceAll("करो", "करें"));
         currentLangData["continue"] = currentLangData["continue"].replace("बढ़ो", "बढ़ें");
         currentLangData["intro"] = currentLangData["intro"].replaceAll("चुन लो", "चुन लें").replace("करें", "कीजिए");;
@@ -274,7 +275,7 @@ function setReference() {
         currentLangData["catInstruct"] = currentLangData["catInstruct"].replaceAll("بناؤ", "بنائیں").replaceAll("مانو", "مانیں");
         currentLangData["rampalInstruct"] = currentLangData["rampalInstruct"].replace("کرو", "کیجئے").replaceAll("کرو", "کریں").replaceAll("دو", "دیں");
         ["catList", "scoreNaN", "submit", "apply", "add", "delete", "edit", "mailSent", "editInstruct",
-        "copyGradesInstruct", "dontWorry", "intro", "selectAbove", "addClassOption"].forEach(
+        "copyGradesInstruct", "dontWorry", "intro", "selectAbove", "addClassOption", "search"].forEach(
           key => currentLangData[key]=currentLangData[key].replaceAll("کرو", "کریں"));
         currentLangData["continue"] = currentLangData["continue"].replace("بڑھو", "بڑھیں");
         currentLangData["intro"] = currentLangData["intro"].replaceAll("چن لو", "چن لیں").replace("کریں", "کیجئے");

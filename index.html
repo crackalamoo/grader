@@ -229,55 +229,57 @@
 </div>
 <div class="main" id="autoCategories">
   <p id="selClass"> </p>
-  <form name="classes" action="javascript:void(0)"><select name="class" onchange="setclass();">
+  <form name="classes" action="javascript:void(0)">
+  <input type="text" name="search" onchange="classSearch()" placeholder="Search"><br>
+  <select name="class" onchange="setclass();">
     <option value="">-- Select a class --</option>
     <option value="add class">Add a class to this list</option>
     <optgroup label="Core Classes">
-      <option value="alg 2">Algebra II (H)</option>
-      <option value="alg 2 comp">Algebra II Competition (H)</option>
-      <option value="honors gov">American Government (H)</option>
-      <option value="ap gov">American Government (AP)</option>
-      <option value="american history">American History (H)</option>
-      <option value="apush">American History (AP)</option>
-      <option value="bio">Biology (H, AP)</option>
-      <option value="calc">Calculus (H, AP BC)</option>
-      <option value="calc ab">Calculus AB (AP)</option>
-      <option value="chem q3">Chemistry (H, Q3)</option>
-      <option value="ap chem">Chemistry (AP)</option>
-      <option value="honors econ">Economics (H)</option>
-      <option value="english 1">English I (H)</option>
-      <option value="english 2">English II (H)</option>
-      <option value="english 3 cp">English III (CP)</option>
-      <option value="english 4 h">English IV (H)</option>
-      <option value="ap lang meyer">English Language &amp; Composition (AP)</option>
-      <option value="ap lit">English Literature &amp; Composition (AP)</option>
-      <option value="ap enviro">Environmental Science (AP)</option>
-      <option value="spanish 3">Español III (H)</option>
-      <option value="spanish 4">Español IV (H)</option>
-      <option value="spanish lit">Español (AP literatura)</option>
-      <option value="ap human">Human Geography (AP)</option>
-      <option value="ap macro">Macroeconomics (AP)</option>
-      <option value="physics h">Physics (H)</option>
+      <option value="alg 2" data-alt="algebra ii honors algebra 2 honors">Algebra II (H)</option>
+      <option value="alg 2 comp" data-alt="algebra ii comp algebra 2 comp">Algebra II Competition (H)</option>
+      <option value="honors gov" data-alt="honors gov">American Government (H)</option>
+      <option value="ap gov" data-alt="ap gov">American Government (AP)</option>
+      <option value="american history" data-alt="honors american history honors us history">American History (H)</option>
+      <option value="apush" data-alt="apush ap american history ap us">American History (AP)</option>
+      <option value="bio" data-alt="ap biology honors biology">Biology (H, AP)</option>
+      <option value="calc" data-alt="honors calculus">Calculus (H, AP BC)</option>
+      <option value="calc ab" data-alt="ap calc">Calculus AB (AP)</option>
+      <option value="chem q3" data-alt="honors chemistry h chemistry">Chemistry (H, Q3)</option>
+      <option value="ap chem" data-alt="ap chemistry">Chemistry (AP)</option>
+      <option value="honors econ" data-alt="honors economics">Economics (H)</option>
+      <option value="english 1" data-alt="english 1 honors">English I (H)</option>
+      <option value="english 2" data-alt="english 2 honors">English II (H)</option>
+      <option value="english 3 cp" data-alt="english 3 cp college prep">English III (CP)</option>
+      <option value="english 4 h" data-alt="english 4 honors">English IV (H)</option>
+      <option value="ap lang meyer" data-alt="ap lang">English Language &amp; Composition (AP)</option>
+      <option value="ap lit" data-alt="ap lit">English Literature &amp; Composition (AP)</option>
+      <option value="ap enviro" data-alt="ap enviro">Environmental Science (AP)</option>
+      <option value="spanish 3" data-alt="spanish 3 spanish iii">Español III (H)</option>
+      <option value="spanish 4" data-alt="spanish 4 spanish iv">Español IV (H)</option>
+      <option value="spanish lit" data-alt="ap spanish literature">Español (AP literatura)</option>
+      <option value="ap human" data-alt="ap human">Human Geography (AP)</option>
+      <option value="ap macro" data-alt="ap macro">Macroeconomics (AP)</option>
+      <option value="physics h" data-alt="honors physics">Physics (H)</option>
       <option value="ap physics 1">Physics 1 (AP)</option>
-      <option value="physics c">Physics C (AP, E&amp;M/Mechanics)</option>
-      <option value="pre alg">Pre-Algebra (H)</option>
-      <option value="precalc adv">Pre-Calculus (Advanced)</option>
-      <option value="precalc">Pre-Calculus (H)</option>
-      <option value="stats adv">Statistics (Advanced)</option>
-      <option value="stats h">Statistics (H)</option>
-      <option value="stats">Statistics (AP)</option>
-      <option value="world">World History (H)</option>
-      <option value="ap world">World History (AP)</option>
-      <option value="mandarin 3">中文三</option>
-      <option value="ap mandarin">中文（AP）</option>
+      <option value="physics c" data-alt="mech e and m">Physics C (AP, E&amp;M/Mechanics)</option>
+      <option value="pre alg" data-alt="pre-algebra pre algebra">Pre-Algebra (H)</option>
+      <option value="precalc adv" data-alt="pre-calc pre calc">Pre-Calculus (Advanced)</option>
+      <option value="precalc" data-alt="pre-calc pre calc">Pre-Calculus (H)</option>
+      <option value="stats adv" data-alt="stats advanced">Statistics (Advanced)</option>
+      <option value="stats h" data-alt="honors stats">Statistics (H)</option>
+      <option value="stats" data-alt="ap stats">Statistics (AP)</option>
+      <option value="world" data-alt="honors world history">World History (H)</option>
+      <option value="ap world" data-alt="ap world history">World History (AP)</option>
+      <option value="mandarin 3" data-alt="mandarin 3 chinese 3 mandarin iii chinese iii">中文三</option>
+      <option value="ap mandarin" data-alt="ap mandarin ap chinese">中文（AP）</option>
     </optgroup>
     <optgroup label="Electives">
-      <option value="ap comparative">Comparative Government and Politics (AP)</option>
-      <option value="intro code">Computer Intro to Coding (H)</option>
-      <option value="principles">Computer Science Principles (AP)</option>
-      <option value="java hh">Computer Coding III (HH)</option>
-      <option value="ap psych">Psychology (AP)</option>
-      <option value="research">Research (Scientific, Summer)</option>
+      <option value="ap comparative" data-alt="ap comparative">Comparative Government and Politics (AP)</option>
+      <option value="intro code" data-alt="java">Computer Intro to Coding (H)</option>
+      <option value="principles" data-alt="csp apcsp apcs-p">Computer Science Principles (AP)</option>
+      <option value="java hh" data-alt="java hh java high honors">Computer Coding III (HH)</option>
+      <option value="ap psych" data-alt="ap psychology">Psychology (AP)</option>
+      <option value="research" data-alt="summer research science research scientific research">Research (Scientific, Summer)</option>
       <option value="sociology">Sociology (H)</option>
     </optgroup>
   </select></form>
