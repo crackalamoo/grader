@@ -452,7 +452,7 @@ function setclass() {
       document.getElementById("classmeme").innerHTML = "";
     }
     if (catData[0]) {
-      document.getElementById("classError").innerHTML = "Grading set to point system";
+      document.getElementById("classError").innerHTML = currentLangData["setPoint"];
     } else {
       document.getElementById("classError").innerHTML = "";
     }

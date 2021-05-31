@@ -1,5 +1,6 @@
 const SCRIPT_ID = ["javascript", "start", "auto", "finalAuto", "autoCategories", "manual", "category",
-  "editCategory", "addClass", "semester", "gpaCalc", "seth_img", "langSelect", "examGrade", "semesterGrade"];
+  "editCategory", "addClass", "semester", "gpaCalc", "seth_img", "langSelect", "examGrade", "semesterGrade",
+  "setLangForm"];
 const LANGUAGES = ["English", "Español", "Português", "हिन्दी", "اردو"];
 const LANG_CODES = ["en", "es", "pt", "hi", "ur"];
 const RTL_LANG = ["ur"];
@@ -61,6 +62,8 @@ function changeLanguage(l) {
   langHTML("pointSystemInstruct2");
   langHTML("nameOfClass");
   langHTML("enterCatNames");
+  langHTML("enterWeights");
+  langHTML("enterNotes")
   langHTML("sendMailButton", "submit");
   langHTML("minExam");
   langHTML("wantAtLeast");
@@ -259,7 +262,7 @@ function setReference() {
           key => currentLangData[key]=currentLangData[key].replaceAll("आप ", ""));
       }
       if (["ff0", "ff1", "ff2"].indexOf(refer) != -1) {
-        ["notPossibleGrade", "jsSuccess", "mobileCopyInstruct", "dontWorry"].forEach(
+        ["notPossibleGrade", "jsSuccess", "mobileCopyInstruct", "dontWorry", "pointSystemInstruct2"].forEach(
           key => currentLangData[key]=currentLangData[key].replaceAll("ते", "ती").replaceAll("इस्तीमाल", "इस्तेमाल"));
         currentLangData["fritzExam"] = currentLangData["fritzExam"].replaceAll("गे)", "गी)");
         currentLangData["clearDataExp"] = currentLangData["clearDataExp"].replaceAll("आओगे", "आओगी").replaceAll("आएँगे", "आएँगी");
@@ -312,7 +315,7 @@ function setReference() {
           key => currentLangData[key]=currentLangData[key].replaceAll("آپ ", ""));
       }
       if (["ff0", "ff1", "ff2"].indexOf(refer) != -1) {
-        ["notPossibleGrade", "jsSuccess", "mobileCopyInstruct", "dontWorry"].forEach(
+        ["notPossibleGrade", "jsSuccess", "mobileCopyInstruct", "dontWorry", "pointSystemInstruct2"].forEach(
           key => currentLangData[key]=currentLangData[key].replaceAll("تے", "تی"));
         currentLangData["fritzExam"] = currentLangData["fritzExam"].replaceAll("گے)", "گی)");
         currentLangData["clearDataExp"] = currentLangData["clearDataExp"].replaceAll("آؤ گے", "آؤ گی").replaceAll("آئیں گے", "آئیں گی");
