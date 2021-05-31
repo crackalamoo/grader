@@ -14,7 +14,7 @@ h1[style*="direction: rtl"],h2[style*="direction: rtl"],h3[style*="direction: rt
   margin-left: inherit;
   margin-right: 30%;
 }
-iframe#hidden_iframe {
+iframe#hidden_iframe,select#classHidden {
   display: none;
 }
 p#javascript {

@@ -651,21 +651,25 @@ function dayNightTheme() {
 dayNightTheme();
 
 function classSearch() {
-  var opt = document.classes.class.options;
+  var opt = document.classes.class_hidden.options;
+  var sel = document.classes.class;
   var s = document.classes.search.value.toUpperCase();
+  for (var i = sel.options.length-1; i >= 2; i--)
+    sel.remove(i);
   if (s == "") {
-    for (var i = 0; i < opt.length; i++)
-      opt[i].style.display = "";
+    for (var i = 0; i < opt.length; i++) {
+      sel.add(opt[i].cloneNode());
+      sel.options[sel.options.length-1].innerHTML = opt[i].innerHTML;
+    }
   } else {
     for (var i = 0; i < opt.length; i++) {
-      if (opt[i].innerHTML.toUpperCase().indexOf(s) == -1 &&
-      (opt[i].getAttribute("data-alt") == undefined || opt[i].getAttribute("data-alt").toUpperCase().indexOf(s) == -1)) {
-        opt[i].style.display = "none";
-      } else {
-        opt[i].style.display = "";
+      if (opt[i].innerHTML.toUpperCase().indexOf(s) != -1 ||
+      (opt[i].getAttribute("data-alt") != undefined && opt[i].getAttribute("data-alt").toUpperCase().indexOf(s) != -1)) {
+        sel.add(opt[i].cloneNode());
+        sel.options[sel.options.length-1].innerHTML = opt[i].innerHTML;
       }
     }
-    opt[0].style.display = "";
-    opt[1].style.display = "";
   }
+  sel.selectedIndex = 0;
 }
+classSearch();
