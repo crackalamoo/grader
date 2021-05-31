@@ -115,5 +115,6 @@ langData["es"] = {
   "footer": "Harys &ldquo;Hacer&rdquo; Dalvi<br>octubre 2019&ndash;mayo 2021",
   "languages": ["inglés", "español", "portugués", "hindi", "urdu"],
   "numbers": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"],
-  "setPoint": "La calificación fue establecida a sistema de puntos"
+  "setPoint": "La calificación fue establecida a sistema de puntos",
+  "search": "Buscar"
 };

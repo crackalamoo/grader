@@ -116,5 +116,6 @@ langData["en"] = {
   "footer": "Harys Dalvi<br>October 2019&ndash;May 2021",
   "languages": ["English", "Spanish", "Portuguese", "Hindi", "Urdu"],
   "numbers": ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"],
-  "setPoint": "Grading set to point system"
+  "setPoint": "Grading set to point system",
+  "search": "Search"
 };

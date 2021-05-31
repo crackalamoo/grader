@@ -644,8 +644,28 @@ function calcRequired() {
 }
 function dayNightTheme() {
   var hour = new Date().getHours();
-  if (hour <= 5 || hour >= 21) {
+  if (hour <= 6 || hour >= 21) {
     document.write("<link rel='stylesheet' href='night.css'>")
   }
 }
 dayNightTheme();
+
+function classSearch() {
+  var opt = document.classes.class.options;
+  var s = document.classes.search.value.toUpperCase();
+  if (s == "") {
+    for (var i = 0; i < opt.length; i++)
+      opt[i].style.display = "";
+  } else {
+    for (var i = 0; i < opt.length; i++) {
+      if (opt[i].innerHTML.toUpperCase().indexOf(s) == -1 &&
+      (opt[i].getAttribute("data-alt") == undefined || opt[i].getAttribute("data-alt").toUpperCase().indexOf(s) == -1)) {
+        opt[i].style.display = "none";
+      } else {
+        opt[i].style.display = "";
+      }
+    }
+    opt[0].style.display = "";
+    opt[1].style.display = "";
+  }
+}
