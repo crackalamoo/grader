@@ -6,7 +6,7 @@ var autoCalc = [];
 var semesters = [];
 var gpaData = [];
 const COMMA_DECIMAL_LANG = ["pt"];
-const URDU_DIGIT_LANG = ["ur"];
+const URDU_DIGIT_LANG = ["ur", "fa"];
 const DEVANAGARI_DIGIT_LANG = ["hi"];
 const URDU_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
 const DEVANAGARI_DIGITS = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
@@ -96,7 +96,11 @@ class Category {
   }
 }
 function roundDecimal(num, places) {
-  if (isNaN(num)) return "???";
+  if (isNaN(num)) {
+    if (URDU_DIGIT_LANG.indexOf(lang) != -1)
+      return "؟؟؟";
+    return "???";
+  }
   var n = Math.round(num*Math.pow(10.0, places))/Math.pow(10.0, places);
   n = n.toString();
   var decimals = n.slice(n.indexOf(".") + 1).length;
@@ -107,11 +111,20 @@ function roundDecimal(num, places) {
   if (COMMA_DECIMAL_LANG.indexOf(lang) != -1)
     n = n.replace(".", ",");
   for (var i = 0; i < places-decimals; i++) n += "0";
+  if (["fa"].indexOf(lang) != -1) {
+    for (var i = 0; i < URDU_DIGITS.length; i++)
+      n = n.replaceAll(new RegExp(""+i,"g"), URDU_DIGITS[i]);
+    n = n.replace(".", "٫");
+  }
 
   return n;
 }
 function formatInt(num, nativeDigits=true, upper=false, gender=null) {
-  if (isNaN(num)) return "???";
+  if (isNaN(num)) {
+    if (URDU_DIGIT_LANG.indexOf(lang) != -1)
+      return "؟؟؟";
+    return "???";
+  }
   num = Math.round(num);
   var n = num.toString();
   if (1 <= num && num <= 10) {
@@ -124,13 +137,13 @@ function formatInt(num, nativeDigits=true, upper=false, gender=null) {
       n = n.substring(0, 1).toUpperCase() + n.substring(1);
     return n;
   }
-  if (nativeDigits) {
+  if (nativeDigits || ["fa"].indexOf(lang) != -1) {
     if (DEVANAGARI_DIGIT_LANG.indexOf(lang) != -1) {
       for (var i = 0; i < DEVANAGARI_DIGITS.length; i++)
         n = n.replaceAll(new RegExp(""+i,"g"), DEVANAGARI_DIGITS[i]);
     }
     if (URDU_DIGIT_LANG.indexOf(lang) != -1) {
-      if (num == 0)
+      if (num == 0 && lang == "ur")
         return "0";
       for (var i = 0; i < URDU_DIGITS.length; i++)
         n = n.replaceAll(new RegExp(""+i,"g"), URDU_DIGITS[i]);
@@ -139,7 +152,11 @@ function formatInt(num, nativeDigits=true, upper=false, gender=null) {
   return n;
 }
 function letterGrade(num) {
-  if (isNaN(num)) return "???";
+  if (isNaN(num)) {
+    if (URDU_DIGIT_LANG.indexOf(lang) != -1)
+      return "؟؟؟";
+    return "???";
+  }
   num = Math.round(num*100)/100.0;
   if (num >= 96.5) return "A+";
   if (num >= 92.5) return "A";

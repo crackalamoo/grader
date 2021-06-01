@@ -1,9 +1,9 @@
 const SCRIPT_ID = ["javascript", "start", "auto", "finalAuto", "autoCategories", "manual", "category",
   "editCategory", "addClass", "semester", "gpaCalc", "seth_img", "langSelect", "examGrade", "semesterGrade",
   "setLangForm"];
-const LANGUAGES = ["English", "Español", "Português", "हिन्दी", "اردو"];
-const LANG_CODES = ["en", "es", "pt", "hi", "ur"];
-const RTL_LANG = ["ur"];
+const LANGUAGES = ["English", "Español", "Português", "हिन्दी", "اردو", "فارسی"];
+const LANG_CODES = ["en", "es", "pt", "hi", "ur", "fa"];
+const RTL_LANG = ["ur", "fa"];
 var currentLangData;
 function changeLanguage(l) {
   lang = l;
@@ -105,6 +105,9 @@ function changeLanguage(l) {
     } else if (l == "hi") {
       document.getElementById(SCRIPT_ID[i]).style.direction = "";
       document.getElementById(SCRIPT_ID[i]).style.fontFamily = 'devanagari';
+    } else if (l == "fa") {
+      document.getElementById(SCRIPT_ID[i]).style.direction = "rtl";
+      document.getElementById(SCRIPT_ID[i]).style.fontFamily = '';
     } else {
       document.getElementById(SCRIPT_ID[i]).style.direction = "";
       document.getElementById(SCRIPT_ID[i]).style.fontFamily = "";
@@ -151,7 +154,7 @@ function langHTML(id, key=null) {
     document.getElementById(id).innerHTML = langData["en"][key];
     document.getElementById(id).lang = "en";
   }
-  if (document.getElementById(id).lang == "ur") {
+  if (RTL_LANG.indexOf(document.getElementById(id).lang) != -1) {
     document.getElementById(id).style.direction = "rtl";
   } else {
     document.getElementById(id).style.direction = "ltr";
