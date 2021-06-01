@@ -23,6 +23,7 @@
   <script src="lang/pt.js"></script>
   <script src="lang/hi.js"></script>
   <script src="lang/ur.js"></script>
+  <script src="lang/fa.js"></script>
   <script src="lang/lang.js"></script>
 </head>
 <body>
@@ -63,6 +64,9 @@
     <div class="button" onclick='changeLanguage("hi")'>हिन्दी</div>
     <div class="button" onclick="changeLanguage('ur');">اردو</div>
   </span>
+  <span>
+    <div class="button" onclick="changeLanguage('fa');">فارسی</div>
+  </span>
 </div>
 <form name="setLanguage" action="javascript:void(0)" id="setLangForm">
   <span id="langSelect"></span> <select name="language" onchange="languageSelect()">
@@ -71,6 +75,7 @@
   <option value="pt">Português</option>
   <option value="hi">हिन्दी</option>
   <option value="ur">اردو</option>
+  <option value="fa">فارسی</option>
   </select>
 </form>
 

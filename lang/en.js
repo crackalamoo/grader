@@ -82,7 +82,7 @@ langData["en"] = {
   "addClassOption": "Add a class to this list (or fix a class)",
   "sethClassInstruct": "Please enter a percentage for each category <strong><i>or</i></strong> check that this class is point system:",
   "pointSystemInstruct": "To figure out if a class is point system or categories, check how much quizzes, homework, and tests are worth." +
-    " If they are out of about the same number of points, it is categories. Otherwise, it may be point system.",
+    " If in each category they are out of about the same number of points, it is categories. Otherwise, it may be point system.",
   "nameOfClass": "Name of class:&nbsp;",
   "pointSystemInstruct2": "For <strong>point system</strong>, type &ldquo;point system&rdquo; for names and weights.",
   "enterCatNames": "EXACT names of categories as they appear in MyBackpack:&nbsp;",
@@ -113,8 +113,8 @@ langData["en"] = {
   "5scale": "5.0 scale",
   "4scale": "4.0 scale",
   "announcements": "",
-  "footer": "Harys Dalvi<br>October 2019&ndash;May 2021",
-  "languages": ["English", "Spanish", "Portuguese", "Hindi", "Urdu"],
+  "footer": "Harys Dalvi<br>October 2019&ndash;June 2021",
+  "languages": ["English", "Spanish", "Portuguese", "Hindi", "Urdu", "Persian"],
   "numbers": ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"],
   "setPoint": "Grading set to point system",
   "search": "Search"
