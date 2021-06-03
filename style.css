@@ -7,10 +7,10 @@ body {
   padding-bottom: 70px;
   font-size: 18px;
 }
-h1,h2,h3 {
+h1,h2,h3,#pronunciation {
   margin-left: 30%;
 }
-h1[style*="direction: rtl"],h2[style*="direction: rtl"],h3[style*="direction: rtl"] {
+h1[style*="direction: rtl"],h2[style*="direction: rtl"],h3[style*="direction: rtl"],#pronunciation[style*="direction: rtl"] {
   margin-left: inherit;
   margin-right: 30%;
 }
@@ -160,10 +160,10 @@ div#creditInfo,div#manualInput,.hidden {
     margin-left: 10%;
     margin-right: 10%;
   }
-  h1,h2,h3 {
+  h1,h2,h3,#pronunciation {
     margin-left: 10%
   }
-  h1[style*="direction: rtl"],h2[style*="direction: rtl"],h3[style*="direction: rtl"] {
+  h1[style*="direction: rtl"],h2[style*="direction: rtl"],h3[style*="direction: rtl"],#pronunciation[style*="direction: rtl"] {
     margin-left: inherit;
     margin-right: 10%;
   }
@@ -248,4 +248,12 @@ div#languageButtons span div.button:lang(hi),div#languageButtons span div.button
 }
 *[style*="font-family: nastaliq"] {
   word-spacing: 2px;
+}
+#pronunciation {
+  margin-top: 0;
+  font-size: 14px;
+  font-family: "Times New Roman";
+}
+#pronunciation:lang(hi) {
+  font-family: "Times New Roman", devanagari;
 }

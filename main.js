@@ -96,7 +96,7 @@ class Category {
   }
 }
 function roundDecimal(num, places) {
-  if (isNaN(num)) {
+  if (myNaN(num)) {
     if (URDU_DIGIT_LANG.indexOf(lang) != -1)
       return "؟؟؟";
     return "???";
@@ -119,15 +119,15 @@ function roundDecimal(num, places) {
 
   return n;
 }
-function formatInt(num, nativeDigits=true, upper=false, gender=null) {
-  if (isNaN(num)) {
+function formatInt(num, nativeDigits=true, upper=false, gender=null, writeNum=true) {
+  if (myNaN(num)) {
     if (URDU_DIGIT_LANG.indexOf(lang) != -1)
       return "؟؟؟";
     return "???";
   }
   num = Math.round(num);
   var n = num.toString();
-  if (1 <= num && num <= 10) {
+  if (1 <= num && num <= 10 && writeNum == true) {
     n = currentLangData.numbers[num-1];
     if (gender != null && ["es", "pt"].indexOf(lang) != -1) {
       if (num == 1)
@@ -152,7 +152,7 @@ function formatInt(num, nativeDigits=true, upper=false, gender=null) {
   return n;
 }
 function letterGrade(num) {
-  if (isNaN(num)) {
+  if (myNaN(num)) {
     if (URDU_DIGIT_LANG.indexOf(lang) != -1)
       return "؟؟؟";
     return "???";
@@ -202,13 +202,13 @@ function updateCategories() {
   }
   totalScore /= (totalPercent/100.0);
   categoryP.innerHTML = langReplace("avg", ["$SCORE", "$LETTER", "$GPA", "$SUM"],
-    [roundDecimal(totalScore, 2), letterGrade(totalScore), roundDecimal(totalScore/20.0 - 1, 2), Math.round(totalPercent)]);
+    [roundDecimal(totalScore, 2), letterGrade(totalScore), roundDecimal(totalScore/20.0 - 1, 2), formatInt(totalPercent, false, false, null, false)]);
   if (currentCategory == null)
     categoryP.innerHTML += currentLangData.noCat;
   else {
     categoryP.innerHTML += langReplace("selCat", ["$CATEGORY", "$SCORE"], [currentCategory.name, roundDecimal(categoryScore, 2)]);
   }
-  if (isNaN(totalScore))
+  if (myNaN(totalScore))
     categoryP.innerHTML += "<br><b>" + currentLangData.scoreNaN + "</b>";
 }
 function createCategory() {
@@ -234,7 +234,7 @@ function deleteAssignment() {
 }
 function changePercent() {
   currentCategory.percentage = new Number(document.editCategory.percent.value);
-  document.getElementById("changedWeight").innerHTML = langReplace("weightChanged", ["$WEIGHT"], [new Number(document.editCategory.percent.value)]);
+  document.getElementById("changedWeight").innerHTML = langReplace("weightChanged", ["$WEIGHT"], [formatInt(new Number(document.editCategory.percent.value), false, false, null, false)]);
 }
 function findCategories(autoResult) {
   var cats = [];
@@ -264,7 +264,7 @@ function auto_filter(el) {
   return el != "" && el != " ";
 }
 function isNotGrade(g) {
-  if (isNaN(makeNumber(g, 100.0))) {
+  if (myNaN(makeNumber(g, 100.0))) {
     if (["", " ", "P", "EXC", "EX", "PEND"].indexOf(g) == -1)
       return true;
     else
@@ -332,8 +332,8 @@ function autoGrade(rampal=false) {
       "ur": "کیٹیگریز"}[lang], {"en": "category", "es": "categoría", "pt": "categoria", "hi": "कैटेगरी",
       "ur": "کیٹیگری"}[lang]);
     foundCatText = foundCatText.replace({"en": "found", "es": "se encontraron", "pt": "encontradas", "hi": "मिलीं",
-      "ur": "ملِیں"}[lang], {"en": "found", "es": "se encontró", "pt": "encontrada", "hi": "मिली",
-      "ur": "ملی"}[lang]);
+      "ur": "ملِیں", "fa": "شدند"}[lang], {"en": "found", "es": "se encontró", "pt": "encontrada", "hi": "मिली",
+      "ur": "ملی", "fa": "شد"}[lang]);
   }
   document.gradesList.innerHTML += foundCatText;
   if (RAMPAL)
@@ -352,6 +352,7 @@ function autoCats() {
   if (RAMPAL) {
     form.point.checked = false;
   }
+  window.scrollBy(0, -300);
 }
 function categoryByName(name) {
   for (var i = 0; i < categories.length; i++) {
@@ -385,6 +386,7 @@ function autoCalc2() {
   document.getElementById("manualInput").innerHTML = currentLangData.edit;
   document.getElementById("autoCalculation").innerHTML = currentLangData.newClass;
   document.getElementById("classmeme").innerHTML = "";
+  window.scrollBy(0, -300);
 }
 var classes = {
   "ap lang meyer": [["a", "g", "q", "t"], [false, 5, 20, 25, 50]],
@@ -464,7 +466,7 @@ function setclass() {
     } else if (document.classes.class.value == "ap world") {
       document.getElementById("classmeme").innerHTML = "Clear your desks, please.<br>Say &ldquo;la vie!&rdquo;";
     } else if (document.classes.class.value == "physics c") {
-      document.getElementById("classmeme").innerHTML = "<ol><li>Be Happy</li></ol>";
+      document.getElementById("classmeme").innerHTML = "<ol><li>Lab</li><li>Be Happy</li></ol>";
     } else {
       document.getElementById("classmeme").innerHTML = "";
     }
@@ -502,7 +504,8 @@ function calculateSemester() {
   if (required == -1)
     gradeDisplay.innerHTML = currentLangData.notPossibleGrade;
   else
-    gradeDisplay.innerHTML = langReplace("minGrade", ["$MIN", "$LETTER", "$NUMBER"], [min[required], letterGrade(grades[required]), grades[required]]);
+    gradeDisplay.innerHTML = langReplace("minGrade", ["$MIN", "$LETTER", "$NUMBER"], [formatInt(min[required], false, false, null, false),
+    letterGrade(grades[required]), formatInt(grades[required], false, false, null, false)]);
   var fail = -1;
   for (var i = 59; i >= 0; i--) {
     if (grade + i*0.2 >= target)
@@ -650,11 +653,11 @@ function calcRequired() {
   if (worthPoints == 0) {
     document.getElementById("required_score").innerHTML = langReplace("reqScore_0",
       ["$PTS", "$TOT", "$GRADE"], [roundDecimal(category_increase_pts, 2), roundDecimal(worthPoints, 2),
-      req_grade]);
+      roundDecimal(req_grade, 2)]);
   } else {
     document.getElementById("required_score").innerHTML = langReplace("reqScore",
       ["$PTS", "$TOT", "$GRADE", "$PERCENT"], [roundDecimal(category_increase_pts, 2), roundDecimal(worthPoints, 2),
-      req_grade, roundDecimal(category_increase_pts*100.0/worthPoints, 2)]);
+      roundDecimal(req_grade, 2), roundDecimal(category_increase_pts*100.0/worthPoints, 2)]);
   }
   currentCategory.total = initial_score[0];
   currentCategory.possible = initial_score[1];
@@ -690,3 +693,13 @@ function classSearch() {
   sel.selectedIndex = 0;
 }
 classSearch();
+
+function letterNeeded() {
+  document.editCategory.keepGrade.value = document.editCategory.letter2.value;
+  if (document.editCategory.worthPoints.value != 0)
+    calcRequired();
+  document.editCategory.letter2.value = "";
+}
+function myNaN(n) {
+  return (isNaN(n) || n === Infinity);
+}

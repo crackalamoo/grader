@@ -102,7 +102,7 @@ langData["es"] = {
     "para la próxima vez que visites esta página.",
   "creditNum": "Crédito número&nbsp;",
   "getCreditButton": "Ver crédito",
-  "modifyCreditHeading": "<b>Modificar/borrar notas</b>",
+  "modifyCreditHeading": "<b>Modificar/borrar créditos</b>",
   "confirm": "¿Estás seguro/a que quieres hacer esto?",
   "quarter13": "Nota del cuarto 1/3",
   "quarter24": "Nota del cuarto 2/4",
@@ -112,9 +112,10 @@ langData["es"] = {
   "ahsWeighted": "GPA ponderado (ponderación de AHS)",
   "5scale": "Escala 5.0",
   "4scale": "Escala 4.0",
-  "footer": "Harys &ldquo;Hacer&rdquo; Dalvi<br>octubre 2019&ndash;junio 2021",
+  "footer": "Harys &ldquo;Hacer&rdquo; Dalvi<br>octubre de 2019&ndash;junio de 2021",
   "languages": ["inglés", "español", "portugués", "hindi", "urdu", "persa"],
   "numbers": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"],
   "setPoint": "La calificación fue establecida a sistema de puntos",
-  "search": "Buscar"
+  "search": "Buscar",
+  "pronunciation": "Di: Járis Dálvi /ˈxaɾis ˈdalβi/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]"
 };
