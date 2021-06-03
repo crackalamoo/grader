@@ -14,7 +14,10 @@ function changeLanguage(l) {
   document.getElementById("javascript").innerHTML = d.jsSuccess;
   langHTML("langSelect", "setLang");
   langHTML("welcome");
-  langHTML("autoCalculation", "quarterGrades");
+  if (document.getElementById("manualInput").style.display == "block")
+    langHTML("newClass", "quarterGrades");
+  else
+    langHTML("autoCalculation", "quarterGrades");
   langHTML("help");
   document.getElementById("intro").innerHTML = langReplace("intro", ["$EMAIL"],
     ['<a href="mailto:bd542591@ahschool.com?subject=Grade calculator issue">bd542591@ahschool.com</a>']);
@@ -35,6 +38,7 @@ function changeLanguage(l) {
   langHTML("doneEditCat", "done");
   langHTML("editInstruct");
   langHTML("editLetter", "letterGrade");
+  langHTML("editLetter2", "letterGrade");
   langHTML("addAssignmentButton", "addAssignment");
   langHTML("delAssignmentButton", "deleteAssignment");
   langHTML("creditCathy");
@@ -44,6 +48,7 @@ function changeLanguage(l) {
   langHTML("calcRequiredButton");
   langHTML("changeWeightButton");
   document.editCategory.letter.options[0].innerHTML = "-- " + d.selectLetter + " --";
+  document.editCategory.letter2.options[0].innerHTML = "-- " + d.selectLetter + " --";
   langHTML("copyGradesInstruct");
   langHTML("mobileCopyInstruct");
   langHTML("pasteGradesInstruct");
@@ -95,6 +100,7 @@ function changeLanguage(l) {
   langHTML("semExam", "examGrade");
   langHTML("announcements");
   langHTML("footer");
+  langHTML("pronunciation");
   document.exam.exam.options[12].innerHTML = d.noExam;
   document.getElementById("manualInput").innerHTML = d.edit;
   document.classes.search.placeholder = d.search;
@@ -251,6 +257,7 @@ function setReference() {
         currentLangData["clearDataExp"] = currentLangData["clearDataExp"].replaceAll("आओगे", "आएँगे").replaceAll("रहने दो", "रहने दें").replaceAll("हटाओ", "हटाएँ").replaceAll("ना हो", "ना हों");
         currentLangData["getCreditButton"] = currentLangData["getCreditButton"].replaceAll("देखो", "देखें");
         currentLangData["modifyCreditHeading"] = currentLangData["modifyCreditHeading"].replaceAll("बदलो", "बदलें").replaceAll("हटाओ", "हटाएँ");
+        referenceKey("pronunciation", "कह दो", "कह दीजिए");
       }
       if (["mf0", "ff0"].indexOf(refer) != -1) {
         ["reqScore_0", "reqScore", "welcome", "intro", "copyGradesInstruct", "superAlgorithm",
@@ -304,6 +311,7 @@ function setReference() {
         currentLangData["clearDataExp"] = currentLangData["clearDataExp"].replaceAll("آؤ گے", "آئیں گے").replaceAll("رہنے دو", "رہنے دیں").replaceAll("ہٹاؤ", "ہٹائیں").replaceAll("نہ ہو", "نہ ہوں");
         currentLangData["getCreditButton"] = currentLangData["getCreditButton"].replaceAll("دیکھو", "دیکھیں");
         currentLangData["modifyCreditHeading"] = currentLangData["modifyCreditHeading"].replaceAll("بدلو", "بدلیں").replaceAll("ہٹاؤ", "ہٹائیں");
+        referenceKey("pronunciation", "کہہ دو", "کہہ دیجئے");
       }
       if (["mf0", "ff0"].indexOf(refer) != -1) {
         ["reqScore_0", "reqScore", "welcome", "intro", "copyGradesInstruct", "superAlgorithm",
@@ -373,6 +381,7 @@ function setReference() {
       referenceKey("selectAbove", "Selecciona", "Seleccione");
       referenceKeys("clearDataExp", ["te oblig", "visites", "dejas", "estás", "tu GPA"], ["lo/la oblig", "visite", "deja", "está", "su GPA"]);
       referenceKeys("confirm", ["Estás", "quieres"], ["Está", "quiere"]);
+      referenceKey("pronunciation", "Di:", "Diga:");
     }
     if (["mf0", "mf1"].indexOf(refer) != -1) {
       referenceKey("welcome", "Bienvenidos", "Bienvenido");

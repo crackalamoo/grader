@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Harys Dalvi">
   <meta name="description" content="Free Grade Calculator">
-  <meta name="keywords" content="grades, calculator, AHS, school, GPA">
+  <meta name="keywords" content="grades, calculator, AHS, school, GPA, exam">
   <meta charset="utf-8">
   <script>
   if (window.location.href.indexOf("harysdalvi.com") == -1 && window.location.href.indexOf("file:///") == -1) {
     window.location.replace("http://harysdalvi.com/ahsgrades");
   }
- </script>
+  </script>
   <base href="http://harysdalvi.com/sub/grader/">
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
@@ -29,7 +29,8 @@
 <body>
 
 <h3 class="noBottomMargin">Harys Dalvi's Aesthetically Pleasing</h3>
-<h1 class="noTopMargin" id="sitename">AHS* Grade Calculator</h1>
+<h1 class="noTopMargin noBottomMargin" id="sitename">AHS* Grade Calculator</h1>
+<p id="pronunciation">HAH-riss DAHL-vee</p>
 <div id="topInfo">
 <p id="disclaimer">
   *IMPORTANT: PLEASE READ THE FOLLOWING DISCLAIMER: &ldquo;Harys Dalvi's Aesthetically Pleasing AHS Grade Calculator&rdquo; is not endorsed by, directly
@@ -61,7 +62,7 @@
     <div class="button" onclick="changeLanguage('pt');">Português</div>
   </span>
   <span>
-    <div class="button" onclick='changeLanguage("hi")'>हिन्दी</div>
+    <div class="button" onclick="changeLanguage('hi')">हिन्दी</div>
     <div class="button" onclick="changeLanguage('ur');">اردو</div>
   </span>
   <span>
@@ -199,6 +200,21 @@
     <h4 id="whatNeed"></h4>
     <p id="creditCathy"></p>
     <span id="desiredGrade"></span><span dir="ltr"><input name="keepGrade" type="number"></input>%</span><br>
+    <span id="editLetter2"></span><select name="letter2" onchange="letterNeeded()">
+      <option value="">-- --</option>
+      <option value="96.5">A+</option>
+      <option value="92.5">A</option>
+      <option value="89.5">A-</option>
+      <option value="86.5">B+</option>
+      <option value="82.5">B</option>
+      <option value="79.5">B-</option>
+      <option value="76.5">C+</option>
+      <option value="72.5">C</option>
+      <option value="69.5">C-</option>
+      <option value="66.5">D+</option>
+      <option value="62.5">D</option>
+      <option value="59.5">D-</option>
+    </select><br>
     <span id="numPointsWorth"></span><input name="worthPoints" type="number"></input><br><br>
     <div class="button" onclick="calcRequired()" id="calcRequiredButton">Calculate required score</div>
     <span id="required_score"></span><br><br>
@@ -292,7 +308,7 @@
     <img src="rampal/rampal4.jpg"><br>
     <img src="rampal/rampal5.jpg"><br>
     <img src="rampal/rampal6.png"><br>
-    <p lang="en">Credit to Gabriel Sun for <cite>No.</cite> and to Josh Doischen for <cite>In loving memory</cite><br><br>
+    <p lang="en" dir="ltr">Credit to Gabriel Sun for <cite>No.</cite> and to Josh Doischen for <cite>In loving memory</cite><br><br>
     <span lang="hi">जय श्री रामपाल</span> (<i>Jai Shri Rampal</i>)</p>
   </span>
 </div>

@@ -40,7 +40,7 @@ langData["pt"] = {
   "reqScore": "Deves receber $PTS/$TOT ($PERCENT%) para tirar um $GRADE% na classe",
   "setLang": "Língua:&nbsp;",
   "welcome": "Bem-vindos à calculadora de notas. Primeiro você tem que assegurar que tenha " +
-    "JavaScript. Si não sabe o que é isso, não se preocupe. Eu faço isto para você:",
+    "JavaScript. Se não sabe o que é isso, não se preocupe. Eu faço isto para você:",
   "jsSuccess": "Se você está lendo esta mensagem, tem JavaScript e pode usar esta página.",
   "quarterGrades": "Notas do quarto",
   "intro": "<b>NOTA:</b> apesar do meu amor por computadores, eu também sou humano. Por favor contate-me em $EMAIL se encontrar algum erro." +
@@ -102,7 +102,7 @@ langData["pt"] = {
     "para a próxima vez que visites esta página.",
   "creditNum": "Crédito número&nbsp;",
   "getCreditButton": "Ver crédito",
-  "modifyCreditHeading": "<b>Modificar/deletar notas</b>",
+  "modifyCreditHeading": "<b>Modificar/deletar créditos</b>",
   "confirm": "Tem certeza que quer fazar iso?",
   "quarter13": "Nota do quarto 1/3",
   "quarter24": "Nota do quarto 2/4",
@@ -112,9 +112,10 @@ langData["pt"] = {
   "ahsWeighted": "GPA ponderado (ponderação de AHS)",
   "5scale": "Escala 5.0",
   "4scale": "Escala 4.0",
-  "footer": "Harys Dalvi<br>outubre 2019&ndash;junho 2021",
+  "footer": "Harys Dalvi<br>outubre de 2019&ndash;junho de 2021",
   "languages": ["inglês", "espanhol", "português", "híndi", "urdu", "persa"],
   "numbers": ["um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez"],
   "setPoint": "A classificação foi definida como sistema de pontos",
-  "search": "Pesquisar"
+  "search": "Pesquisar",
+  "pronunciation": "Diga: Háris Dâlvi /ˈaɾis ˈdɐlvi/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]"
 };

@@ -102,7 +102,7 @@ langData["en"] = {
     "next time you visit this page.",
   "creditNum": "Credit number&nbsp;",
   "getCreditButton": "View credit",
-  "modifyCreditHeading": "<b>Modify/delete grades</b>",
+  "modifyCreditHeading": "<b>Modify/delete credits</b>",
   "confirm": "Are you sure you want to do this?",
   "quarter13": "Quarter 1/3 grade",
   "quarter24": "Quarter 2/4 grade",
@@ -117,5 +117,6 @@ langData["en"] = {
   "languages": ["English", "Spanish", "Portuguese", "Hindi", "Urdu", "Persian"],
   "numbers": ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"],
   "setPoint": "Grading set to point system",
-  "search": "Search"
+  "search": "Search",
+  "pronunciation": "Say: HAH-riss DAHL-vee /ˈhɑːrɪs ˈdɑːlvi/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]"
 };
