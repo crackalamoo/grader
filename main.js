@@ -504,8 +504,8 @@ function calculateSemester() {
   if (required == -1)
     gradeDisplay.innerHTML = currentLangData.notPossibleGrade;
   else
-    gradeDisplay.innerHTML = langReplace("minGrade", ["$MIN", "$LETTER", "$NUMBER"], [formatInt(min[required], false, false, null, false),
-    letterGrade(grades[required]), formatInt(grades[required], false, false, null, false)]);
+    gradeDisplay.innerHTML = langReplace("minGrade", ["$MIN", "$LETTER", "$NUMBER"], [roundDecimal(min[required], 2),
+    letterGrade(grades[required]), roundDecimal(grades[required], 2)]);
   var fail = -1;
   for (var i = 59; i >= 0; i--) {
     if (grade + i*0.2 >= target)

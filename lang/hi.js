@@ -65,7 +65,7 @@ langData["hi"] = {
   "calcRequiredButton": "ज़रूरी स्कोर का हिसाब लगाओ",
   "changeWeightButton": "वेटिंग को बदल दो",
   "weightChanged": "वेटिंग $WEIGHT% बन गई",
-  "copyGradesInstruct": "आपके ग्रेड्स बस ज़रा MyBackpack से कॉपी करो जैसे नीचे वाली तस्वीर में दिखाया हूँ।",
+  "copyGradesInstruct": "आपके ग्रेड्स बस ज़रा MyBackpack से कॉपी करो जैसे नीचे वाली तस्वीर में दिखाई देता है।",
   "mobileCopyInstruct": "(अगर आप किसी <strong>मोबाइल डिवाइस</strong> पे हो, iPads भी शामिल, तो आप <i>" +
     "Assignment</i> सेलेक्ट करके सारे ग्रेड्स भी सेलेक्ट कर सकते हो)",
   "pasteGradesInstruct": "अब इन्हें नीचे वाले बक्से में पेस्ट करके <strong>आगे</strong> वाला बटन दबाओ बक्से के नीचे:",
