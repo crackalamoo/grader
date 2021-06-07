@@ -93,6 +93,7 @@ function changeLanguage(l) {
   langHTML("getCreditButton");
   langHTML("addCreditButton", "add");
   langHTML("modifyCreditHeading");
+  langHTML("creditNum");
   langHTML("q13sem", "quarter13");
   langHTML("q13exam", "quarter13");
   langHTML("q24sem", "quarter24");

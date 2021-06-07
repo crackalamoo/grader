@@ -67,7 +67,7 @@ langData["ur"] = {
   "calcRequiredButton": "ضروری سکور کا حساب لگاؤ",
   "changeWeightButton": "ویٹنگ کو بدل دو",
   "weightChanged": "ویٹنگ %$WEIGHT بن گئی",
-  "copyGradesInstruct": "آپ کے گریڈز بس ذرا MyBackpack سے کاپی کرو جیسے نیچے والی تصویر میں دکھایا ہوں۔",
+  "copyGradesInstruct": "آپ کے گریڈز بس ذرا MyBackpack سے کاپی کرو جیسے نیچے والی تصویر میں دکھائی دیتا ہے۔",
   "mobileCopyInstruct": "(اگر آپ کسی <strong>موبائل ڈوائس</strong> پہ ہو، iPads بھی شامل، تو آپ <i>" +
     "Assignment</i> سلیکٹ کر کے سارے گریڈز بھی سلیکٹ کر سکتے ہو)",
   "pasteGradesInstruct": "اب اِنہیں نیچے والے بکسے میں پیسٹ کر کے <strong>آگے</strong> والا بٹن دباؤ بکسے کے نیچے:",

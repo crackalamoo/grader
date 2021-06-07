@@ -67,7 +67,7 @@ langData["fa"] = {
   "calcRequiredButton": "ضروری نمره را حساب کردن",
   "changeWeightButton": "وزن را تغییر کردن",
   "weightChanged": "وزن ٪$WEIGHT شد",
-  "copyGradesInstruct": "به سادگی نمراتتان را از MyBackpack کپی کنید مانند آنچه در تصویر زیر نشان داده ام۔",
+  "copyGradesInstruct": "به سادگی نمراتتان را از MyBackpack کپی کنید مانند آنچه در تصویر زیر نشان داده می&zwnj;شود۔",
   "mobileCopyInstruct": "(اگر شما با یکی <strong>دستگاه موبایل</strong> هستید، iPads نیز شامل، می&zwnj;توانید <i>" +
     "Assignment</i> را انتخاب کنید سپس می&zwnj;توانید همه نمرات را انتخاب کنید)",
   "pasteGradesInstruct": "حالا آنها را در جعبه زیر بچسبونید و دکمه <strong>بعدی</strong> را زیر جعبه بفشارید:",
