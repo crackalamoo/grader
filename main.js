@@ -493,26 +493,28 @@ function calculateSemester() {
              69.5, 72.5, 76.5,
              79.5, 82.5, 86.5,
              89.5, 92.5, 96.5];
-  for (var i = 0; i < 12; i++) {
-    exam = grades[i];
-    if (grade + exam*0.2 >= target) {
-      required = i;
-      break;
+  if (grade + 59.5*0.2 <= target) {
+    for (var i = 0; i < 12; i++) {
+      exam = grades[i];
+      if (grade + exam*0.2 >= target) {
+        required = i;
+        break;
+      }
     }
   }
   var gradeDisplay = document.getElementById("semesterGrade");
-  if (required == -1)
-    gradeDisplay.innerHTML = currentLangData.notPossibleGrade;
-  else
+  if (required == -1) {
+    required = (target - grade)/0.2;
+    if (required < 0)
+      required = 0;
+    if (required > 98.5)
+      gradeDisplay.innerHTML = currentLangData.notPossibleGrade;
+    else
+      gradeDisplay.innerHTML = langReplace("fritzExam", ["$MIN"], [roundDecimal(required, 1)]);
+  } else {
     gradeDisplay.innerHTML = langReplace("minGrade", ["$MIN", "$LETTER", "$NUMBER"], [roundDecimal(min[required], 2),
     letterGrade(grades[required]), roundDecimal(grades[required], 2)]);
-  var fail = -1;
-  for (var i = 59; i >= 0; i--) {
-    if (grade + i*0.2 >= target)
-      fail = i;
   }
-  if (fail != -1)
-    gradeDisplay.innerHTML = langReplace("fritzExam", ["$MIN"], [fail]);
 }
 function mailSent() {
   if (document.add_class["class"].value == "" ||

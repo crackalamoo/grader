@@ -6,7 +6,7 @@ langData["en"] = {
     "lazy to make sure you don't do so.",
   "catList": "<strong>Click a category</strong> to add or remove assignments and to see that category's score.<br><br>Categories:<br>",
   "catAvg": "Average in $CATEGORY: $NUMBER%",
-  "avg": "Score so far in this class: $SCORE% (Letter grade: $LETTER)<br>" +
+  "avg": "<b>Score so far in this class: $SCORE%</b> (Letter grade: $LETTER)<br>" +
     "Unweighted GPA: $GPA<br>Sum of all categories: $SUM% (Should be 100%)<br>",
   "noCat": "No category is currently selected",
   "selCat": "Score so far in $CATEGORY: $SCORE%",
@@ -102,7 +102,7 @@ langData["en"] = {
     "next time you visit this page.",
   "creditNum": "Credit number&nbsp;",
   "getCreditButton": "View credit",
-  "modifyCreditHeading": "<b>Modify/delete credits</b>",
+  "modifyCreditHeading": "<b>Modify/delete credit</b>",
   "confirm": "Are you sure you want to do this?",
   "quarter13": "Quarter 1/3 grade",
   "quarter24": "Quarter 2/4 grade",

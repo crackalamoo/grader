@@ -176,7 +176,7 @@ function langReplace(key, codes, values) {
 }
 
 function setReference() {
-  var refer, rForm, rButtons;
+  var refer, rForm;
   currentLangData = JSON.parse(JSON.stringify(langData[lang]));
   if (["hi", "ur"].indexOf(lang) == -1) {
     document["refer_hi-ur"].style.display = "none";
@@ -370,7 +370,7 @@ function setReference() {
       referenceKeys("intro", ["ponte en", "encuentras", "Añade", "puedas", "selecciona"], ["póngase en", "encuentra", "Añada", "pueda", "seleccione"]);
       referenceKeys("editInstruct", ["introduce tu", "haz", "añade", "borra"], ["introduzca su", "haga", "añada", "borre"]);
       referenceKey("selectLetter", "Selecciona", "Seleccione");
-      referenceKey("copyGradesInstruct", "copia", "copie");
+      referenceKey("copyGradesInstruct", "copia tus", "copie sus");
       referenceKeys("mobileCopyInstruct", ["estás", "puedes"], ["está", "puede"]);
       referenceKeys("pasteGradesInstruct", ["péga", "haz"], ["pégue", "haga"]);
       referenceKey("superAlgorithm", "tus ", "sus ");
@@ -393,6 +393,47 @@ function setReference() {
       referenceKey("welcome", "Bienvenidos", "Bienvenida");
       referenceKey("confirm", "seguro/a", "segura");
       referenceKey("clearDataExp", "lo/la oblig", "la oblig");
+    }
+  }
+  if (["fa"].indexOf(lang) == -1) {
+    document["refer_fa"].style.display = "none";
+  } else {
+    document["refer_fa"].style.display = "";
+    rForm = document["refer_fa"]["r_fa"];
+    refer = rForm.value;
+    var pronoun = {"f0": "تو", "f1": "شما"}[refer];
+    document.getElementById("refer_fa_friend").innerHTML = "چگونه باید با " + pronoun + " صحبت کنم؟";
+    
+    if (refer == "f0") {
+      referenceKeys("begin", ["کنید", "&zwnj;تان"], ["کن", "&zwnj;ت"]);
+      referenceKeys("catInstruct", ["کنید", "&zwnj;تان"], ["کن", "&zwnj;ت"]);
+      referenceKey("catList", "بکنید", "بکن");
+      referenceKeys("scoreNaN", ["رجتان", "کنید"], ["رجت", "کن"]);
+      referenceKeys("rampalInstruct", ["کنید", "بنویسین"], ["کن", "بنویس"]);
+      referenceKeys("notPossibleGrade", ["برای شما", "بدهید"], ["برای تو", "بده"]);
+      referenceKey("fritzExam", "نکنید", "نکن");
+      referenceKey("validData", "بکنید", "بکن");
+      referenceKeys("mailSent", ["سختان", "تشکر", "بگردید", "کنید", "بگیرید", "ستتان"], ["سخت", "مرسی", "بگرد", "کن", "بگیر", "ستت"]);
+      referenceKeys("reqScore_0", ["شما ", "بگیرید"], ["", "بگیر"]);
+      referenceKeys("reqScore", ["شما ", "بگیرید"], ["", "بگیر"]);
+      referenceKeys("welcome", ["ببینید", "شما", "دارید", "بدانید", "نباشید"], ["ببین", "تو", "داری", "بدان", "نباش"]);
+      referenceKeys("jsSuccess", ["شما ", "دارید", "توانید", "خوانید", "کنید"], ["", "داری", "توانی", "خوانی", "کن"]);
+      referenceKeys("intro", ["کنید", "شما ", "بگیرید", "توانید"], ["کن", "", "بگیر", "توانی"]);
+      referenceKeys("editInstruct", ["کنید", "نویسید"], ["کن", "نویس"]);
+      referenceKey("selectLetter", "کنید", "کن");
+      referenceKeys("copyGradesInstruct", ["کنید", "تتان"], ["کن", "تت"]);
+      referenceKeys("mobileCopyInstruct", ["شما ", "هستید", "توانید", "کنید"], ["", "هستی", "توانی", "کن"]);
+      referenceKeys("pasteGradesInstruct", ["بچسبونید", "کنید"], ["بچسبون", "کن"]);
+      referenceKey("superAlgorithm", "تتان", "تت");
+      referenceKey("dontWorry", ["نباشید", "توانید", "کنید"], ["نباش", "توانی", "کن"]);
+      referenceKeys("selClass", ["کنید", "توانید"], ["کن", "توانی"]);
+      referenceKey("sethClassInstruct", "کنید", "کن");
+      referenceKey("pointSystemInstruct", "ببینید", "ببین");
+      referenceKey("pointSystemInstruct2", ["توانید", "نویسید"], ["توانی", "نویش"]);
+      referenceKey("selectAbove", "کنید", "کن");
+      referenceKeys("clearDataExp", ["شما را", "آیید", "GPAتان", "کنید", "گذارید"], ["تو را", "آیی", "GPAات", "کن", "گذار"]);
+      referenceKeys("confirm", ["خوانید", "کنید"], ["خوانی", "کن"]);
+      referenceKey("pronunciation", "بگویید", "بگو");
     }
   }
 }
