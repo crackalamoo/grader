@@ -2,6 +2,7 @@ var mode = "start";
 var categories = [];
 var currentCategory = null;
 var divs = document.getElementsByClassName("main");
+var imgs = document.getElementsByTagName("img");
 var autoCalc = [];
 var semesters = [];
 var gpaData = [];
@@ -11,6 +12,12 @@ const DEVANAGARI_DIGIT_LANG = ["hi"];
 const URDU_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
 const DEVANAGARI_DIGITS = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
 
+function lazyLoad(group) {
+  for (var i = 0; i < imgs.length; i++) {
+    if (imgs[i].dataset.lazy == group)
+      imgs[i].src = imgs[i].dataset.src;
+  }
+}
 function changeMode(mode) {
   for (var i = 0; i < divs.length; i++) {
     if (divs[i].id != mode)
@@ -18,15 +25,18 @@ function changeMode(mode) {
     else
       divs[i].style.display = "block";
   }
+  lazyLoad(mode);
   if (mode == "start") {
     document.getElementById("topInfo").style.display = "block";
     document.getElementById("sitename").innerHTML = "AHS* Grade Calculator";
     document.setLanguage.style.display = "none";
+    document.getElementById("pronunciation").style.display = "";
     document.getElementById("languageButtons").style.display = "flex";
   } else {
     document.getElementById("topInfo").style.display = "none";
     document.getElementById("sitename").innerHTML = "AHS Grade Calculator";
     document.setLanguage.style.display = "block";
+    document.getElementById("pronunciation").style.display = "none";
     document.getElementById("languageButtons").style.display = "none";
   }
 }
@@ -279,6 +289,7 @@ function autoGrade(rampal=false) {
   if (rampal) {
     document.getElementById("rampalButton").style.display = "none";
     document.getElementById("rampalmemes").style.display = "flex";
+    lazyLoad("rampal");
     RAMPAL = true;
   } else {
     previousInput = document.getElementById("inputGrades").value;
