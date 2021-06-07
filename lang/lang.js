@@ -155,7 +155,11 @@ function langHTML(id, key=null) {
   if (key == null)
     key = id;
   if (typeof currentLangData[key] != "undefined") {
-    document.getElementById(id).innerHTML = currentLangData[key];
+    try {
+      document.getElementById(id).innerHTML = currentLangData[key];
+    } catch(err) {
+      document.getElementById(id).innerHTML = langData[lang][key];
+    }
     document.getElementById(id).lang = lang;
   } else {
     document.getElementById(id).innerHTML = langData["en"][key];
