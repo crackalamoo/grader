@@ -6,7 +6,7 @@ langData["es"] = {
     "perezoso para asegurar que no hagas esto.",
   "catList": "<strong>Haz clic en una categoría</strong> para añadir o quitar tareas y para ver la nota de esa categoría.<br><br>Categorías:<br>",
   "catAvg": "Promedio en $CATEGORY: $NUMBER%",
-  "avg": "Nota hasta ahora en esta clase: $SCORE% (Nota de letra: $LETTER)<br>" +
+  "avg": "<b>Nota hasta ahora en esta clase: $SCORE%</b> (Nota de letra: $LETTER)<br>" +
     "GPA sin ponderación: $GPA<br>Suma de todas las categorías: $SUM% (Debe ser 100%)<br>",
   "noCat": "No hay categoría seleccionada actualmente",
   "selCat": "Nota hasta ahora en $CATEGORY: $SCORE%",
@@ -31,7 +31,7 @@ langData["es"] = {
   "fritzExam": "Nota mínima necesaria en el examen del semestre: $MIN% (Espero que no hagas tanto Fritz en el examen)",
   "validData": "Por favor introduce información válida.",
   "mailSent": "Tu respuesta fue enviada y la clase deberá estar disponible pronto. ¡Muchas gracias!" +
-    "<br>Por ahora, vuelve y introduce las ponderaciones a mano.<br>Si la clase no está disponible dentro de aproximadamente tres días, por favor ponte en contacto" +
+    "<br>Por ahora, vuelve e introduce las ponderaciones a mano.<br>Si la clase no está disponible dentro de aproximadamente tres días, por favor ponte en contacto" +
     " conmigo en bd542591@ahschool.com; quizás yo tenga problemas en entender tu solicitud.",
   "semGrade": "Nota del semestre: $LETTER ($NUMBER%)",
   "gpaClass": "$INDEX: $GPA ($GRADE, $LEVEL, $CREDITS créditos)",
@@ -102,7 +102,7 @@ langData["es"] = {
     "para la próxima vez que visites esta página.",
   "creditNum": "Crédito número&nbsp;",
   "getCreditButton": "Ver crédito",
-  "modifyCreditHeading": "<b>Modificar/borrar créditos</b>",
+  "modifyCreditHeading": "<b>Modificar/borrar un crédito</b>",
   "confirm": "¿Estás seguro/a que quieres hacer esto?",
   "quarter13": "Nota del cuarto 1/3",
   "quarter24": "Nota del cuarto 2/4",

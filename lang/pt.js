@@ -6,7 +6,7 @@ langData["pt"] = {
     "preguiçoso para assegurar que não faça isto.",
   "catList": "<strong>Clique em uma categoria</strong> para adicionar ou remover tarefas e para ver a nota dessa categoria.<br><br>Categorias:<br>",
   "catAvg": "Média em $CATEGORY: $NUMBER%",
-  "avg": "Nota até agora nesta classe: $SCORE% (Nota de letra: $LETTER)<br>" +
+  "avg": "<b>Nota até agora nesta classe: $SCORE%</b> (Nota de letra: $LETTER)<br>" +
     "GPA sem ponderação: $GPA<br>Soma de todas as categorias: $SUM% (Deve ser 100%)<br>",
   "noCat": "Nenhuma categoria está selecionada atualmente",
   "selCat": "Nota até agora em $CATEGORY: $SCORE%",
@@ -27,8 +27,8 @@ langData["pt"] = {
   "edit": "Editar as notas",
   "newClass": "Nova classe",
   "notPossibleGrade": "Infelizmente esta nota no é possível para você este semestre. Boa sorte para o próximo semestre!",
-  "minGrade": "Nota mínima necessária no teste do semestre: $MIN% (inserido como $LETTER/$NUMBER%)",
-  "fritzExam": "Nota mínima necessária no teste do semestre: $MIN% (Espero que você não faça tanto Fritz no teste)",
+  "minGrade": "Nota mínima necessária no exame do semestre: $MIN% (inserido como $LETTER/$NUMBER%)",
+  "fritzExam": "Nota mínima necessária no exame do semestre: $MIN% (Espero que você não faça tanto Fritz no exame)",
   "validData": "Por favor insira informação válida.",
   "mailSent": "Sua resposta foi enviada é a classe deverá estar disponível em breve. Muito obrigado!" +
     "<br>Por enquanto, volte e insira as ponderações à mão.<br>Se a classe não estiver disponible dentro de quase três dias, por favor contate-me" +
@@ -102,7 +102,7 @@ langData["pt"] = {
     "para a próxima vez que visites esta página.",
   "creditNum": "Crédito número&nbsp;",
   "getCreditButton": "Ver crédito",
-  "modifyCreditHeading": "<b>Modificar/deletar créditos</b>",
+  "modifyCreditHeading": "<b>Modificar/deletar um crédito</b>",
   "confirm": "Tem certeza que quer fazar iso?",
   "quarter13": "Nota do quarto 1/3",
   "quarter24": "Nota do quarto 2/4",
