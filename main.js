@@ -49,10 +49,22 @@ for (var i = 0; i < preferredLangs.length; i++) {
   lang = preferredLangs[i];
   if (lang.indexOf("-") != -1)
     lang = lang.slice(0, lang.indexOf("-"));
-  if (LANG_CODES.indexOf(lang) == -1)
+  if (LANG_CODES.indexOf(lang) == -1) {
     lang = "en";
-  else
+  } else {
+    if (preferredLangs[i].indexOf("-") != -1) {
+      var d = preferredLangs[i].substring(preferredLangs[i].indexOf("-")+1);
+      if (lang == "en") {
+        if (["US", "CA"].indexOf(d) == -1)
+          document["dialect_en"]["d_en"].value = "UK";
+      }
+      if (lang == "es") {
+        if (d == "ES")
+        document["dialect_es"]["d_es"].value = "ES";
+      }
+    }
     break;
+  }
 }
 currentLangData = langData[lang];
 changeLanguage(lang);
@@ -118,7 +130,8 @@ function roundDecimal(num, places) {
     decimals = 0;
     n += ".";
   }
-  if (COMMA_DECIMAL_LANG.indexOf(lang) != -1)
+  if (COMMA_DECIMAL_LANG.indexOf(lang) != -1 ||
+  (lang == "es" && document["dialect_es"]["d_es"].value == "ES"))
     n = n.replace(".", ",");
   for (var i = 0; i < places-decimals; i++) n += "0";
   if (["fa"].indexOf(lang) != -1) {
@@ -337,7 +350,7 @@ function autoGrade(rampal=false) {
     }
   }
   var foundCatText = langReplace("catsFound", ["$NUMBER", "$CATEGORIES"], [formatInt(findCategories(autoCalc).length, true, true, 1),
-    findCategories(autoCalc)]);
+    wordList(findCategories(autoCalc))]);
   if (findCategories(autoCalc).length == 1) {
     foundCatText = foundCatText.replace({"en": "categories", "es": "categorías", "pt": "categorias", "hi": "कैटेगरीज़",
       "ur": "کیٹیگریز"}[lang], {"en": "category", "es": "categoría", "pt": "categoria", "hi": "कैटेगरी",
