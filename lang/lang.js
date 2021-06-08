@@ -9,13 +9,14 @@ function changeLanguage(l) {
   lang = l;
   currentLangData = langData[l];
   setReference();
+  setDialect();
   var d = currentLangData;
   document.setLanguage.language.value = lang;
   document.getElementById("javascript").innerHTML = d.jsSuccess;
   langHTML("langSelect", "setLang");
   langHTML("welcome");
   if (document.getElementById("manualInput").style.display == "block")
-    langHTML("newClass", "quarterGrades");
+    langHTML("autoCalculation", "newClass");
   else
     langHTML("autoCalculation", "quarterGrades");
   langHTML("help");
@@ -155,11 +156,7 @@ function langHTML(id, key=null) {
   if (key == null)
     key = id;
   if (typeof currentLangData[key] != "undefined") {
-    try {
-      document.getElementById(id).innerHTML = currentLangData[key];
-    } catch(err) {
-      document.getElementById(id).innerHTML = langData[lang][key];
-    }
+    document.getElementById(id).innerHTML = currentLangData[key];
     document.getElementById(id).lang = lang;
   } else {
     document.getElementById(id).innerHTML = langData["en"][key];
@@ -207,6 +204,7 @@ function setReference() {
         "آپ میرے دوست ہیں",
         "آپ میری دوست ہیں"
       ];
+      rForm.style.direction = "rtl";
       break;
         
       default: switch(refer) {
@@ -226,6 +224,7 @@ function setReference() {
         "आप मेरे दोस्त हैं",
         "आप मेरी दोस्त हैं"
       ];
+      rForm.style.direction = "ltr";
     }
     for (var i = 0; i < rForm.options.length; i++)
       rForm.options[i].innerHTML = buttonVals[i];
@@ -447,4 +446,80 @@ function referenceKey(key, o, n) {
 function referenceKeys(key, o, n) {
   for (var i = 0; i < o.length; i++)
     currentLangData[key] = currentLangData[key].replaceAll(o[i], n[i]);
+}
+function setDialect() {
+  var dialect;
+  currentLangData = JSON.parse(JSON.stringify(langData[lang]));
+  if (lang == "en") {
+    document["dialect_en"].style.display = "";
+    dialect = document["dialect_en"]["d_en"].value;
+    if (dialect == "UK") {
+      ["begin", "catInstruct", "edit", "notPossibleGrade", "minGrade", "fritzExam", "quarterGrades",
+      "semGradesButton", "mobileCopyInstruct", "manualButton", "selectAbove", "semWithExam",
+      "quarter13", "quarter24"].forEach(
+          key => currentLangData[key]=currentLangData[key].replaceAll("grade", "mark"));
+      referenceKey("welcome", "I'll", "I shall");
+      referenceKey("semGrade", "Grade", "Mark");
+      referenceKey("examGrade", "grade", "score");
+      referenceKey("setPoint", "Grading", "Scoring");
+      referenceKey("shouldContinue", "Should", "Shall");
+    }
+  } else {
+    document["dialect_en"].style.display = "none";
+  }
+  if (lang == "es") {
+    document["dialect_es"].style.display = "";
+    dialect = document["dialect_es"]["d_es"].value;
+    if (dialect == "ES") {
+      referenceKey("intro", "computadoras", "ordenadores");
+      referenceKey("superAlgorithm", "simplificó", "ha simplificado");
+    }
+  } else {
+    document["dialect_es"].style.display = "none";
+  }
+  if (lang == "fa") {
+    document["dialect_fa"].style.display = "";
+    dialect = document["dialect_fa"]["d_fa"].value;
+    if (dialect == "AF") {
+      referenceKey("mailSent", "مرسی!", "تشکر!");
+      // Solar Hijri Persian vs Zodiac and Gregorian French- vs English-derived months
+      referenceKeys("footer", ["مهر", "خرداد", "اکتبر", "ژوئن"], ["میزان", "جوزا", "اکتوبر", "جون"]);
+      referenceKeys("jsSuccess", ["استفاده", "دارید می"], ["استعمال", "می"]);
+      referenceKey("begin", "استفاده", "استعمال");
+      referenceKey("catInstruct", "استفاده", "استعمال");
+      referenceKey("dontWorry", "استفاده", "استعمال");
+      referenceKey("creditCathy", "ایده", "فکر");
+      referenceKey("selClass", "ایده", "فکر");
+      referenceKeys("pronunciation", ["هاریس دالْوی", "hɒːɾiːs dɒːlviː"], ["هَرِیس دَلْوِی", "haɾiːs dalwiː"]);
+      referenceKey("ritvikCalc", "ریتویک تیگاواراپو", "رِیتوِیک تِیگَوَرَپو");
+      referenceKey("ritvikHonor", "ریتویک تیگاواراپو", "رِیتوِیک تِیگَوَرَپو");
+      referenceKey("rampalButton", "دکتر", "داکتر");
+    }
+  } else {
+    document["dialect_fa"].style.display = "none";
+  }
+}
+function wordList(arr) {
+  var str = "";
+  var comma = ", ";
+  var oxford = true;
+  if (arr.length == 0) return str;
+  if (arr.length == 1) return arr[0];
+  if (RTL_LANG.indexOf(lang) != -1)
+    comma = "&rlm;، ";
+  if (["es", "pt"].indexOf(lang) != -1)
+    oxford = false;
+  for (var i = 0; i < arr.length-2; i++)
+    str += arr[i] + comma;
+  str += arr[arr.length-2];
+  if (oxford && arr.length > 2)
+    str += comma;
+  else
+    str += " "
+  str += {"en": "and", "es": "y", "pt": "e", "hi": "और", "ur": "اور", "fa": "و"}[lang];
+  if (lang == "es" && arr[arr.length-1].toLowerCase().startsWith("i"))
+    str = str.substring(0, str.length-1)+"e";
+  str += " ";
+  str += arr[arr.length-1];
+  return str;
 }

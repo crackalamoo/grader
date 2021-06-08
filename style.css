@@ -203,6 +203,9 @@ img#seth_img[style*="direction: rtl"] {
 input,select {
   direction: ltr;
 }
+select.rtl {
+  direction: rtl;
+}
 @font-face {
   font-family: devanagari;
   src: url('http://harysdalvi.com/sub/fonts/ITFDevanagari-Regular-01.ttf') format("truetype");

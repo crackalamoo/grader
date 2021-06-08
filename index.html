@@ -90,6 +90,13 @@
     JavaScript is on.</p><br><br>
   <div class="button" onclick="changeMode('FAQs')" id="help">Help</div><br>
   <p id="announcements"></p>
+  <form name="dialect_en" lang="en">
+    <span>Dialect: </span>
+    <select name="d_en" onchange="languageSelect()">
+      <option value="US" selected>English (US)</option>
+      <option value="UK">English (UK)</option>
+    </select>
+  </form>
   <form name="refer_hi-ur"> <!-- Hindi-Urdu formality and gender -->
     <div id="refer_hi-ur_friend"></div>
     <select name="r_hi-ur" onchange="languageSelect()">
@@ -101,7 +108,7 @@
       <option value="ff2"></option>
     </select>
   </form>
-  <form name="refer_es"> <!-- Spanish formality and gender -->
+  <form name="refer_es" lang="es"> <!-- Spanish formality and gender -->
     <div id="refer_es_friend"></div>
     <select name="r_es" onchange="languageSelect()">
       <option value="nf0" selected>Tú eres mi amigo/a</option>
@@ -112,11 +119,25 @@
       <option value="ff1">Usted es mi amiga</option>
     </select>
   </form>
-  <form name="refer_fa"> <!-- Persian formality -->
+  <form name="dialect_es" lang="es">
+    <span>Dialecto: </span>
+    <select name="d_es" onchange="languageSelect()">
+      <option value="419" selected>Español (Latinoamérica)</option>
+      <option value="ES">Español (España)</option>
+    </select>
+  </form>
+  <form name="refer_fa" lang="fa"> <!-- Persian formality -->
     <div id="refer_fa_friend"></div>
-    <select name="r_fa" onchange="languageSelect()">
+    <select name="r_fa" onchange="languageSelect()" class="rtl">
       <option value="f0">تو دوست من هستی</option>
       <option value="f1" selected>شما دوست من هستید</option>
+    </select>
+  </form>
+  <form name="dialect_fa" lang="fa">
+    <span>گویش: </span>
+    <select name="d_fa" onchange="languageSelect()" class="rtl">
+      <option value="IR" selected>فارسی (ایران)</option>
+      <option value="AF">فارسی دری (افغانستان)</option>
     </select>
   </form>
   <div id="intro"></div><br>
@@ -344,7 +365,9 @@
     <b>A:</b> This algorithm is definitely foolproof and if it doesn't work something is wrong with the input.
     Make sure to <strong>read all instructions <em>carefully</em></strong>. If you still can't figure it out,
     contact me at <a href="mailto:bd542591@ahschool.com?subject=Grade calculator issue">bd542591@ahschool.com</a>
-    because it might actually be my fault that the input is bad.
+    because it might actually be my fault that the input is bad. However, in the past, the issue has usually
+    been that the actual grading in MyBackpack is different from what's on the syllabus; you might have to
+    talk to your teacher (especially if it can improve your grade!)
     <li>Q: What if a category is missing?</li>
     <b>A:</b> If a category is missing, <strong>enter its normal percentage</strong> and everything will be ok. For example, if there is no test grade in for AP Lang,
     enter 5% for MC Quizzes, 25% for Quizzes, and 20% for Homework.
@@ -357,9 +380,11 @@
     <b>A:</b> I used a combination of HTML (to make it exist), CSS (to make it aesthetically pleasing), and JavaScript (to make it work).
     JavaScript is a superior language to Java, from which it is entirely separate. Anyone who argues Java is better than JavaScript
     without referencing Minecraft is objectively wrong.
-    <li>Q: How do you pronounce your name?</li>
-    <b>A:</b> HAR-ys DAL-vi: <i>Har</i> as in &ldquo;<i>har</i>d&rdquo;, <i>ys</i> like &ldquo;ab<i>yss</i>&rdquo;,
-      <i>Dal</i> as in &ldquo;<i>Dal</i>it&rdquo;, <i>vi</i> as in &ldquo;<i>Vi</i>enna&rdquo;.
+    <li>Q: How do you know so many languages?</li>
+    <b>A:</b> I don't actually, I would say I know about three languages (English, Hindi-Urdu, and Spanish). But this page is
+    available in five languages (nine counting dialects/registers as separate), so it seems like I know a lot more. I used the internet a lot to help me with the translations,
+    so I am open to any corrections from people who speak these languages and dialects. However, I didn't just copy and paste
+    the whole thing into Google Translate. I used the internet as a tool, but the translations are my own.
     <li>Q: How are you so cool?</li>
     <b>A:</b> I don't try to be cool, it's all natural. I would like to thank Fritz for being cool.
   </ul>
