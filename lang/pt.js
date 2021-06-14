@@ -1,5 +1,5 @@
 langData["pt"] = {
-  "begin": "Para iniciar, cria categorias para as notas. Se a classe é baseada no sistema de pontos, faça uma categoria chamado algo como \"Total\" e considere-a 100% da sua nota.",
+  "begin": "Para iniciar, cria categorias para as notas. Se a classe é baseada no sistema de pontos, faça uma categoria chamado \"Total\" ou algo assim e considere-a 100% da sua nota.",
   "catInstruct": "Se a classe é baseada no sistema de pontos, faça uma categoria " +
     "chamado algo como \"Total\" e considere-a 100% da sua nota. " +
     "Por favor não faça nenhuma categoria com um nome que já existe, como sou demasiado " +
@@ -28,7 +28,7 @@ langData["pt"] = {
   "newClass": "Nova classe",
   "notPossibleGrade": "Infelizmente esta nota no é possível para você este semestre. Boa sorte para o próximo semestre!",
   "minGrade": "Nota mínima necessária no exame do semestre: $MIN% (inserido como $LETTER/$NUMBER%)",
-  "fritzExam": "Nota mínima necessária no exame do semestre: $MIN% (Espero que você não faça tanto Fritz no exame)",
+  "fritzExam": "Nota mínima necessária no exame do semestre: $MIN% (espero que você não faça tanto Fritz no exame)",
   "validData": "Por favor insira informação válida.",
   "mailSent": "Sua resposta foi enviada é a classe deverá estar disponível em breve. Muito obrigado!" +
     "<br>Por enquanto, volte e insira as ponderações à mão.<br>Se a classe não estiver disponible dentro de quase três dias, por favor contate-me" +
@@ -84,7 +84,7 @@ langData["pt"] = {
   "pointSystemInstruct": "Para saber se uma classe usa o sistema de pontos ou categorias, olhe quante valem quizzes, trabalhos de casa e testes." +
     " Se valem quase o mesmo número de pontos em cada categoria, é categorias. Se não, talvez seja o sistema de pontos.",
   "nameOfClass": "Nome da classe:&nbsp;",
-  "pointSystemInstruct2": "Para o <strong>sistema de pontos</strong>, escreva &ldquo;sistema de pontos&rdquo; para nomes e ponderações.",
+  "pointSystemInstruct2": "Para o <strong>sistema de pontos</strong>, escreva &ldquo;point system&rdquo; para nomes e ponderações.",
   "enterCatNames": "Nomes das categorias EXATAMENTE como são em MyBackpack:&nbsp;",
   "enterWeights": "Ponderações de cada categoria na ordem acima:&nbsp;",
   "enterNotes": "Apontamentos (opcional):&nbsp;",
@@ -113,7 +113,7 @@ langData["pt"] = {
   "5scale": "Escala 5.0",
   "4scale": "Escala 4.0",
   "footer": "Harys Dalvi<br>outubre de 2019&ndash;junho de 2021",
-  "languages": ["inglês", "espanhol", "português", "híndi", "urdu", "persa"],
+  "languages": ["inglês", "espanhol", "português", "hindi", "urdu", "persa", "latim", "sânscrito"],
   "numbers": ["um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez"],
   "setPoint": "A classificação foi definida como sistema de pontos",
   "search": "Pesquisar",

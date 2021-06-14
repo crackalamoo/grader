@@ -1,5 +1,5 @@
 langData["es"] = {
-  "begin": "Para empezar, crea categorías para las notas. Si la clase está basada en el sistema de puntos, haz una categoría llamado algo como \"Total\" y considérala 100% de tu nota.",
+  "begin": "Para empezar, crea categorías para las notas. Si la clase está basada en el sistema de puntos, haz una categoría llamado \"Total\" o algo así y considérala 100% de tu nota.",
   "catInstruct": "Si la clase está basada en el sistema de puntos, haz una categoría " +
     "llamado algo como \"Total\" y considérala 100% de tu nota. " +
     "Por favor no hagas ninguna categoría con un nombre que ya existe, como soy demasiado " +
@@ -28,7 +28,7 @@ langData["es"] = {
   "newClass": "Nueva clase",
   "notPossibleGrade": "Por desgracia, esta nota no es posible para ti este semestre. ¡Buena suerte para el próximo semestre!",
   "minGrade": "Nota mínima necesaria en el examen del semestre: $MIN% (se introduce como $LETTER/$NUMBER%)",
-  "fritzExam": "Nota mínima necesaria en el examen del semestre: $MIN% (Espero que no hagas tanto Fritz en el examen)",
+  "fritzExam": "Nota mínima necesaria en el examen del semestre: $MIN% (espero que no hagas tanto Fritz en el examen)",
   "validData": "Por favor introduce información válida.",
   "mailSent": "Tu respuesta fue enviada y la clase deberá estar disponible pronto. ¡Muchas gracias!" +
     "<br>Por ahora, vuelve e introduce las ponderaciones a mano.<br>Si la clase no está disponible dentro de aproximadamente tres días, por favor ponte en contacto" +
@@ -84,7 +84,7 @@ langData["es"] = {
   "pointSystemInstruct": "Para averiguar si una clase usa el sistema de puntos o categorías, mira cuánto valen pruebas, tareas de casa y exámenes." +
     " Si valen aproximadamente el mismo número de puntos en cada categoría, es categorías. Si no, tal vez sea el sistema de puntos.",
   "nameOfClass": "Nombre de la clase:&nbsp;",
-  "pointSystemInstruct2": "Para el <strong>sistema de puntos</strong>, teclea &ldquo;sistema de puntos&rdquo; para nombres y ponderaciones.",
+  "pointSystemInstruct2": "Para el <strong>sistema de puntos</strong>, teclea &ldquo;point system&rdquo; para nombres y ponderaciones.",
   "enterCatNames": "Nombres de las categorías EXACTAMENTE como se ven en MyBackpack:&nbsp;",
   "enterWeights": "Ponderaciones de cada categoría en el orden arriba:&nbsp;",
   "enterNotes": "Apuntes (opcional):&nbsp;",
@@ -113,7 +113,7 @@ langData["es"] = {
   "5scale": "Escala 5.0",
   "4scale": "Escala 4.0",
   "footer": "Harys &ldquo;Hacer&rdquo; Dalvi<br>octubre de 2019&ndash;junio de 2021",
-  "languages": ["inglés", "español", "portugués", "hindi", "urdu", "persa"],
+  "languages": ["inglés", "español", "portugués", "hindi", "urdu", "persa", "latín", "sánscrito"],
   "numbers": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"],
   "setPoint": "La calificación fue establecida a sistema de puntos",
   "search": "Buscar",
