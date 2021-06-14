@@ -120,6 +120,9 @@ function changeLanguage(l) {
     } else if (l == "fa") {
       document.getElementById(SCRIPT_ID[i]).style.direction = "rtl";
       document.getElementById(SCRIPT_ID[i]).style.fontFamily = '';
+    } else if (l == "en" && document.dialect_en.d_en.value == "ASCII") {
+      document.getElementById(SCRIPT_ID[i]).style.direction = "";
+      document.getElementById(SCRIPT_ID[i]).style.fontFamily = '"Courier", monospace';
     } else {
       document.getElementById(SCRIPT_ID[i]).style.direction = "";
       document.getElementById(SCRIPT_ID[i]).style.fontFamily = "";
@@ -456,16 +459,146 @@ function setDialect() {
   if (lang == "en") {
     document["dialect_en"].style.display = "";
     dialect = document["dialect_en"]["d_en"].value;
+    document.getElementById("d_en_dialect").innerHTML = "Dialect: ";
     if (dialect == "UK") {
       ["begin", "catInstruct", "edit", "notPossibleGrade", "minGrade", "fritzExam", "quarterGrades",
       "semGradesButton", "mobileCopyInstruct", "manualButton", "selectAbove", "semWithExam",
       "quarter13", "quarter24", "copyGradesInstruct"].forEach(
           key => currentLangData[key]=currentLangData[key].replaceAll("grade", "mark"));
-      referenceKey("welcome", "sure you have", "sure you've got");
+      referenceKey("welcome", "you need to make", "you've got to make");
       referenceKey("semGrade", "Grade", "Mark");
       referenceKey("examGrade", "grade", "score");
       referenceKey("setPoint", "Grading", "Scoring");
       referenceKey("shouldContinue", "Should", "Shall");
+    } else if (dialect == "ASCII") {
+      var keys = Object.keys(currentLangData);
+      currentLangData["pronunciation"] = "Say: HAH-riss DAHL-vee";
+      for (var k = 0; k < keys.length; k++) {
+        if (["languages", "numbers"].indexOf(keys[k]) == -1) {
+          var tag = 0;
+          var inVar = false;
+          referenceKeys(keys[k], ["&nbsp;", "&ldquo;", "&rdquo;"], [" ", '"', '"']);
+          for (var i = currentLangData[keys[k]].length; i >= 1; i--) {
+            var char = currentLangData[keys[k]].substring(i-1,i);
+            if (char == ">") {
+              tag++;
+            } else if (char == "<") {
+              tag--;
+            } else if (char == "$") {
+              inVar = true;
+            } else {
+              inVar = false;
+              for (var j = i-1; j >= 1; j--) {
+                var char2 = currentLangData[keys[k]].substring(j-1,j);
+                if (char2 == "$") {
+                  inVar = true;
+                  break;
+                } else if (char2 === char2.toLowerCase()) {
+                  break;
+                }
+              }
+              if (tag == 0 && !inVar) {
+                var bin = currentLangData[keys[k]].charCodeAt(i-1).toString(2);
+                while (bin.length < 8)
+                  bin = "0"+bin;
+                currentLangData[keys[k]] = currentLangData[keys[k]].substring(0, i-1) + 
+                bin + " " + currentLangData[keys[k]].substring(i);
+              }
+            }
+          }
+        }
+      }
+      currentLangData["numbers"] = ["0001", "0010", "0011", "0100", "0101", "0110", "0111", "1000", "1001", "1010"];
+      document.getElementById("d_en_dialect").innerHTML = "01000100 01101001 01100001 01101100 01100101 01100011 01110100 00111010";
+    } else if (dialect == "1600") {
+      referenceKeys("begin", ["creating categories", "scores", "if the class is based", "point system", "category", "called something like", "your"],
+      ["fashioning Categories", "Scores", "should the Class be based", "the Point System", "Category", "whose name is like", "thy"]);
+      referenceKeys("catInstruct",
+      ["scores", "if the class is based", "point system", "category", "called something like", "your", "lazy", "you don't do so", ", as", "Please don't make"],
+      ["Scores", "should the Class be based", "the Point System", "Category", "whose name is like", "thy", "idle", "thou doest not so", ", for", "Prithee make not"]);
+      referenceKey("catList", "that category's score", "the Score of that category");
+      referenceKeys("avg", ["class", "categories", "grade"], ["Class", "Categories", "Score"]);
+      referenceKeys("noCat", ["category", "currently", "selected"], ["Category", "now", "chosen"]);
+      referenceKeys("scoreNaN", ["zero", "at least one category", "Try adding", "assignments", "You have"],
+      ["Zero", "one or more Categories", "Do attempt it to add", "Assignments", "Thou hast"]);
+      referenceKey("catsFound", "categories found", "Categories were found");
+      referenceKey("delete", "Delete", "Remove");
+      currentLangData["notPossibleGrade"] = "'Tis a grievous calamity that this Score is not possible for thee this Semester. I do bid thee well for the next Semester!";
+      referenceKeys("minGrade", ["goes in", "exam", "you don't"], ["goeth", "Exam", "thou dost not"]);
+      referenceKeys("minGrade", ["goes in", "exam", "you don't"], ["goeth", "Exam", "thou dost not"]);
+      currentLangData["validData"] = "Prithee, do entre valid information.";
+      referenceKeys("mailSent", ["Your response", "Thank you!", "manually", "If the class isn't", "please contact", "your request"],
+      ["Thy Response", "I humbly thank thee.", "by hand", "Should the Class be not", "prithee contact", "thy request"]);
+      referenceKey("reqScore_0", "You", "Thou");
+      referenceKey("reqScore", "You", "Thou");
+      referenceKeys("welcome", ["you need to make sure you have", "grade calculator", "you don't know", "don't worry",
+      "I'll do it for you"],
+      ["thou must be sure thou hast", "Grade Calculator", "thou knowest not", "do not despair", "I shall do't for thee"]);
+      referenceKeys("jsSuccess", ["you're reading", "you have", "can use"],
+      ["thou art reading", "thou hast", "mayst use"]);
+      referenceKeys("intro", ["I am also human", "Please c", "if you catch a mistake", "so you can"],
+      ["I, too, am but a person", "Prithee do c", "should thou find a fault", "so thou canst"]);
+      referenceKey("whatNeed", "an upcoming", "a forthcoming");
+      referenceKey("copyGradesInstruct", "your", "thy");
+      referenceKeys("mobileCopyInstruct", ["you are", "you can", "mobile device"], ["thou art", "thou canst", "Mobile Device"]);
+      referenceKeys("superAlgorithm", ["My super cool algorithm simplified your"], ["Mine exceedingly fine algorithm did simplify thy"]);
+      referenceKey("shouldContinue", "Should", "Shall");
+      currentLangData["manualButton"] = "Entre Scores by Hand";
+      referenceKeys("sethClassInstruct", ["Please", "check that"], ["Prithee", "mark that"]);
+      referenceKeys("pointSystemInstruct", ["check h", "it is", "categories", "Otherwise,"], ["see h", "'tis", "Categories", "Else"]);
+      referenceKeys("clearDataExp", ["force you", "re-enter your", "you visit", "data", "If you leave", "you aren't"],
+      ["force thee", "again entre thy", "thou visitest", "information", "Should thou leave", "thou be not"]);
+      referenceKey("modifyCreditHeading", "Modify/delete credit", "Change/remove Credit");
+      referenceKey("deleteAssignment", "Delete", "Remove");
+      referenceKeys("editInstruct", ["Delete", "delete", "the same way"], ["Remove", "remove", "this very manner"]);
+      referenceKey("clearDataButton", "Data", "Information");
+      currentLangData["confirm"] = "Art thou certain thou dost wish to do this?";
+      var keys = Object.keys(currentLangData);
+      for (var k = 0; k < keys.length; k++) {
+        if (["languages", "numbers"].indexOf(keys[k]) == -1) {
+          var tag = 0;
+          var inVar = false;
+          for (var i = currentLangData[keys[k]].length; i >= 1; i--) {
+            var char = currentLangData[keys[k]].substring(i-1,i);
+            if (char == ">") {
+              tag++;
+            } else if (char == "<") {
+              tag--;
+            } else {
+              if (tag == 0) {
+                var char2 = " ";
+                var newC = char;
+                if (i < currentLangData[keys[k]].length)
+                  char2 = currentLangData[keys[k]].substring(i,i+1);
+                if ([" ", ".", ",", ";", "?", ";", "\"", ")", "f", "'", "b", "k", "-", ":", "/", "!"].indexOf(char2) == -1
+                && ["s", "v"].indexOf(char) != -1)
+                  newC = {"s": "ſ", "v": "u"}[char];
+                if (i == 1 && char == "U")
+                  newC = "V";
+                currentLangData[keys[k]] = currentLangData[keys[k]].substring(0, i-1) + 
+                newC + currentLangData[keys[k]].substring(i);
+              }
+            }
+          }
+          referenceKey(keys[k], "fſ", "fs");
+          referenceKey(keys[k], "ſſ", "ſs");
+          referenceKey(keys[k], " u", " v");
+          referenceKey(keys[k], " U", " V");
+          referenceKey(keys[k], "JauaScript", "JavaScript");
+          referenceKey(keys[k], "ahſchool", "ahschool");
+          referenceKey(keys[k], "point ſyſtem", "Point Syſtem");
+          referenceKey(keys[k], "grade", "Score");
+          referenceKey(keys[k], "<i>Aſsignment</i>", "<i>Assignment</i>");
+          referenceKey(keys[k], "&nbſp;", "&nbsp;");
+          referenceKey(keys[k], "&ndaſh;", "&ndash;");
+          referenceKey(keys[k], "&mdaſh;", "&mdash;");
+          referenceKeys(keys[k], ["enter", "Enter"], ["entre", "Entre"]);
+          referenceKeys(keys[k], ["required", "Required"], ["necessary", "Necessary"]);
+          currentLangData["pronunciation"] = "Say: HAH-riss DAHL-vee";
+        }
+      }
+      referenceKeys("dontWorry", ["been entreed yet", "Don't worry", "don't worry", "you can manually", "category after"],
+      ["yet been entered", "Grieve not", "grieve not", "thou canst", "category by hand after"]);
     }
   } else {
     document["dialect_en"].style.display = "none";
