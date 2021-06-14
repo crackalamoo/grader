@@ -26,6 +26,10 @@ p#javascript[style*="direction: rtl"] {
   margin-left: inherit;
   margin-right: 40px;
 }
+p#javascript:lang(la) {
+  font-variant: small-caps;
+}
+
 .button {
   color: #FFFFFF;
   background-color: #0088AA;
@@ -92,7 +96,7 @@ div#footer {
   color: #BBD0DD;
   font-style: italic;
 }
-div#footer:lang(hi) {
+div#footer:lang(hi),div#footer:lang(sa) {
   font-style: normal;
   font-family: devanagari;
 }
@@ -102,6 +106,10 @@ div#footer:lang(ur) {
 }
 div#footer:lang(fa) {
   font-style: normal;
+}
+div#footer:lang(la) {
+  font-style: normal;
+  font-variant: small-caps;
 }
 div#ahsDiv {
   text-align: center;
@@ -243,10 +251,14 @@ select.rtl {
 .button:lang(hi) {
   font-family: devanagari;
 }
+.button:lang(sa) {
+  font-family: "Devanagari MT", devanagari;
+}
 .button:lang(ur) {
   font-family: nastaliq;
 }
-div#languageButtons span div.button:lang(hi),div#languageButtons span div.button:lang(ur) {
+div#languageButtons span div.button:lang(hi),div#languageButtons span div.button:lang(ur),
+div#languageButtons span div.button:lang(sa) {
   font-family: inherit;
 }
 *[style*="font-family: nastaliq"] {
@@ -259,4 +271,15 @@ div#languageButtons span div.button:lang(hi),div#languageButtons span div.button
 }
 #pronunciation:lang(hi) {
   font-family: "Times New Roman", devanagari;
+}
+#pronunciation:lang(sa) {
+  font-family: "Times New Roman", "Devanagari MT", devanagari;
+}
+:lang(sa) strong,:lang(sa) b {
+  font-weight: normal;
+  background-color: rgba(201, 91, 8, 0.5);
+}
+:lang(sa) :lang(en) strong,:lang(sa) :lang(en) b {
+  font-weight: bold;
+  background-color: inherit;
 }

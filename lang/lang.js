@@ -1,8 +1,8 @@
 const SCRIPT_ID = ["javascript", "start", "auto", "finalAuto", "autoCategories", "manual", "category",
   "editCategory", "addClass", "semester", "gpaCalc", "seth_img", "langSelect", "examGrade", "semesterGrade",
-  "setLangForm"];
-const LANGUAGES = ["English", "Español", "Português", "हिन्दी", "اردو", "فارسی"];
-const LANG_CODES = ["en", "es", "pt", "hi", "ur", "fa"];
+  "setLangForm", "intro", "footer"];
+const LANGUAGES = ["English", "Español", "Português", "हिन्दी", "اردو", "فارسی", "Latinum", "संस्कृतम्"];
+const LANG_CODES = ["en", "es", "pt", "hi", "ur", "fa", "la", "sa"];
 const RTL_LANG = ["ur", "fa"];
 var currentLangData;
 function changeLanguage(l) {
@@ -110,9 +110,13 @@ function changeLanguage(l) {
     if (l == "ur") {
       document.getElementById(SCRIPT_ID[i]).style.direction = "rtl";
       document.getElementById(SCRIPT_ID[i]).style.fontFamily = 'nastaliq';
-    } else if (l == "hi") {
+    } else if (["hi"].indexOf(l) != -1) {
       document.getElementById(SCRIPT_ID[i]).style.direction = "";
       document.getElementById(SCRIPT_ID[i]).style.fontFamily = 'devanagari';
+    }
+    else if (l == "sa") {
+      document.getElementById(SCRIPT_ID[i]).style.direction = "";
+      document.getElementById(SCRIPT_ID[i]).style.fontFamily = '"Devanagari MT", devanagari';
     } else if (l == "fa") {
       document.getElementById(SCRIPT_ID[i]).style.direction = "rtl";
       document.getElementById(SCRIPT_ID[i]).style.fontFamily = '';
@@ -449,16 +453,15 @@ function referenceKeys(key, o, n) {
 }
 function setDialect() {
   var dialect;
-  currentLangData = JSON.parse(JSON.stringify(langData[lang]));
   if (lang == "en") {
     document["dialect_en"].style.display = "";
     dialect = document["dialect_en"]["d_en"].value;
     if (dialect == "UK") {
       ["begin", "catInstruct", "edit", "notPossibleGrade", "minGrade", "fritzExam", "quarterGrades",
       "semGradesButton", "mobileCopyInstruct", "manualButton", "selectAbove", "semWithExam",
-      "quarter13", "quarter24"].forEach(
+      "quarter13", "quarter24", "copyGradesInstruct"].forEach(
           key => currentLangData[key]=currentLangData[key].replaceAll("grade", "mark"));
-      referenceKey("welcome", "I'll", "I shall");
+      referenceKey("welcome", "sure you have", "sure you've got");
       referenceKey("semGrade", "Grade", "Mark");
       referenceKey("examGrade", "grade", "score");
       referenceKey("setPoint", "Grading", "Scoring");
@@ -472,7 +475,7 @@ function setDialect() {
     dialect = document["dialect_es"]["d_es"].value;
     if (dialect == "ES") {
       referenceKey("intro", "computadoras", "ordenadores");
-      referenceKey("superAlgorithm", "simplificó", "ha simplificado");
+      referenceKeys("superAlgorithm", ["simplificó", "genial"], ["ha simplificado", "guay"]);
     }
   } else {
     document["dialect_es"].style.display = "none";
@@ -509,6 +512,8 @@ function wordList(arr) {
     comma = "&rlm;، ";
   if (["es", "pt"].indexOf(lang) != -1)
     oxford = false;
+  if (["sa"].indexOf(lang) != -1)
+    comma = " ";
   for (var i = 0; i < arr.length-2; i++)
     str += arr[i] + comma;
   str += arr[arr.length-2];
@@ -516,10 +521,12 @@ function wordList(arr) {
     str += comma;
   else
     str += " "
-  str += {"en": "and", "es": "y", "pt": "e", "hi": "और", "ur": "اور", "fa": "و"}[lang];
+  str += {"en": "and", "es": "y", "pt": "e", "hi": "और", "ur": "اور", "fa": "و", "sa": ""}[lang];
   if (lang == "es" && arr[arr.length-1].toLowerCase().startsWith("i"))
     str = str.substring(0, str.length-1)+"e";
   str += " ";
   str += arr[arr.length-1];
+  if (lang == "sa")
+    str += " च";
   return str;
 }
