@@ -80,7 +80,7 @@ langData["es"] = {
   "manualButton": "Introducir notas a mano",
   "selClass": "<strong>Selecciona una clase</strong> para llenar porcentajes/ponderaciones automaticamente. (Crédito a <span id=\"seth\">Seth</span> Groper por esta idea)",
   "selClassOption": "Seleccionar una clase",
-  "addClassOption": "Añadir una clase a esta lista (o corregir una clase)",
+  "addClassOption": "Añadir o corregir una clase de esta lista",
   "sethClassInstruct": "Por favor introduce un porcentaje para cada categoría <strong><i>o</i></strong> marca que esta clase usa el sistema de puntos:",
   "pointSystemInstruct": "Para averiguar si una clase usa el sistema de puntos o categorías, mira cuánto valen pruebas, tareas de casa y exámenes." +
     " Si valen aproximadamente el mismo número de puntos en cada categoría, es categorías. Si no, tal vez sea el sistema de puntos.",

@@ -80,7 +80,7 @@ langData["en"] = {
   "manualButton": "Manually enter grades",
   "selClass": "<strong>Select a class</strong> to automatically fill in percentages/weighting. (Credit to <span id=\"seth\">Seth</span> Groper for this idea)",
   "selClassOption": "Select a class",
-  "addClassOption": "Add a class to this list (or fix a class)",
+  "addClassOption": "Add or correct a class on this list",
   "sethClassInstruct": "Please enter a percentage for each category <strong><i>or</i></strong> check that this class is point system:",
   "pointSystemInstruct": "To figure out if a class is point system or categories, check how much quizzes, homework, and tests are worth." +
     " If in each category they are out of about the same number of points, it is categories. Otherwise, it may be point system.",
