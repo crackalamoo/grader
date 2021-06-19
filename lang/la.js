@@ -80,7 +80,7 @@ langData["la"] = {
   "manualButton": "Notas per manus scribere",
   "selClass": "<strong>Elige disciplinam</strong> ut per centum/ponderationes per se complere. (Gratias ago ad <span id=\"seth\">Seth</span> Groper pro hanc ideam)",
   "selClassOption": "Disciplinam elige",
-  "addClassOption": "In hoc albo disciplinam addere (vel disciplinam corrigere)",
+  "addClassOption": "In hoc albo disciplinam addere vel corrigere",
   "sethClassInstruct": "Per centum in quoque genere scribe <strong><i>vel</i></strong> indica hanc disciplinam rationem punctorum uitur:",
   "pointSystemInstruct": "Ut videre si disciplina ratio punctorum vel genera uitur, vide quanto valent probationes, pensa domus et examina." +
     " Si valent circa idem numerus punctorum in quoque genere, genera sunt. Si non, forsit ratio punctorum est.",

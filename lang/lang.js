@@ -248,7 +248,8 @@ function setReference() {
         currentLangData["intro"] = currentLangData["intro"].replaceAll("चुन लो", "चुन लें").replace("करें", "कीजिए");;
         currentLangData["notPossibleGrade"] = currentLangData["notPossibleGrade"].replace("रहो", "रहें");
         currentLangData["fritzExam"] = currentLangData["fritzExam"].replace("करोगे", "करेंगे");
-        ["mailSent", "manualButton", "addClassOption", "sethClassInstruct"].forEach(
+        ["mailSent", "manualButton", "addClassOption", "sethClassInstruct", "add", "addAssignment",
+        "editInstruct"].forEach(
           key => currentLangData[key]=currentLangData[key].replaceAll("डालो", "डालें"));
         currentLangData["jsSuccess"] = currentLangData["jsSuccess"].replaceAll("हो", "हैं");
         currentLangData["createCat"] = currentLangData["createCat"].replaceAll("बनाओ", "बनाएँ");
@@ -269,6 +270,8 @@ function setReference() {
         currentLangData["getCreditButton"] = currentLangData["getCreditButton"].replaceAll("देखो", "देखें");
         currentLangData["modifyCreditHeading"] = currentLangData["modifyCreditHeading"].replaceAll("बदलो", "बदलें").replaceAll("हटाओ", "हटाएँ");
         referenceKey("pronunciation", "कह दो", "कह दीजिए");
+        referenceKey("deleteAssignment", "निकालो", "निकालें");
+        referenceKey("delete", "निकालो", "निकालें");
       }
       if (["mf0", "ff0"].indexOf(refer) != -1) {
         ["reqScore_0", "reqScore", "welcome", "intro", "copyGradesInstruct", "superAlgorithm",
@@ -302,7 +305,8 @@ function setReference() {
         currentLangData["intro"] = currentLangData["intro"].replaceAll("چن لو", "چن لیں").replace("کریں", "کیجئے");
         currentLangData["notPossibleGrade"] = currentLangData["notPossibleGrade"].replace("رہو", "رہیں");
         currentLangData["fritzExam"] = currentLangData["fritzExam"].replace("کرو گے", "کریں گے");
-        ["mailSent", "manualButton", "addClassOption", "sethClassInstruct"].forEach(
+        ["mailSent", "manualButton", "addClassOption", "sethClassInstruct", "add", "addAssignment",
+        "editInstruct"].forEach(
           key => currentLangData[key]=currentLangData[key].replaceAll("ڈالو", "ڈالیں"));
         currentLangData["jsSuccess"] = currentLangData["jsSuccess"].replaceAll("ہو", "ہیں");
         currentLangData["createCat"] = currentLangData["createCat"].replaceAll("بناؤ", "بنائیں");
@@ -323,6 +327,8 @@ function setReference() {
         currentLangData["getCreditButton"] = currentLangData["getCreditButton"].replaceAll("دیکھو", "دیکھیں");
         currentLangData["modifyCreditHeading"] = currentLangData["modifyCreditHeading"].replaceAll("بدلو", "بدلیں").replaceAll("ہٹاؤ", "ہٹائیں");
         referenceKey("pronunciation", "کہہ دو", "کہہ دیجئے");
+        referenceKey("deleteAssignment", "نکالو", "نکالیں");
+        referenceKey("delete", "نکالو", "نکالیں");
       }
       if (["mf0", "ff0"].indexOf(refer) != -1) {
         ["reqScore_0", "reqScore", "welcome", "intro", "copyGradesInstruct", "superAlgorithm",
