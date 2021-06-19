@@ -116,7 +116,7 @@ function changeLanguage(l) {
     }
     else if (l == "sa") {
       document.getElementById(SCRIPT_ID[i]).style.direction = "";
-      document.getElementById(SCRIPT_ID[i]).style.fontFamily = '"Devanagari MT", devanagari';
+      document.getElementById(SCRIPT_ID[i]).style.fontFamily = '"Times New Roman", "Devanagari MT", devanagari, balinese';
     } else if (l == "fa") {
       document.getElementById(SCRIPT_ID[i]).style.direction = "rtl";
       document.getElementById(SCRIPT_ID[i]).style.fontFamily = '';
@@ -634,6 +634,127 @@ function setDialect() {
   } else {
     document["dialect_fa"].style.display = "none";
   }
+  if (lang == "sa") {
+    document["script_sa"].style.display = "";
+    dialect = document["script_sa"]["s_sa"].value; // really script, not dialect
+    var keys = Object.keys(currentLangData);
+    SANSKRIT_DIGITS = {
+      "Deva": ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"],
+      "Brah": ["𑁦", "𑁧", "𑁨", "𑁩", "𑁪", "𑁫", "𑁬", "𑁭", "𑁮", "𑁯"],
+      "Latn": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+      "Telu": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+      "Bali": ["᭐", "᭑", "᭒", "᭓", "᭔", "᭕", "᭖", "᭗", "᭘", "᭙"]
+    }[dialect];
+    document.getElementById("script_sa_lipi").innerHTML = {
+      "Deva": "लिपिः (Script) ",
+      "Brah": "𑀮𑀺𑀧𑀺𑀂 (Script) ",
+      "Latn": "Script ",
+      "Telu": "లిపిః (Script) ",
+      "Bali": "ᬮᬶᬧᬶᬄ (Script) "
+    }[dialect];
+    const TITLES = ["minExam", "semWithExam", "ritvikCalc", "ritvikHonor"];
+    if (dialect == "Deva") {
+      for (var k = 0; k < TITLES.length; k++)
+        currentLangData[TITLES[k]] = "॥ " + currentLangData[TITLES[k]] + " ॥";
+    } else if (dialect == "Latn") {
+      var devanagari_consonants = ["क", "ख", "ग", "घ", "ङ", "च", "छ", "ज", "झ", "ञ",
+        "ट", "ठ", "ड", "ढ", "ण", "त", "थ", "द", "ध", "न",
+        "प", "फ", "ब", "भ", "म", "य", "र", "ल", "व", "श", "ष", "स", "ह", "ळ",
+        "ः", "ं"];
+      var devanagari_vowels = ["अ", "आ", "इ", "ई", "उ", "ऊ", "ए", "ऐ", "ओ", "औ", "ऋ"];
+      var devanagari_matras = ["ां", "ाः", "िं", "िः", "ीं", "ीः", "ुं", "ुः", "ूं", "ूः", "ें", "ेः", "ैं", "ैः", "ों", "ोः", "ौं", "ौः",
+        "्", "ा", "ि", "ी", "ु", "ू", "े", "ै", "ो", "ौ", "ृ", "ं", "ः"];
+      var iast_consonants = ["k", "kh", "g", "gh", "ṅ", "c", "ch", "j", "jh", "ñ",
+        "ṭ", "ṭh", "ḍ", "ḍh", "ṇ", "t", "th", "d", "dh", "n",
+        "p", "ph", "b", "bh", "m", "y", "r", "l", "v", "ś", "ṣ", "s", "h", "ḷ"];
+      var iast_vowels = ["a", "ā", "i", "i", "u", "u", "e", "ai", "o", "au", "ṛ"];
+      var iast_matras = ["āṃ", "āḥ", "iṃ", "iḥ", "īṃ", "īḥ", "uṃ", "uḥ", "ūm", "ūḥ", "eṃ", "eḥ", "aiṃ", "aiḥ", "oṃ", "oḥ", "auṃ", "auḥ",
+        "", "ā", "i", "ī", "u", "ū", "e", "ai", "o", "au", "ṛ", "aṃ", "aḥ"];
+      for (var k = 0; k < keys.length; k++) {
+        if (["languages", "numbers"].indexOf(keys[k]) == -1) {
+          for (var i = 0; i < devanagari_consonants.length; i++) {
+            for (var j = 0; j < devanagari_matras.length; j++) {
+              referenceKey(keys[k], devanagari_consonants[i]+devanagari_matras[j],
+                iast_consonants[i]+iast_matras[j]);
+            }
+          }
+          for (var i = 0; i < devanagari_vowels.length; i++) {
+            referenceKey(keys[k], devanagari_vowels[i], iast_vowels[i]);
+          }
+          for (var i = 0; i < devanagari_consonants.length; i++) {
+            referenceKey(keys[k], devanagari_consonants[i], iast_consonants[i]+"a");
+          }
+          for (var i = 0; i <= 9; i++) {
+            referenceKey(keys[k], ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"][i], ""+i);
+          }
+          referenceKey(keys[k], "ऽ", "'");
+          referenceKey(keys[k], "।", "|");
+          referenceKey(keys[k], "॥", "||");
+        }
+      }
+      for (var k = 0; k < TITLES.length; k++)
+        currentLangData[TITLES[k]] = currentLangData[TITLES[k]].toUpperCase();
+    } else {
+      var devanagari_letters = ["अ", "आ", "इ", "ई", "उ", "ऊ", "ए", "ऐ", "ओ", "औ", "ऋ",
+        "्", "ा", "ि", "ी", "ु", "ू", "े", "ै", "ो", "ौ", "ृ", "ं", "ः", "।", "॥", "ऽ",
+        "क", "ख", "ग", "घ", "ङ", "च", "छ", "ज", "झ", "ञ",
+        "ट", "ठ", "ड", "ढ", "ण", "त", "थ", "द", "ध", "न",
+        "प", "फ", "ब", "भ", "म", "य", "र", "ल", "व", "श", "ष", "स", "ह", "ळ",
+        "०", "१", "२", "३", "४", "५", "६", "७", "८", "९", " "];
+      var new_letters = {"Brah": ["𑀅", "𑀆", "𑀇", "𑀈", "𑀉", "𑀊", "𑀏", "𑀐", "𑀑", "𑀒", "𑀋",
+      "𑁆", "𑀸", "𑀺", "𑀻", "𑀼", "𑀽", "𑁂", "𑁃", "𑁄", "𑁅", "𑀾", "𑀁", "𑀂", "𑁇", "𑁈", "",
+      "𑀓", "𑀔", "𑀕", "𑀖", "𑀗", "𑀘", "𑀙", "𑀚", "𑀛", "𑀜",
+      "𑀝", "𑀞", "𑀟", "𑀠", "𑀡", "𑀢", "𑀣", "𑀤", "𑀥", "𑀦",
+      "𑀧", "𑀨", "𑀩", "𑀪", "𑀫", "𑀬", "𑀭", "𑀮", "𑀯", "𑀰", "𑀱", "𑀲", "𑀳", "𑀴",
+      "𑁦", "𑁧", "𑁨", "𑁩", "𑁪", "𑁫", "𑁬", "𑁭", "𑁮", "𑁯", " "],
+      "Telu": ["అ", "ఆ", "ఇ", "ఈ", "ఉ", "ఊ", "ఏ", "ఐ", "ఓ", "ఔ", "ఋ",
+      "్", "ా", "ి", "ీ", "ు", "ూ", "ే", "ై", "ో", "ౌ", "ృ", "ం", "ః", "।", "॥", "",
+      "క", "ఖ", "గ", "ఘ", "ఙ", "చ", "ఛ", "జ", "ఝ", "ఞ",
+      "ట", "ఠ", "డ", "ఢ", "ణ", "త", "థ", "ద", "ధ", "న",
+      "ప", "ఫ", "బ", "భ", "మ", "య", "ర", "ల", "వ", "శ", "ష", "స", "హ", "ళ",
+      "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", " "],
+      "Bali": ["ᬅ", "ᬆ", "ᬇ", "ᬈ", "ᬉ", "ᬊ", "ᬏ", "ᬐ", "ᬑ", "ᬒ", "ᬋ",
+      "᭄", "ᬵ", "ᬶ", "ᬷ", "ᬸ", "ᬹ", "ᬾ", "ᬿ", "ᭀ", "ᭁ", "ᬺ", "ᬂ", "ᬄ", "᭞", "᭟", "",
+      "ᬓ", "ᬔ", "ᬕ", "ᬖ", "ᬗ", "ᬘ", "ᬙ", "ᬚ", "ᬛ", "ᬜ",
+      "ᬝ", "ᬞ", "ᬟ", "ᬠ", "ᬡ", "ᬢ", "ᬣ", "ᬤ", "ᬥ", "ᬦ",
+      "ᬧ", "ᬨ", "ᬩ", "ᬩ", "ᬫ", "ᬬ", "ᬭ", "ᬮ", "ᬯ", "ᬰ", "ᬱ", "ᬲ", "ᬳ", "ᬮ",
+      "᭐", "᭑", "᭒", "᭓", "᭔", "᭕", "᭖", "᭗", "᭘", "᭙", "&#8203;"]}[dialect];
+      var numberSep = {"Brah": "", "Telu": "", "Bali": "᭞"}[dialect];
+      var TITLE_START = {"Brah": "𑁈 ", "Telu": "॥ ", "Bali": "᭚"}[dialect];
+      var TITLE_END = {"Brah": " 𑁈", "Telu": " ॥", "Bali": ""}[dialect];
+      for (var k = 0; k < keys.length; k++) {
+        if (["languages", "numbers"].indexOf(keys[k]) == -1) {
+          for (var i = 0; i < devanagari_letters.length; i++)
+            referenceKey(keys[k], devanagari_letters[i], new_letters[i]);
+          for (var i = 0; i < currentLangData[keys[k]].length; i++) {
+            if (SANSKRIT_DIGITS.concat("%").indexOf(currentLangData[keys[k]].substring(i,i+1)) != -1) {
+              if (i == currentLangData[keys[k]].length ||
+              SANSKRIT_DIGITS.concat([".","%"]).indexOf(currentLangData[keys[k]].substring(i+1,i+2)) == -1) {
+                currentLangData[keys[k]] = currentLangData[keys[k]].substring(0,i+1) + numberSep +
+                currentLangData[keys[k]].substring(i+1);
+                i += numberSep.length;
+              }
+              if (i == 0 || SANSKRIT_DIGITS.concat([".","%"]).indexOf(currentLangData[keys[k]].substring(i-1,i)) == -1) {
+                currentLangData[keys[k]] = currentLangData[keys[k]].substring(0,i) + numberSep +
+                currentLangData[keys[k]].substring(i);
+                i += numberSep.length;
+              }
+            }
+          }
+          referenceKey(keys[k], "$NUMBER", numberSep+"$NUMBER"+numberSep);
+          referenceKey(keys[k], numberSep+"$NUMBER"+numberSep+"%", numberSep+"$NUMBER%"+numberSep);
+          referenceKey(keys[k], "$SCORE%", numberSep+"$SCORE%"+numberSep);
+          referenceKey(keys[k], "$MIN%", numberSep+"$MIN%"+numberSep);
+          referenceKey(keys[k], "$WEIGHT%", numberSep+"$WEIGHT%"+numberSep);
+          referenceKey(keys[k], "$PTS/$TOT", numberSep+"$PTS/$TOT"+numberSep);
+        }
+      }
+      for (var k = 0; k < TITLES.length; k++)
+        currentLangData[TITLES[k]] = TITLE_START + currentLangData[TITLES[k]] + TITLE_END;
+    }
+  } else {
+    document["script_sa"].style.display = "none";
+  }
 }
 function wordList(arr) {
   var str = "";
@@ -654,12 +775,13 @@ function wordList(arr) {
     str += comma;
   else
     str += " "
-  str += {"en": "and", "es": "y", "pt": "e", "hi": "और", "ur": "اور", "fa": "و", "sa": ""}[lang];
+  if (lang != "sa")
+    str += currentLangData.and;
   if (lang == "es" && arr[arr.length-1].toLowerCase().startsWith("i"))
     str = str.substring(0, str.length-1)+"e";
   str += " ";
   str += arr[arr.length-1];
   if (lang == "sa")
-    str += " च";
+    currentLangData.and;
   return str;
 }

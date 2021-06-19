@@ -8,7 +8,7 @@ var semesters = [];
 var gpaData = [];
 const COMMA_DECIMAL_LANG = ["pt"];
 const URDU_DIGIT_LANG = ["ur", "fa"];
-const DEVANAGARI_DIGIT_LANG = ["hi", "sa"];
+const DEVANAGARI_DIGIT_LANG = ["hi"];
 const URDU_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
 const DEVANAGARI_DIGITS = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
 
@@ -140,8 +140,8 @@ function roundDecimal(num, places) {
     n = n.replace(".", "٫");
   }
   if (["sa"].indexOf(lang) != -1) {
-    for (var i = 0; i < DEVANAGARI_DIGITS.length; i++)
-      n = n.replaceAll(new RegExp(""+i,"g"), DEVANAGARI_DIGITS[i]);
+    for (var i = 0; i < SANSKRIT_DIGITS.length; i++)
+      n = n.replaceAll(new RegExp(""+i,"g"), SANSKRIT_DIGITS[i]);
   }
 
   return n;
@@ -176,6 +176,10 @@ function formatInt(num, nativeDigits=true, upper=false, gender=null, writeNum=tr
         return "0";
       for (var i = 0; i < URDU_DIGITS.length; i++)
         n = n.replaceAll(new RegExp(""+i,"g"), URDU_DIGITS[i]);
+    }
+    if (lang == "sa") {
+      for (var i = 0; i < SANSKRIT_DIGITS.length; i++)
+        n = n.replaceAll(new RegExp(""+i,"g"), SANSKRIT_DIGITS[i]);
     }
   }
   return n;
@@ -357,22 +361,10 @@ function autoGrade(rampal=false) {
   }
   var foundCatText = langReplace("catsFound", ["$NUMBER", "$CATEGORIES"], [formatInt(findCategories(autoCalc).length, true, true, 1),
     wordList(findCategories(autoCalc))]);
-  if (findCategories(autoCalc).length == 1) {
-    foundCatText = foundCatText.replace({"en": "categories", "es": "categorías", "pt": "categorias", "hi": "कैटेगरीज़",
-      "ur": "کیٹیگریز", "sa": "वर्गा", "la": "genera"}[lang],
-      {"en": "category", "es": "categoría", "pt": "categoria", "hi": "कैटेगरी",
-      "ur": "کیٹیگری", "sa": "वर्गो", "la": "genus"}[lang]);
-    foundCatText = foundCatText.replace({"en": "found", "es": "se encontraron", "pt": "encontradas", "hi": "मिलीं",
-      "ur": "ملِیں", "fa": "شدند", "sa": "विन्द्यन्त", "la": "sunt"}[lang],
-      {"en": "found", "es": "se encontró", "pt": "encontrada", "hi": "मिली",
-      "ur": "ملی", "fa": "شد", "sa": " ऽविन्द्यत", "la": "est"}[lang]);
-  }
-  if (["sa"].indexOf(lang) != -1 && findCategories(autoCalc).length == 2) {
-    foundCatText = foundCatText.replace({"sa": "वर्गा"}[lang],
-      {"sa": "वर्गाव"}[lang]);
-    foundCatText = foundCatText.replace({"sa": "विन्द्यन्त"}[lang],
-    {"sa": "विन्द्येताम्"}[lang]);
-  }
+  if (findCategories(autoCalc).length == 1)
+    foundCatText = currentLangData.catsFound1;
+  if (["sa"].indexOf(lang) != -1 && findCategories(autoCalc).length == 2)
+    foundCatText = currentLangData.catsFound2;
   document.gradesList.innerHTML += foundCatText;
   if (RAMPAL)
     document.gradesList.innerHTML += "<br>" + currentLangData.rampalInstruct;

@@ -14,6 +14,7 @@ langData["en"] = {
   "rampalInstruct": "<b>Do the following for <em>each</em> assignment:</b><br>" +
     "Click on the assignment<br><img src=\"rampal/rampal1.png\"><br><img src=\"rampal/rampal2.png\"><br>Look at the <strong>\"Count as\"</strong> and enter it above",
   "catsFound": "$NUMBER categories found: $CATEGORIES",
+  "catsFound1": "One category found: $CATEGORIES",
   "pointCheck": "This class is point system",
   "next": "Next",
   "back": "Back",
@@ -118,5 +119,6 @@ langData["en"] = {
   "numbers": ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"],
   "setPoint": "Grading set to point system",
   "search": "Search",
-  "pronunciation": "Say: HAH-riss DAHL-vee /ˈhɑːrɪs ˈdɑːlvi/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]"
+  "pronunciation": "Say: HAH-riss DAHL-vee /ˈhɑːrɪs ˈdɑːlvi/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]",
+  "and": "and"
 };
