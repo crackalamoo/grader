@@ -12,11 +12,12 @@
     window.location.replace("http://harysdalvi.com/ahsgrades");
   }
   </script>
-  <base href="http://harysdalvi.com/sub/grader/">
+  <base href="http://www.harysdalvi.com/sub/grader/">
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
   <script>
   var langData = {}, lang = "en";
+  var SANSKRIT_DIGITS;
   </script>
   <script src="lang/en.js"></script>
   <script src="lang/es.js"></script>
@@ -148,6 +149,16 @@
     <select name="d_fa" onchange="languageSelect()" class="rtl">
       <option value="IR" selected>فارسی (ایران)</option>
       <option value="AF">فارسی دری (افغانستان)</option>
+    </select>
+  </form>
+  <form name="script_sa" lang="sa">
+    <span id="script_sa_lipi"></span>
+    <select name="s_sa" onchange="languageSelect()">
+      <option value="Deva" selected>देवनागरी</option>
+      <option value="Latn">IAST (Romanized)</option>
+      <option value="Brah">𑀩𑁆𑀭𑀸𑀳𑁆𑀫𑀻</option>
+      <option value="Telu">తెలుగు</option>
+      <option value="Bali">ᬅᬓ᭄ᬱᬭᬩᬮᬶ</option>
     </select>
   </form>
   <div id="intro"></div><br>

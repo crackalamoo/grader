@@ -14,6 +14,7 @@ langData["la"] = {
   "rampalInstruct": "<b><em>Cuique</em> penso quo sequitur fac:</b><br>" +
     "Penso click fac<br><img src=\"rampal/rampal1.png\"><br><img src=\"rampal/rampal2.png\"><br><strong>\"Count as\"</strong> vide et id supra scribe",
   "catsFound": "$NUMBER genera inventus sunt: $CATEGORIES",
+  "catsFound1": "Unum genus inventus est: $CATEGORIES",
   "pointCheck": "In hanc disciplinam fundatur ratio punctorum",
   "next": "Deinde",
   "back": "Retro",
@@ -69,7 +70,7 @@ langData["la"] = {
   "copyGradesInstruct": "Simpliciter notas tuae de MyBackpack effinge simile in imagine infera monstratur.",
   "mobileCopyInstruct": "(Si <strong>machinam manus</strong> uteris, iPads inclusum, potes <i>" +
     "Assignment</i> eligere et notas omnes post eligere)",
-  "pasteGradesInstruct": "Iam hae glutina in capsa infera click fac in <strong>Deinde</strong> sub capsa:",
+  "pasteGradesInstruct": "Iam hae glutina in capsa infera et click fac in <strong>Deinde</strong> sub capsa:",
   "superAlgorithm": "Meus algorismus superelegans notas tuas mundavit ut sequens facere (genus, nota/possibile):",
   "dontWorry": "<strong>Si nondum notas introductus sunt</strong> in genere, illud genus in albo supero non erunt." +
     " Noli metue, illud genus per manus potes addere post calculationem. Etiam noli metue si in hanc disciplinam" +
@@ -112,11 +113,12 @@ langData["la"] = {
   "ahsWeighted": "GPA ponderatur (ponderatio AHS)",
   "5scale": "Lanx 5.0",
   "4scale": "Lanx 4.0",
-  "footer": "Harysvs Dalvicvs<br>Octobris anno MMXIX&ndash;Ivnii anno MMXXI",
+  "footer": "Harysi Dalvici<br>Octobris anno MMXIX&ndash;Ivnii anno MMXXI",
   "languages": ["lingua anglica", "lingua hispanica", "lingua lusitana", "lingua hindica", "lingua urdu",
   "lingua persica", "lingua latina", "lingua sanscrita"],
   "numbers": ["unum", "duo", "tria", "quattuor", "quinque", "sex", "septem", "octo", "novem", "decem"],
   "setPoint": "Taxatio rationem punctorum factus est",
   "search": "Quaerere",
-  "pronunciation": ""
+  "pronunciation": "",
+  "and": "&amp;"
 };

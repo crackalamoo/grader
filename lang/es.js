@@ -14,6 +14,7 @@ langData["es"] = {
   "rampalInstruct": "<b>Haz lo siguiente para <em>cada</em> tarea:</b><br>" +
     "Haz clic en la tarea<br><img src=\"rampal/rampal1.png\"><br><img src=\"rampal/rampal2.png\"><br>Mira el <strong>\"Count as\"</strong> e introdúcelo arriba",
   "catsFound": "$NUMBER categorías se encontraron: $CATEGORIES",
+  "catsFound1": "Una categoría se encontró: $CATEGORIES",
   "pointCheck": "Esta clase usa el sistema de puntos",
   "next": "Siguiente",
   "back": "Atrás",
@@ -117,5 +118,6 @@ langData["es"] = {
   "numbers": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"],
   "setPoint": "La calificación fue establecida a sistema de puntos",
   "search": "Buscar",
-  "pronunciation": "Di: Járis Dálvi /ˈxaɾis ˈdalβi/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]"
+  "pronunciation": "Di: Járis Dálvi /ˈxaɾis ˈdalβi/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]",
+  "and": "y"
 };

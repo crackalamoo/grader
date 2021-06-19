@@ -15,6 +15,7 @@ langData["ur"] = {
     "اسائنمنٹ کو کلک کرو<br><img src=\"rampal/rampal1.png\"><br><img src=\"rampal/rampal2.png\">" +
     "<br><strong>\"Count as\"</strong> والا نمبر دیکھ کے اوپر لکھ دو",
   "catsFound": "$NUMBER کیٹیگریز ملِیں: $CATEGORIES",
+  "catsFound1": "ایک کیٹیگری ملی: $CATEGORIES",
   "pointCheck": "یہ کلاس پوئنٹ سسٹم کا ہے",
   "next": "آگے",
   "back": "واپس",
@@ -124,5 +125,6 @@ langData["ur"] = {
   "numbers": ["ایک", "دو", "تین", "چار", "پانچ", "چھ", "سات", "آٹھ", "نو", "دس"],
   "setPoint": "گریڈنگ پوئنٹ سسٹم بن گئی",
   "search": "تلاش کرو",
-  "pronunciation": "کہہ دو: ہَارِس دَلْوِی &#x202d;[ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː] /haːɾɪs dəlʋiː/&#x202c;"
+  "pronunciation": "کہہ دو: ہَارِس دَلْوِی &#x202d;[ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː] /haːɾɪs dəlʋiː/&#x202c;",
+  "and": "اور"
 };

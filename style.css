@@ -216,13 +216,13 @@ select.rtl {
 }
 @font-face {
   font-family: devanagari;
-  src: url('http://harysdalvi.com/sub/fonts/ITFDevanagari-Regular-01.ttf') format("truetype");
+  src: url('http://www.harysdalvi.com/sub/fonts/ITFDevanagari-Regular-01.ttf') format("truetype");
   font-weight: normal;
   unicode-range: U+900-97F;
 }
 @font-face {
   font-family: devanagari;
-  src: url('http://harysdalvi.com/sub/fonts/ITFDevanagari-Bold-02.ttf') format("truetype");
+  src: url('http://www.harysdalvi.com/sub/fonts/ITFDevanagari-Bold-02.ttf') format("truetype");
   font-weight: bold;
   unicode-range: U+900-97F;
 }
@@ -232,14 +232,19 @@ select.rtl {
   unicode-range: U+0-599;
 }
 @font-face {
+  font-family: balinese;
+  src: url('http://www.harysdalvi.com/sub/fonts/AksaraBali.ttf') format("truetype");
+  unicode-range: U+1B00-1B7C;
+}
+@font-face {
   font-family: nastaliq;
-  src: url('http://harysdalvi.com/sub/fonts/jameelnoorinastaleeq.ttf') format("truetype");
+  src: url('http://www.harysdalvi.com/sub/fonts/jameelnoorinastaleeq.ttf') format("truetype");
   font-weight: normal;
   unicode-range: U+600-6FF;
 }
 @font-face {
   font-family: nastaliq;
-  src: url('http://harysdalvi.com/sub/fonts/jameelnoorikasheeda.ttf') format("truetype");
+  src: url('http://www.harysdalvi.com/sub/fonts/jameelnoorikasheeda.ttf') format("truetype");
   font-weight: bold;
   unicode-range: U+600-6FF;
 }

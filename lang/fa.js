@@ -15,6 +15,7 @@ langData["fa"] = {
     "تکلیف را کلیک بکنید<br><img src=\"rampal/rampal1.png\"><br><img src=\"rampal/rampal2.png\">" +
     "<br>به شمارہ <strong>&laquo;Count as&raquo;</strong> نگاه بکنید و در بالا بنویسین",
   "catsFound": "$NUMBER کتگوری پیدا شدند: $CATEGORIES",
+  "catsFound1": "یک کتگوری پیدا شد: $CATEGORIES",
   "pointCheck": "این کلاس با سیستم پوینت است",
   "next": "بعدی",
   "back": "برگشتن",
@@ -124,5 +125,6 @@ langData["fa"] = {
   "numbers": ["یک", "دو", "سه", "چهار", "پنج", "شش", "هفت", "هشت", "نه", "ده"],
   "setPoint": "نمرات سیستم پوینت شده اند",
   "search": "جستجو کردن",
-  "pronunciation": "بگویید: هاریس دالْوی &#x202d;[ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː] /hɒːɾiːs dɒːlviː/&#x202c;"
+  "pronunciation": "بگویید: هاریس دالْوی &#x202d;[ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː] /hɒːɾiːs dɒːlviː/&#x202c;",
+  "and": "و"
 };

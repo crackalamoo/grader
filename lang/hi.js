@@ -13,6 +13,7 @@ langData["hi"] = {
     "असाइन्मेंट को क्लिक करो<br><img src=\"rampal/rampal1.png\"><br>" +
     "<img src=\"rampal/rampal2.png\"><br><strong>\"Count as\"</strong> वाला नंबर देखके ऊपर लिख दो",
   "catsFound": "$NUMBER कैटेगरीज़ मिलीं: $CATEGORIES",
+  "catsFound1": "एक कैटेगरी मिली: $CATEGORIES",
   "pointCheck": "ये क्लास पॉइंट सिस्टम का है",
   "next": "आगे",
   "back": "वापस",
@@ -115,5 +116,6 @@ langData["hi"] = {
   "numbers": ["एक", "दो", "तीन", "चार", "पाँच", "छह", "सात", "आठ", "नौ", "दस"],
   "setPoint": "ग्रेडिंग पॉइंट सिस्टम बन गई",
   "search": "तलाश करो",
-  "pronunciation": "कह दो: हारिस दल्वी /haːɾɪs dəlʋiː/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]"
+  "pronunciation": "कह दो: हारिस दल्वी /haːɾɪs dəlʋiː/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]",
+  "and": "और"
 };
