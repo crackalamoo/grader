@@ -659,7 +659,8 @@ function setDialect() {
       "Latn": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
       "Telu": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
       "Bali": ["᭐", "᭑", "᭒", "᭓", "᭔", "᭕", "᭖", "᭗", "᭘", "᭙"],
-      "Tibt": ["༠", "༡", "༢", "༣", "༤", "༥", "༦", "༧", "༨", "༩"]
+      "Tibt": ["༠", "༡", "༢", "༣", "༤", "༥", "༦", "༧", "༨", "༩"],
+      "Khmr": ["០", "១", "២", "៣", "៤", "៥", "៦", "៧", "៨", "៩"]
     }[dialect];
     document.getElementById("script_sa_lipi").innerHTML = {
       "Deva": "लिपिः (Script) ",
@@ -667,7 +668,8 @@ function setDialect() {
       "Latn": "Script ",
       "Telu": "లిపిః (Script) ",
       "Bali": "ᬮᬶᬧᬶᬄ (Script) ",
-      "Tibt": "ལིཔིཿ (Script) "
+      "Tibt": "ལིཔིཿ (Script) ",
+      "Khmr": "លិបិះ (Script) "
     }[dialect];
     const TITLES = ["minExam", "semWithExam", "ritvikCalc", "ritvikHonor"];
     if (dialect == "Deva") {
@@ -741,15 +743,25 @@ function setDialect() {
       "ཀ", "ཁ", "ག", "གྷ", "ང", "ཙ", "ཚ", "ཛ", "ཛྷ", "ཉ",
       "ཊ", "ཋ", "ཌ", "ཌྷ", "ཎ", "ཏ", "ཐ", "ད", "དྷ", "ན",
       "པ", "ཕ", "བ", "བྷ", "མ", "ཡ", "ར", "ལ", "ཝ", "ཤ", "ཥ", "ས", "ཧ", "ལ",
-      "༠", "༡", "༢", "༣", "༤", "༥", "༦", "༧", "༨", "༩", "&#8203;"]}[dialect];
-      var numberSep = {"Brah": "", "Telu": "", "Bali": "᭞", "Tibt": " "}[dialect];
-      var TITLE_START = {"Brah": "𑁈 ", "Telu": "॥ ", "Bali": "᭚", "Tibt": "༄༎"}[dialect];
-      var TITLE_END = {"Brah": " 𑁈", "Telu": " ॥", "Bali": "", "Tibt": ""}[dialect];
+      "༠", "༡", "༢", "༣", "༤", "༥", "༦", "༧", "༨", "༩", "&#8203;"],
+      "Khmr": ["អ", "អា", "ឥ", "ឦ", "ឧ", "ឩ", "ឯ", "ឰ", "ឱ", "ឳ", "ឫ",
+      "្", "ា", "ិ", "ី", "ុ", "ូ", "េ", "ៃ", "ោ", "ៅ", "្ឫ", "ំ", "ះ", "។", "៕", "ៜ",
+      "ក", "ខ", "គ", "ឃ", "ង", "ច", "ឆ", "ជ", "ឈ", "ញ",
+      "ដ", "ឋ", "ឌ", "ឍ", "ណ", "ត", "ថ", "ទ", "ធ", "ន",
+      "ប", "ផ", "ព", "ភ", "ម", "យ", "រ", "ល", "វ", "ឝ", "ឞ", "ស", "ហ", "ឡ",
+      "០", "១", "២", "៣", "៤", "៥", "៦", "៧", "៨", "៩", "&#8203;"]}[dialect];
+      var numberSep = {"Brah": "", "Telu": "", "Bali": "᭞", "Tibt": " ", "Khmr": " "}[dialect];
+      var TITLE_START = {"Brah": "𑁈 ", "Telu": "॥ ", "Bali": "᭚", "Tibt": "༄༎", "Khmr": "៙"}[dialect];
+      var TITLE_END = {"Brah": " 𑁈", "Telu": " ॥", "Bali": "", "Tibt": "", "Khmr": ""}[dialect];
       for (var k = 0; k < keys.length; k++) {
         if (["languages", "numbers"].indexOf(keys[k]) == -1) {
           if (["Bali", "Tibt"].indexOf(dialect) != -1) {
             referenceKey(keys[k], "&nbsp;।", "।");
             referenceKey(keys[k], "&nbsp;॥", "॥");
+          }
+          if (["Khmr"].indexOf(dialect) != -1) {
+            referenceKey(keys[k], "। ", "।&nbsp;");
+            referenceKey(keys[k], "॥ ", "॥&nbsp;");
           }
           for (var i = 0; i < devanagari_letters.length; i++)
             referenceKey(keys[k], devanagari_letters[i], new_letters[i]);
@@ -776,6 +788,8 @@ function setDialect() {
           referenceKey(keys[k], "$PTS/$TOT", numberSep+"$PTS/$TOT"+numberSep);
           referenceKey(keys[k], "AHS&#8203;GPA", "AHS GPA");
           referenceKey(keys[k], "Count&#8203;as", "Count as");
+          referenceKey(keys[k], "ɾɪs&#8203;d", "ɾɪs d");
+          referenceKey(keys[k], "ɾɪs̪&#8203;ˈd̪", "ɾɪs̪ ˈd̪");
           if (dialect == "Bali") {
             referenceKey(keys[k], "᭞&#8203;", "᭞ ");
             referenceKey(keys[k], "᭟&#8203;", "᭟ ");
@@ -791,6 +805,9 @@ function setDialect() {
             referenceKey(keys[k], "༎&#8203;", "༎&ensp;");
             for (var i = 0xF40; i <= 0xF67; i++)
               referenceKey(keys[k], "྄"+String.fromCharCode(i), String.fromCharCode(i+0x50))
+          }
+          if (dialect == "Khmr") {
+            referenceKey(keys[k], "្&#8203;", "៑&#8203;");
           }
         }
       }

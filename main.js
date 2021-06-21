@@ -147,6 +147,7 @@ function roundDecimal(num, places) {
 
   return n;
 }
+
 function formatInt(num, nativeDigits=true, upper=false, gender=null, writeNum=true) {
   if (myNaN(num)) {
     if (URDU_DIGIT_LANG.indexOf(lang) != -1)
@@ -185,6 +186,10 @@ function formatInt(num, nativeDigits=true, upper=false, gender=null, writeNum=tr
   }
   return n;
 }
+function symbolInt(num) {
+  return formatInt(num, false, false, null, false);
+}
+
 function letterGrade(num) {
   if (myNaN(num)) {
     if (URDU_DIGIT_LANG.indexOf(lang) != -1)
@@ -236,7 +241,7 @@ function updateCategories() {
   }
   totalScore /= (totalPercent/100.0);
   categoryP.innerHTML = langReplace("avg", ["$SCORE", "$LETTER", "$GPA", "$SUM"],
-    [roundDecimal(totalScore, 2), letterGrade(totalScore), roundDecimal(totalScore/20.0 - 1, 2), formatInt(totalPercent, false, false, null, false)]);
+    [roundDecimal(totalScore, 2), letterGrade(totalScore), roundDecimal(totalScore/20.0 - 1, 2), symbolInt(totalPercent)]);
   if (currentCategory == null)
     categoryP.innerHTML += currentLangData.noCat;
   else {
@@ -268,7 +273,7 @@ function deleteAssignment() {
 }
 function changePercent() {
   currentCategory.percentage = new Number(document.editCategory.percent.value);
-  document.getElementById("changedWeight").innerHTML = langReplace("weightChanged", ["$WEIGHT"], [formatInt(new Number(document.editCategory.percent.value), false, false, null, false)]);
+  document.getElementById("changedWeight").innerHTML = langReplace("weightChanged", ["$WEIGHT"], [formatInt(new Number(document.editCategory.percent.value))]);
 }
 function findCategories(autoResult) {
   var cats = [];
@@ -609,7 +614,7 @@ function updateGpa() {
     totalGpa += (Math.round(gpa*100)/100.0)*gpaData[i][2];
     totalCredits += gpaData[i][2];
     g.innerHTML += langReplace("gpaClass", ["$INDEX", "$GPA", "$GRADE", "$LEVEL", "$CREDITS"],
-      [i+1, roundDecimal(gpa, 2), gpaData[i][0], gpaData[i][1], gpaData[i][2]]) + "<br>";
+      [i+1, roundDecimal(gpa, 2), gpaData[i][0], gpaData[i][1], roundDecimal(gpaData[i][2], 2)]) + "<br>";
   }
   g.innerHTML += langReplace("gpaSum", ["$SUM", "$CREDITS", "$GPA"],
     [roundDecimal(totalGpa, 2), roundDecimal(totalCredits, 2), roundDecimal(totalGpa/totalCredits, 4)]);
