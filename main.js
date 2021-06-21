@@ -553,7 +553,8 @@ function mailSent() {
     document.add_class["weights"].value == "") {
       document.getElementById("mail_sent").innerHTML = currentLangData.validData;
   } else {
-    document.getElementById("mail_sent").innerHTML = currentLangData.mailSent;
+    document.getElementById("mail_sent").innerHTML = langReplace("mailSent", ["$EMAIL"],
+    ['<a href="mailto:bd542591@ahschool.com?subject=Class list issue">bd542591@ahschool.com</a>']);
     document.add_class.style.display = "none";
     document.classes.class.remove(1);
   }

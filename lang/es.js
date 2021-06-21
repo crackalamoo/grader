@@ -33,7 +33,7 @@ langData["es"] = {
   "validData": "Por favor introduce información válida.",
   "mailSent": "Tu respuesta fue enviada y la clase deberá estar disponible pronto. ¡Muchas gracias!" +
     "<br>Por ahora, vuelve e introduce las ponderaciones a mano.<br>Si la clase no está disponible dentro de aproximadamente tres días, por favor ponte en contacto" +
-    " conmigo en bd542591@ahschool.com; quizás yo tenga problemas en entender tu solicitud.",
+    " conmigo en $EMAIL; quizás yo tenga problemas en entender tu solicitud.",
   "semGrade": "Nota del semestre: $LETTER ($NUMBER%)",
   "gpaClass": "$INDEX: $GPA ($GRADE, $LEVEL, $CREDITS créditos)",
   "gpaSum": "<b>Suma de GPA: $SUM<br>Créditos totales: $CREDITS<br>GPA acumulativo: $GPA</b>",
@@ -80,7 +80,7 @@ langData["es"] = {
   "manualButton": "Introducir notas a mano",
   "selClass": "<strong>Selecciona una clase</strong> para llenar porcentajes/ponderaciones automaticamente. (Crédito a <span id=\"seth\">Seth</span> Groper por esta idea)",
   "selClassOption": "Seleccionar una clase",
-  "addClassOption": "Añadir o corregir una clase de esta lista",
+  "addClassOption": "Añadir o corregir una clase",
   "sethClassInstruct": "Por favor introduce un porcentaje para cada categoría <strong><i>o</i></strong> marca que esta clase usa el sistema de puntos:",
   "pointSystemInstruct": "Para averiguar si una clase usa el sistema de puntos o categorías, mira cuánto valen pruebas, tareas de casa y exámenes." +
     " Si valen aproximadamente el mismo número de puntos en cada categoría, es categorías. Si no, tal vez sea el sistema de puntos.",

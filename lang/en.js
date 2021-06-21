@@ -33,7 +33,7 @@ langData["en"] = {
   "validData": "Please enter valid data.",
   "mailSent": "Your response was sent and the class should be available shortly. Thank you!" +
     "<br>For now, go back and enter weightings manually.<br>If the class isn't available within about three days, please contact " +
-    "me at bd542591@ahschool.com; I may be having trouble understanding your request.",
+    "me at $EMAIL; I may be having trouble understanding your request.",
   "semGrade": "Grade for the semester: $LETTER ($NUMBER%)",
   "gpaClass": "$INDEX: $GPA ($GRADE, $LEVEL, $CREDITS credits)",
   "gpaSum": "<b>GPA sum: $SUM<br>Total credits: $CREDITS<br>Cumulative GPA: $GPA</b>",
@@ -80,7 +80,7 @@ langData["en"] = {
   "manualButton": "Manually enter grades",
   "selClass": "<strong>Select a class</strong> to automatically fill in percentages/weighting. (Credit to <span id=\"seth\">Seth</span> Groper for this idea)",
   "selClassOption": "Select a class",
-  "addClassOption": "Add or correct a class on this list",
+  "addClassOption": "Add or correct a class",
   "sethClassInstruct": "Please enter a percentage for each category <strong><i>or</i></strong> check that this class is point system:",
   "pointSystemInstruct": "To figure out if a class is point system or categories, check how much quizzes, homework, and tests are worth." +
     " If in each category they are out of about the same number of points, it is categories. Otherwise, it may be point system.",
