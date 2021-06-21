@@ -234,7 +234,12 @@ select.rtl {
 @font-face {
   font-family: balinese;
   src: url('http://www.harysdalvi.com/sub/fonts/AksaraBali.ttf') format("truetype");
-  unicode-range: U+1B00-1B7C;
+  unicode-range: U+1B00-1B7F;
+}
+@font-face {
+  font-family: tibetan;
+  src: url('http://www.harysdalvi.com/sub/fonts/TibMachUni-1.901b.ttf') format("truetype");
+  unicode-range: U+F00-FFF;
 }
 @font-face {
   font-family: nastaliq;
@@ -257,7 +262,7 @@ select.rtl {
   font-family: devanagari;
 }
 .button:lang(sa) {
-  font-family: "Devanagari MT", devanagari;
+  font-family: "Times New Roman", "Devanagari MT", devanagari, tibetan, balinese;
 }
 .button:lang(ur) {
   font-family: nastaliq;

@@ -610,7 +610,7 @@ function updateGpa() {
       [i+1, roundDecimal(gpa, 2), gpaData[i][0], gpaData[i][1], gpaData[i][2]]) + "<br>";
   }
   g.innerHTML += langReplace("gpaSum", ["$SUM", "$CREDITS", "$GPA"],
-    [roundDecimal(totalGpa, 2), roundDecimal(totalCredits, 1), roundDecimal(totalGpa/totalCredits, 4)]);
+    [roundDecimal(totalGpa, 2), roundDecimal(totalCredits, 2), roundDecimal(totalGpa/totalCredits, 4)]);
   if (typeof(Storage) !== "undefined") {
     localStorage.setItem("gpaData", JSON.stringify(gpaData));
     document.getElementById("clearLocalStorage").style.display = "block";
@@ -659,6 +659,7 @@ function clearGpa() {
   if (sure) {
     localStorage.clear();
     document.getElementById("clearLocalStorage").style.display = "none";
+    gpaData = [];
   }
 }
 function totalClassScore() {

@@ -97,8 +97,7 @@ langData["en"] = {
   "ritvikCalc": "Ritvik Teegavarapu AHS GPA Calculator",
   "ritvikHonor": "Suggested by and named in honor of Ritvik Teegavarapu",
   "clearDataButton": "Clear GPA Data",
-  "clearDataExp": "This will force you to re-enter your GPA next time you visit this page." +
-    " This will NOT erase the data from the page right now.<br><br>" +
+  "clearDataExp": "This will force you to re-enter your GPA next time you visit this page. " +
     "If you leave the data rather than clearing it, and you aren't in incognito mode, everything will be saved " +
     "next time you visit this page.",
   "creditNum": "Credit number&nbsp;",
