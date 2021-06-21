@@ -131,7 +131,8 @@ function roundDecimal(num, places) {
     n += ".";
   }
   if (COMMA_DECIMAL_LANG.indexOf(lang) != -1 ||
-  (lang == "es" && document["dialect_es"]["d_es"].value == "ES"))
+  (lang == "es" && document["dialect_es"]["d_es"].value == "ES") ||
+  (lang == "sa" && ["Bali"].indexOf(document["script_sa"]["s_sa"].value) != -1) )
     n = n.replace(".", ",");
   for (var i = 0; i < places-decimals; i++) n += "0";
   if (["fa"].indexOf(lang) != -1) {
