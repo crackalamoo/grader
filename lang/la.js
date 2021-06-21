@@ -33,7 +33,7 @@ langData["la"] = {
   "validData": "Obsecro, scribe indicium legitimum.",
   "mailSent": "Responsum tuum missus est et disciplina mox debet advenire. Gratias tibi ago." +
     "<br>Nunc regredere et ponderationes per manus scribe.<br>Si disciplina in circa tribus diebus non advenerit, mihi scribe " +
-    " per bd542591@ahschool.com; forsit mihi quaestiones sunt in intellegere petitionem tuam.",
+    " per $EMAIL; forsit mihi quaestiones sunt in intellegere petitionem tuam.",
   "semGrade": "Nota semestris: $LETTER ($NUMBER%)",
   "gpaClass": "$INDEX: $GPA ($GRADE, $LEVEL, $CREDITS credita)",
   "gpaSum": "<b>Summa in GPA: $SUM<br>Omnia credita: $CREDITS<br>GPA collectus: $GPA</b>",
@@ -80,7 +80,7 @@ langData["la"] = {
   "manualButton": "Notas per manus scribere",
   "selClass": "<strong>Elige disciplinam</strong> ut per centum/ponderationes per se complere. (Gratias ago ad <span id=\"seth\">Seth</span> Groper pro hanc ideam)",
   "selClassOption": "Disciplinam elige",
-  "addClassOption": "In hoc albo disciplinam addere vel corrigere",
+  "addClassOption": "Disciplinam addere vel corrigere",
   "sethClassInstruct": "Per centum in quoque genere scribe <strong><i>vel</i></strong> indica hanc disciplinam rationem punctorum uitur:",
   "pointSystemInstruct": "Ut videre si disciplina ratio punctorum vel genera uitur, vide quanto valent probationes, pensa domus et examina." +
     " Si valent circa idem numerus punctorum in quoque genere, genera sunt. Si non, forsit ratio punctorum est.",
