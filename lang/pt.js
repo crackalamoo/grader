@@ -97,8 +97,7 @@ langData["pt"] = {
   "ritvikCalc": "A calculadora de GPA de AHS de Ritvik Teegavarapu",
   "ritvikHonor": "Sugerido por e nomeado em homenagem a Ritvik Teegavarapu",
   "clearDataButton": "Deletar dados de GPA",
-  "clearDataExp": "Isto obrigará você a inserir outra vez seu GPA a próxima vez que visite esta página." +
-    " Isto NÃO deletará a informação da página agora.<br><br>" +
+  "clearDataExp": "Isto obrigará você a inserir outra vez seu GPA a próxima vez que visite esta página. " +
     "Se você deixa a informação em vez de deletá-la, e não está no modo incógnito, tudo será guardado " +
     "para a próxima vez que visites esta página.",
   "creditNum": "Crédito número&nbsp;",

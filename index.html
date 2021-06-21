@@ -158,6 +158,7 @@
       <option value="Latn">IAST (Romanized)</option>
       <option value="Brah">𑀩𑁆𑀭𑀸𑀳𑁆𑀫𑀻</option>
       <option value="Telu">తెలుగు</option>
+      <option value="Tibt">བོད</option>
       <option value="Bali">ᬅᬓ᭄ᬱᬭᬩᬮᬶ</option>
     </select>
   </form>
@@ -543,7 +544,7 @@
   </form>
   <br><br><p id="modifyCreditHeading"></p>
   <form name="modifyCredit">
-    <span id="creditNum"></span><input type="text" name="creditNum" onchange="creditInfo()"></input>
+    <span id="creditNum"></span><input type="number" name="creditNum" onchange="creditInfo()"></input>
     <div class="button" onclick="creditInfo()" id="getCreditButton">View credit</div><br>
     <div id="creditInfo">
       <select name="letterGrade">

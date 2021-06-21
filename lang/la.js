@@ -97,8 +97,7 @@ langData["la"] = {
   "ritvikCalc": "CALCVLATOR AHS GPA PRO RITVIK TEEGAVARAPV",
   "ritvikHonor": "SVADETVR A ET NOMINATVR HONOREM RITVIK TEEGAVARAPV",
   "clearDataButton": "Informationem GPA auferre",
-  "clearDataExp": "Hoc tubi obligabit ad rursus scribere GPA tuam quando rursus hanc pagina visites." +
-    " Hoc informationem paginae iam non auferet.<br><br>" +
+  "clearDataExp": "Hoc tubi obligabit ad rursus scribere GPA tuam quando rursus hanc pagina visites. " +
     "Si informationem permittis et hanc non aufers, et in modo incognito non es, omne habebitur " +
     "quando rursus hanc pagina visites.",
   "creditNum": "Numerus creditus&nbsp;",
