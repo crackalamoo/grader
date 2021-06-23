@@ -117,6 +117,6 @@ langData["pt"] = {
   "numbers": ["um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez"],
   "setPoint": "A classificação foi definida como sistema de pontos",
   "search": "Pesquisar",
-  "pronunciation": "Diga: Háris Dâlvi /ˈaɾis ˈdɐlvi/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]",
+  "pronunciation": "Diga como: Háris Dâlvi /ˈaɾis ˈdɐlvi/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]",
   "and": "e"
 };
