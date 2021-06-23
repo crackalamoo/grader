@@ -144,6 +144,8 @@ function roundDecimal(num, places) {
     for (var i = 0; i < SANSKRIT_DIGITS.length; i++)
       n = n.replaceAll(new RegExp(""+i,"g"), SANSKRIT_DIGITS[i]);
   }
+  if (RTL_LANG.indexOf(lang) != -1 && num < 0)
+    n = n.substring(1) + "-";
 
   return n;
 }
@@ -211,6 +213,16 @@ function letterGrade(num) {
   if (num >= 59.5) return "D-";
   return "F";
 }
+function formatGrade(letter) {
+  if (RTL_LANG.indexOf(lang) != -1) {
+    if (letter.indexOf("+") != -1)
+      letter = letter.replace("+", "+&lrm;");
+    if (letter.indexOf("-") != -1)
+      letter = letter.replace("-", "-&lrm;");
+  }
+  return letter;
+}
+
 function updateCategories() {
   var categoryP = document.getElementById("manualCategory");
   var categoryList = document.getElementById("manualCategories");
@@ -241,7 +253,7 @@ function updateCategories() {
   }
   totalScore /= (totalPercent/100.0);
   categoryP.innerHTML = langReplace("avg", ["$SCORE", "$LETTER", "$GPA", "$SUM"],
-    [roundDecimal(totalScore, 2), letterGrade(totalScore), roundDecimal(totalScore/20.0 - 1, 2), symbolInt(totalPercent)]);
+    [roundDecimal(totalScore, 2), formatGrade(letterGrade(totalScore)), roundDecimal(totalScore/20.0 - 1, 2), symbolInt(totalPercent)]);
   if (currentCategory == null)
     categoryP.innerHTML += currentLangData.noCat;
   else {
@@ -273,7 +285,7 @@ function deleteAssignment() {
 }
 function changePercent() {
   currentCategory.percentage = new Number(document.editCategory.percent.value);
-  document.getElementById("changedWeight").innerHTML = langReplace("weightChanged", ["$WEIGHT"], [formatInt(new Number(document.editCategory.percent.value))]);
+  document.getElementById("changedWeight").innerHTML = langReplace("weightChanged", ["$WEIGHT"], [symbolInt(new Number(document.editCategory.percent.value))]);
 }
 function findCategories(autoResult) {
   var cats = [];
@@ -550,7 +562,7 @@ function calculateSemester() {
       gradeDisplay.innerHTML = langReplace("fritzExam", ["$MIN"], [roundDecimal(required, 1)]);
   } else {
     gradeDisplay.innerHTML = langReplace("minGrade", ["$MIN", "$LETTER", "$NUMBER"], [roundDecimal(min[required], 2),
-    letterGrade(grades[required]), roundDecimal(grades[required], 2)]);
+    formatGrade(letterGrade(grades[required])), roundDecimal(grades[required], 2)]);
   }
 }
 function mailSent() {
@@ -576,7 +588,7 @@ function calculateExam() {
     grade = q1*0.4 + q2*0.4 + exam*0.2;
   }
   var gradeDisplay = document.getElementById("examGrade");
-  gradeDisplay.innerHTML = langReplace("semGrade", ["$LETTER", "$NUMBER"], [letterGrade(grade), roundDecimal(grade, 2)]);
+  gradeDisplay.innerHTML = langReplace("semGrade", ["$LETTER", "$NUMBER"], [formatGrade(letterGrade(grade)), roundDecimal(grade, 2)]);
 }
 function updateGpa() {
   var g = document.getElementById("gpaData");
@@ -614,7 +626,7 @@ function updateGpa() {
     totalGpa += (Math.round(gpa*100)/100.0)*gpaData[i][2];
     totalCredits += gpaData[i][2];
     g.innerHTML += langReplace("gpaClass", ["$INDEX", "$GPA", "$GRADE", "$LEVEL", "$CREDITS"],
-      [i+1, roundDecimal(gpa, 2), gpaData[i][0], gpaData[i][1], roundDecimal(gpaData[i][2], 2)]) + "<br>";
+      [i+1, roundDecimal(gpa, 2), formatGrade(gpaData[i][0]), gpaData[i][1], roundDecimal(gpaData[i][2], 2)]) + "<br>";
   }
   g.innerHTML += langReplace("gpaSum", ["$SUM", "$CREDITS", "$GPA"],
     [roundDecimal(totalGpa, 2), roundDecimal(totalCredits, 2), roundDecimal(totalGpa/totalCredits, 4)]);
@@ -667,6 +679,7 @@ function clearGpa() {
     localStorage.clear();
     document.getElementById("clearLocalStorage").style.display = "none";
     gpaData = [];
+    updateGpa();
   }
 }
 function totalClassScore() {

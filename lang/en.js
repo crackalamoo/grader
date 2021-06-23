@@ -68,8 +68,8 @@ langData["en"] = {
   "changeWeightButton": "Change Weighting",
   "weightChanged": "Weighting changed to $WEIGHT%",
   "copyGradesInstruct": "Simply copy your grades from MyBackpack as shown in the image below.",
-  "mobileCopyInstruct": "(If you are on a <strong>mobile device</strong>, including iPads, you can select <i>" +
-    "Assignment</i>, then select all the grades)",
+  "mobileCopyInstruct": "(If you are on a <strong>mobile device</strong>, including iPads, you can highlight <i>" +
+    "Assignment</i>, then highlight all the grades)",
   "pasteGradesInstruct": "Now paste them into the box below and click <strong>Next</strong> under the box:",
   "superAlgorithm": "My super cool algorithm simplified your grades to the following (Category, Score/Possible):",
   "dontWorry": "<strong>If no grades have been entered yet</strong> for a category, that category may be missing from the above list." +
@@ -87,7 +87,7 @@ langData["en"] = {
   "nameOfClass": "Name of class:&nbsp;",
   "pointSystemInstruct2": "For <strong>point system</strong>, type &ldquo;point system&rdquo; for names and weights.",
   "enterCatNames": "EXACT names of categories as they appear in MyBackpack:&nbsp;",
-  "enterWeights": "Weight of each category in above order:&nbsp;",
+  "enterWeights": "Weight of each category in the above order:&nbsp;",
   "enterNotes": "Notes (optional):&nbsp;",
   "minExam": "Minimum exam grade required",
   "wantAtLeast": "I want at least:&nbsp;",

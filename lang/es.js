@@ -117,6 +117,6 @@ langData["es"] = {
   "numbers": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"],
   "setPoint": "La calificación fue establecida a sistema de puntos",
   "search": "Buscar",
-  "pronunciation": "Di: Járis Dálvi /ˈxaɾis ˈdalβi/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]",
+  "pronunciation": "Di como: Járis Dálvi /ˈxaɾis ˈdalβi/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]",
   "and": "y"
 };

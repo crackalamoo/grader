@@ -136,9 +136,10 @@ function changeLanguage(l) {
         document.title = "AHS Grade Calculator";
       else if (l == "la")
         document.title = "AHS Grade Calculator Latinus"
-      else if (l == "sa")
+      else if (l == "sa") {
         document.title = "AHS Grade Calculator " + d["sanskrit"];
-      else
+        document.setLanguage.language.options[i].innerHTML = d["sanskrit"];
+      } else
         document.title = "AHS Grade Calculator " + d.languages[i];
     } else {
       document.getElementsByClassName("button")[i].classList.remove("selected");
@@ -242,37 +243,37 @@ function setReference() {
     
     if (lang == "hi") {
       if (["mf2", "ff2"].indexOf(refer) != -1) {
-        currentLangData["begin"] = currentLangData["begin"].replaceAll("बनाओ", "बनाएँ").replaceAll("मानो", "मानें");
-        currentLangData["catInstruct"] = currentLangData["catInstruct"].replaceAll("बनाओ", "बनाएँ").replaceAll("मानो", "मानें");
+        referenceKeys("begin", ["बनाओ", "मानो"], ["बनाएँ", "मानें"]);
+        referenceKeys("catInstruct", ["बनाओ", "मानो"], ["बनाएँ", "मानें"]);
         currentLangData["rampalInstruct"] = currentLangData["rampalInstruct"].replace("करो", "कीजिए").replaceAll("करो", "करें").replaceAll("दो", "दें");
         ["catList", "scoreNaN", "submit", "apply", "add", "delete", "edit", "mailSent", "editInstruct",
         "copyGradesInstruct", "dontWorry", "intro", "selectAbove", "addClassOption", "search"].forEach(
-          key => currentLangData[key]=currentLangData[key].replaceAll("करो", "करें"));
-        currentLangData["continue"] = currentLangData["continue"].replace("बढ़ो", "बढ़ें");
+          key => referenceKey(key, "करो", "करें"));
+        referenceKey("continue", "बढ़ो", "बढ़ें");
         currentLangData["intro"] = currentLangData["intro"].replaceAll("चुन लो", "चुन लें").replace("करें", "कीजिए");;
-        currentLangData["notPossibleGrade"] = currentLangData["notPossibleGrade"].replace("रहो", "रहें");
-        currentLangData["fritzExam"] = currentLangData["fritzExam"].replace("करोगे", "करेंगे");
+        referenceKey("notPossibleGrade", "रहो", "रहें");
+        referenceKey("fritzExam", "करोगे", "करेंगे");
         ["mailSent", "manualButton", "addClassOption", "sethClassInstruct", "add", "addAssignment",
         "editInstruct"].forEach(
-          key => currentLangData[key]=currentLangData[key].replaceAll("डालो", "डालें"));
-        currentLangData["jsSuccess"] = currentLangData["jsSuccess"].replaceAll("हो", "हैं");
-        currentLangData["createCat"] = currentLangData["createCat"].replaceAll("बनाओ", "बनाएँ");
-        currentLangData["editInstruct"] = currentLangData["editInstruct"].replaceAll("दबाओ", "दबाएँ");
-        currentLangData["calcRequiredButton"] = currentLangData["calcRequiredButton"].replaceAll("लगाओ", "लगाएँ");
-        currentLangData["changeWeightButton"] = currentLangData["changeWeightButton"].replaceAll("दो", "दें");
-        currentLangData["mobileCopyInstruct"] = currentLangData["mobileCopyInstruct"].replaceAll("हो", "हैं");
-        currentLangData["pasteGradesInstruct"] = currentLangData["pasteGradesInstruct"].replaceAll("दबाओ", "दबाएँ");
-        currentLangData["dontWorry"] = currentLangData["dontWorry"].replaceAll("सकते हो", "सकते हैं");
-        currentLangData["selClass"] = currentLangData["selClass"].replaceAll("चुनो", "चुनें");
-        currentLangData["selClassOption"] = currentLangData["selClassOption"].replaceAll("चुनो", "चुनें");
-        currentLangData["sethClassInstruct"] = currentLangData["sethClassInstruct"].replaceAll("दबाओ", "दबाएँ");
-        currentLangData["pointSystemInstruct"] = currentLangData["pointSystemInstruct"].replaceAll("देखो", "देखें");
-        currentLangData["pointSystemInstruct2"] = currentLangData["pointSystemInstruct2"].replaceAll("सकते हो", "सकते हैं");
-        currentLangData["enterNotes"] = currentLangData["enterNotes"].replaceAll("चाहो", "चाहें");
-        currentLangData["clearDataButton"] = currentLangData["clearDataButton"].replaceAll("हटाओ", "हटाएँ");
-        currentLangData["clearDataExp"] = currentLangData["clearDataExp"].replaceAll("आओगे", "आएँगे").replaceAll("रहने दो", "रहने दें").replaceAll("हटाओ", "हटाएँ").replaceAll("ना हो", "ना हों");
-        currentLangData["getCreditButton"] = currentLangData["getCreditButton"].replaceAll("देखो", "देखें");
-        currentLangData["modifyCreditHeading"] = currentLangData["modifyCreditHeading"].replaceAll("बदलो", "बदलें").replaceAll("हटाओ", "हटाएँ");
+          key => referenceKey(key, "डालो", "डालें"));
+        referenceKey("jsSuccess", "हो", "हैं");
+        referenceKey("createCat", "बनाओ", "बनाएँ");
+        referenceKey("editInstruct", "दबाओ", "दबाएँ");
+        referenceKey("calcRequiredButton", "लगाओ", "लगाएँ");
+        referenceKey("changeWeightButton", "दो", "दें");
+        referenceKey("mobileCopyInstruct", "हो", "हैं");
+        referenceKey("pasteGradesInstruct", "दबाओ", "दबाएँ");
+        referenceKey("dontWorry", "सकते हो", "सकते हैं");
+        referenceKey("selClass", "चुनो", "चुनें");
+        referenceKey("selClassOption", "चुनो", "चुनें");
+        referenceKey("sethClassInstruct", "दबाओ", "दबाएँ");
+        referenceKey("pointSystemInstruct", "देखो", "देखें");
+        referenceKey("pointSystemInstruct2", "सकते हो", "सकते हैं");
+        referenceKey("enterNotes", "चाहो", "चाहें");
+        referenceKey("clearDataButton", "हटाओ", "हटाएँ");
+        referenceKeys("clearDataExp", ["आओगे", "रहने दो", "हटाओ", "ना हो"], ["आएँगे", "रहने दें", "हटाएँ", "ना हों"]);
+        referenceKey("getCreditButton", "देखो", "देखें");
+        referenceKeys("modifyCreditHeading", ["बदलो", "हटाओ"], ["बदलें", "हटाएँ"]);
         referenceKey("pronunciation", "कह दो", "कह दीजिए");
         referenceKey("deleteAssignment", "निकालो", "निकालें");
         referenceKey("editInstruct", "निकालो", "निकालें");
@@ -282,56 +283,56 @@ function setReference() {
       if (["mf0", "ff0"].indexOf(refer) != -1) {
         ["reqScore_0", "reqScore", "welcome", "intro", "copyGradesInstruct", "superAlgorithm",
         "clearDataExp"].forEach(
-          key => currentLangData[key]=currentLangData[key].replaceAll("आपको", "तुम्हें"));
+          key => referenceKey(key, "आपको", "तुम्हें"));
         ["begin", "confirm"].forEach(
-          key => currentLangData[key]=currentLangData[key].replaceAll("आपको", "तुमको"));
+          key => referenceKey(key, "आपको", "तुमको"));
         ["begin", "scoreNaN", "notPossibleGrade", "mailSent", "welcome", "jsSuccess"].forEach(
-          key => currentLangData[key]=currentLangData[key].replaceAll("आपक", "तुम्हार"));
+          key => referenceKey(key, "आपक", "तुम्हार"));
         ["fritzExam", "welcome", "jsSuccess", "clearDataExp"].forEach(
-          key => currentLangData[key]=currentLangData[key].replaceAll("आप", "तुम"));
+          key => referenceKey(key, "आप", "तुम"));
         ["mobileCopyInstruct", "dontWorry"].forEach(
-          key => currentLangData[key]=currentLangData[key].replaceAll("आप ", ""));
+          key => referenceKey(key, "आप ", ""));
       }
       if (["ff0", "ff1", "ff2"].indexOf(refer) != -1) {
         ["notPossibleGrade", "jsSuccess", "mobileCopyInstruct", "dontWorry", "pointSystemInstruct2"].forEach(
-          key => currentLangData[key]=currentLangData[key].replaceAll("ते", "ती").replaceAll("इस्तीमाल", "इस्तेमाल"));
-        currentLangData["fritzExam"] = currentLangData["fritzExam"].replaceAll("गे)", "गी)");
-        currentLangData["clearDataExp"] = currentLangData["clearDataExp"].replaceAll("आओगे", "आओगी").replaceAll("आएँगे", "आएँगी");
-        currentLangData["jsSuccess"] = currentLangData["jsSuccess"].replaceAll("रहे", "रही");
+          key => referenceKeys(key, ["ते", "इस्तीमाल"], ["ती", "इस्तेमाल"]));
+        referenceKey("fritzExam", "गे)", "गी)");
+        referenceKeys("clearDataExp", ["आओगे", "आएँगे"], ["आओगी", "आएँगी"]);
+        referenceKey("jsSuccess", "रहे", "रही");
       }
     } else if (lang == "ur") {
       if (["mf2", "ff2"].indexOf(refer) != -1) {
-        currentLangData["begin"] = currentLangData["begin"].replaceAll("بناؤ", "بنائیں").replaceAll("مانو", "مانیں");
-        currentLangData["catInstruct"] = currentLangData["catInstruct"].replaceAll("بناؤ", "بنائیں").replaceAll("مانو", "مانیں");
+        referenceKeys("begin", ["بناؤ", "مانو"], ["بنائیں", "مانیں"]);
+        referenceKeys("catInstruct", ["بناؤ", "مانو"], ["بنائیں", "مانیں"]);
         currentLangData["rampalInstruct"] = currentLangData["rampalInstruct"].replace("کرو", "کیجئے").replaceAll("کرو", "کریں").replaceAll("دو", "دیں");
         ["catList", "scoreNaN", "submit", "apply", "add", "delete", "edit", "mailSent", "editInstruct",
         "copyGradesInstruct", "dontWorry", "intro", "selectAbove", "addClassOption", "search"].forEach(
-          key => currentLangData[key]=currentLangData[key].replaceAll("کرو", "کریں"));
-        currentLangData["continue"] = currentLangData["continue"].replace("بڑھو", "بڑھیں");
+          key => referenceKey(key, "کرو", "کریں"));
+        referenceKey("continue", "بڑھو", "بڑھیں");
         currentLangData["intro"] = currentLangData["intro"].replaceAll("چن لو", "چن لیں").replace("کریں", "کیجئے");
-        currentLangData["notPossibleGrade"] = currentLangData["notPossibleGrade"].replace("رہو", "رہیں");
-        currentLangData["fritzExam"] = currentLangData["fritzExam"].replace("کرو گے", "کریں گے");
+        referenceKey("notPossibleGrade", "رہو", "رہیں");
+        referenceKey("fritzExam", "کرو گے", "کریں گے");
         ["mailSent", "manualButton", "addClassOption", "sethClassInstruct", "add", "addAssignment",
         "editInstruct"].forEach(
-          key => currentLangData[key]=currentLangData[key].replaceAll("ڈالو", "ڈالیں"));
-        currentLangData["jsSuccess"] = currentLangData["jsSuccess"].replaceAll("ہو", "ہیں");
-        currentLangData["createCat"] = currentLangData["createCat"].replaceAll("بناؤ", "بنائیں");
-        currentLangData["editInstruct"] = currentLangData["editInstruct"].replaceAll("دباؤ", "دبائیں");
-        currentLangData["calcRequiredButton"] = currentLangData["calcRequiredButton"].replaceAll("لگاؤ", "لگائیں");
-        currentLangData["changeWeightButton"] = currentLangData["changeWeightButton"].replaceAll("دو", "دیں");
-        currentLangData["mobileCopyInstruct"] = currentLangData["mobileCopyInstruct"].replaceAll("ہو", "ہیں");
-        currentLangData["pasteGradesInstruct"] = currentLangData["pasteGradesInstruct"].replaceAll("دباؤ", "دبائیں");
-        currentLangData["dontWorry"] = currentLangData["dontWorry"].replaceAll("سکتے ہو", "سکتے ہیں");
-        currentLangData["selClass"] = currentLangData["selClass"].replaceAll("چنو", "چنیں");
-        currentLangData["selClassOption"] = currentLangData["selClassOption"].replaceAll("چنو", "چنیں");
-        currentLangData["sethClassInstruct"] = currentLangData["sethClassInstruct"].replaceAll("دباؤ", "دبائیں");
-        currentLangData["pointSystemInstruct"] = currentLangData["pointSystemInstruct"].replaceAll("دیکھو", "دیکھیں");
-        currentLangData["pointSystemInstruct2"] = currentLangData["pointSystemInstruct2"].replaceAll("سکتے ہو", "سکتے ہیں");
-        currentLangData["enterNotes"] = currentLangData["enterNotes"].replaceAll("چاہو", "چاہیں");
-        currentLangData["clearDataButton"] = currentLangData["clearDataButton"].replaceAll("ہٹاؤ", "ہٹائیں");
-        currentLangData["clearDataExp"] = currentLangData["clearDataExp"].replaceAll("آؤ گے", "آئیں گے").replaceAll("رہنے دو", "رہنے دیں").replaceAll("ہٹاؤ", "ہٹائیں").replaceAll("نہ ہو", "نہ ہوں");
-        currentLangData["getCreditButton"] = currentLangData["getCreditButton"].replaceAll("دیکھو", "دیکھیں");
-        currentLangData["modifyCreditHeading"] = currentLangData["modifyCreditHeading"].replaceAll("بدلو", "بدلیں").replaceAll("ہٹاؤ", "ہٹائیں");
+          key => referenceKey(key, "ڈالو", "ڈالیں"));
+        referenceKey("jsSuccess", "ہو", "ہیں");
+        referenceKey("createCat", "بناؤ", "بنائیں");
+        referenceKey("editInstruct", "دباؤ", "دبائیں");
+        referenceKey("calcRequiredButton", "لگاؤ", "لگائیں");
+        referenceKey("changeWeightButton", "دو", "دیں");
+        referenceKey("mobileCopyInstruct", "ہو", "ہیں");
+        referenceKey("pasteGradesInstruct", "دباؤ", "دبائیں");
+        referenceKey("dontWorry", "سکتے ہو", "سکتے ہیں");
+        referenceKey("selClass", "چنو", "چنیں");
+        referenceKey("selClassOption", "چنو", "چنیں");
+        referenceKey("sethClassInstruct", "دباؤ", "دبائیں");
+        referenceKey("pointSystemInstruct", "دیکھو", "دیکھیں");
+        referenceKey("pointSystemInstruct2", "سکتے ہو", "سکتے ہیں");
+        referenceKey("enterNotes", "چاہو", "چاہیں");
+        referenceKey("clearDataButton", "ہٹاؤ", "ہٹائیں");
+        referenceKeys("clearDataExp", ["آؤ گے", "رہنے دو", "ہٹاؤ", "نہ ہو"], ["آئیں گے", "رہنے دیں", "ہٹائیں", "نہ ہوں"]);
+        referenceKey("getCreditButton", "دیکھو", "دیکھیں");
+        referenceKeys("modifyCreditHeading", ["بدلو", "ہٹاؤ"], ["بدلیں", "ہٹائیں"]);
         referenceKey("pronunciation", "کہہ دو", "کہہ دیجئے");
         referenceKey("deleteAssignment", "نکالو", "نکالیں");
         referenceKey("delete", "نکالو", "نکالیں");
@@ -341,22 +342,22 @@ function setReference() {
       if (["mf0", "ff0"].indexOf(refer) != -1) {
         ["reqScore_0", "reqScore", "welcome", "intro", "copyGradesInstruct", "superAlgorithm",
         "clearDataExp"].forEach(
-          key => currentLangData[key]=currentLangData[key].replaceAll("آپ کو", "تمہیں"));
+          key => referenceKey(key, "آپ کو", "تمہیں"));
         ["begin", "confirm"].forEach(
-          key => currentLangData[key]=currentLangData[key].replaceAll("آپ کو", "تم کو"));
+          key => referenceKey(key, "آپ کو", "تم کو"));
         ["begin", "scoreNaN", "notPossibleGrade", "mailSent", "welcome", "jsSuccess"].forEach(
-          key => currentLangData[key]=currentLangData[key].replaceAll("آپ کا", "تمہارا").replaceAll("آپ کی", "تمہاری").replaceAll("آپ کے", "تمہارے"));
+          key => referenceKeys(key, ["آپ کا", "آپ کی", "آپ کے"], ["تمہارا", "تمہاری", "تمہارے"]));
         ["fritzExam", "welcome", "jsSuccess", "clearDataExp"].forEach(
-          key => currentLangData[key]=currentLangData[key].replaceAll("آپ", "تم"));
+          key => referenceKey(key, "آپ", "تم"));
         ["mobileCopyInstruct", "dontWorry"].forEach(
-          key => currentLangData[key]=currentLangData[key].replaceAll("آپ ", ""));
+          key => referenceKey(key, "آپ ", ""));
       }
       if (["ff0", "ff1", "ff2"].indexOf(refer) != -1) {
         ["notPossibleGrade", "jsSuccess", "mobileCopyInstruct", "dontWorry", "pointSystemInstruct2"].forEach(
-          key => currentLangData[key]=currentLangData[key].replaceAll("تے", "تی"));
-        currentLangData["fritzExam"] = currentLangData["fritzExam"].replaceAll("گے)", "گی)");
-        currentLangData["clearDataExp"] = currentLangData["clearDataExp"].replaceAll("آؤ گے", "آؤ گی").replaceAll("آئیں گے", "آئیں گی");
-        currentLangData["jsSuccess"] = currentLangData["jsSuccess"].replaceAll("رہے", "رہی");
+          key => referenceKey(key, "تے", "تی"));
+        referenceKey("fritzExam", "گے)", "گی)");
+        referenceKeys("clearDataExp", ["آؤ گے", "آؤ گی"], ["آئیں گے", "آئیں گی"]);
+        referenceKey("jsSuccess", "رہے", "رہی");
       }
     }
   }
@@ -406,7 +407,7 @@ function setReference() {
       referenceKey("selectAbove", "Selecciona", "Seleccione");
       referenceKeys("clearDataExp", ["te oblig", "visites", "dejas", "estás", "tu GPA"], ["lo/la oblig", "visite", "deja", "está", "su GPA"]);
       referenceKeys("confirm", ["Estás", "quieres"], ["Está", "quiere"]);
-      referenceKey("pronunciation", "Di:", "Diga:");
+      referenceKey("pronunciation", "Di ", "Diga ");
     }
     if (["mf0", "mf1"].indexOf(refer) != -1) {
       referenceKey("welcome", "Bienvenidos", "Bienvenido");
@@ -484,6 +485,7 @@ function setDialect() {
       referenceKey("examGrade", "grade", "score");
       referenceKey("setPoint", "Grading", "Scoring");
       referenceKey("shouldContinue", "Should", "Shall");
+      referenceKey("ritvikHonor", "honor", "honour");
     } else if (dialect == "ASCII") {
       var keys = Object.keys(currentLangData);
       currentLangData["pronunciation"] = "Say: HAH-riss DAHL-vee";
@@ -554,7 +556,7 @@ function setDialect() {
       ["I, too, am but a person", "Prithee do c", "should thou find a fault", "so thou canst"]);
       referenceKey("whatNeed", "an upcoming", "a forthcoming");
       referenceKey("copyGradesInstruct", "your", "thy");
-      referenceKeys("mobileCopyInstruct", ["you are", "you can", "mobile device"], ["thou art", "thou canst", "Mobile Device"]);
+      referenceKeys("mobileCopyInstruct", ["you are", "you can", "mobile device", "highlight"], ["thou art", "thou canst", "Mobile Device", "mark"]);
       referenceKeys("superAlgorithm", ["My super cool algorithm simplified your"], ["Mine exceedingly fine algorithm did simplify thy"]);
       referenceKey("shouldContinue", "Should", "Shall");
       currentLangData["manualButton"] = "Entre Scores by Hand";
@@ -609,11 +611,55 @@ function setDialect() {
           referenceKey(keys[k], "&mdaſh;", "&mdash;");
           referenceKeys(keys[k], ["enter", "Enter"], ["entre", "Entre"]);
           referenceKeys(keys[k], ["required", "Required"], ["necessary", "Necessary"]);
-          currentLangData["pronunciation"] = "Say: HAH-riss DAHL-vee";
         }
       }
+      currentLangData["pronunciation"] = "Say: HAH-riss DAHL-vee";
       referenceKeys("dontWorry", ["been entreed yet", "Don't worry", "don't worry", "you can manually", "category after"],
       ["yet been entered", "Grieve not", "grieve not", "thou canst", "category by hand after"]);
+    } else if (dialect == "Anglish") {
+      var keys = Object.keys(currentLangData);
+      var anglish_english = {"category": "set", "categories": "sets", "creating": "making", "create": "make",
+      "system": "framework", "total": "whole", "consider": "deem", "grade": "score", "lazy": "idle",
+      "adding": "putting in", "add": "put in", "remove": "take out", "delete": "take out", "an assignment": "a chore",
+      "assignment": "chore", "average": "norm", "class": "field", "sum": "whole", "denominator": "bottom", "zero": "naught",
+      "error": "mistake", "entered": "put in", "enter it": "put it in", "enter": "put in", "continue": "go on", "submit": "send", "manually": "by hand",
+      "apply": "set", "unfortunately": "sadly", "is not possible": "cannot be", "/Possible": "/Could-be",
+      "semester": "halfyear", "quarter": "season", "minimum": "least", "required": "needed", "examples": "like", "exam": "test",
+      "valid": "sound", "response": "answer", "available": "at hand", "contact": "get in touch with",
+      "request": "wish", "cumulative": "gathered", "receive": "get", "language": "tongue", "calculator": "reckoner",
+      "make sure you": "see to it that you", "message": "writ", "NOTE:": "WRIT:", "despite": "notwithstanding",
+      "human": "flesh and blood", "selecting": "choosing", "selected": "chosen", "select": "choose", "calculation": "reckoning",
+      "percentage": "byhundred", "percent": "byhundred", "(ex:": "(like:", "point": "mark", "letter": "rune",
+      "credit to": "thanks to", "credit": "schooltime", "note": "writ", "type": "write", "EXACT": "WORD FOR WORD",
+      "appear": "seem", "order": "row", "optional": "not needed", "suggested": "put forward",
+      "in honor of": "to thank", "clearing": "wiping", "clear": "wipe", "data": "input", "visit": "come to", "force you to": "bind you to",
+      "page": "websheet", "saved": "kept", "edit": "work", "mobile device": "handheld tool", "including": "along with",
+      "simply": "straightforwardly", "view": "see", "super cool": "mighty cool", "view": "see", "based on": "built on",
+      "please": "do", "simplified": "cleaned", "check that": "mark that", "check how much": "see how much",
+      "changed": "bent", "change": "bend", "calculate": "reckon", "figure out": "find out", "quizzes": "smalltests",
+      "number": "count", "modify": "bend", "incognito mode": "unnamed mood", "are you sure you": "do you truly",
+      "scale": "reckoning", "grading": "scoring", "search": "hunt", "use": "work"};
+      var english_words = Object.keys(anglish_english);
+      for (var k = 0; k < keys.length; k++) {
+        if (["languages", "numbers"].indexOf(keys[k]) == -1) {
+          for (var i = 0; i < english_words.length; i++) {
+            referenceKey(keys[k], english_words[i], anglish_english[english_words[i]]);
+            referenceKey(keys[k], english_words[i].substring(0,1).toUpperCase()+english_words[i].substring(1),
+            anglish_english[english_words[i]].substring(0, 1).toUpperCase()+anglish_english[english_words[i]].substring(1));
+          }
+        }
+      }
+      referenceKey("mobileCopyInstruct", "Chore", "Assignment");
+      referenceKey("dontWorry", "by hand put in that set", "put in that set by hand");
+      referenceKey("clearDataExp", "re-put in your GPA", "put in your GPA again");
+      referenceKeys("footer", ["October", "June"], ["Fall", "Summer"]);
+      referenceKeys("catInstruct", ["Do don't", "an existing name"], ["Don't", "a name from before"]);
+      currentLangData["manualButton"] = "Put in grades by hand";
+      currentLangData["announcements"] += "<br>If you're wondering, \"Anglish\" is a kind of English that borrows as few " +
+        "outland (mostly Latin, Greek, and French) words as can be. Some writers, like George Orwell, thought that " +
+        "it would be good to have more of these Anglo-Saxon words in writing. Many are easier than the outland words, " +
+        "but a few feel odd.";
+      document.getElementById("d_en_dialect").innerHTML = "Speak: ";
     }
   } else {
     document["dialect_en"].style.display = "none";
@@ -634,7 +680,7 @@ function setDialect() {
     if (dialect == "AF") {
       referenceKey("mailSent", "مرسی!", "تشکر!");
       // Solar Hijri Persian vs Zodiac and Gregorian French- vs English-derived months
-      referenceKeys("footer", ["مهر", "خرداد", "اکتبر", "ژوئن"], ["میزان", "جوزا", "اکتوبر", "جون"]);
+      referenceKeys("footer", ["مهر", "تیر", "اکتبر", "ژوئن"], ["میزان", "سرطان", "اکتوبر", "جون"]);
       referenceKeys("jsSuccess", ["استفاده", "دارید می"], ["استعمال", "می"]);
       referenceKey("begin", "استفاده", "استعمال");
       referenceKey("catInstruct", "استفاده", "استعمال");
@@ -788,8 +834,6 @@ function setDialect() {
           referenceKey(keys[k], "$PTS/$TOT", numberSep+"$PTS/$TOT"+numberSep);
           referenceKey(keys[k], "AHS&#8203;GPA", "AHS GPA");
           referenceKey(keys[k], "Count&#8203;as", "Count as");
-          referenceKey(keys[k], "ɾɪs&#8203;d", "ɾɪs d");
-          referenceKey(keys[k], "ɾɪs̪&#8203;ˈd̪", "ɾɪs̪ ˈd̪");
           if (dialect == "Bali") {
             referenceKey(keys[k], "᭞&#8203;", "᭞ ");
             referenceKey(keys[k], "᭟&#8203;", "᭟ ");
@@ -813,7 +857,13 @@ function setDialect() {
       }
       for (var k = 0; k < TITLES.length; k++)
         currentLangData[TITLES[k]] = TITLE_START + currentLangData[TITLES[k]] + TITLE_END;
+      referenceKey("confirm", "&#8203;", "​"); // unicode zero width space invisible in quotes
+      referenceKey("pronunciation", "ɾɪs&#8203;d", "ɾɪs d");
+      referenceKey("pronunciation", "ɾɪs̪&#8203;ˈd̪", "ɾɪs̪ ˈd̪");
     }
+    currentLangData["languages"] = [];
+    for (var k = 0; k < LANGUAGES.length; k++)
+      currentLangData["languages"].push(currentLangData["l"+k]);
   } else {
     document["script_sa"].style.display = "none";
   }
@@ -828,8 +878,6 @@ function wordList(arr) {
     comma = "&rlm;، ";
   if (["es", "pt"].indexOf(lang) != -1)
     oxford = false;
-  if (["sa"].indexOf(lang) != -1)
-    comma = " ";
   for (var i = 0; i < arr.length-2; i++)
     str += arr[i] + comma;
   str += arr[arr.length-2];
@@ -844,6 +892,6 @@ function wordList(arr) {
   str += " ";
   str += arr[arr.length-1];
   if (lang == "sa")
-    currentLangData.and;
+    str += " " + currentLangData.and;
   return str;
 }
