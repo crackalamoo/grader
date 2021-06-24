@@ -11,7 +11,7 @@ body {
   color: #FFFFFF;
 }
 div#footer {
-  color: #002844;
+  color: #004864;
 }
 textarea {
   background-color: #202122;
@@ -22,4 +22,7 @@ a {
 }
 a:visited {
   color: #4477FF;
+}
+div#motto p {
+  color: #77AADD;
 }

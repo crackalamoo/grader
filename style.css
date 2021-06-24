@@ -17,10 +17,14 @@ h1[style*="direction: rtl"],h2[style*="direction: rtl"],h3[style*="direction: rt
 iframe#hidden_iframe,select#classHidden {
   display: none;
 }
+p#welcome {
+  font-size: 14px;
+}
 p#javascript {
   margin-left: 40px;
   font-weight: bold;
   color: #0088AA;
+  font-size: 14px;
 }
 p#javascript[style*="direction: rtl"] {
   margin-left: inherit;
@@ -95,7 +99,7 @@ img {
 div#footer {
   text-align: center;
   font-size: 12px;
-  color: #BBD0DD;
+  color: #AAC0CC;
   font-style: italic;
 }
 div#footer:lang(hi),div#footer:lang(sa) {
@@ -176,6 +180,13 @@ div#creditInfo,div#manualInput,.hidden {
   h1[style*="direction: rtl"],h2[style*="direction: rtl"],h3[style*="direction: rtl"],#pronunciation[style*="direction: rtl"] {
     margin-left: inherit;
     margin-right: 10%;
+  }
+  div#motto {
+    flex-direction: column;
+  }
+  div#motto p {
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 }
 a {
@@ -294,4 +305,28 @@ div#languageButtons span div.button:lang(sa) {
 :lang(sa) :lang(en) strong,:lang(sa) :lang(en) b {
   font-weight: bold;
   background-color: inherit;
+}
+
+div#motto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+div#motto p {
+  margin-left: 5%;
+  margin-right: 5%;
+  color: #0050A0;
+}
+div#motto p:lang(la) {
+  font-variant: small-caps;
+}
+div#motto p:lang(sa) {
+  font-family: "Devanagari MT", "ITF Devanagari", devanagari;
+}
+div#motto p:lang(ang) {
+  font-family: "Apple Symbols", "Geneva";
+}
+div#motto p:lang(fa), div#motto p:lang(ar) {
+  font-family: "Times New Roman";
 }
