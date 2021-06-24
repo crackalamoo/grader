@@ -380,9 +380,9 @@ function autoGrade(rampal=false) {
   var foundCatText = langReplace("catsFound", ["$NUMBER", "$CATEGORIES"], [formatInt(findCategories(autoCalc).length, true, true, 1),
     wordList(findCategories(autoCalc))]);
   if (findCategories(autoCalc).length == 1)
-    foundCatText = currentLangData.catsFound1;
+    foundCatText = langReplace("catsFound1", ["$CATEGORIES"], [wordList(findCategories(autoCalc))]);
   if (["sa"].indexOf(lang) != -1 && findCategories(autoCalc).length == 2)
-    foundCatText = currentLangData.catsFound2;
+    foundCatText = langReplace("catsFound2", ["$CATEGORIES"], [wordList(findCategories(autoCalc))]);
   document.gradesList.innerHTML += foundCatText;
   if (RAMPAL)
     document.gradesList.innerHTML += "<br>" + currentLangData.rampalInstruct;
@@ -572,7 +572,7 @@ function mailSent() {
       document.getElementById("mail_sent").innerHTML = currentLangData.validData;
   } else {
     document.getElementById("mail_sent").innerHTML = langReplace("mailSent", ["$EMAIL"],
-    ['<a href="mailto:bd542591@ahschool.com?subject=Class list issue">bd542591@ahschool.com</a>']);
+    ['<a href="mailto:'+MY_EMAIL+'?subject=Class list issue">'+MY_EMAIL+'</a>']);
     document.add_class.style.display = "none";
     document.classes.class.remove(1);
   }

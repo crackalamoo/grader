@@ -4,6 +4,9 @@ const SCRIPT_ID = ["javascript", "start", "auto", "finalAuto", "autoCategories",
 const LANGUAGES = ["English", "Español", "Português", "हिन्दी", "اردو", "فارسی", "Latinum", "संस्कृतम्"];
 const LANG_CODES = ["en", "es", "pt", "hi", "ur", "fa", "la", "sa"];
 const RTL_LANG = ["ur", "fa"];
+
+const MY_EMAIL = "harysdalvi@gmail.com"
+
 var currentLangData;
 function changeLanguage(l) {
   lang = l;
@@ -21,7 +24,7 @@ function changeLanguage(l) {
     langHTML("autoCalculation", "quarterGrades");
   langHTML("help");
   document.getElementById("intro").innerHTML = langReplace("intro", ["$EMAIL"],
-    ['<a href="mailto:bd542591@ahschool.com?subject=Grade calculator issue">bd542591@ahschool.com</a>']);
+    ['<a href="mailto:'+MY_EMAIL+'?subject=Grade calculator issue">'+MY_EMAIL+'</a>']);
   langHTML("semGradesButton");
   langHTML("gpaCalcButton");
   langHTML("manualBack", "back");
@@ -156,6 +159,21 @@ function changeLanguage(l) {
           d.languages[i];
       }
     }
+  }
+  var classicLangs = {"en": "ang la", "es": "la", "pt": "la", "hi": "sa fa",
+  "ur": "sa fa", "fa": "peo ar", "la": "grk", "sa": "sa"}[lang].split(" ");
+  if (l == "en" && document.dialect_en.d_en.value == "Anglish")
+    classicLangs = ["ang"];
+  if (l == "en" && document.dialect_en.d_en.value == "ASCII")
+    classicLangs = [];
+  var mottos = {"la": "Ab dolore nvmerorvm ad pacem", "ang": "ᚠᚱᚪᛗ᛫ᚱᛁᛗᚪ᛫ᛋᚪᚱᛖ᛫ᛏᚩ᛫ᚠᚱᛁᚦᛖ",
+  "sa": "सङ्ख्यानांदुःखाच्छान्तिम्", "fa": "از درد شمار‌ها به آرام",
+  "ar": "مِنْ أَلَمِ الْأَرْقَامِ إِلَى السَّلَامِ", "grk": "Ἐκ τῆς λύπης τῶν ἀριθμῶν πρός τὴν εἰρήνην",
+  "peo": "𐏃𐎨𐎠𐏐&#8203;𐎮𐎡𐎱𐎡𐎴𐎠𐎶𐏐&#8203;𐎭𐎼𐎢𐎥𐎠𐏐&#8203;𐏁𐎡𐎹𐎠𐎫𐎡𐎶"};
+  document.getElementById("motto").innerHTML = "";
+  for (var i = 0; i < classicLangs.length; i++) {
+    document.getElementById("motto").innerHTML += '<p lang="'+classicLangs[i]+'">' +
+      mottos[classicLangs[i]] + '</p>';
   }
   document.getElementsByTagName("html")[0].lang = l;
   updateGpa();
@@ -625,7 +643,7 @@ function setDialect() {
       "error": "mistake", "entered": "put in", "enter it": "put it in", "enter": "put in", "continue": "go on", "submit": "send", "manually": "by hand",
       "apply": "set", "unfortunately": "sadly", "is not possible": "cannot be", "/Possible": "/Could-be",
       "semester": "halfyear", "quarter": "season", "minimum": "least", "required": "needed", "examples": "like", "exam": "test",
-      "valid": "sound", "response": "answer", "available": "at hand", "contact": "get in touch with",
+      "valid": "sound", "response": "answer", "available": "at hand", "contact": "write to",
       "request": "wish", "cumulative": "gathered", "receive": "get", "language": "tongue", "calculator": "reckoner",
       "make sure you": "see to it that you", "message": "writ", "NOTE:": "WRIT:", "despite": "notwithstanding",
       "human": "flesh and blood", "selecting": "choosing", "selected": "chosen", "select": "choose", "calculation": "reckoning",
@@ -638,7 +656,7 @@ function setDialect() {
       "please": "do", "simplified": "cleaned", "check that": "mark that", "check how much": "see how much",
       "changed": "bent", "change": "bend", "calculate": "reckon", "figure out": "find out", "quizzes": "smalltests",
       "number": "count", "modify": "bend", "incognito mode": "unnamed mood", "are you sure you": "do you truly",
-      "scale": "reckoning", "grading": "scoring", "search": "hunt", "use": "work"};
+      "scale": "reckoning", "grading": "scoring", "search": "hunt", "use": "work", "idea": "thought"};
       var english_words = Object.keys(anglish_english);
       for (var k = 0; k < keys.length; k++) {
         if (["languages", "numbers"].indexOf(keys[k]) == -1) {
@@ -654,6 +672,7 @@ function setDialect() {
       referenceKey("clearDataExp", "re-put in your GPA", "put in your GPA again");
       referenceKeys("footer", ["October", "June"], ["Fall", "Summer"]);
       referenceKeys("catInstruct", ["Do don't", "an existing name"], ["Don't", "a name from before"]);
+      referenceKeys("selClass", "automatically fill in byhundreds/weighting", "have byhundreds/weighting fill in by themselves")
       currentLangData["manualButton"] = "Put in grades by hand";
       currentLangData["announcements"] += "<br>If you're wondering, \"Anglish\" is a kind of English that borrows as few " +
         "outland (mostly Latin, Greek, and French) words as can be. Some writers, like George Orwell, thought that " +
