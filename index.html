@@ -73,6 +73,8 @@
   </span>
   <span>
     <div class="button" onclick="changeLanguage('la');">Latinum</div>
+  </span>
+  <span>
     <div class="button" onclick="changeLanguage('sa');">संस्कृतम्</div>
   </span>
 </div>
@@ -157,9 +159,10 @@
     <span id="script_sa_lipi"></span>
     <select name="s_sa" onchange="languageSelect()">
       <option value="Deva" selected>देवनागरी</option>
-      <option value="Latn">IAST (Romanized)</option>
+      <option value="Latn">Romanized (IAST)</option>
       <option value="Brah">𑀩𑁆𑀭𑀸𑀳𑁆𑀫𑀻</option>
       <option value="Telu">తెలుగు</option>
+      <option value="Mlym">മലയാളം</option>
       <option value="Khmr">អក្សរខ្មែរ</option>
       <option value="Tibt">བོད</option>
       <option value="Bali">ᬅᬓ᭄ᬱᬭᬩᬮᬶ</option>
@@ -175,6 +178,7 @@
     <div class="button" onclick="changeMode('gpaCalc')" id="gpaCalcButton">GPA calculator</div>
   </div><br>
   <div id="motto"></div>
+  <p id="translateMotto"></p>
   <div id="bottomIntro" lang="en"><p><b>STAY HEALTHY!</b></p>
   <p>I will never use the information you give here to make fun of you. In fact, I don't know how to. I have
     no way of knowing what you enter here because I am not good at programming in PHP. JavaScript is a &ldquo;client side&rdquo;
@@ -293,7 +297,7 @@
   <p id="shouldContinue"></p>
   <div class="centerButtons">
     <div class="button" onclick="changeMode('manual')" id="manualButton">Manually enter grades</div>
-    <div class="button" onclick="autoCats(); changeMode('autoCategories');" id="autoContinue">Continue</div>
+    <div class="button selected" onclick="autoCats(); changeMode('autoCategories');" id="autoContinue">Continue</div>
   </div>
   <div class="centerButtons">
     <div class="button" id="rampalButton" onclick="autoGrade(rampal=true);"></div>

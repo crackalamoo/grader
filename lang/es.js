@@ -12,7 +12,7 @@ langData["es"] = {
   "selCat": "Nota hasta ahora en $CATEGORY: $SCORE%",
   "scoreNaN": "Tienes un denominador de cero u otro error en por lo menos una categoría. Trata de añadir algunas tareas.",
   "rampalInstruct": "<b>Haz lo siguiente para <em>cada</em> tarea:</b><br>" +
-    "Haz clic en la tarea<br><img src=\"rampal/rampal1.png\"><br><img src=\"rampal/rampal2.png\"><br>Mira el <strong>\"Count as\"</strong> e introdúcelo arriba",
+    "Haz clic en la tarea<br>$IMG1<br>Mira el <strong>\"Count as\"</strong> e introdúcelo arriba<br>$IMG2",
   "catsFound": "$NUMBER categorías se encontraron: $CATEGORIES",
   "catsFound1": "Una categoría se encontró: $CATEGORIES",
   "pointCheck": "Esta clase usa el sistema de puntos",
@@ -43,7 +43,7 @@ langData["es"] = {
   "welcome": "Bienvenidos a la calculadora de notas. Primero tienes que asegurar que tengas " +
     "JavaScript. Si no sabes lo que eso es, no te preocupes. Lo hago por ti:",
   "jsSuccess": "Si estás leyendo este mensaje, tienes JavaScript y puedes usar esta página.",
-  "quarterGrades": "Notas del cuarto",
+  "quarterGrades": "Notas del trimestre",
   "intro": "<b>NOTA:</b> pese a mi amor por computadoras, yo también soy humano. Por favor ponte en contacto conmigo en $EMAIL si encuentras algún error." +
     "<br><strong>Añade esta página a favoritos</strong> para que puedas encontrarla fácilmente." +
     "<br><br>Para empezar, selecciona un cálculo:",
@@ -104,11 +104,11 @@ langData["es"] = {
   "getCreditButton": "Ver crédito",
   "modifyCreditHeading": "<b>Modificar/borrar un crédito</b>",
   "confirm": "¿Estás seguro/a que quieres hacer esto?",
-  "quarter13": "Nota del cuarto 1/3:",
-  "quarter24": "Nota del cuarto 2/4:",
+  "quarter13": "Nota del trimestre I/III:",
+  "quarter24": "Nota del trimestre II/IV:",
   "examGrade": "Nota del examen:",
   "semester": "Semestre",
-  "quarter": "Cuarto",
+  "quarter": "Trimestre",
   "ahsWeighted": "GPA ponderado (ponderación de AHS)",
   "5scale": "Escala 5.0",
   "4scale": "Escala 4.0",
@@ -118,5 +118,6 @@ langData["es"] = {
   "setPoint": "La calificación fue establecida a sistema de puntos",
   "search": "Buscar",
   "pronunciation": "Di como: Járis Dálvi /ˈxaɾis ˈdalβi/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]",
-  "and": "y"
+  "and": "y",
+  "translateMotto": "<i>Del dolor de los números a la paz</i>"
 };

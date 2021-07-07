@@ -23,6 +23,6 @@ a {
 a:visited {
   color: #4477FF;
 }
-div#motto p {
+div#motto p,p#translateMotto {
   color: #77AADD;
 }

@@ -43,11 +43,11 @@ langData["la"] = {
   "welcome": "Gratias ago tibi quia veniens ad calculatorem notarum. Primo oportet tuum videre ut " +
     "JavaScript habeas. Si non sapis quid hoc est, noli metue. Pro tuum id facio:",
   "jsSuccess": "Si hvnc nvntivm legas, IavaScript habes et potes hanc paginam vti.",
-  "quarterGrades": "Notas quadrantis",
+  "quarterGrades": "Notas trimestres",
   "intro": "<b>NOTA:</b> non obstante amore meo computatris, ego etiam homo sum. Mihi per $EMAIL scribe si errorem invenis." +
     "<br><strong>Hanc paginam ad paginas dilectas tuas adde</strong> ut posse invenire hanc facile." +
     "<br><br>Ut incipere, calculationem elige:",
-  "semGradesButton": "Semestres/examinis notas",
+  "semGradesButton": "Notas semestres/examinis",
   "gpaCalcButton": "Calculator GPA",
   "newCatButton": "Genus novum",
   "catName": "Nomen:&nbsp;",
@@ -104,11 +104,11 @@ langData["la"] = {
   "getCreditButton": "Creditum videre",
   "modifyCreditHeading": "<b>Creditum recensere/auferre</b>",
   "confirm": "Esne certus/a desideras hoc facere?",
-  "quarter13": "Nota quadrantis I/III:",
-  "quarter24": "Nota quadrantis II/IV:",
+  "quarter13": "Nota trimestris I/III:",
+  "quarter24": "Nota trimestris II/IV:",
   "examGrade": "Nota examinis:",
   "semester": "Semestre",
-  "quarter": "Quadrans",
+  "quarter": "Trimestre",
   "ahsWeighted": "GPA ponderatur (ponderatio AHS)",
   "5scale": "Lanx 5.0",
   "4scale": "Lanx 4.0",
@@ -119,5 +119,6 @@ langData["la"] = {
   "setPoint": "Taxatio rationem punctorum factus est",
   "search": "Quaerere",
   "pronunciation": "",
-  "and": "&amp;"
+  "and": "&amp;",
+  "translateMotto": "<span class=\"smallCaps\">Ab Dolore Nvmerorvm ad Pacem</span>"
 };
