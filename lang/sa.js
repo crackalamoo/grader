@@ -10,8 +10,8 @@ langData["sa"] = {
   "selCat": "इदानीं यावत् $CATEGORY अङ्कः $SCORE%",
   "scoreNaN": "तव हरः शून्यम् अस्ति वान्यी समस्या भवत्येके वर्गे वैकाद् अधिके वर्गेषु&nbsp;। कतिपयाणां कृत्यानां संकलनं यत&nbsp;॥",
   "rampalInstruct": "<b>सर्वाणि कृत्यानीदं कुरु&nbsp;।</b><br>" +
-    "कृत्यं क्लिक् कुरु<br><img src=\"rampal/rampal1.png\"><br>" +
-    "<img src=\"rampal/rampal2.png\"><br><strong>\"Count as\"</strong> सङ्ख्याम् दृश्यवान् उपरि लिख&nbsp;॥",
+    "कृत्यं क्लिक् कुरु<br>$IMG1<br>" +
+    "<strong>\"Count as\"</strong> सङ्ख्याम् दृश्यवान् उपरि लिख&nbsp;॥<br>$IMG2",
   "catsFound": "$NUMBER वर्गाविन्द्यन्त&nbsp;। $CATEGORIES&nbsp;॥",
   "catsFound1": "एकोवर्गोऽविन्द्यत&nbsp;। $CATEGORIES&nbsp;॥",
   "catsFound2": "द्वौवर्गावविन्द्येताम्&nbsp;। $CATEGORIES&nbsp;॥",
@@ -79,7 +79,7 @@ langData["sa"] = {
   "rampalButton": "श्रीराम्पालस्य वाचार्याकिम्प्टनस्य विषयाय",
   "manualButton": "हस्तेनाङ्कान् प्रविश",
   "selClass": "<strong>विषयम् इष्तुं</strong> स्वचालितं प्रतिशतानि भारांश् च पूर्ण करोति&nbsp;। <span id=\"seth\">सेद्</span> घ्रोपरेतस्मात् कर्तव्याद् धन्यवादः&nbsp;॥",
-  "selClassOption": "विषयं इच्छ",
+  "selClassOption": "विषयम् इच्छ",
   "addClassOption": "विषयं प्रविश वोचितः कुरु",
   "sethClassInstruct": "वा सर्वाणां वर्गाणां प्रतिशतानि प्रविशेर् वैष विषयो गणक्रमस्योपयोगं करोतीति भाष&nbsp;।",
   "pointSystemInstruct": " किम् एष विषयो गणक्रमस्य वा वर्गाणाम् उपयोगं करोतीति विदितव्य&nbsp;। प्रश्नपत्त्राणि गृहकर्तव्यानि परीक्षाश् च कियद् गणानां सन्तीति द्रष्टव्य&nbsp;॥" +
@@ -125,5 +125,6 @@ langData["sa"] = {
   "search": "अन्वेषणम्",
   "pronunciation": "हारिस्दळ्वी&nbsp;। एवं वदस्व&nbsp;॥",
   "and": "च",
-  "sanskrit": "संस्कृतम्"
+  "sanskrit": "संस्कृतम्",
+  "translateMotto": "सङ्ख्यानां&#8203;पीडायाः&#8203;शान्तिम्"
 };

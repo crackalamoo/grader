@@ -377,17 +377,24 @@ function autoGrade(rampal=false) {
         temp2[i][1] + "/" + temp2[i][2] + "<br>";
     }
   }
-  var foundCatText = langReplace("catsFound", ["$NUMBER", "$CATEGORIES"], [formatInt(findCategories(autoCalc).length, true, true, 1),
-    wordList(findCategories(autoCalc))]);
-  if (findCategories(autoCalc).length == 1)
-    foundCatText = langReplace("catsFound1", ["$CATEGORIES"], [wordList(findCategories(autoCalc))]);
-  if (["sa"].indexOf(lang) != -1 && findCategories(autoCalc).length == 2)
-    foundCatText = langReplace("catsFound2", ["$CATEGORIES"], [wordList(findCategories(autoCalc))]);
+  var findCats = findCategories(autoCalc);
+  var foundCatText = langReplace("catsFound", ["$NUMBER", "$CATEGORIES"], [formatInt(findCats.length, true, true, 1),
+    wordList(findCats)]);
+  if (findCats.length == 1)
+    foundCatText = langReplace("catsFound1", ["$CATEGORIES"], [wordList(findCats)]);
+  if (["sa"].indexOf(lang) != -1 && findCats.length == 2)
+    foundCatText = langReplace("catsFound2", ["$CATEGORIES"], [wordList(findCats)]);
   document.gradesList.innerHTML += foundCatText;
   if (RAMPAL)
-    document.gradesList.innerHTML += "<br>" + currentLangData.rampalInstruct;
+    document.gradesList.innerHTML += "<br>" + langReplace("rampalInstruct", ["$IMG1", "$IMG2"],
+    ["<img src=\"rampal/rampal1.png\">", "<img src=\"rampal/rampal2.png\">"]);
   changeMode("finalAuto");
 }
+document.getElementById("inputGrades").addEventListener('paste', (event) => {setTimeout(function() {
+  autoGrade();
+  window.scrollBy(0, -100);
+}, 5)});
+
 function autoCats() {
   var form = document.autoCategories;
   var cats = findCategories(autoCalc);
@@ -435,6 +442,7 @@ function autoCalc2() {
   document.getElementById("autoCalculation").innerHTML = currentLangData.newClass;
   document.getElementById("classmeme").innerHTML = "";
   document.classes.search.value = "";
+  classSearch();
   window.scrollBy(0, -300);
 }
 var classes = {
@@ -484,14 +492,16 @@ var classes = {
   "pre alg": [["a", "q", "t"], [false, 30, 30, 40]]
 };
 function setclass() {
-  if (document.classes.class.value == "add class") {
+  var classVal = document.classes.class.value;
+  if (classVal == "add class") {
     document.classes.class.value = "";
     document.add_class["cats"].value = findCategories(autoCalc);
     changeMode('addClass');
   } else {
-    var catLetters = classes[document.classes.class.value][0];
-    var catData = classes[document.classes.class.value][1];
+    var catLetters = classes[classVal][0];
+    var catData = classes[classVal][1];
     var classCats = findCategories(autoCalc);
+    var meme = document.getElementById("classmeme");
     document.autoCategories.point.checked = catData[0];
     for (var i = 0; i < catLetters.length; i++) {
       try {
@@ -501,9 +511,9 @@ function setclass() {
         }
       } catch (err) {}
     }
-    if (document.classes.class.value == "spanish 4" || document.classes.class.value == "spanish lit") {
+    if (classVal == "spanish 4" || classVal == "spanish lit") {
       date = new Date();
-      document.getElementById("classmeme").innerHTML = "¡¡¡¡¡HOY ES EL " +
+      meme.innerHTML = "¡HOY ES EL " +
         ["PRIMERO", "DOS", "TRES", "CUATRO", "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE", "DIEZ",
         "ONCE", "DOCE", "TRECE", "CATORCE", "QUINCE", "DIECISÉIS", "DIECISIETE", "DIECIOCHO",
         "DIECINUEVE", "VEINTE", "VEINTIUNO", "VEINTIDÓS", "VEINTITRES", "VEINTICUATRO",
@@ -511,13 +521,20 @@ function setclass() {
         "TREINTA Y UNO"][date.getDate() - 1] +
         " DE " + ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO",
         "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"][date.getMonth()] + " DE "
-        + date.getFullYear() + "!!!!!<br>¡¡¡¡¡NO olvides escribir tu nombre!!!!!";
-    } else if (document.classes.class.value == "ap world") {
-      document.getElementById("classmeme").innerHTML = "Clear your desks, please.<br>Say &ldquo;la vie!&rdquo;";
-    } else if (document.classes.class.value == "physics c") {
-      document.getElementById("classmeme").innerHTML = "<ol><li>Lab</li><li>Be Happy</li></ol>";
+        + date.getFullYear() + "!<br>¡No olvides escribir tu nombre y la fecha!<br>";
+      if (lang == "es") {
+        meme.innerHTML += "¡Me alegra mucho de que estés usando español!"
+      } else {
+        meme.innerHTML += "¿¿¿Oigo inglés??? " +
+        "Es importante que practiques tu español. Por eso estoy cambiando tu idioma.";
+        changeLanguage("es");
+      }
+    } else if (classVal == "ap world") {
+      meme.innerHTML = "Clear your desks, please.<br>Say &ldquo;la vie!&rdquo;";
+    } else if (classVal == "physics c") {
+      meme.innerHTML = "<ol><li>Lab</li><li>Be Happy</li></ol>";
     } else {
-      document.getElementById("classmeme").innerHTML = "";
+      meme.innerHTML = "";
     }
     if (catData[0]) {
       document.getElementById("classError").innerHTML = currentLangData["setPoint"];

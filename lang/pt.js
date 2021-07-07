@@ -12,7 +12,7 @@ langData["pt"] = {
   "selCat": "Nota até agora em $CATEGORY: $SCORE%",
   "scoreNaN": "Você tem um denominador de zero ou outro erro em pelo menos uma categoria. Tente adicionar algumas tarefas.",
   "rampalInstruct": "<b>Faça o seguinte para <em>cada</em> tarefa:</b><br>" +
-    "Clique na tarefa<br><img src=\"rampal/rampal1.png\"><br><img src=\"rampal/rampal2.png\"><br>Olhe o <strong>\"Count as\"</strong> e insira-o acima",
+    "Clique na tarefa<br>$IMG1<br>Olhe o <strong>\"Count as\"</strong> e insira-o acima<br>$IMG2",
   "catsFound": "$NUMBER categorias encontradas: $CATEGORIES",
   "catsFound1": "Uma categoria encontrada: $CATEGORIES",
   "pointCheck": "Esta classe usa o sistema de pontos",
@@ -43,7 +43,7 @@ langData["pt"] = {
   "welcome": "Bem-vindos à calculadora de notas. Primeiro você tem que assegurar que tenha " +
     "JavaScript. Se não sabe o que é isso, não se preocupe. Eu faço isto para você:",
   "jsSuccess": "Se você está lendo esta mensagem, tem JavaScript e pode usar esta página.",
-  "quarterGrades": "Notas do quarto",
+  "quarterGrades": "Notas do trimestre",
   "intro": "<b>NOTA:</b> apesar do meu amor por computadores, eu também sou humano. Por favor contate-me em $EMAIL se encontrar algum erro." +
     "<br><strong>Adicione esta página aos favoritos</strong> para que possa encontrá-la facilmente." +
     "<br><br>Para inicionar, selecione um cálculo:",
@@ -104,11 +104,11 @@ langData["pt"] = {
   "getCreditButton": "Ver crédito",
   "modifyCreditHeading": "<b>Modificar/deletar um crédito</b>",
   "confirm": "Tem certeza que quer fazar iso?",
-  "quarter13": "Nota do quarto 1/3:",
-  "quarter24": "Nota do quarto 2/4:",
+  "quarter13": "Nota do trimestre I/III:",
+  "quarter24": "Nota do trimestre II/IV:",
   "examGrade": "Nota do exame:",
   "semester": "Semestre",
-  "quarter": "Quarto",
+  "quarter": "Trimestre",
   "ahsWeighted": "GPA ponderado (ponderação de AHS)",
   "5scale": "Escala 5.0",
   "4scale": "Escala 4.0",
@@ -118,5 +118,6 @@ langData["pt"] = {
   "setPoint": "A classificação foi definida como sistema de pontos",
   "search": "Pesquisar",
   "pronunciation": "Diga como: Háris Dâlvi /ˈaɾis ˈdɐlvi/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]",
-  "and": "e"
+  "and": "e",
+  "translateMotto": "<i>Da dor dos números à paz</i>"
 };

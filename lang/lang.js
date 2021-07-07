@@ -1,6 +1,6 @@
 const SCRIPT_ID = ["javascript", "start", "auto", "finalAuto", "autoCategories", "manual", "category",
   "editCategory", "addClass", "semester", "gpaCalc", "seth_img", "langSelect", "examGrade", "semesterGrade",
-  "setLangForm", "intro", "footer"];
+  "setLangForm", "intro", "footer", "translateMotto"];
 const LANGUAGES = ["English", "Español", "Português", "हिन्दी", "اردو", "فارسی", "Latinum", "संस्कृतम्"];
 const LANG_CODES = ["en", "es", "pt", "hi", "ur", "fa", "la", "sa"];
 const RTL_LANG = ["ur", "fa"];
@@ -12,7 +12,7 @@ function changeLanguage(l) {
   lang = l;
   currentLangData = langData[l];
   setReference();
-  setDialect();
+  var dialect = setDialect();
   var d = currentLangData;
   document.setLanguage.language.value = lang;
   document.getElementById("javascript").innerHTML = d.jsSuccess;
@@ -106,6 +106,7 @@ function changeLanguage(l) {
   langHTML("announcements");
   langHTML("footer");
   langHTML("pronunciation");
+  langHTML("translateMotto");
   document.exam.exam.options[12].innerHTML = d.noExam;
   document.getElementById("manualInput").innerHTML = d.edit;
   document.classes.search.placeholder = d.search;
@@ -123,7 +124,7 @@ function changeLanguage(l) {
     } else if (l == "fa") {
       document.getElementById(SCRIPT_ID[i]).style.direction = "rtl";
       document.getElementById(SCRIPT_ID[i]).style.fontFamily = '';
-    } else if (l == "en" && document.dialect_en.d_en.value == "ASCII") {
+    } else if (l == "en" && dialect == "ASCII") {
       document.getElementById(SCRIPT_ID[i]).style.direction = "";
       document.getElementById(SCRIPT_ID[i]).style.fontFamily = '"Courier", monospace';
     } else {
@@ -161,19 +162,19 @@ function changeLanguage(l) {
     }
   }
   var classicLangs = {"en": "ang la", "es": "la", "pt": "la", "hi": "sa fa",
-  "ur": "sa fa", "fa": "peo ar", "la": "grk", "sa": "sa"}[lang].split(" ");
-  if (l == "en" && document.dialect_en.d_en.value == "Anglish")
+  "ur": "sa fa", "fa": "peo ar", "la": "grk", "sa": ""}[lang].split(" ");
+  if (l == "en" && dialect == "Anglish")
     classicLangs = ["ang"];
-  if (l == "en" && document.dialect_en.d_en.value == "ASCII")
+  if (l == "en" && dialect == "ASCII")
     classicLangs = [];
-  var mottos = {"la": "Ab dolore nvmerorvm ad pacem", "ang": "ᚠᚱᚪᛗ᛫ᚱᛁᛗᚪ᛫ᛋᚪᚱᛖ᛫ᛏᚩ᛫ᚠᚱᛁᚦᛖ",
-  "sa": "सङ्ख्यानांदुःखाच्छान्तिम्", "fa": "از درد شمار‌ها به آرام",
+  var mottos = {"":"","la": "Ab Dolore Nvmerorvm ad Pacem", "ang": "ᚠᚱᚪᛗ᛫ᚱᛁᛗᚪ᛫ᛋᚪᚱᚾᛖᛋᛋᛖ᛫ᛏᚩ᛫ᚠᚱᛁᚦᛖ",
+  "sa": "सङ्ख्यानां&#8203;पीडायाः&#8203;शान्तिम्", "fa": "از درد شمار‌ها به آرام",
   "ar": "مِنْ أَلَمِ الْأَرْقَامِ إِلَى السَّلَامِ", "grk": "Ἐκ τῆς λύπης τῶν ἀριθμῶν πρός τὴν εἰρήνην",
   "peo": "𐏃𐎨𐎠𐏐&#8203;𐎮𐎡𐎱𐎡𐎴𐎠𐎶𐏐&#8203;𐎭𐎼𐎢𐎥𐎠𐏐&#8203;𐏁𐎡𐎹𐎠𐎫𐎡𐎶"};
   document.getElementById("motto").innerHTML = "";
   for (var i = 0; i < classicLangs.length; i++) {
-    document.getElementById("motto").innerHTML += '<p lang="'+classicLangs[i]+'">' +
-      mottos[classicLangs[i]] + '</p>';
+    document.getElementById("motto").innerHTML += '<p lang="'+classicLangs[i]+'">'
+    + mottos[classicLangs[i]] + '</p>';
   }
   document.getElementsByTagName("html")[0].lang = l;
   updateGpa();
@@ -183,32 +184,32 @@ function languageSelect() {
   changeLanguage(document.setLanguage.language.value);
 }
 function langHTML(id, key=null) {
+  var el = document.getElementById(id);
   if (key == null)
     key = id;
   if (typeof currentLangData[key] != "undefined") {
-    document.getElementById(id).innerHTML = currentLangData[key];
-    document.getElementById(id).lang = lang;
+    el.innerHTML = currentLangData[key];
+    el.lang = lang;
   } else {
-    document.getElementById(id).innerHTML = langData["en"][key];
-    document.getElementById(id).lang = "en";
+    el.innerHTML = langData["en"][key];
+    el.lang = "en";
   }
-  if (RTL_LANG.indexOf(document.getElementById(id).lang) != -1) {
-    document.getElementById(id).style.direction = "rtl";
+  if (RTL_LANG.indexOf(el.lang) != -1) {
+    el.style.direction = "rtl";
   } else {
-    document.getElementById(id).style.direction = "ltr";
+    el.style.direction = "ltr";
   }
 }
 function langReplace(key, codes, values) {
   var str = currentLangData[key];
-  for (var i = 0; i < codes.length; i++) {
+  for (var i = 0; i < codes.length; i++)
     str = str.replace(codes[i], "" + values[i]);
-  }
   return str;
 }
 
 function setReference() {
   var refer, rForm;
-  currentLangData = JSON.parse(JSON.stringify(langData[lang]));
+  currentLangData = JSON.parse(JSON.stringify(langData[lang])); // make a copy
   if (["hi", "ur"].indexOf(lang) == -1) {
     document["refer_hi-ur"].style.display = "none";
   } else {
@@ -448,33 +449,35 @@ function setReference() {
     document.getElementById("refer_fa_friend").innerHTML = "چگونه باید با " + pronoun + " صحبت کنم؟";
     
     if (refer == "f0") {
-      referenceKeys("begin", ["کنید", "&zwnj;تان"], ["کن", "&zwnj;ت"]);
-      referenceKeys("catInstruct", ["کنید", "&zwnj;تان"], ["کن", "&zwnj;ت"]);
+      referenceKeys("begin", ["کنید", "نمرهٔ شما"], ["کن", "نمرهٔ تو"]);
+      referenceKeys("catInstruct", ["کنید", "نمرهٔ شما"], ["کن", "نمرهٔ تو"]);
       referenceKey("catList", "بکنید", "بکن");
-      referenceKeys("scoreNaN", ["رجتان", "کنید"], ["رجت", "کن"]);
+      referenceKeys("scoreNaN", ["رج شما", "کنید"], ["رجت", "کن"]);
       referenceKeys("rampalInstruct", ["کنید", "بنویسین"], ["کن", "بنویس"]);
       referenceKeys("notPossibleGrade", ["برای شما", "بدهید"], ["برای تو", "بده"]);
       referenceKey("fritzExam", "نکنید", "نکن");
       referenceKey("validData", "بکنید", "بکن");
-      referenceKeys("mailSent", ["سختان", "تشکر", "بگردید", "کنید", "بگیرید", "ستتان"], ["سخت", "مرسی", "بگرد", "کن", "بگیر", "ستت"]);
+      referenceKeys("mailSent", ["سخ شما", "تشکر", "بگردید", "کنید", "بگیرید", "خاست شما"], ["سخت", "مرسی", "بگرد", "کن", "بگیر", "خاستت"]);
       referenceKeys("reqScore_0", ["شما ", "بگیرید"], ["", "بگیر"]);
       referenceKeys("reqScore", ["شما ", "بگیرید"], ["", "بگیر"]);
-      referenceKeys("welcome", ["ببینید", "شما", "دارید", "بدانید", "نباشید"], ["ببین", "تو", "داری", "بدان", "نباش"]);
+      referenceKeys("welcome", ["ببینید", "شما", "دارید", "بدانید", "نباشید", "دانید"], ["ببین", "تو", "داری", "بدان", "نباش", "دانی"]);
       referenceKeys("jsSuccess", ["شما ", "دارید", "توانید", "خوانید", "کنید"], ["", "داری", "توانی", "خوانی", "کن"]);
       referenceKeys("intro", ["کنید", "شما ", "بگیرید", "توانید"], ["کن", "", "بگیر", "توانی"]);
       referenceKeys("editInstruct", ["کنید", "نویسید"], ["کن", "نویس"]);
       referenceKey("selectLetter", "کنید", "کن");
-      referenceKeys("copyGradesInstruct", ["کنید", "تتان"], ["کن", "تت"]);
+      referenceKeys("copyGradesInstruct", ["کنید", "ت شما"], ["کن", "تت"]);
       referenceKeys("mobileCopyInstruct", ["شما ", "هستید", "توانید", "کنید"], ["", "هستی", "توانی", "کن"]);
       referenceKeys("pasteGradesInstruct", ["بچسبونید", "کنید"], ["بچسبون", "کن"]);
-      referenceKey("superAlgorithm", "تتان", "تت");
+      referenceKey("superAlgorithm", "ت شما", "تت");
       referenceKey("dontWorry", ["نباشید", "توانید", "کنید"], ["نباش", "توانی", "کن"]);
       referenceKeys("selClass", ["کنید", "توانید"], ["کن", "توانی"]);
       referenceKey("sethClassInstruct", "کنید", "کن");
       referenceKey("pointSystemInstruct", "ببینید", "ببین");
       referenceKey("pointSystemInstruct2", ["توانید", "نویسید"], ["توانی", "نویش"]);
+      referenceKey("minGrade", "توانید", "توانی");
+      referenceKey("fritzExam", "توانید", "توانی");
       referenceKey("selectAbove", "کنید", "کن");
-      referenceKeys("clearDataExp", ["شما را", "آیید", "GPAتان", "کنید", "گذارید"], ["تو را", "آیی", "GPAات", "کن", "گذار"]);
+      referenceKeys("clearDataExp", ["شما را", "آیید", "GPA شما", "کنید","گذارید"], ["تو را", "آیی", "GPAت", "کن", "گذار"]);
       referenceKeys("confirm", ["خوانید", "کنید"], ["خوانی", "کن"]);
       referenceKey("pronunciation", "بگویید", "بگو");
     }
@@ -488,7 +491,7 @@ function referenceKeys(key, o, n) {
     currentLangData[key] = currentLangData[key].replaceAll(o[i], n[i]);
 }
 function setDialect() {
-  var dialect;
+  var dialect = null;
   if (lang == "en") {
     document["dialect_en"].style.display = "";
     dialect = document["dialect_en"]["d_en"].value;
@@ -635,6 +638,7 @@ function setDialect() {
       referenceKeys("dontWorry", ["been entreed yet", "Don't worry", "don't worry", "you can manually", "category after"],
       ["yet been entered", "Grieve not", "grieve not", "thou canst", "category by hand after"]);
     } else if (dialect == "Anglish") {
+      referenceKey("mobileCopyInstruct", "select", "highlight");
       var keys = Object.keys(currentLangData);
       var anglish_english = {"category": "set", "categories": "sets", "creating": "making", "create": "make",
       "system": "framework", "total": "whole", "consider": "deem", "grade": "score", "lazy": "idle",
@@ -655,8 +659,9 @@ function setDialect() {
       "simply": "straightforwardly", "view": "see", "super cool": "mighty cool", "view": "see", "based on": "built on",
       "please": "do", "simplified": "cleaned", "check that": "mark that", "check how much": "see how much",
       "changed": "bent", "change": "bend", "calculate": "reckon", "figure out": "find out", "quizzes": "smalltests",
-      "number": "count", "modify": "bend", "incognito mode": "unnamed mood", "are you sure you": "do you truly",
-      "scale": "reckoning", "grading": "scoring", "search": "hunt", "use": "work", "idea": "thought"};
+      "numbers": "telling", "number": "telling", "modify": "bend", "incognito mode": "unnamed mood", "are you sure you": "do you truly",
+      "scale": "reckoning", "grading": "scoring", "search": "hunt", "use": "work", "idea": "thought",
+      "pain": "soreness", "peace": "shelter", "correct": "right", "image": "drawing"};
       var english_words = Object.keys(anglish_english);
       for (var k = 0; k < keys.length; k++) {
         if (["languages", "numbers"].indexOf(keys[k]) == -1) {
@@ -672,7 +677,7 @@ function setDialect() {
       referenceKey("clearDataExp", "re-put in your GPA", "put in your GPA again");
       referenceKeys("footer", ["October", "June"], ["Fall", "Summer"]);
       referenceKeys("catInstruct", ["Do don't", "an existing name"], ["Don't", "a name from before"]);
-      referenceKeys("selClass", "automatically fill in byhundreds/weighting", "have byhundreds/weighting fill in by themselves")
+      referenceKey("selClass", "automatically fill in byhundreds/weighting", "have byhundreds/weighting fill in by themselves");
       currentLangData["manualButton"] = "Put in grades by hand";
       currentLangData["announcements"] += "<br>If you're wondering, \"Anglish\" is a kind of English that borrows as few " +
         "outland (mostly Latin, Greek, and French) words as can be. Some writers, like George Orwell, thought that " +
@@ -725,7 +730,8 @@ function setDialect() {
       "Telu": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
       "Bali": ["᭐", "᭑", "᭒", "᭓", "᭔", "᭕", "᭖", "᭗", "᭘", "᭙"],
       "Tibt": ["༠", "༡", "༢", "༣", "༤", "༥", "༦", "༧", "༨", "༩"],
-      "Khmr": ["០", "១", "២", "៣", "៤", "៥", "៦", "៧", "៨", "៩"]
+      "Khmr": ["០", "១", "២", "៣", "៤", "៥", "៦", "៧", "៨", "៩"],
+      "Mlym": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     }[dialect];
     document.getElementById("script_sa_lipi").innerHTML = {
       "Deva": "लिपिः (Script) ",
@@ -734,7 +740,8 @@ function setDialect() {
       "Telu": "లిపిః (Script) ",
       "Bali": "ᬮᬶᬧᬶᬄ (Script) ",
       "Tibt": "ལིཔིཿ (Script) ",
-      "Khmr": "លិបិះ (Script) "
+      "Khmr": "លិបិះ (Script) ",
+      "Mlym": "ലിപിഃ (Script) "
     }[dialect];
     const TITLES = ["minExam", "semWithExam", "ritvikCalc", "ritvikHonor"];
     if (dialect == "Deva") {
@@ -814,10 +821,16 @@ function setDialect() {
       "ក", "ខ", "គ", "ឃ", "ង", "ច", "ឆ", "ជ", "ឈ", "ញ",
       "ដ", "ឋ", "ឌ", "ឍ", "ណ", "ត", "ថ", "ទ", "ធ", "ន",
       "ប", "ផ", "ព", "ភ", "ម", "យ", "រ", "ល", "វ", "ឝ", "ឞ", "ស", "ហ", "ឡ",
-      "០", "១", "២", "៣", "៤", "៥", "៦", "៧", "៨", "៩", "&#8203;"]}[dialect];
-      var numberSep = {"Brah": "", "Telu": "", "Bali": "᭞", "Tibt": " ", "Khmr": " "}[dialect];
-      var TITLE_START = {"Brah": "𑁈 ", "Telu": "॥ ", "Bali": "᭚", "Tibt": "༄༎", "Khmr": "៙"}[dialect];
-      var TITLE_END = {"Brah": " 𑁈", "Telu": " ॥", "Bali": "", "Tibt": "", "Khmr": ""}[dialect];
+      "០", "១", "២", "៣", "៤", "៥", "៦", "៧", "៨", "៩", "&#8203;"],
+      "Mlym": ["അ", "ആ", "ഇ", "ഈ", "ഉ", "ഊ", "ഏ", "ഐ", "ഓ", "ഔ", "ഋ",
+      "്", "ാ", "ി", "ീ", "ു", "ൂ", "േ", "ൈ", "ോ", "ൌ", "ൃ", "ം", "ഃ", "।", "॥", "ഽ",
+      "ക", "ഖ", "ഗ", "ഘ", "ങ", "ച", "ഛ", "ജ", "ഝ", "ഞ",
+      "ട", "ഠ", "ഡ", "ഢ", "ണ", "ത", "ഥ", "ദ", "ധ", "ന",
+      "പ", "ഫ", "ബ", "ഭ", "മ", "യ", "ര", "ല", "വ", "ശ", "ഷ", "സ", "ഹ", "ള",
+      "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", " "]}[dialect];
+      var numberSep = {"Brah": "", "Telu": "", "Bali": "᭞", "Tibt": " ", "Khmr": " ", "Mlym": ""}[dialect];
+      var TITLE_START = {"Brah": "𑁈 ", "Telu": "॥ ", "Bali": "᭚", "Tibt": "༄༎", "Khmr": "៙", "Mlym": "॥ "}[dialect];
+      var TITLE_END = {"Brah": " 𑁈", "Telu": " ॥", "Bali": "", "Tibt": "", "Khmr": "", "Mlym": " ॥"}[dialect];
       for (var k = 0; k < keys.length; k++) {
         if (["languages", "numbers"].indexOf(keys[k]) == -1) {
           if (["Bali", "Tibt"].indexOf(dialect) != -1) {
@@ -852,7 +865,6 @@ function setDialect() {
           referenceKey(keys[k], "$WEIGHT%", numberSep+"$WEIGHT%"+numberSep);
           referenceKey(keys[k], "$PTS/$TOT", numberSep+"$PTS/$TOT"+numberSep);
           referenceKey(keys[k], "AHS&#8203;GPA", "AHS GPA");
-          referenceKey(keys[k], "Count&#8203;as", "Count as");
           if (dialect == "Bali") {
             referenceKey(keys[k], "᭞&#8203;", "᭞ ");
             referenceKey(keys[k], "᭟&#8203;", "᭟ ");
@@ -870,15 +882,27 @@ function setDialect() {
               referenceKey(keys[k], "྄"+String.fromCharCode(i), String.fromCharCode(i+0x50))
           }
           if (dialect == "Khmr") {
-            referenceKey(keys[k], "្&#8203;", "៑&#8203;");
+            referenceKeys(keys[k], ["្&#8203;", "្&nbsp;"], ["៑&#8203;", "៑&nbsp;"]);
+            if (currentLangData[keys[k]].endsWith("្")) {
+              currentLangData[keys[k]] = currentLangData[keys[k]].substring(0,
+              currentLangData[keys[k]].length-1) + "៑";
+            }
+          }
+          if (dialect == "Mlym") {
+            referenceKeys(keys[k], ["ണ് ", "ണ്&nbsp"], ["ൺ ", "ൺ&nbsp;"]);
+            referenceKeys(keys[k], ["ന് ", "ന്&nbsp"], ["ൻ ", "ൻ&nbsp;"]);
+            referenceKeys(keys[k], ["ല് ", "ല്&nbsp"], ["ൽ ", "ൽ&nbsp;"]);
+            referenceKeys(keys[k], ["ള് ", "ള്&nbsp"], ["ൾ ", "ൾ&nbsp;"]);
+            referenceKeys(keys[k], ["ക് ", "ക്&nbsp"], ["ൿ ", "ൿ&nbsp;"]);
           }
         }
       }
       for (var k = 0; k < TITLES.length; k++)
         currentLangData[TITLES[k]] = TITLE_START + currentLangData[TITLES[k]] + TITLE_END;
-      referenceKey("confirm", "&#8203;", "​"); // unicode zero width space invisible in quotes
+      referenceKey("confirm", "&#8203;", "​"); // unicode zero width space in quotes
       referenceKey("pronunciation", "ɾɪs&#8203;d", "ɾɪs d");
       referenceKey("pronunciation", "ɾɪs̪&#8203;ˈd̪", "ɾɪs̪ ˈd̪");
+      referenceKey("rampalInstruct", "Count&#8203;as", "Count as");
     }
     currentLangData["languages"] = [];
     for (var k = 0; k < LANGUAGES.length; k++)
@@ -886,6 +910,7 @@ function setDialect() {
   } else {
     document["script_sa"].style.display = "none";
   }
+  return dialect;
 }
 function wordList(arr) {
   var str = "";

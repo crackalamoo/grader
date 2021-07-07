@@ -12,7 +12,7 @@ langData["en"] = {
   "selCat": "Score so far in $CATEGORY: $SCORE%",
   "scoreNaN": "You have a denominator of zero or another error in at least one category. Try adding some assignments.",
   "rampalInstruct": "<b>Do the following for <em>each</em> assignment:</b><br>" +
-    "Click on the assignment<br><img src=\"rampal/rampal1.png\"><br><img src=\"rampal/rampal2.png\"><br>Look at the <strong>\"Count as\"</strong> and enter it above",
+    "Click on the assignment<br>$IMG1<br>Look at the <strong>\"Count as\"</strong> and enter it above<br>$IMG2",
   "catsFound": "$NUMBER categories found: $CATEGORIES",
   "catsFound1": "One category found: $CATEGORIES",
   "pointCheck": "This class is point system",
@@ -68,8 +68,8 @@ langData["en"] = {
   "changeWeightButton": "Change Weighting",
   "weightChanged": "Weighting changed to $WEIGHT%",
   "copyGradesInstruct": "Simply copy your grades from MyBackpack as shown in the image below.",
-  "mobileCopyInstruct": "(If you are on a <strong>mobile device</strong>, including iPads, you can highlight <i>" +
-    "Assignment</i>, then highlight all the grades)",
+  "mobileCopyInstruct": "(If you are on a <strong>mobile device</strong>, including iPads, you can select <i>" +
+    "Assignment</i>, then select all the grades)",
   "pasteGradesInstruct": "Now paste them into the box below and click <strong>Next</strong> under the box:",
   "superAlgorithm": "My super cool algorithm simplified your grades to the following (Category, Score/Possible):",
   "dontWorry": "<strong>If no grades have been entered yet</strong> for a category, that category may be missing from the above list." +
@@ -119,5 +119,6 @@ langData["en"] = {
   "setPoint": "Grading set to point system",
   "search": "Search",
   "pronunciation": "Say: HAH-riss DAHL-vee /ˈhɑːrɪs ˈdɑːlvi/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]",
-  "and": "and"
+  "and": "and",
+  "translateMotto": "<i>From the pain of the numbers to peace</i>"
 };

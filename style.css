@@ -76,12 +76,13 @@ div#languageButtons span {
   flex-wrap: wrap;
 }
 div#languageButtons span div.button {
-  min-width: 50px;
-  max-width: 150px;
+  min-width: 40px;
+  max-width: 120px;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
+  font-size: 14px;
 }
 textarea {
   width: 80%;
@@ -170,6 +171,9 @@ div#creditInfo,div#manualInput,.hidden {
     padding-right: 10px;
     font-size: 80%;
   }
+  div#languageButtons span div.button {
+    font-size: 12px;
+  }
   div.centerButtons {
     margin-left: 10%;
     margin-right: 10%;
@@ -187,6 +191,10 @@ div#creditInfo,div#manualInput,.hidden {
   div#motto p {
     margin-top: 5px;
     margin-bottom: 5px;
+  }
+  div#languageButtons {
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 a {
@@ -229,15 +237,17 @@ select.rtl {
 }
 @font-face {
   font-family: devanagari;
-  src: url('http://www.harysdalvi.com/sub/fonts/ITFDevanagari-Regular-01.ttf') format("truetype");
+  src: local("ITF Devanagari"), url('http://www.harysdalvi.com/sub/fonts/ITFDevanagari-Regular-01.ttf') format("truetype");
   font-weight: normal;
   unicode-range: U+900-97F;
+  font-display: swap;
 }
 @font-face {
   font-family: devanagari;
-  src: url('http://www.harysdalvi.com/sub/fonts/ITFDevanagari-Bold-02.ttf') format("truetype");
+  src: local("ITF Devanagari"), url('http://www.harysdalvi.com/sub/fonts/ITFDevanagari-Bold-02.ttf') format("truetype");
   font-weight: bold;
   unicode-range: U+900-97F;
+  font-display: swap;
 }
 @font-face {
   font-family: devanagari;
@@ -248,23 +258,27 @@ select.rtl {
   font-family: balinese;
   src: url('http://www.harysdalvi.com/sub/fonts/AksaraBali.ttf') format("truetype");
   unicode-range: U+1B00-1B7F;
+  font-display: swap;
 }
 @font-face {
   font-family: tibetan;
   src: url('http://www.harysdalvi.com/sub/fonts/TibMachUni-1.901b.ttf') format("truetype");
   unicode-range: U+F00-FFF;
+  font-display: swap;
 }
 @font-face {
   font-family: nastaliq;
   src: url('http://www.harysdalvi.com/sub/fonts/jameelnoorinastaleeq.ttf') format("truetype");
   font-weight: normal;
   unicode-range: U+600-6FF;
+  font-display: swap;
 }
 @font-face {
   font-family: nastaliq;
   src: url('http://www.harysdalvi.com/sub/fonts/jameelnoorikasheeda.ttf') format("truetype");
   font-weight: bold;
   unicode-range: U+600-6FF;
+  font-display: swap;
 }
 @font-face {
   font-family: nastaliq;
@@ -311,14 +325,14 @@ div#motto {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
 }
-div#motto p {
+div#motto p,p#translateMotto {
   margin-left: 5%;
   margin-right: 5%;
   color: #0050A0;
+  text-align: center;
 }
-div#motto p:lang(la) {
+div#motto p:lang(la), .smallCaps {
   font-variant: small-caps;
 }
 div#motto p:lang(sa) {
@@ -327,6 +341,10 @@ div#motto p:lang(sa) {
 div#motto p:lang(ang) {
   font-family: "Apple Symbols", "Geneva";
 }
-div#motto p:lang(fa), div#motto p:lang(ar) {
-  font-family: "Times New Roman";
+div#motto p:lang(fa) {
+  font-family: "Diwan Kufi", nastaliq, "Times New Roman";
+}
+div#motto p:lang(ar) {
+  font-family: "Diwan Kufi", "Diwan Thuluth", "KufiStandardGK", "Sana",
+    "Times New Roman";
 }
