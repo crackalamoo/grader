@@ -1,7 +1,7 @@
 langData["es"] = {
   "begin": "Para empezar, crea categorías para las notas. Si la clase está basada en el sistema de puntos, haz una categoría llamado \"Total\" o algo así y considérala 100% de tu nota.",
   "catInstruct": "Si la clase está basada en el sistema de puntos, haz una categoría " +
-    "llamado algo como \"Total\" y considérala 100% de tu nota. " +
+    "llamado \"Total\" o algo así y considérala 100% de tu nota. " +
     "Por favor no hagas ninguna categoría con un nombre que ya existe, como soy demasiado " +
     "perezoso para asegurar que no hagas esto.",
   "catList": "<strong>Haz clic en una categoría</strong> para añadir o quitar tareas y para ver la nota de esa categoría.<br><br>Categorías:<br>",
@@ -88,14 +88,14 @@ langData["es"] = {
   "pointSystemInstruct2": "Para el <strong>sistema de puntos</strong>, teclea &ldquo;point system&rdquo; para nombres y ponderaciones.",
   "enterCatNames": "Nombres de las categorías EXACTAMENTE como se ven en MyBackpack:&nbsp;",
   "enterWeights": "Ponderaciones de cada categoría en el orden arriba:&nbsp;",
-  "enterNotes": "Apuntes (opcional):&nbsp;",
+  "enterNotes": "Apuntes (opcionales):&nbsp;",
   "minExam": "Nota mínima necesaria en el examen",
   "wantAtLeast": "Quiero por lo menos:&nbsp;",
   "selectAbove": "Selecciona notas arriba para calcular",
   "semWithExam": "Nota del semestre con examen",
   "noExam": "Sin examen",
   "ritvikCalc": "La calculadora de GPA de AHS de Ritvik Teegavarapu",
-  "ritvikHonor": "Sugerido por y nombrado en honor a Ritvik Teegavarapu",
+  "ritvikHonor": "Sugerida por y nombrada en honor a Ritvik Teegavarapu",
   "clearDataButton": "Borrar datos de GPA",
   "clearDataExp": "Esto te obligará a introducir otra vez tu GPA la próxima vez que visites esta página. " +
     "Si dejas la información en vez de borrarla, y no estás en modo incógnito, todo será guardado " +
@@ -113,7 +113,8 @@ langData["es"] = {
   "5scale": "Escala 5.0",
   "4scale": "Escala 4.0",
   "footer": "Harys &ldquo;Hacer&rdquo; Dalvi<br>octubre de 2019&ndash;junio de 2021",
-  "languages": ["inglés", "español", "portugués", "hindi", "urdu", "persa", "latín", "sánscrito"],
+  "languages": ["inglés", "español", "portugués", "francés", "hindi", "urdu", "persa",
+  "latín", "sánscrito"],
   "numbers": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"],
   "setPoint": "La calificación fue establecida a sistema de puntos",
   "search": "Buscar",
@@ -121,3 +122,4 @@ langData["es"] = {
   "and": "y",
   "translateMotto": "<i>Del dolor de los números a la paz</i>"
 };
+languageLoaded("es");

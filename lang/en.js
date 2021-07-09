@@ -114,7 +114,8 @@ langData["en"] = {
   "4scale": "4.0 scale",
   "announcements": "",
   "footer": "Harys Dalvi<br>October 2019&ndash;June 2021",
-  "languages": ["English", "Spanish", "Portuguese", "Hindi", "Urdu", "Persian", "Latin", "Sanskrit"],
+  "languages": ["English", "Spanish", "Portuguese", "French", "Hindi", "Urdu", "Persian",
+  "Latin", "Sanskrit"],
   "numbers": ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"],
   "setPoint": "Grading set to point system",
   "search": "Search",
@@ -122,3 +123,4 @@ langData["en"] = {
   "and": "and",
   "translateMotto": "<i>From the pain of the numbers to peace</i>"
 };
+if (lang == "en") languageLoaded("en");

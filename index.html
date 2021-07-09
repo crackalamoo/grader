@@ -12,21 +12,13 @@
     window.location.replace("http://harysdalvi.com/ahsgrades");
   }
   </script>
-  <base href="http://www.harysdalvi.com/sub/grader/">
+  <!-- <base href="http://www.harysdalvi.com/sub/grader/"> -->
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
   <script>
   var langData = {}, lang = "en";
   var SANSKRIT_DIGITS;
   </script>
-  <script src="lang/en.js"></script>
-  <script src="lang/es.js"></script>
-  <script src="lang/pt.js"></script>
-  <script src="lang/hi.js"></script>
-  <script src="lang/ur.js"></script>
-  <script src="lang/fa.js"></script>
-  <script src="lang/sa.js"></script>
-  <script src="lang/la.js"></script>
   <script src="lang/lang.js"></script>
 </head>
 <body>
@@ -65,6 +57,9 @@
     <div class="button" onclick="changeLanguage('pt');">Português</div>
   </span>
   <span>
+    <div class="button" onclick="changeLanguage('fr');">Français</div>
+  </span>
+  <span>
     <div class="button" onclick="changeLanguage('hi')">हिन्दी</div>
     <div class="button" onclick="changeLanguage('ur');">اردو</div>
   </span>
@@ -84,6 +79,7 @@
     <option value="en">English</option>
     <option value="es">Español</option>
     <option value="pt">Português</option>
+    <option value="fr">Français</option>
     <option value="hi">हिन्दी</option>
     <option value="ur">اردو</option>
     <option value="fa">فارسی</option>
@@ -599,5 +595,33 @@
 <br><br><br clear="all">
 <div id="footer">hi</div>
 <script src="main.js"></script>
+<script src="lang/en.js"></script>
+<script>
+var preferredLangs = navigator.languages;
+if (preferredLangs.length == 0)
+  preferredLangs.push(navigator.language);
+for (var i = 0; i < preferredLangs.length; i++) {
+  lang = preferredLangs[i];
+  if (lang.indexOf("-") != -1)
+    lang = lang.slice(0, lang.indexOf("-"));
+  if (LANG_CODES.indexOf(lang) == -1) {
+    lang = "en";
+  } else {
+    if (preferredLangs[i].indexOf("-") != -1) {
+      var d = preferredLangs[i].substring(preferredLangs[i].indexOf("-")+1).toUpperCase();
+      if (lang == "en") {
+        if (["US", "CA"].indexOf(d) == -1)
+          document["dialect_en"]["d_en"].value = "UK";
+      }
+      if (lang == "es") {
+        if (d == "ES")
+        document["dialect_es"]["d_es"].value = "ES";
+      }
+    }
+    break;
+  }
+}
+changeLanguage(lang);
+</script>
 </body>
 </html>
