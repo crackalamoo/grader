@@ -56,7 +56,7 @@ langData["la"] = {
   "addAssignment": "Pensum addere",
   "deleteAssignment": "Pensum auferre",
   "editInstruct": "Notam/possibilem scribe. Exempli gratia: 5/6.0, 8.5/9, 3/3.<br>" +
-    "Ut pensum auferre, notam tuam <strong>itidem</strong> scribe et \"Borrar tarea\" click fac.<br>" +
+    "Ut pensum auferre, notam tuam <strong>itidem</strong> scribe et \"Pensum auferre\" click fac.<br>" +
     "Ut <strong>mutare notam pensi</strong>, zephiri pensum adde vel aufer. (Exempli gratia, 5/0).",
   "letterGrade": "Nota litterae:&nbsp;",
   "selectLetter": "Notam litterae elige",
@@ -112,8 +112,8 @@ langData["la"] = {
   "ahsWeighted": "GPA ponderatur (ponderatio AHS)",
   "5scale": "Lanx 5.0",
   "4scale": "Lanx 4.0",
-  "footer": "Harysi Dalvici<br>Octobris anno MMXIX&ndash;Ivnii anno MMXXI",
-  "languages": ["lingua anglica", "lingua hispanica", "lingua lusitana", "lingua hindica", "lingua urdu",
+  "footer": "Harysi Dalvici<br>Octobris anno MMXIX&ndash;Ivnii anno MMXXI<br>MMDCCLXXII&ndash;MMDCCLXXIV ab vrbe condita",
+  "languages": ["lingua anglica", "lingua hispanica", "lingua lusitana", "lingua francogallica", "lingua hindica", "lingua urdu",
   "lingua persica", "lingua latina", "lingua sanscrita"],
   "numbers": ["unum", "duo", "tria", "quattuor", "quinque", "sex", "septem", "octo", "novem", "decem"],
   "setPoint": "Taxatio rationem punctorum factus est",
@@ -122,3 +122,4 @@ langData["la"] = {
   "and": "&amp;",
   "translateMotto": "<span class=\"smallCaps\">Ab Dolore Nvmerorvm ad Pacem</span>"
 };
+languageLoaded("la");

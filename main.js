@@ -6,7 +6,7 @@ var imgs = document.getElementsByTagName("img");
 var autoCalc = [];
 var semesters = [];
 var gpaData = [];
-const COMMA_DECIMAL_LANG = ["pt"];
+const COMMA_DECIMAL_LANG = ["pt", "fr"];
 const URDU_DIGIT_LANG = ["ur", "fa"];
 const DEVANAGARI_DIGIT_LANG = ["hi"];
 const URDU_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
@@ -42,33 +42,7 @@ function changeMode(mode) {
 }
 changeMode("start");
 
-var preferredLangs = navigator.languages;
-if (preferredLangs.length == 0)
   preferredLangs.push(navigator.language);
-for (var i = 0; i < preferredLangs.length; i++) {
-  lang = preferredLangs[i];
-  if (lang.indexOf("-") != -1)
-    lang = lang.slice(0, lang.indexOf("-"));
-  if (LANG_CODES.indexOf(lang) == -1) {
-    lang = "en";
-  } else {
-    if (preferredLangs[i].indexOf("-") != -1) {
-      var d = preferredLangs[i].substring(preferredLangs[i].indexOf("-")+1).toUpperCase();
-      if (lang == "en") {
-        if (["US", "CA"].indexOf(d) == -1)
-          document["dialect_en"]["d_en"].value = "UK";
-      }
-      if (lang == "es") {
-        if (d == "ES")
-        document["dialect_es"]["d_es"].value = "ES";
-      }
-    }
-    break;
-  }
-}
-currentLangData = langData[lang];
-changeLanguage(lang);
-
 function makeNumber(grade, possible=100.0) {
   switch(grade) {
     case "A+": grade=98.5; break;
@@ -162,9 +136,10 @@ function formatInt(num, nativeDigits=true, upper=false, gender=null, writeNum=tr
   var n = num.toString();
   if (1 <= num && num <= 10 && writeNum == true) {
     n = currentLangData.numbers[num-1];
-    if (gender != null && ["es", "pt"].indexOf(lang) != -1) {
+    if (gender != null && ["es", "pt", "fr"].indexOf(lang) != -1) {
       if (num == 1)
-        n = {"es": ["un", "una"], "pt": ["um", "uma"]}[lang][gender];
+        n = {"es": ["un", "una"], "pt": ["um", "uma"],
+        "fr": ["un", "une"]}[lang][gender];
     }
     if (upper)
       n = n.substring(0, 1).toUpperCase() + n.substring(1);
@@ -305,7 +280,6 @@ if(typeof(String.prototype.trim) === "undefined") {
 if (typeof(Storage) !== "undefined") {
   if (localStorage.gpaData) {
     gpaData = JSON.parse(localStorage.getItem("gpaData"));
-    updateGpa();
     document.getElementById("clearLocalStorage").style.display = "block";
   }
 }

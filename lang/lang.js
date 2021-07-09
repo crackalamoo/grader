@@ -1,15 +1,27 @@
 const SCRIPT_ID = ["javascript", "start", "auto", "finalAuto", "autoCategories", "manual", "category",
   "editCategory", "addClass", "semester", "gpaCalc", "seth_img", "langSelect", "examGrade", "semesterGrade",
   "setLangForm", "intro", "footer", "translateMotto"];
-const LANGUAGES = ["English", "Español", "Português", "हिन्दी", "اردو", "فارسی", "Latinum", "संस्कृतम्"];
-const LANG_CODES = ["en", "es", "pt", "hi", "ur", "fa", "la", "sa"];
+const LANGUAGES = ["English", "Español", "Português", "Français", "हिन्दी", "اردو", "فارسی", "Latinum", "संस्कृतम्"];
+const LANG_CODES = ["en", "es", "pt", "fr", "hi", "ur", "fa", "la", "sa"];
 const RTL_LANG = ["ur", "fa"];
 
-const MY_EMAIL = "harysdalvi@gmail.com"
+const MY_EMAIL = "harysdalvi@gmail.com";
+
+var usedLangs = ["en"];
 
 var currentLangData;
 function changeLanguage(l) {
   lang = l;
+  if (usedLangs.indexOf(l) == -1) {
+    usedLangs.push(l);
+    var script = document.createElement('script');
+    script.src = "lang/"+l+".js";
+    document.body.appendChild(script);
+  } else {
+    languageLoaded(l);
+  }
+}
+function languageLoaded(l) {
   currentLangData = langData[l];
   setReference();
   var dialect = setDialect();
@@ -162,7 +174,7 @@ function changeLanguage(l) {
     }
   }
   var classicLangs = {"en": "ang la", "es": "la", "pt": "la", "hi": "sa fa",
-  "ur": "sa fa", "fa": "peo ar", "la": "grk", "sa": ""}[lang].split(" ");
+  "ur": "sa fa", "fa": "peo ar", "la": "grk", "sa": "", "fr": "la"}[lang].split(" ");
   if (l == "en" && dialect == "Anglish")
     classicLangs = ["ang"];
   if (l == "en" && dialect == "ASCII")
@@ -477,7 +489,9 @@ function setReference() {
       referenceKey("minGrade", "توانید", "توانی");
       referenceKey("fritzExam", "توانید", "توانی");
       referenceKey("selectAbove", "کنید", "کن");
-      referenceKeys("clearDataExp", ["شما را", "آیید", "GPA شما", "کنید","گذارید"], ["تو را", "آیی", "GPAت", "کن", "گذار"]);
+      referenceKeys("clearDataExp", ["شما را", "آیید", "GPA شما",
+      "کنید","گذارید", "نیستید"], ["تو را", "آیی", "GPAت",
+      "کن", "گذار", "نیستی"]);
       referenceKeys("confirm", ["خوانید", "کنید"], ["خوانی", "کن"]);
       referenceKey("pronunciation", "بگویید", "بگو");
     }
@@ -703,8 +717,9 @@ function setDialect() {
     dialect = document["dialect_fa"]["d_fa"].value;
     if (dialect == "AF") {
       referenceKey("mailSent", "مرسی!", "تشکر!");
-      // Solar Hijri Persian vs Zodiac and Gregorian French- vs English-derived months
-      referenceKeys("footer", ["مهر", "تیر", "اکتبر", "ژوئن"], ["میزان", "سرطان", "اکتوبر", "جون"]);
+      // Imperial Persian vs Hijri Zodiac and Gregorian French- vs English-derived months
+      referenceKeys("footer", ["مهر ۲۵۷۸ شاهنشاهی", "تیر ۲۵۸۰ شاهنشاهی", "اکتبر", "ژوئن"],
+      ["میزان ۱۳۹۸ هجری", "سرطان ۱۴۰۰ هجری", "اکتوبر", "جون"]);
       referenceKeys("jsSuccess", ["استفاده", "دارید می"], ["استعمال", "می"]);
       referenceKey("begin", "استفاده", "استعمال");
       referenceKey("catInstruct", "استفاده", "استعمال");
@@ -905,8 +920,8 @@ function setDialect() {
       referenceKey("rampalInstruct", "Count&#8203;as", "Count as");
     }
     currentLangData["languages"] = [];
-    for (var k = 0; k < LANGUAGES.length; k++)
-      currentLangData["languages"].push(currentLangData["l"+k]);
+    for (var k = 0; k < LANG_CODES.length; k++)
+      currentLangData["languages"].push(currentLangData["l_"+LANG_CODES[k]]);
   } else {
     document["script_sa"].style.display = "none";
   }
@@ -920,7 +935,7 @@ function wordList(arr) {
   if (arr.length == 1) return arr[0];
   if (RTL_LANG.indexOf(lang) != -1)
     comma = "&rlm;، ";
-  if (["es", "pt"].indexOf(lang) != -1)
+  if (["es", "pt", "fr"].indexOf(lang) != -1)
     oxford = false;
   for (var i = 0; i < arr.length-2; i++)
     str += arr[i] + comma;
