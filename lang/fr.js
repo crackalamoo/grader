@@ -2,16 +2,15 @@ langData["fr"] = {
   "begin": "Pour commencer, créez catégories pour las notes. Si la classe est basé sur le système de points, faites une catégorie qui s'apelle "+
   "&laquo;&nbsp;Total&nbsp;&raquo; ou quelque chose ainsi et considérez-le 100% de votre note.",
   "catInstruct": "Si la classe est basé sur le système de points, faites une catégorie " +
-    "qui s'apelle &laquo;&nbsp;Total&nbsp;&raquo; ou quelque chose ainsi et considérez-le 100% de votre note. " +
-    "S'il vous plait ne faites pas de catégories avec un nom qui déjà existe, comme je suis trop " +
-    "paresseux pour m'assurer que vous ne faites pas ça.",
+    "qui s'apelle &laquo;&nbsp;Total&nbsp;&raquo; ou quelque chose ainsi et considérez-le 100% de votre note.",
+  "catNameExists": "Il y a déjà une catégorie avec ce nom",
   "catList": "<strong>Cliquez sur une catégorie</strong> pour ajouter ou supprimer devoirs et pour voir la note de cette catégorie.<br><br>Catégories:<br>",
   "catAvg": "Moyenne de $CATEGORY: $NUMBER%",
   "avg": "<b>Note jusqu'à présent dans cette classe: $SCORE%</b> (Note de lettre: $LETTER)<br>" +
     "GPA sans pondération: $GPA<br>Somme de toutes las catégories: $SUM% (Il doit être 100%)<br>",
   "noCat": "Il n'y a pas de catégorie sélectionné actuellement",
   "selCat": "Note jusqu'à présent dans $CATEGORY: $SCORE%",
-  "scoreNaN": "Vous avez un dénominateur de zéro ou autre erreur en au moins une catégorie. Essayez d'ajouter des devoirs.",
+  "scoreNaN": "Vous avez un dénominateur de zéro ou autre erreur dans au moins une catégorie. Essayez d'ajouter des devoirs.",
   "rampalInstruct": "<b>Faites ce qui suit pour <em>chaque</em> devoir:</b><br>" +
     "Cliquez sur le devoir<br>$IMG1<br>Voyez le <strong>&laquo;&nbsp;Count as&nbsp;&raquo;</strong> et introduisez-le en haut<br>$IMG2",
   "catsFound": "$NUMBER catégories trouvées: $CATEGORIES",
@@ -37,13 +36,13 @@ langData["fr"] = {
     " contactez-moi à $EMAIL; peut-être que j'ai des problèmes en comprendre votre requête.",
   "semGrade": "Note du semestre: $LETTER ($NUMBER%)",
   "gpaClass": "$INDEX: $GPA ($GRADE, $LEVEL, $CREDITS crédits)",
-  "gpaSum": "<b>Summe de GPA: $SUM<br>Total des crédits: $CREDITS<br>GPA cumulative: $GPA</b>",
+  "gpaSum": "<b>Somme de GPA: $SUM<br>Total des crédits: $CREDITS<br>GPA cumulative: $GPA</b>",
   "reqScore_0": "Vous devez recevoir $PTS/$TOT pour obtenir un $GRADE% dans la classe",
   "reqScore": "Vous devez recevoir $PTS/$TOT ($PERCENT%) pour obtenir un $GRADE% dans la classe",
   "setLang": "Langue:&nbsp;",
   "welcome": "Bienvenue à la calculatrice de notes. Avant tout, vous devez assurer que vous avez " +
     "JavaScript. Si vous ne savez pas ce que c'est, n'inquiétez-vous pas. Je vais le faire pour vous:",
-  "jsSuccess": "Si vous lisez ce message, vous avez JavaScript et vous pouvez utiliser ce page.",
+  "jsSuccess": "Si vous lisez ce message, vous avez JavaScript et vous pouvez utiliser cette page.",
   "quarterGrades": "Notes du trimestre",
   "intro": "<b>NOTE:</b> malgré mon amor pour les ordinateurs, je suis humain aussi. S'il vous plait contactez-moi à $EMAIL si vous trouvez une erreur." +
     "<br><strong>Ajoutez cette page aux favoris</strong> afin que vous puissiez la trouver facilement." +
@@ -58,7 +57,7 @@ langData["fr"] = {
   "deleteAssignment": "Effacer devoir",
   "editInstruct": "Introduisez note/possible. Exemples: 5/6.0, 8.5/9, 3/3.<br>" +
     "Pour effacer un devoir, introduisez votre note <strong>de la même manière</strong> et cliquez sur &laquo;&nbsp;Effacer devoir&nbsp;&raquo;.<br>" +
-    "Pour <strong>changer la note de un devoir</strong>, ajoutez ou effacez un devoir de 0 points (ex: 5/0).",
+    "Pour <strong>changer la note d'un devoir</strong>, ajoutez ou effacez un devoir de 0 points (ex: 5/0).",
   "letterGrade": "Note de lettre:&nbsp;",
   "selectLetter": "Sélectionnez une note de lettre",
   "whatNeed": "De quoi ai-je besoin à un devoir à venir?",
@@ -68,12 +67,13 @@ langData["fr"] = {
   "calcRequiredButton": "Calculer note nécessaire",
   "changeWeightButton": "Changer pondération",
   "weightChanged": "La pondération a été changé à $WEIGHT%",
+  "deleteCatButton": "Effacer catégorie",
   "copyGradesInstruct": "Simplement copiez vos notes de MyBackpack comme montré dans l'image ci-dessous.",
   "mobileCopyInstruct": "(Si vous utilisez un <strong>appareil mobile</strong>, y compris iPads, vous pouvez sélectionner <i>" +
     "Assignment</i> et après sélectionner toutes las notes)",
   "pasteGradesInstruct": "Maintenant collez-les dans la case ci-dessous et cliquez sur <strong>Suivant</strong> sous la case:",
   "superAlgorithm": "Mon algorithme chouette a simplifié vos notes à ce qui suit (catégorie, note/possible):",
-  "dontWorry": "<strong>Si notas ne sont encore entrées</strong> d'une catégorie, cette catégorie ne sera pas dans la liste ci-dessus." +
+  "dontWorry": "<strong>Si notes ne sont encore entrées</strong> d'une catégorie, cette catégorie ne sera pas dans la liste ci-dessus." +
     " N'inquiétez-vous pas, vous pouvez ajouter cette catégorie par la main après le calcul. Également n'inquiétez-vous pas si cette classe" +
     " est basé sur le <strong>système de points</strong> au lieu de catégories.",
   "shouldContinue": "Dois continuer?",
@@ -95,11 +95,11 @@ langData["fr"] = {
   "selectAbove": "Sélectionnez notes ci-dessus pour calculer",
   "semWithExam": "Note du semestre avec l'examen",
   "noExam": "Pas d'examen",
-  "ritvikCalc": "La calculatrice de GPA de AHS de Ritvik Teegavarapu",
+  "ritvikCalc": "La calculatrice de GPA d'AHS de Ritvik Teegavarapu",
   "ritvikHonor": "Suggérée par et nommée en l'honneur de Ritvik Teegavarapu",
   "clearDataButton": "Effacer les données de GPA",
   "clearDataExp": "Cela vous obligera à introduire de nouveau votre GPA la prochaine fois que vous visitez cette page. " +
-    "Si vous laissez l'information au lieu de le effacer, et vous n'êtes pas en mode navigation privée, tout sera sauvé " +
+    "Si vous laissez l'information au lieu de l'effacer, et vous n'êtes pas en mode navigation privée, tout sera sauvé " +
     "pour la prochaine fois que vous visitez cette page.",
   "creditNum": "Crédit numéro&nbsp;",
   "getCreditButton": "Voir crédit",
@@ -110,11 +110,12 @@ langData["fr"] = {
   "examGrade": "Note du examen:",
   "semester": "Semestre",
   "quarter": "Trimestre",
-  "ahsWeighted": "GPA pondérée (pondération de AHS)",
+  "ahsWeighted": "GPA pondérée (pondération d'AHS)",
   "5scale": "Barème 5.0",
   "4scale": "Barème 4.0",
-  "footer": "Harys Dalvi<br>octubre de 2019&ndash;junio de 2021",
-  "languages": ["anglais", "espagnol", "portugais", "français", "hindi", "ourdou", "persan", "latin", "sanskrit"],
+  "footer": "Harys Dalvi<br>octobre de 2019&ndash;juillet de 2021",
+  "languages": ["anglais", "espagnol", "portugais", "français", "hindi", "ourdou", "bengali",
+  "persan", "latin", "sanskrit"],
   "numbers": ["un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix"],
   "setPoint": "La notation est réglée au système de points",
   "search": "Rechercher",

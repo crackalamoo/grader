@@ -11,6 +11,7 @@ const URDU_DIGIT_LANG = ["ur", "fa"];
 const DEVANAGARI_DIGIT_LANG = ["hi"];
 const URDU_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
 const DEVANAGARI_DIGITS = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
+const BENGALI_DIGITS = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
 
 function lazyLoad(group) {
   for (var i = 0; i < imgs.length; i++) {
@@ -42,7 +43,6 @@ function changeMode(mode) {
 }
 changeMode("start");
 
-  preferredLangs.push(navigator.language);
 function makeNumber(grade, possible=100.0) {
   switch(grade) {
     case "A+": grade=98.5; break;
@@ -118,6 +118,10 @@ function roundDecimal(num, places) {
     for (var i = 0; i < SANSKRIT_DIGITS.length; i++)
       n = n.replaceAll(new RegExp(""+i,"g"), SANSKRIT_DIGITS[i]);
   }
+  if (["bn"].indexOf(lang) != -1) {
+    for (var i = 0; i < BENGALI_DIGITS.length; i++)
+      n = n.replaceAll(new RegExp(""+i,"g"), BENGALI_DIGITS[i]);
+  }
   if (RTL_LANG.indexOf(lang) != -1 && num < 0)
     n = n.substring(1) + "-";
 
@@ -137,15 +141,16 @@ function formatInt(num, nativeDigits=true, upper=false, gender=null, writeNum=tr
   if (1 <= num && num <= 10 && writeNum == true) {
     n = currentLangData.numbers[num-1];
     if (gender != null && ["es", "pt", "fr"].indexOf(lang) != -1) {
-      if (num == 1)
+      if (num == 1) {
         n = {"es": ["un", "una"], "pt": ["um", "uma"],
         "fr": ["un", "une"]}[lang][gender];
+      }
     }
     if (upper)
       n = n.substring(0, 1).toUpperCase() + n.substring(1);
     return n;
   }
-  if (nativeDigits || ["fa", "sa"].indexOf(lang) != -1) {
+  if (nativeDigits || ["fa", "sa", "bn"].indexOf(lang) != -1) {
     if (DEVANAGARI_DIGIT_LANG.indexOf(lang) != -1) {
       for (var i = 0; i < DEVANAGARI_DIGITS.length; i++)
         n = n.replaceAll(new RegExp(""+i,"g"), DEVANAGARI_DIGITS[i]);
@@ -155,6 +160,10 @@ function formatInt(num, nativeDigits=true, upper=false, gender=null, writeNum=tr
         return "0";
       for (var i = 0; i < URDU_DIGITS.length; i++)
         n = n.replaceAll(new RegExp(""+i,"g"), URDU_DIGITS[i]);
+    }
+    if (lang == "bn") {
+      for (var i = 0; i < BENGALI_DIGITS.length; i++)
+        n = n.replaceAll(new RegExp(""+i,"g"), BENGALI_DIGITS[i]);
     }
     if (lang == "sa") {
       for (var i = 0; i < SANSKRIT_DIGITS.length; i++)
@@ -237,12 +246,39 @@ function updateCategories() {
   if (myNaN(totalScore))
     categoryP.innerHTML += "<br><b>" + currentLangData.scoreNaN + "</b>";
 }
-function createCategory() {
-  currentCategory = new Category(document.category.name.value, new Number(document.category.percent.value));
+function addCatScreen() {
+  document.getElementById("catError").innerHTML = "";
   document.category.name.value = "";
   document.category.percent.value = "";
-  updateCategories();
-  changeMode("manual");
+  changeMode("category");
+}
+function createCategory() {
+  var canCreate = true;
+  for (var i = 0; i < categories.length; i++) {
+    if (categories[i].name == document.category.name.value) {
+      canCreate = false;
+      break;
+    }
+  }
+  if (canCreate) {
+    currentCategory = new Category(document.category.name.value, new Number(document.category.percent.value));
+    document.category.name.value = "";
+    document.category.percent.value = "";
+    updateCategories();
+    changeMode("manual");
+  } else {
+    document.category.name.value = "";
+    document.getElementById("catError").innerHTML = currentLangData.catNameExists;
+  }
+}
+function deleteCategory() {
+  var sure = confirm(currentLangData.confirm);
+  if (sure) {
+    categories.splice(categories.indexOf(currentCategory), 1);
+    currentCategory = null;
+    updateCategories();
+    changeMode("manual");
+  }
 }
 function addAssignment() {
   currentCategory.add(document.editCategory.score.value, document.editCategory.possible.value);
@@ -366,7 +402,7 @@ function autoGrade(rampal=false) {
 }
 document.getElementById("inputGrades").addEventListener('paste', (event) => {setTimeout(function() {
   autoGrade();
-  window.scrollBy(0, -100);
+  window.scrollBy(0, -300);
 }, 5)});
 
 function autoCats() {
@@ -707,6 +743,13 @@ function calcRequired() {
   currentCategory.total = initial_score[0];
   currentCategory.possible = initial_score[1];
 }
+function manualButton() {
+  changeMode("manual");
+  document.getElementById("manualInput").style.display = "block";
+  document.getElementById("manualInput").innerHTML = currentLangData.edit;
+  document.getElementById("autoCalculation").innerHTML = currentLangData.newClass;
+}
+
 function dayNightTheme() {
   var hour = new Date().getHours();
   if (hour <= 6 || hour >= 21) {

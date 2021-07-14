@@ -1,9 +1,8 @@
 langData["en"] = {
   "begin": "Begin by creating categories for grades. If the class is based on point system, make a category called something like \"Total\" and consider it 100% of your grade.",
   "catInstruct": "If the class is based on point system, make a category " +
-    "called something like \"Total\" and consider it 100% of your grade. " +
-    "Please don't make a category with an existing name, as I am too " +
-    "lazy to make sure you don't do so.",
+    "called something like \"Total\" and consider it 100% of your grade.",
+  "catNameExists": "There is already a category with this name",
   "catList": "<strong>Click a category</strong> to add or remove assignments and to see that category's score.<br><br>Categories:<br>",
   "catAvg": "Average in $CATEGORY: $NUMBER%",
   "avg": "<b>Score so far in this class: $SCORE%</b> (Letter grade: $LETTER)<br>" +
@@ -67,6 +66,7 @@ langData["en"] = {
   "calcRequiredButton": "Calculate Required Score",
   "changeWeightButton": "Change Weighting",
   "weightChanged": "Weighting changed to $WEIGHT%",
+  "deleteCatButton": "Delete Category",
   "copyGradesInstruct": "Simply copy your grades from MyBackpack as shown in the image below.",
   "mobileCopyInstruct": "(If you are on a <strong>mobile device</strong>, including iPads, you can select <i>" +
     "Assignment</i>, then select all the grades)",
@@ -113,9 +113,9 @@ langData["en"] = {
   "5scale": "5.0 scale",
   "4scale": "4.0 scale",
   "announcements": "",
-  "footer": "Harys Dalvi<br>October 2019&ndash;June 2021",
-  "languages": ["English", "Spanish", "Portuguese", "French", "Hindi", "Urdu", "Persian",
-  "Latin", "Sanskrit"],
+  "footer": "Harys Dalvi<br>October 2019&ndash;July 2021",
+  "languages": ["English", "Spanish", "Portuguese", "French", "Hindi", "Urdu", "Bengali",
+  "Persian", "Latin", "Sanskrit"],
   "numbers": ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"],
   "setPoint": "Grading set to point system",
   "search": "Search",

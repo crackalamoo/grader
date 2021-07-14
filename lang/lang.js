@@ -1,8 +1,9 @@
 const SCRIPT_ID = ["javascript", "start", "auto", "finalAuto", "autoCategories", "manual", "category",
   "editCategory", "addClass", "semester", "gpaCalc", "seth_img", "langSelect", "examGrade", "semesterGrade",
   "setLangForm", "intro", "footer", "translateMotto"];
-const LANGUAGES = ["English", "Español", "Português", "Français", "हिन्दी", "اردو", "فارسی", "Latinum", "संस्कृतम्"];
-const LANG_CODES = ["en", "es", "pt", "fr", "hi", "ur", "fa", "la", "sa"];
+const LANGUAGES = ["English", "Español", "Português", "Français", "हिन्दी", "اردو",
+"বাংলা", "فارسی", "Latinum", "संस्कृतम्"];
+const LANG_CODES = ["en", "es", "pt", "fr", "hi", "ur", "bn", "fa", "la", "sa"];
 const RTL_LANG = ["ur", "fa"];
 
 const MY_EMAIL = "harysdalvi@gmail.com";
@@ -63,6 +64,7 @@ function languageLoaded(l) {
   langHTML("numPointsWorth");
   langHTML("calcRequiredButton");
   langHTML("changeWeightButton");
+  langHTML("deleteCatButton");
   document.editCategory.letter.options[0].innerHTML = "-- " + d.selectLetter + " --";
   document.editCategory.letter2.options[0].innerHTML = "-- " + d.selectLetter + " --";
   langHTML("copyGradesInstruct");
@@ -129,8 +131,10 @@ function languageLoaded(l) {
     } else if (["hi"].indexOf(l) != -1) {
       document.getElementById(SCRIPT_ID[i]).style.direction = "";
       document.getElementById(SCRIPT_ID[i]).style.fontFamily = 'devanagari';
-    }
-    else if (l == "sa") {
+    } else if (l == "bn") {
+      document.getElementById(SCRIPT_ID[i]).style.direction = "";
+      document.getElementById(SCRIPT_ID[i]).style.fontFamily = 'bengali';
+    } else if (l == "sa") {
       document.getElementById(SCRIPT_ID[i]).style.direction = "";
       document.getElementById(SCRIPT_ID[i]).style.fontFamily = '"Times New Roman", "Devanagari MT", devanagari, tibetan, balinese';
     } else if (l == "fa") {
@@ -174,7 +178,7 @@ function languageLoaded(l) {
     }
   }
   var classicLangs = {"en": "ang la", "es": "la", "pt": "la", "hi": "sa fa",
-  "ur": "sa fa", "fa": "peo ar", "la": "grk", "sa": "", "fr": "la"}[lang].split(" ");
+  "ur": "sa fa", "fa": "peo ar", "la": "grk", "sa": "", "fr": "la", "bn": "sa"}[lang].split(" ");
   if (l == "en" && dialect == "Anglish")
     classicLangs = ["ang"];
   if (l == "en" && dialect == "ASCII")
@@ -310,6 +314,7 @@ function setReference() {
         referenceKey("editInstruct", "निकालो", "निकालें");
         referenceKey("delete", "निकालो", "निकालें");
         referenceKey("selectLetter", "लो", "लें");
+        referenceKey("deleteCatButton", "ओ", "एँ");
       }
       if (["mf0", "ff0"].indexOf(refer) != -1) {
         ["reqScore_0", "reqScore", "welcome", "intro", "copyGradesInstruct", "superAlgorithm",
@@ -369,6 +374,7 @@ function setReference() {
         referenceKey("delete", "نکالو", "نکالیں");
         referenceKey("editInstruct", "نکالو", "نکالیں");
         referenceKey("selectLetter", "لو", "لیں");
+        referenceKey("deleteCatButton", "ؤ", "ئیں");
       }
       if (["mf0", "ff0"].indexOf(refer) != -1) {
         ["reqScore_0", "reqScore", "welcome", "intro", "copyGradesInstruct", "superAlgorithm",
@@ -511,12 +517,12 @@ function setDialect() {
     dialect = document["dialect_en"]["d_en"].value;
     document.getElementById("d_en_dialect").innerHTML = "Dialect: ";
     if (dialect == "UK") {
-      ["begin", "catInstruct", "edit", "notPossibleGrade", "minGrade", "fritzExam", "quarterGrades",
-      "semGradesButton", "mobileCopyInstruct", "manualButton", "selectAbove", "semWithExam",
-      "quarter13", "quarter24", "copyGradesInstruct"].forEach(
+      ["edit", "notPossibleGrade", "minGrade", "fritzExam",
+      "mobileCopyInstruct", "manualButton", "minExam",
+      "copyGradesInstruct", "dontWorry"].forEach(
           key => currentLangData[key]=currentLangData[key].replaceAll("grade", "mark"));
       referenceKey("welcome", "you need to make", "you've got to make");
-      referenceKey("semGrade", "Grade", "Mark");
+      referenceKey("begin", "grades", "marks");
       referenceKey("examGrade", "grade", "score");
       referenceKey("setPoint", "Grading", "Scoring");
       referenceKey("shouldContinue", "Should", "Shall");
@@ -565,8 +571,9 @@ function setDialect() {
       referenceKeys("begin", ["creating categories", "scores", "if the class is based", "point system", "category", "called something like", "your"],
       ["fashioning Categories", "Scores", "should the Class be based", "the Point System", "Category", "whose name is like", "thy"]);
       referenceKeys("catInstruct",
-      ["scores", "if the class is based", "point system", "category", "called something like", "your", "lazy", "you don't do so", ", as", "Please don't make"],
-      ["Scores", "should the Class be based", "the Point System", "Category", "whose name is like", "thy", "idle", "thou doest not so", ", for", "Prithee make not"]);
+      ["scores", "if the class is based", "point system", "category", "called something like", "your"],
+      ["Scores", "should the Class be based", "the Point System", "Category", "whose Name is like", "thy"]);
+      referenceKeys("catNameExists", ["is already", "category", "name"], ["already is", "Category", "Name"]);
       referenceKey("catList", "that category's score", "the Score of that category");
       referenceKeys("avg", ["class", "categories", "grade"], ["Class", "Categories", "Score"]);
       referenceKeys("noCat", ["category", "currently", "selected"], ["Category", "now", "chosen"]);
@@ -658,7 +665,7 @@ function setDialect() {
       "system": "framework", "total": "whole", "consider": "deem", "grade": "score", "lazy": "idle",
       "adding": "putting in", "add": "put in", "remove": "take out", "delete": "take out", "an assignment": "a chore",
       "assignment": "chore", "average": "norm", "class": "field", "sum": "whole", "denominator": "bottom", "zero": "naught",
-      "error": "mistake", "entered": "put in", "enter it": "put it in", "enter": "put in", "continue": "go on", "submit": "send", "manually": "by hand",
+      "error": "mistake", "entered": "put in", "enter its": "put in its", "enter it": "put it in", "enter": "put in", "continue": "go on", "submit": "send", "manually": "by hand",
       "apply": "set", "unfortunately": "sadly", "is not possible": "cannot be", "/Possible": "/Could-be",
       "semester": "halfyear", "quarter": "season", "minimum": "least", "required": "needed", "examples": "like", "exam": "test",
       "valid": "sound", "response": "answer", "available": "at hand", "contact": "write to",
@@ -667,7 +674,7 @@ function setDialect() {
       "human": "flesh and blood", "selecting": "choosing", "selected": "chosen", "select": "choose", "calculation": "reckoning",
       "percentage": "byhundred", "percent": "byhundred", "(ex:": "(like:", "point": "mark", "letter": "rune",
       "credit to": "thanks to", "credit": "schooltime", "note": "writ", "type": "write", "EXACT": "WORD FOR WORD",
-      "appear": "seem", "order": "row", "optional": "not needed", "suggested": "put forward",
+      "appear": "seem", "order": "row", "optional": "not needed", "suggested": "put forward", "computer": "reckoner",
       "in honor of": "to thank", "clearing": "wiping", "clear": "wipe", "data": "input", "visit": "come to", "force you to": "bind you to",
       "page": "websheet", "saved": "kept", "edit": "work", "mobile device": "handheld tool", "including": "along with",
       "simply": "straightforwardly", "view": "see", "super cool": "mighty cool", "view": "see", "based on": "built on",
@@ -718,8 +725,8 @@ function setDialect() {
     if (dialect == "AF") {
       referenceKey("mailSent", "مرسی!", "تشکر!");
       // Imperial Persian vs Hijri Zodiac and Gregorian French- vs English-derived months
-      referenceKeys("footer", ["مهر ۲۵۷۸ شاهنشاهی", "تیر ۲۵۸۰ شاهنشاهی", "اکتبر", "ژوئن"],
-      ["میزان ۱۳۹۸ هجری", "سرطان ۱۴۰۰ هجری", "اکتوبر", "جون"]);
+      referenceKeys("footer", ["مهر ۲۵۷۸ شاهنشاهی", "تیر ۲۵۸۰ شاهنشاهی", "اکتبر", "ژوئیه"],
+      ["میزان ۱۳۹۸ هجری", "سرطان ۱۴۰۰ هجری", "اکتوبر", "جولای"]);
       referenceKeys("jsSuccess", ["استفاده", "دارید می"], ["استعمال", "می"]);
       referenceKey("begin", "استفاده", "استعمال");
       referenceKey("catInstruct", "استفاده", "استعمال");
