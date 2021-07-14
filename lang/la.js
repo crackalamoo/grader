@@ -1,9 +1,8 @@
 langData["la"] = {
   "begin": "Ut incipere, genera pro notas crea. Si in disciplinam fundatur ratio punctorum, facito genus nominatur alquid simile \"Total\" et eam 100% notae tuae arbitrator.",
   "catInstruct": "Si in disciplinam fundatur ratio punctorum, facito genus " +
-    "nominatur alquid simile \"Total\" et eam 100% notae tuae arbitrator. " +
-    "Obsecro, noli creato quid genus cum nomine existenti enim nimium piger " +
-    "sum ut prohibere tibi hoc.",
+    "nominatur alquid simile \"Total\" et eam 100% notae tuae arbitrator.",
+  "catNameExists": "Iam exsistit genus cum hoc nomine",
   "catList": "<strong>Generi click fac</strong> ut addere vel auferre pensa et ut notam eius generum videre.<br><br>Genera:<br>",
   "catAvg": "Medium in $CATEGORY: $NUMBER%",
   "avg": "<b>Nota hactenus in hoc genus: $SCORE%</b> (Nota litterae: $LETTER)<br>" +
@@ -67,6 +66,7 @@ langData["la"] = {
   "calcRequiredButton": "Calculare nota indigetur",
   "changeWeightButton": "Ponderationem cambiare",
   "weightChanged": "Ponderatio $WEIGHT% facta est",
+  "deleteCatButton": "Genus delere",
   "copyGradesInstruct": "Simpliciter notas tuae de MyBackpack effinge simile in imagine infera monstratur.",
   "mobileCopyInstruct": "(Si <strong>machinam manus</strong> uteris, iPads inclusum, potes <i>" +
     "Assignment</i> eligere et notas omnes post eligere)",
@@ -112,13 +112,13 @@ langData["la"] = {
   "ahsWeighted": "GPA ponderatur (ponderatio AHS)",
   "5scale": "Lanx 5.0",
   "4scale": "Lanx 4.0",
-  "footer": "Harysi Dalvici<br>Octobris anno MMXIX&ndash;Ivnii anno MMXXI<br>MMDCCLXXII&ndash;MMDCCLXXIV ab vrbe condita",
+  "footer": "Haris Dalvii<br>Mensis Octobris anno MMXIX&ndash;Mensis Ivlivs anno MMXXI<br>MMDCCLXXII&ndash;MMDCCLXXIV ab vrbe condita",
   "languages": ["lingua anglica", "lingua hispanica", "lingua lusitana", "lingua francogallica", "lingua hindica", "lingua urdu",
-  "lingua persica", "lingua latina", "lingua sanscrita"],
+  "lingua bengalica", "lingua persica", "lingua latina", "lingua sanscrita"],
   "numbers": ["unum", "duo", "tria", "quattuor", "quinque", "sex", "septem", "octo", "novem", "decem"],
   "setPoint": "Taxatio rationem punctorum factus est",
   "search": "Quaerere",
-  "pronunciation": "",
+  "pronunciation": "Nomen latinum: Haris Dalvius",
   "and": "&amp;",
   "translateMotto": "<span class=\"smallCaps\">Ab Dolore Nvmerorvm ad Pacem</span>"
 };

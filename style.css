@@ -118,6 +118,10 @@ div#footer:lang(la) {
   font-style: normal;
   font-variant: small-caps;
 }
+div#footer:lang(bn) {
+  font-style: normal;
+  font-family: bengali;
+}
 div#ahsDiv {
   text-align: center;
 }
@@ -127,10 +131,6 @@ img#ahs {
 ul.faq li {
   font-weight: bold;
   font-style: italic;
-}
-span#hoyesel {
-  font-weight: bold;
-  font-size: 36px;
 }
 span.memeSpan {
   display: flex;
@@ -165,6 +165,7 @@ div#creditInfo,div#manualInput,.hidden {
   body {
     padding-left: 5%;
     padding-right: 5%;
+    font-size: 16px;
   }
   .button {
     padding-left: 10px;
@@ -196,6 +197,9 @@ div#creditInfo,div#manualInput,.hidden {
     padding-left: 5px;
     padding-right: 5px;
   }
+  p#disclaimer {
+    font-size: 5px;
+  }
 }
 a {
   color: #0033FF;
@@ -224,6 +228,9 @@ img#seth_img {
 }
 img#seth_img[style*="direction: rtl"] {
   float: left;
+}
+div#seth_div {
+  display: inline-block;
 }
 #bottomIntro, #manualCategories div.button {
   direction: ltr;
@@ -285,6 +292,23 @@ select.rtl {
   src: local("Baskerville"), local("Times New Roman");
   unicode-range: U+0-599;
 }
+@font-face {
+  font-family: bengali;
+  src: local("Bangla MN");
+  font-weight: normal;
+  unicode-range: U+980-9FF;
+}
+@font-face {
+  font-family: bengali;
+  src: local("Bangla MN");
+  font-weight: bold;
+  unicode-range: U+980-9FF;
+}
+@font-face {
+  font-family: bengali;
+  src: local("Baskerville"), local("Times New Roman");
+  unicode-range: U+0-599;
+}
 .button:lang(hi) {
   font-family: devanagari;
 }
@@ -294,8 +318,11 @@ select.rtl {
 .button:lang(ur) {
   font-family: nastaliq;
 }
+.button:lang(bn) {
+  font-family: bengali;
+}
 div#languageButtons span div.button:lang(hi),div#languageButtons span div.button:lang(ur),
-div#languageButtons span div.button:lang(sa) {
+div#languageButtons span div.button:lang(sa),div#languageButtons span div.button:lang(bn) {
   font-family: inherit;
 }
 *[style*="font-family: nastaliq"] {
@@ -311,6 +338,12 @@ div#languageButtons span div.button:lang(sa) {
 }
 #pronunciation:lang(sa) {
   font-family: "Times New Roman", "Devanagari MT", devanagari;
+}
+#pronunciation:lang(bn) {
+  font-family: "Times New Roman", bengali;
+}
+#pronunciation:lang(ur) {
+  font-family: "Times New Roman", nastaliq;
 }
 :lang(sa) strong,:lang(sa) b {
   font-weight: normal;

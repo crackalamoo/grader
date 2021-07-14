@@ -12,7 +12,7 @@
     window.location.replace("http://harysdalvi.com/ahsgrades");
   }
   </script>
-  <!-- <base href="http://www.harysdalvi.com/sub/grader/"> -->
+  <base href="http://www.harysdalvi.com/sub/grader/">
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
   <script>
@@ -64,6 +64,9 @@
     <div class="button" onclick="changeLanguage('ur');">اردو</div>
   </span>
   <span>
+    <div class="button" onclick="changeLanguage('bn');">বাংলা</div>
+  </span>
+  <span>
     <div class="button" onclick="changeLanguage('fa');">فارسی</div>
   </span>
   <span>
@@ -82,6 +85,7 @@
     <option value="fr">Français</option>
     <option value="hi">हिन्दी</option>
     <option value="ur">اردو</option>
+    <option value="bn">বাংলা</option>
     <option value="fa">فارسی</option>
     <option value="la">Lingua latina</option>
     <option value="sa">संस्कृतम्</option>
@@ -214,7 +218,7 @@
   <p id="beginCategories"></p>
   <p id="manualCategory"></p>
   <div id="manualCategories"></div><br>
-  <div class="button" onclick="changeMode('category')" id="newCatButton">New Category</div>
+  <div class="button" onclick="addCatScreen()" id="newCatButton">New Category</div>
 </div>
 <div class="main" id="category">
   <div class="button" onclick="changeMode('manual')" id="categoryBack">Back</div><br>
@@ -223,6 +227,7 @@
     <span id="catName"></span><input name="name" type="text" size="15"></input><br>
     <span id="catPercent"></span><span dir="ltr"><input name="percent" type="number" size="5"></input>%</span><br><br>
     <div class="button" onclick="createCategory();" id="createCat"></div>
+    <div id="catError"></div>
   </form>
 </div>
 <div class="main" id="editCategory">
@@ -275,6 +280,8 @@
     <span dir="ltr"><input name="percent" type="number" size="5"></input>%</span><br>
     <div class="button" onclick="changePercent()" id="changeWeightButton">Change Weighting</div>
     <span id="changedWeight"></span>
+    <br><br><br><br>
+    <div class="button" onclick="deleteCategory()" id="deleteCatButton"></div>
   </form>
 </div>
 <div class="main" id="auto">
@@ -292,7 +299,7 @@
   <p id="dontWorry"></p><br>
   <p id="shouldContinue"></p>
   <div class="centerButtons">
-    <div class="button" onclick="changeMode('manual')" id="manualButton">Manually enter grades</div>
+    <div class="button" onclick="manualButton();" id="manualButton">Manually enter grades</div>
     <div class="button selected" onclick="autoCats(); changeMode('autoCategories');" id="autoContinue">Continue</div>
   </div>
   <div class="centerButtons">
@@ -300,13 +307,16 @@
   </div>
 </div>
 <div class="main" id="autoCategories">
-  <p id="selClass"> </p>
+  <p id="selClass"></p>
   <form name="classes" action="javascript:void(0)">
-  <input type="text" name="search" oninput="classSearch()" placeholder="Search"><br>
-  <select name="class" onchange="setclass()">
-    <option value="">-- Select a class --</option>
-    <option value="add class">Add a class to this list</option>
-  </select>
+  <div id="seth_div">
+    <input type="text" name="search" oninput="classSearch()" placeholder="Search">
+    <br>
+    <select name="class" onchange="setclass()">
+      <option value="">-- Select a class --</option>
+      <option value="add class">Add a class to this list</option>
+    </select>
+  </div>
   <select name="class_hidden" id="classHidden">
     <option value="alg 2" data-alt="algebra ii honors algebra 2 honors">Algebra II (H)</option>
     <option value="alg 2 comp" data-alt="algebra ii comp algebra 2 comp">Algebra II Competition (H)</option>
@@ -370,7 +380,6 @@
   <div class="button" onclick="changeMode('autoCategories')" id="mailBack">Back</div>
   <iframe width="0" height="0" border="0" name="hidden_iframe" id="hidden_iframe"></iframe><br>
   <span id="mail_sent"></span><br>
-  <!-- <form name="add_class" autocomplete="off" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScQ5kMZk6A-iFj88TgNe8iPgKBQ6TwhIZH4dYZfHi7rreipSQ/formResponse" method="POST" onsubmit="submitted=!0" target="hidden_iframe"> -->
   <form name="add_class" autocomplete="off" action="addclass.php/" method="REQUEST" target="hidden_iframe">
     <p id="pointSystemInstruct"></p>
     <span id="nameOfClass"></span><input type="text" name="class" placeholder="ex: AP Chem" required></input><br>
@@ -380,7 +389,6 @@
     <span id="enterNotes"></span><input type="text" name="notes" size="40" placeholder="ex: Your name or the teacher's name"></input><br>
     <input type="hidden" name="form_submitted" value="Submitted"></input>
     <button class="button" type="submit" value="Send" onclick="mailSent();" id="sendMailButton">Submit</button>
-    <!-- <input type="submit" name="submit" onclick="mailSent();" id="sendMailButton">Submit</input> -->
   </form>
 </div>
 <div class="main" id="FAQs" lang="en">
@@ -390,7 +398,7 @@
     <li>Q: Why doesn't it work?</li>
     <b>A:</b> This algorithm is definitely foolproof and if it doesn't work something is wrong with the input.
     Make sure to <strong>read all instructions <em>carefully</em></strong>. If you still can't figure it out,
-    contact me at <a href="mailto:bd542591@ahschool.com?subject=Grade calculator issue">bd542591@ahschool.com</a>
+    contact me at <a href="mailto:harysdalvi@gmail.com?subject=Grade calculator issue">harysdalvi@gmail.com</a>
     because it might actually be my fault that the input is bad. However, in the past, the issue has usually
     been that the actual grading in MyBackpack is different from what's on the syllabus; you might have to
     talk to your teacher (especially if it can improve your grade!)

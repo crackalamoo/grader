@@ -1,9 +1,8 @@
 langData["es"] = {
   "begin": "Para empezar, crea categorías para las notas. Si la clase está basada en el sistema de puntos, haz una categoría llamado \"Total\" o algo así y considérala 100% de tu nota.",
   "catInstruct": "Si la clase está basada en el sistema de puntos, haz una categoría " +
-    "llamado \"Total\" o algo así y considérala 100% de tu nota. " +
-    "Por favor no hagas ninguna categoría con un nombre que ya existe, como soy demasiado " +
-    "perezoso para asegurar que no hagas esto.",
+    "llamado \"Total\" o algo así y considérala 100% de tu nota.",
+  "catNameExists": "Ya hay una categoría con este nombre",
   "catList": "<strong>Haz clic en una categoría</strong> para añadir o quitar tareas y para ver la nota de esa categoría.<br><br>Categorías:<br>",
   "catAvg": "Promedio en $CATEGORY: $NUMBER%",
   "avg": "<b>Nota hasta ahora en esta clase: $SCORE%</b> (Nota de letra: $LETTER)<br>" +
@@ -67,6 +66,7 @@ langData["es"] = {
   "calcRequiredButton": "Calcular nota necesaria",
   "changeWeightButton": "Cambiar ponderación",
   "weightChanged": "La ponderación fue cambiada a $WEIGHT%",
+  "deleteCatButton": "Borrar categoría",
   "copyGradesInstruct": "Sencillamente copia tus notas de MyBackpack como se muestra en el imágen más abajo.",
   "mobileCopyInstruct": "(Si estás usando un <strong>dispositivo móvil</strong>, incluso iPads, puedes seleccionar <i>" +
     "Assignment</i> y después seleccionar todas las notas)",
@@ -112,9 +112,9 @@ langData["es"] = {
   "ahsWeighted": "GPA ponderado (ponderación de AHS)",
   "5scale": "Escala 5.0",
   "4scale": "Escala 4.0",
-  "footer": "Harys &ldquo;Hacer&rdquo; Dalvi<br>octubre de 2019&ndash;junio de 2021",
-  "languages": ["inglés", "español", "portugués", "francés", "hindi", "urdu", "persa",
-  "latín", "sánscrito"],
+  "footer": "Harys &ldquo;Hacer&rdquo; Dalvi<br>octubre de 2019&ndash;julio de 2021",
+  "languages": ["inglés", "español", "portugués", "francés", "hindi", "urdu", "bengalí",
+  "persa", "latín", "sánscrito"],
   "numbers": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"],
   "setPoint": "La calificación fue establecida a sistema de puntos",
   "search": "Buscar",

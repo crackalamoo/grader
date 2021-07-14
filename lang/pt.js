@@ -1,9 +1,8 @@
 langData["pt"] = {
   "begin": "Para iniciar, cria categorias para as notas. Se a classe é baseada no sistema de pontos, faça uma categoria chamado \"Total\" ou algo assim e considere-a 100% da sua nota.",
   "catInstruct": "Se a classe é baseada no sistema de pontos, faça uma categoria " +
-    "chamado \"Total\" ou algo assim e considere-a 100% da sua nota. " +
-    "Por favor não faça nenhuma categoria com um nome que já existe, como sou demasiado " +
-    "preguiçoso para assegurar que não faça isto.",
+    "chamado \"Total\" ou algo assim e considere-a 100% da sua nota.",
+  "catNameExists": "Já há uma categoria com este nome",
   "catList": "<strong>Clique em uma categoria</strong> para adicionar ou remover tarefas e para ver a nota dessa categoria.<br><br>Categorias:<br>",
   "catAvg": "Média em $CATEGORY: $NUMBER%",
   "avg": "<b>Nota até agora nesta classe: $SCORE%</b> (Nota de letra: $LETTER)<br>" +
@@ -67,6 +66,7 @@ langData["pt"] = {
   "calcRequiredButton": "Calcular nota necessária",
   "changeWeightButton": "Alterar ponderação",
   "weightChanged": "A ponderação foi alterada para $WEIGHT%",
+  "deleteCatButton": "Deletar categoria",
   "copyGradesInstruct": "Meramente copie suas notas de MyBackpack como mostrado na imagem abaixo.",
   "mobileCopyInstruct": "(Se você está usando um <strong>dispositivo móvel</strong>, inclusivo iPads, pode selecionar <i>" +
     "Assignment</i> e depois selecionar todas as notas)",
@@ -112,9 +112,9 @@ langData["pt"] = {
   "ahsWeighted": "GPA ponderado (ponderação de AHS)",
   "5scale": "Escala 5.0",
   "4scale": "Escala 4.0",
-  "footer": "Harys Dalvi<br>outubre de 2019&ndash;junho de 2021",
-  "languages": ["inglês", "espanhol", "português", "francês", "hindi", "urdu", "persa",
-  "latim", "sânscrito"],
+  "footer": "Harys Dalvi<br>outubre de 2019&ndash;julho de 2021",
+  "languages": ["inglês", "espanhol", "português", "francês", "hindi", "urdu", "bengali",
+  "persa", "latim", "sânscrito"],
   "numbers": ["um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez"],
   "setPoint": "A classificação foi definida como sistema de pontos",
   "search": "Pesquisar",
