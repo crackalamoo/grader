@@ -27,7 +27,7 @@ langData["la"] = {
   "edit": "Notas recensere",
   "newClass": "Disciplina nova",
   "notPossibleGrade": "Infeliciter haec nota tibi possibilis non est in hoc semestri. Fortuna in deinde semestri.",
-  "minGrade": "Nota minima indigetur in examine semestri: $MIN% ($LETTER/$NUMBER% qua intrat)",
+  "minGrade": "Nota minima indigetur in examine semestri: $MIN% ($LETTER aut $NUMBER% qua intrat)",
   "fritzExam": "Nota minima indigetur in examine semestri: $MIN% (in examine tantum Fritz non facius, sic spero)",
   "validData": "Obsecro, scribe indicium legitimum.",
   "mailSent": "Responsum tuum missus est et disciplina mox debet advenire. Gratias tibi ago." +
@@ -46,7 +46,7 @@ langData["la"] = {
   "intro": "<b>NOTA:</b> non obstante amore meo computatris, ego etiam homo sum. Mihi per $EMAIL scribe si errorem invenis." +
     "<br><strong>Hanc paginam ad paginas dilectas tuas adde</strong> ut posse invenire hanc facile." +
     "<br><br>Ut incipere, calculationem elige:",
-  "semGradesButton": "Notas semestres/examinis",
+  "semGradesButton": "Notas semestres &amp; examinis",
   "gpaCalcButton": "Calculator GPA",
   "newCatButton": "Genus novum",
   "catName": "Nomen:&nbsp;",
@@ -56,7 +56,7 @@ langData["la"] = {
   "deleteAssignment": "Pensum auferre",
   "editInstruct": "Notam/possibilem scribe. Exempli gratia: 5/6.0, 8.5/9, 3/3.<br>" +
     "Ut pensum auferre, notam tuam <strong>itidem</strong> scribe et \"Pensum auferre\" click fac.<br>" +
-    "Ut <strong>mutare notam pensi</strong>, zephiri pensum adde vel aufer. (Exempli gratia, 5/0).",
+    "Ut <strong>mutare notam pensi</strong>, zephiri pensum adde aut aufer. (Exempli gratia, 5/0).",
   "letterGrade": "Nota litterae:&nbsp;",
   "selectLetter": "Notam litterae elige",
   "whatNeed": "QVO EGEO IN PENSO FVTVRO",
@@ -78,11 +78,11 @@ langData["la"] = {
   "shouldContinue": "Debeone pergere?",
   "rampalButton": "Disciplina Magistri Rampal vel Doctoris Kimpton",
   "manualButton": "Notas per manus scribere",
-  "selClass": "<strong>Elige disciplinam</strong> ut per centum/ponderationes per se complere. (Gratias ago ad <span id=\"seth\">Seth</span> Groper pro hanc ideam)",
+  "selClass": "<strong>Elige disciplinam</strong> ut per centum &amp; ponderationes per se complere. (Gratias ago ad <span id=\"seth\">Seth</span> Groper pro hanc ideam)",
   "selClassOption": "Disciplinam elige",
   "addClassOption": "Disciplinam addere vel corrigere",
-  "sethClassInstruct": "Per centum in quoque genere scribe <strong><i>vel</i></strong> indica hanc disciplinam rationem punctorum uitur:",
-  "pointSystemInstruct": "Ut videre si disciplina ratio punctorum vel genera uitur, vide quanto valent probationes, pensa domus et examina." +
+  "sethClassInstruct": "Per centum in quoque genere scribe <strong><i>aut</i></strong> indica hanc disciplinam rationem punctorum uitur:",
+  "pointSystemInstruct": "Ut videre si disciplina ratio punctorum aut genera uitur, vide quanto valent probationes, pensa domus et examina." +
     " Si valent circa idem numerus punctorum in quoque genere, genera sunt. Si non, forsit ratio punctorum est.",
   "nameOfClass": "Nomen disciplinae:&nbsp;",
   "pointSystemInstruct2": "Si <strong>ratio punctorum</strong> est, nominibus et ponderationibus &ldquo;ratio punctorum&rdquo; scribe.",
@@ -104,8 +104,8 @@ langData["la"] = {
   "getCreditButton": "Creditum videre",
   "modifyCreditHeading": "<b>Creditum recensere/auferre</b>",
   "confirm": "Esne certus/a desideras hoc facere?",
-  "quarter13": "Nota trimestris I/III:",
-  "quarter24": "Nota trimestris II/IV:",
+  "quarter13": "Nota trimestris I aut III:",
+  "quarter24": "Nota trimestris II aut IV:",
   "examGrade": "Nota examinis:",
   "semester": "Semestre",
   "quarter": "Trimestre",
