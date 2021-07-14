@@ -308,10 +308,10 @@ function findCategories(autoResult) {
   return cats;
 }
 if(typeof(String.prototype.trim) === "undefined") {
-    String.prototype.trim = function()
-    {
-        return String(this).replace(/^\s+|\s+$/g, '');
-    };
+  String.prototype.trim = function()
+  {
+      return String(this).replace(/^\s+|\s+$/g, '');
+  };
 }
 if (typeof(Storage) !== "undefined") {
   if (localStorage.gpaData) {
@@ -522,7 +522,7 @@ function setclass() {
       } catch (err) {}
     }
     if (classVal == "spanish 4" || classVal == "spanish lit") {
-      date = new Date();
+      var date = new Date();
       meme.innerHTML = "¡HOY ES EL " +
         ["PRIMERO", "DOS", "TRES", "CUATRO", "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE", "DIEZ",
         "ONCE", "DOCE", "TRECE", "CATORCE", "QUINCE", "DIECISÉIS", "DIECISIETE", "DIECIOCHO",
@@ -533,7 +533,7 @@ function setclass() {
         "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"][date.getMonth()] + " DE "
         + date.getFullYear() + "!<br>¡No olvides escribir tu nombre y la fecha!<br>";
       if (lang == "es") {
-        meme.innerHTML += "¡Me alegra mucho de que estés usando español!"
+        meme.innerHTML += "¡Me alegra <em>mucho</em> de que estés usando español!"
       } else {
         meme.innerHTML += "¿¿¿Oigo inglés??? " +
         "Es importante que practiques tu español. Por eso estoy cambiando tu idioma.";

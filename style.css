@@ -99,8 +99,8 @@ img {
 }
 div#footer {
   text-align: center;
-  font-size: 12px;
-  color: #AAC0CC;
+  font-size: 14px;
+  color: #A0B3C2;
   font-style: italic;
 }
 div#footer:lang(hi),div#footer:lang(sa) {
@@ -161,46 +161,7 @@ div#creditInfo,div#manualInput,.hidden {
 .noTopMargin {
   margin-top: 0;
 }
-@media only screen and (max-width: 600px) {
-  body {
-    padding-left: 5%;
-    padding-right: 5%;
-    font-size: 16px;
-  }
-  .button {
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 80%;
-  }
-  div#languageButtons span div.button {
-    font-size: 12px;
-  }
-  div.centerButtons {
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-  h1,h2,h3,#pronunciation {
-    margin-left: 10%
-  }
-  h1[style*="direction: rtl"],h2[style*="direction: rtl"],h3[style*="direction: rtl"],#pronunciation[style*="direction: rtl"] {
-    margin-left: inherit;
-    margin-right: 10%;
-  }
-  div#motto {
-    flex-direction: column;
-  }
-  div#motto p {
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-  div#languageButtons {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  p#disclaimer {
-    font-size: 5px;
-  }
-}
+
 a {
   color: #0033FF;
   text-decoration: none;
@@ -380,4 +341,56 @@ div#motto p:lang(fa) {
 div#motto p:lang(ar) {
   font-family: "Diwan Kufi", "Diwan Thuluth", "KufiStandardGK", "Sana",
     "Times New Roman";
+}
+
+
+@media only screen and (max-width: 600px) {
+  body {
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 16px;
+  }
+  .button {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 80%;
+  }
+  div#languageButtons span div.button {
+    font-size: 12px;
+  }
+  div.centerButtons {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  h1,h2,h3,#pronunciation {
+    margin-left: 10%
+  }
+  h1[style*="direction: rtl"],h2[style*="direction: rtl"],h3[style*="direction: rtl"],#pronunciation[style*="direction: rtl"] {
+    margin-left: inherit;
+    margin-right: 10%;
+  }
+  div#motto {
+    flex-direction: column;
+  }
+  div#motto p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  div#languageButtons {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  p#disclaimer {
+    font-size: 5px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  h1,h2,h3,#pronunciation {
+    margin-left: 15%
+  }
+}
+@media only screen and (min-width: 1100px) {
+  body {
+    font-size: 20px;
+  }
 }
