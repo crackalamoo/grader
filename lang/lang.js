@@ -2,8 +2,8 @@ const SCRIPT_ID = ["javascript", "start", "auto", "finalAuto", "autoCategories",
   "editCategory", "addClass", "semester", "gpaCalc", "seth_img", "langSelect", "examGrade", "semesterGrade",
   "setLangForm", "intro", "footer", "translateMotto"];
 const LANGUAGES = ["English", "Español", "Português", "Français", "हिन्दी", "اردو",
-"বাংলা", "فارسی", "Latinum", "संस्कृतम्"];
-const LANG_CODES = ["en", "es", "pt", "fr", "hi", "ur", "bn", "fa", "la", "sa"];
+"বাংলা", "فارسی", "ᐃᓄᒃᑎᑐᑦ", "Latinum", "संस्कृतम्"];
+const LANG_CODES = ["en", "es", "pt", "fr", "hi", "ur", "bn", "fa", "iu", "la", "sa"];
 const RTL_LANG = ["ur", "fa"];
 
 const MY_EMAIL = "harysdalvi@gmail.com";
@@ -139,7 +139,7 @@ function languageLoaded(l) {
       document.getElementById(SCRIPT_ID[i]).style.fontFamily = '"Times New Roman", "Devanagari MT", devanagari, tibetan, balinese';
     } else if (l == "fa") {
       document.getElementById(SCRIPT_ID[i]).style.direction = "rtl";
-      document.getElementById(SCRIPT_ID[i]).style.fontFamily = '';
+      document.getElementById(SCRIPT_ID[i]).style.fontFamily = "";
     } else if (l == "en" && dialect == "ASCII") {
       document.getElementById(SCRIPT_ID[i]).style.direction = "";
       document.getElementById(SCRIPT_ID[i]).style.fontFamily = '"Courier", monospace';
@@ -178,7 +178,8 @@ function languageLoaded(l) {
     }
   }
   var classicLangs = {"en": "ang la", "es": "la", "pt": "la", "hi": "sa fa",
-  "ur": "sa fa", "fa": "peo ar", "la": "grk", "sa": "", "fr": "la", "bn": "sa"}[lang].split(" ");
+  "ur": "sa fa", "fa": "peo ar", "la": "grk", "sa": "", "fr": "la", "bn": "sa",
+  "iu": "en fr"}[lang].split(" ");
   if (l == "en" && dialect == "Anglish")
     classicLangs = ["ang"];
   if (l == "en" && dialect == "ASCII")
@@ -186,7 +187,8 @@ function languageLoaded(l) {
   var mottos = {"":"","la": "Ab Dolore Nvmerorvm ad Pacem", "ang": "ᚠᚱᚪᛗ᛫ᚱᛁᛗᚪ᛫ᛋᚪᚱᚾᛖᛋᛋᛖ᛫ᛏᚩ᛫ᚠᚱᛁᚦᛖ",
   "sa": "सङ्ख्यानां&#8203;पीडायाः&#8203;शान्तिम्", "fa": "از درد شمار‌ها به آرام",
   "ar": "مِنْ أَلَمِ الْأَرْقَامِ إِلَى السَّلَامِ", "grk": "Ἐκ τῆς λύπης τῶν ἀριθμῶν πρός τὴν εἰρήνην",
-  "peo": "𐏃𐎨𐎠𐏐&#8203;𐎮𐎡𐎱𐎡𐎴𐎠𐎶𐏐&#8203;𐎭𐎼𐎢𐎥𐎠𐏐&#8203;𐏁𐎡𐎹𐎠𐎫𐎡𐎶"};
+  "peo": "𐏃𐎨𐎠𐏐&#8203;𐎮𐎡𐎱𐎡𐎴𐎠𐎶𐏐&#8203;𐎭𐎼𐎢𐎥𐎠𐏐&#8203;𐏁𐎡𐎹𐎠𐎫𐎡𐎶",
+  "en": "From the pain of the numbers to peace", "fr": "De la douleur des nombres à la paix"};
   document.getElementById("motto").innerHTML = "";
   for (var i = 0; i < classicLangs.length; i++) {
     document.getElementById("motto").innerHTML += '<p lang="'+classicLangs[i]+'">'
