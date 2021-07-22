@@ -1,7 +1,7 @@
 langData["pt"] = {
-  "begin": "Para iniciar, cria categorias para as notas. Se a classe é baseada no sistema de pontos, faça uma categoria chamado \"Total\" ou algo assim e considere-a 100% da sua nota.",
+  "begin": "Para iniciar, cria categorias para as notas. Se a classe é baseada no sistema de pontos, faça uma categoria chamado &ldquo;Total&rdquo; ou algo assim e considere-a 100% da sua nota.",
   "catInstruct": "Se a classe é baseada no sistema de pontos, faça uma categoria " +
-    "chamado \"Total\" ou algo assim e considere-a 100% da sua nota.",
+    "chamado &ldquo;Total&rdquo; ou algo assim e considere-a 100% da sua nota.",
   "catNameExists": "Já há uma categoria com este nome",
   "catList": "<strong>Clique em uma categoria</strong> para adicionar ou remover tarefas e para ver a nota dessa categoria.<br><br>Categorias:<br>",
   "catAvg": "Média em $CATEGORY: $NUMBER%",
@@ -11,7 +11,7 @@ langData["pt"] = {
   "selCat": "Nota até agora em $CATEGORY: $SCORE%",
   "scoreNaN": "Você tem um denominador de zero ou outro erro em pelo menos uma categoria. Tente adicionar algumas tarefas.",
   "rampalInstruct": "<b>Faça o seguinte para <em>cada</em> tarefa:</b><br>" +
-    "Clique na tarefa<br>$IMG1<br>Olhe o <strong>\"Count as\"</strong> e insira-o acima<br>$IMG2",
+    "Clique na tarefa<br>$IMG1<br>Olhe o <strong>&ldquo;Count as&rdquo;</strong> e insira-o acima<br>$IMG2",
   "catsFound": "$NUMBER categorias encontradas: $CATEGORIES",
   "catsFound1": "Uma categoria encontrada: $CATEGORIES",
   "pointCheck": "Esta classe usa o sistema de pontos",
@@ -55,7 +55,7 @@ langData["pt"] = {
   "addAssignment": "Adicionar tarefa",
   "deleteAssignment": "Deletar tarefa",
   "editInstruct": "Insira nota/possível. Exemplos: 5/6.0, 8.5/9, 3/3.<br>" +
-    "Para deletar a uma tarefa, insira a seu nota <strong>do mismo jeito</strong> e clique em \"Deletar tarefa\".<br>" +
+    "Para deletar a uma tarefa, insira a seu nota <strong>do mismo jeito</strong> e clique em &ldquo;Deletar tarefa&rdquo;.<br>" +
     "Para <strong>alterar a nota de uma tarefa</strong>, adicione ou delete uma tarefa de 0 pontos (ex: 5/0).",
   "letterGrade": "Nota de letra:&nbsp;",
   "selectLetter": "Selecione uma nota de letra",
@@ -104,8 +104,8 @@ langData["pt"] = {
   "getCreditButton": "Ver crédito",
   "modifyCreditHeading": "<b>Modificar/deletar um crédito</b>",
   "confirm": "Tem certeza que quer fazar iso?",
-  "quarter13": "Nota do trimestre I/III:",
-  "quarter24": "Nota do trimestre II/IV:",
+  "quarter13": "Nota do trimestre 1/3:",
+  "quarter24": "Nota do trimestre 2/4:",
   "examGrade": "Nota do exame:",
   "semester": "Semestre",
   "quarter": "Trimestre",

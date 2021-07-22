@@ -11,7 +11,7 @@ langData["sa"] = {
   "scoreNaN": "तव हरः शून्यम् अस्ति वान्यी समस्या भवत्येके वर्गे वैकाद् अधिके वर्गेषु&nbsp;। कतिपयाणां कृत्यानां संकलनं यत&nbsp;॥",
   "rampalInstruct": "<b>सर्वाणि कृत्यानीदं कुरु&nbsp;।</b><br>" +
     "कृत्यं क्लिक् कुरु<br>$IMG1<br>" +
-    "<strong>\"Count as\"</strong> सङ्ख्याम् दृश्यवान् उपरि लिख&nbsp;॥<br>$IMG2",
+    "<strong>Count as</strong> सङ्ख्याम् दृश्यवान् उपरि लिख&nbsp;॥<br>$IMG2",
   "catsFound": "$NUMBER वर्गाविन्द्यन्त&nbsp;। $CATEGORIES&nbsp;॥",
   "catsFound1": "एकोवर्गोऽविन्द्यत&nbsp;। $CATEGORIES&nbsp;॥",
   "catsFound2": "द्वौवर्गावविन्द्येताम्&nbsp;। $CATEGORIES&nbsp;॥",
@@ -52,7 +52,7 @@ langData["sa"] = {
   "newCatButton": "नव्योवर्गः",
   "catName": "नाम&nbsp;",
   "catPercent": "प्रतिशतम् &nbsp;",
-  "createCat": "वर्गं जन",
+  "createCat": "वर्गं&#8203;जन",
   "addAssignment": "कर्तव्यसंकलनम्",
   "deleteAssignment": "कर्तव्यापोहः",
   "editInstruct": "अङ्कम्/सम्भवम् एवं प्रविश&nbsp;। 5/6.0 8.5/9 3/3&nbsp;॥<br>" +
@@ -64,10 +64,10 @@ langData["sa"] = {
   "creditCathy": "कथीटीक्वानेतस्मात् कर्तव्याद् धन्यवादः&nbsp;।",
   "desiredGrade": "अङ्को यद् विषये ऽस्तव्य&nbsp;",
   "numPointsWorth": "कर्तव्य कियत् सङ्ख्यानाम्&nbsp;",
-  "calcRequiredButton": "आवश्यकस्याङ्कस्य कलनं कुरु&nbsp;।",
-  "changeWeightButton": "भारस्य परिवर्तनम्",
+  "calcRequiredButton": "आवश्यकस्याङ्कस्य&#8203;कलनं&#8203;कुरु",
+  "changeWeightButton": "भारस्य&#8203;परिवर्तनम्",
   "weightChanged": "भारः $WEIGHT% भूत&nbsp;।",
-  "deleteCatButton": "वर्गमपोः",
+  "deleteCatButton": "वर्गमपोहः",
   "copyGradesInstruct": "तवाङ्कान् MyBackpack प्रतिलिपिं कुरु यथा नीचे चित्रे दृषते&nbsp;।",
   "mobileCopyInstruct": "यदि किमपि <strong>हस्तयन्त्रे</strong> ऽस्यपि iPads तर्हि त्वम् <i>" +
     "Assignment</i> इषतवान् सर्वान् अङ्कानपीच्छ&nbsp;।",
@@ -77,8 +77,8 @@ langData["sa"] = {
     " चिन्ता नभवेद्धस्तेन तस्य वर्गस्य संकलनम् कर्तुं शक्नोसि गणस्य पश्चात्&nbsp;। एवं यदि विषयो वर्गस्थाने" +
     " <strong>गणक्रमस्योपयोगं</strong> करोति तर्हि चिन्ता नभवेत्&nbsp;।",
   "shouldContinue": "किम् अग्रिमंगच्छामि&nbsp;॥",
-  "rampalButton": "श्रीराम्पालस्य वाचार्याकिम्प्टनस्य विषयाय",
-  "manualButton": "हस्तेनाङ्कान् प्रविश",
+  "rampalButton": "श्रीराम्पालस्य&#8203;वाचार्याकिम्प्टनस्य&#8203;विषयाय",
+  "manualButton": "हस्तेनाङ्कान्प्रविश",
   "selClass": "<strong>विषयम् इष्तुं</strong> स्वचालितं प्रतिशतानि भारांश् च पूर्ण करोति&nbsp;। <span id=\"seth\">सेद्</span> घ्रोपरेतस्मात् कर्तव्याद् धन्यवादः&nbsp;॥",
   "selClassOption": "विषयम् इच्छ",
   "addClassOption": "विषयं प्रविश वोचितः कुरु",
@@ -97,11 +97,11 @@ langData["sa"] = {
   "noExam": "परीक्षा नास्ति",
   "ritvikCalc": "ऋत्विक्तिक्कवरपुस्य AHS GPA गणकः",
   "ritvikHonor": "ऋत्विक्तिक्कवरपुस्य सूचनया नामभिश् च",
-  "clearDataButton": "GPA सूचनायो ऽपोहः",
+  "clearDataButton": "GPA सूचनायोऽपोहः",
   "clearDataExp": "एतेन यदा पुनर् तस्मिन् पृष्ठे गच्छसि तदा तव GPA पुनर् प्रविश्तव्य&nbsp;। " +
     "यदि त्वं सूचनां रहस्यपोहस्थाने त्वज्ञाते मध्यमे नासि तर्हि सर्वं रक्षितम् अस्तव्य यदा पुनर् तस्मिन् पृष्ठे गच्छसि&nbsp;॥",
   "creditNum": "पाठ्यक्रमांशसङ्ख्या&nbsp;",
-  "getCreditButton": "पाठ्यक्रमांशं दृश",
+  "getCreditButton": "पाठ्यक्रमांशं&#8203;दृश",
   "modifyCreditHeading": "<b>पाठ्यक्रमांशस्य परिवर्तनं वापोहः</b>",
   "confirm": "किं त्वम् एवं कर्तुम् इच्छसि",
   "quarter13": "त्रिमासस्य प्रथमस्य वा तृतीयस्याङ्कः",
@@ -168,4 +168,12 @@ const SANSKRIT_LETTER_MAP = {
 "ട", "ഠ", "ഡ", "ഢ", "ണ", "ത", "ഥ", "ദ", "ധ", "ന",
 "പ", "ഫ", "ബ", "ഭ", "മ", "യ", "ര", "ല", "വ", "ശ", "ഷ", "സ", "ഹ", "ള",
 "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", " "]};
+
+var iast_consonants = ["k", "kh", "g", "gh", "ṅ", "c", "ch", "j", "jh", "ñ",
+"ṭ", "ṭh", "ḍ", "ḍh", "ṇ", "t", "th", "d", "dh", "n",
+"p", "ph", "b", "bh", "m", "y", "r", "l", "v", "ś", "ṣ", "s", "h", "ḷ"];
+var iast_vowels = ["a", "ā", "i", "i", "u", "u", "e", "ai", "o", "au", "ṛ"];
+var iast_matras = ["āṃ", "āḥ", "iṃ", "iḥ", "īṃ", "īḥ", "uṃ", "uḥ", "ūm", "ūḥ", "eṃ", "eḥ", "aiṃ", "aiḥ", "oṃ", "oḥ", "auṃ", "auḥ",
+"", "ā", "i", "ī", "u", "ū", "e", "ai", "o", "au", "ṛ", "aṃ", "aḥ"];
+
 languageLoaded("sa");

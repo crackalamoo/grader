@@ -1,7 +1,7 @@
 langData["ur"] = {
-  "begin": "شروع کرنے کے لئے مارکس کی کیٹیگریز بناؤ۔ اگر یہ کلاس پوئنٹ سسٹم کا استعمال کرے تو کیٹیگری بناؤ جس کا نام کچھ" + " \"Total\" " +
+  "begin": "شروع کرنے کے لئے مارکس کی کیٹیگریز بناؤ۔ اگر یہ کلاس پوئنٹ سسٹم کا استعمال کرے تو کیٹیگری بناؤ جس کا نام کچھ" + " &rdquo;Total&ldquo; " +
     "جیسا ہے اور اُس کو آپ کے گریڈ کا %100 مانو۔",
-  "catInstruct": "اگر یہ کلاس پوئنٹ سسٹم کا استعمال کرے تو کیٹیگری بناؤ جس کا نام کچھ \"Total\" " +
+  "catInstruct": "اگر یہ کلاس پوئنٹ سسٹم کا استعمال کرے تو کیٹیگری بناؤ جس کا نام کچھ &rdquo;Total&ldquo; " +
     "جیسا ہے اور اُس کو آپ کے گریڈ کا %100 مانو۔",
   "catNameExists": "پہلے سے اِس نام کی ایک کیٹیگری ہے",
   "catList": "<strong>کسی کیٹیگری کو کلک کرو</strong> کاموں کو ڈالنے یا نکالنے کے لئے اور اُس کیٹیگری کا سکور دیکھنے کے لئے۔<br><br>کیٹیگریز:<br>",
@@ -13,7 +13,7 @@ langData["ur"] = {
   "scoreNaN": "آپ کا ڈینامینیٹر صفر ہے یا کوئی اور مسئلہ ہوا ہے ایک یا ایک سے زیادہ کیٹیگریز میں۔ کچھ کاموں کو ڈالنے کی کوشش کرو۔",
   "rampalInstruct": "<b>ہر ایک کام کے لئے ایسے کرو:</b><br>" +
     "کام پہ کلک کرو<br>$IMG1<br>" +
-    "<strong>\"Count as\"</strong> والا نمبر دیکھ کے اوپر لکھ دو<br>$IMG2",
+    "<strong>&rdquo;Count as&ldquo;</strong> والا نمبر دیکھ کے اوپر لکھ دو<br>$IMG2",
   "catsFound": "$NUMBER کیٹیگریز مل گئیں: $CATEGORIES",
   "catsFound1": "ایک کیٹیگری مل گئی: $CATEGORIES",
   "pointCheck": "یہ کلاس پوئنٹ سسٹم کا ہے",
@@ -57,7 +57,7 @@ langData["ur"] = {
   "addAssignment": "کام ڈالو",
   "deleteAssignment": "کام نکالو",
   "editInstruct": "سکور/ممکن داخل کرو۔ جیسے: 6.0/5، 9/8.5، 3/3۔ سکور دائیں پہ، ممکن بائیں پہ۔<br>" +
-    "کام کو نکالنے کے لئے، اُس کا سکور <strong>اِسی طرح</strong> لکھ کے \"کام نکالو\" دباؤ۔<br>" +
+    "کام کو نکالنے کے لئے، اُس کا سکور <strong>اِسی طرح</strong> لکھ کے &rdquo;کام نکالو&ldquo; دباؤ۔<br>" +
     "<strong>کام کا سکور بدلنے کے لئے</strong>، 0 پوئنٹس کا کام ڈالو یا نکالو (جیسے: 0/5)۔",
   "letterGrade": "لیٹر گریڈ:&nbsp;",
   "selectLetter": "لیٹر گریڈ چن لو",
@@ -131,4 +131,46 @@ langData["ur"] = {
   "and": "اور",
   "translateMotto": "نمبروں کے درد سے چَین تک"
 };
+
+function setFormal2_ur() {
+  referenceKeys("begin", ["بناؤ", "مانو"], ["بنائیں", "مانیں"]);
+  referenceKeys("catInstruct", ["بناؤ", "مانو"], ["بنائیں", "مانیں"]);
+  currentLangData["rampalInstruct"] = currentLangData["rampalInstruct"].replace("کرو", "کیجئے").replaceAll("کرو", "کریں").replaceAll("دو", "دیں");
+  ["catList", "scoreNaN", "submit", "apply", "add", "delete", "edit", "mailSent", "editInstruct",
+  "copyGradesInstruct", "dontWorry", "intro", "selectAbove", "addClassOption", "search"].forEach(
+    key => referenceKey(key, "کرو", "کریں"));
+  referenceKey("continue", "بڑھو", "بڑھیں");
+  currentLangData["intro"] = currentLangData["intro"].replaceAll("چن لو", "چن لیں").replace("کریں", "کیجئے");
+  referenceKey("notPossibleGrade", "رہو", "رہیں");
+  referenceKey("fritzExam", "کرو گے", "کریں گے");
+  ["mailSent", "manualButton", "addClassOption", "sethClassInstruct", "add", "addAssignment",
+  "editInstruct"].forEach(
+    key => referenceKey(key, "ڈالو", "ڈالیں"));
+  referenceKey("jsSuccess", "ہو", "ہیں");
+  referenceKey("createCat", "بناؤ", "بنائیں");
+  referenceKey("editInstruct", "دباؤ", "دبائیں");
+  referenceKey("calcRequiredButton", "لگاؤ", "لگائیں");
+  referenceKey("changeWeightButton", "دو", "دیں");
+  referenceKey("mobileCopyInstruct", "ہو", "ہیں");
+  referenceKey("pasteGradesInstruct", "دباؤ", "دبائیں");
+  referenceKey("dontWorry", "سکتے ہو", "سکتے ہیں");
+  referenceKey("selClass", "چنو", "چنیں");
+  referenceKey("selClassOption", "چنو", "چنیں");
+  referenceKey("sethClassInstruct", "دباؤ", "دبائیں");
+  referenceKey("pointSystemInstruct", "دیکھو", "دیکھیں");
+  referenceKey("pointSystemInstruct2", "سکتے ہو", "سکتے ہیں");
+  referenceKey("enterNotes", "چاہو", "چاہیں");
+  referenceKey("clearDataButton", "ہٹاؤ", "ہٹائیں");
+  referenceKeys("clearDataExp", ["آؤ گے", "رہنے دو", "ہٹاؤ", "نہ ہو"], ["آئیں گے", "رہنے دیں", "ہٹائیں", "نہ ہوں"]);
+  referenceKey("getCreditButton", "دیکھو", "دیکھیں");
+  referenceKeys("modifyCreditHeading", ["بدلو", "ہٹاؤ"], ["بدلیں", "ہٹائیں"]);
+  referenceKey("pronunciation", "کہہ دو", "کہہ دیجئے");
+  referenceKey("deleteAssignment", "نکالو", "نکالیں");
+  referenceKey("delete", "نکالو", "نکالیں");
+  referenceKey("editInstruct", "نکالو", "نکالیں");
+  referenceKey("selectLetter", "لو", "لیں");
+  referenceKey("deleteCatButton", "ؤ", "ئیں");
+  referenceKey("validData", "کرو", "کیجئے");
+}
+
 languageLoaded("ur");

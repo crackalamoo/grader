@@ -1,7 +1,7 @@
 langData["es"] = {
-  "begin": "Para empezar, crea categorías para las notas. Si la clase está basada en el sistema de puntos, haz una categoría llamado \"Total\" o algo así y considérala 100% de tu nota.",
+  "begin": "Para empezar, crea categorías para las notas. Si la clase está basada en el sistema de puntos, haz una categoría llamado &ldquo;Total&rdquo; o algo así y considérala 100% de tu nota.",
   "catInstruct": "Si la clase está basada en el sistema de puntos, haz una categoría " +
-    "llamado \"Total\" o algo así y considérala 100% de tu nota.",
+    "llamado &ldquo;Total&rdquo; o algo así y considérala 100% de tu nota.",
   "catNameExists": "Ya hay una categoría con este nombre",
   "catList": "<strong>Haz clic en una categoría</strong> para añadir o quitar tareas y para ver la nota de esa categoría.<br><br>Categorías:<br>",
   "catAvg": "Promedio en $CATEGORY: $NUMBER%",
@@ -11,7 +11,7 @@ langData["es"] = {
   "selCat": "Nota hasta ahora en $CATEGORY: $SCORE%",
   "scoreNaN": "Tienes un denominador de cero u otro error en por lo menos una categoría. Trata de añadir algunas tareas.",
   "rampalInstruct": "<b>Haz lo siguiente para <em>cada</em> tarea:</b><br>" +
-    "Haz clic en la tarea<br>$IMG1<br>Mira el <strong>\"Count as\"</strong> e introdúcelo arriba<br>$IMG2",
+    "Haz clic en la tarea<br>$IMG1<br>Mira el <strong>&ldquo;Count as&rdquo;</strong> e introdúcelo arriba<br>$IMG2",
   "catsFound": "$NUMBER categorías se encontraron: $CATEGORIES",
   "catsFound1": "Una categoría se encontró: $CATEGORIES",
   "pointCheck": "Esta clase usa el sistema de puntos",
@@ -55,7 +55,7 @@ langData["es"] = {
   "addAssignment": "Añadir tarea",
   "deleteAssignment": "Borrar tarea",
   "editInstruct": "Introduce nota/posible. Ejemplos: 5/6.0, 8.5/9, 3/3.<br>" +
-    "Para borrar a una tarea, introduce tu nota <strong>de la misma manera</strong> y haz clic en \"Borrar tarea\".<br>" +
+    "Para borrar a una tarea, introduce tu nota <strong>de la misma manera</strong> y haz clic en &ldquo;Borrar tarea&rdquo;.<br>" +
     "Para <strong>cambiar la nota de una tarea</strong>, añade o borra una tarea de 0 puntos (ej: 5/0).",
   "letterGrade": "Nota de letra:&nbsp;",
   "selectLetter": "Selecciona una nota de letra",
@@ -104,8 +104,8 @@ langData["es"] = {
   "getCreditButton": "Ver crédito",
   "modifyCreditHeading": "<b>Modificar/borrar un crédito</b>",
   "confirm": "¿Estás seguro/a que quieres hacer esto?",
-  "quarter13": "Nota del trimestre I/III:",
-  "quarter24": "Nota del trimestre II/IV:",
+  "quarter13": "Nota del trimestre 1/3:",
+  "quarter24": "Nota del trimestre 2/4:",
   "examGrade": "Nota del examen:",
   "semester": "Semestre",
   "quarter": "Trimestre",
@@ -122,4 +122,37 @@ langData["es"] = {
   "and": "y",
   "translateMotto": "<i>Del dolor de los números a la paz</i>"
 };
+
+function setFormal_es() {
+  referenceKeys("begin", ["crea", "haz", "considéra", "tu nota"], ["cree", "haga", "considére", "su nota"]);
+  referenceKeys("catInstruct", ["haz", "hagas", "considéra", "tu nota"], ["haga", "haga", "considére", "su nota"]);
+  referenceKey("catList", "Haz", "Haga");
+  referenceKeys("scoreNaN", ["tienes", "trata"], ["tiene", "trate"]);
+  referenceKeys("rampalInstruct", ["Haz", "Mira", "introdúce"], ["Haga", "Mire", "introdúzca"]);
+  referenceKey("notPossibleGrade", "para ti", "para usted");
+  referenceKey("fritzExam", "hagas", "haga");
+  referenceKey("validData", "introduce", "introduzca");
+  referenceKeys("mailSent", ["Tu res", "vuelve", "ponte", "tu sol"], ["Su res", "vuelva", "póngase", "su sol"]);
+  referenceKey("reqScore_0", "Debes", "Debe");
+  referenceKey("reqScore", "Debes", "Debe");
+  referenceKeys("welcome", ["tienes", "tengas", "sabes", "te preocupes", "por ti"], ["tiene", "tenga", "sabe", "se preocupe", "por usted"]);
+  referenceKeys("jsSuccess", ["estás", "tienes", "puedes"], ["usted está", "tiene", "puede"]);
+  referenceKeys("intro", ["ponte en", "encuentras", "Añade", "puedas", "selecciona"], ["póngase en", "encuentra", "Añada", "pueda", "seleccione"]);
+  referenceKeys("editInstruct", ["introduce tu", "haz", "añade", "borra"], ["introduzca su", "haga", "añada", "borre"]);
+  referenceKey("selectLetter", "Selecciona", "Seleccione");
+  referenceKey("copyGradesInstruct", "copia tus", "copie sus");
+  referenceKeys("mobileCopyInstruct", ["estás", "puedes"], ["está", "puede"]);
+  referenceKeys("pasteGradesInstruct", ["péga", "haz"], ["pégue", "haga"]);
+  referenceKey("superAlgorithm", "tus ", "sus ");
+  referenceKey("dontWorry", "te preocupes", "se preocupe");
+  referenceKey("selClass", "Selecciona", "Seleccione");
+  referenceKeys("sethClassInstruct", ["introduce", "marca"], ["introduzca", "marque"]);
+  referenceKey("pointSystemInstruct", "mira", "mire");
+  referenceKey("pointSystemInstruct2", "teclea", "teclee");
+  referenceKey("selectAbove", "Selecciona", "Seleccione");
+  referenceKeys("clearDataExp", ["te oblig", "visites", "dejas", "estás", "tu GPA"], ["lo/la oblig", "visite", "deja", "está", "su GPA"]);
+  referenceKeys("confirm", ["Estás", "quieres"], ["Está", "quiere"]);
+  referenceKey("pronunciation", "Di ", "Diga ");
+}
+
 languageLoaded("es");
