@@ -1,7 +1,7 @@
 langData["la"] = {
-  "begin": "Ut incipere, genera pro notas crea. Si in disciplinam fundatur ratio punctorum, facito genus nominatur alquid simile \"Total\" et eam 100% notae tuae arbitrator.",
-  "catInstruct": "Si in disciplinam fundatur ratio punctorum, facito genus " +
-    "nominatur alquid simile \"Total\" et eam 100% notae tuae arbitrator.",
+  "begin": "Ut incipere, genera pro notas crea. Si in disciplinam fundatur ratio punctorum facito genus nominatur alquid simile &ldquo;Total&rdquo; et eam 100% notae tuae arbitrator.",
+  "catInstruct": "Si in disciplinam fundatur ratio punctorum facito genus " +
+    "nominatur alquid simile &ldquo;Total&rdquo; et eam 100% notae tuae arbitrator.",
   "catNameExists": "Iam exsistit genus cum hoc nomine",
   "catList": "<strong>Generi click fac</strong> ut addere vel auferre pensa et ut notam eius generum videre.<br><br>Genera:<br>",
   "catAvg": "Medium in $CATEGORY: $NUMBER%",
@@ -11,7 +11,7 @@ langData["la"] = {
   "selCat": "Nota hactenus in $CATEGORY: $SCORE%",
   "scoreNaN": "Denominatorem zephiri vel alium errorem habes de saltem uno genere. Experitor addere quaedam pensa.",
   "rampalInstruct": "<b><em>Cuique</em> penso quo sequitur fac:</b><br>" +
-    "Penso click fac<br><img src=\"rampal/rampal1.png\"><br><img src=\"rampal/rampal2.png\"><br><strong>\"Count as\"</strong> vide et id supra scribe",
+    "Penso click fac<br>$IMG1<br><strong>&ldquo;Count as&rdquo;</strong> vide et id supra scribe<br>$IMG2",
   "catsFound": "$NUMBER genera inventus sunt: $CATEGORIES",
   "catsFound1": "Unum genus inventus est: $CATEGORIES",
   "pointCheck": "In hanc disciplinam fundatur ratio punctorum",
@@ -45,7 +45,7 @@ langData["la"] = {
   "quarterGrades": "Notas trimestres",
   "intro": "<b>NOTA:</b> non obstante amore meo computatris, ego etiam homo sum. Mihi per $EMAIL scribe si errorem invenis." +
     "<br><strong>Hanc paginam ad paginas dilectas tuas adde</strong> ut posse invenire hanc facile." +
-    "<br><br>Ut incipere, calculationem elige:",
+    "<br><br>Ut incipere calculationem elige:",
   "semGradesButton": "Notas semestres &amp; examinis",
   "gpaCalcButton": "Calculator GPA",
   "newCatButton": "Genus novum",
@@ -55,8 +55,8 @@ langData["la"] = {
   "addAssignment": "Pensum addere",
   "deleteAssignment": "Pensum auferre",
   "editInstruct": "Notam/possibilem scribe. Exempli gratia: 5/6.0, 8.5/9, 3/3.<br>" +
-    "Ut pensum auferre, notam tuam <strong>itidem</strong> scribe et \"Pensum auferre\" click fac.<br>" +
-    "Ut <strong>mutare notam pensi</strong>, zephiri pensum adde aut aufer. (Exempli gratia, 5/0).",
+    "Ut pensum auferre notam tuam <strong>itidem</strong> scribe et &ldquo;Pensum auferre&rdquo; click fac.<br>" +
+    "Ut <strong>mutare notam pensi</strong> zephiri pensum adde aut aufer. (Exempli gratia, 5/0).",
   "letterGrade": "Nota litterae:&nbsp;",
   "selectLetter": "Notam litterae elige",
   "whatNeed": "QVO EGEO IN PENSO FVTVRO",
@@ -94,8 +94,8 @@ langData["la"] = {
   "selectAbove": "Notas super elige ut calculare",
   "semWithExam": "NOTA SEMSTRIS CVM EXAMINE",
   "noExam": "Sine examine",
-  "ritvikCalc": "CALCVLATOR AHS GPA PRO RITVIK TEEGAVARAPV",
-  "ritvikHonor": "SVADETVR A ET NOMINATVR HONOREM RITVIK TEEGAVARAPV",
+  "ritvikCalc": "<span class=\"smallCaps\">Calcvlator AHS GPA pro Ritvik Teegavarapv</span>",
+  "ritvikHonor": "<span class=\"smallCaps\">Svadetvr a et nominatvr honorem Ritvik Teegavarapv</span>",
   "clearDataButton": "Informationem GPA auferre",
   "clearDataExp": "Hoc tubi obligabit ad rursus scribere GPA tuam quando rursus hanc pagina visites. " +
     "Si informationem permittis et hanc non aufers, et in modo incognito non es, omne habebitur " +

@@ -1,7 +1,7 @@
 langData["en"] = {
-  "begin": "Begin by creating categories for grades. If the class is based on point system, make a category called something like \"Total\" and consider it 100% of your grade.",
+  "begin": "Begin by creating categories for grades. If the class is based on point system, make a category called something like &ldquo;Total&rdquo; and consider it 100% of your grade.",
   "catInstruct": "If the class is based on point system, make a category " +
-    "called something like \"Total\" and consider it 100% of your grade.",
+    "called something like &ldquo;Total&rdquo; and consider it 100% of your grade.",
   "catNameExists": "There is already a category with this name",
   "catList": "<strong>Click a category</strong> to add or remove assignments and to see that category's score.<br><br>Categories:<br>",
   "catAvg": "Average in $CATEGORY: $NUMBER%",
@@ -11,7 +11,7 @@ langData["en"] = {
   "selCat": "Score so far in $CATEGORY: $SCORE%",
   "scoreNaN": "You have a denominator of zero or another error in at least one category. Try adding some assignments.",
   "rampalInstruct": "<b>Do the following for <em>each</em> assignment:</b><br>" +
-    "Click on the assignment<br>$IMG1<br>Look at the <strong>\"Count as\"</strong> and enter it above<br>$IMG2",
+    "Click on the assignment<br>$IMG1<br>Look at the <strong>&ldquo;Count as&rdquo;</strong> and enter it above<br>$IMG2",
   "catsFound": "$NUMBER categories found: $CATEGORIES",
   "catsFound1": "One category found: $CATEGORIES",
   "pointCheck": "This class is point system",
@@ -55,7 +55,7 @@ langData["en"] = {
   "addAssignment": "Add Assignment",
   "deleteAssignment": "Delete Assignment",
   "editInstruct": "Enter Score/Possible. Examples: 5/6.0, 8.5/9, 3/3.<br>" +
-    "To delete an assignment, enter its score <strong>in the same way</strong> and click \"Delete Assignment\".<br>" +
+    "To delete an assignment, enter its score <strong>in the same way</strong> and click &ldquo;Delete Assignment&rdquo;.<br>" +
     "To <strong>change the grade on an assignment</strong>, add or remove an assignment out of 0 points (ex: 5/0).",
   "letterGrade": "Letter grade:&nbsp;",
   "selectLetter": "Select a letter grade",

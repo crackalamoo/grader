@@ -1,6 +1,6 @@
 langData["hi"] = {
-  "begin": "शुरू करने के लिए मार्क्स की कैटेगरीज़ बनाओ। अगर ये क्लास पॉइंट सिस्टम का इस्तेमाल करे तो कैटेगरी बनाओ जिसका नाम कुछ \"Total\" जैसा है और उसको आपके ग्रेड का 100% मानो।",
-  "catInstruct": "अगर ये क्लास पॉइंट सिस्टम का इस्तेमाल करे तो कैटेगरी बनाओ जिसका नाम कुछ \"Total\" जैसा है और उसको आपके ग्रेड का 100% मानो।",
+  "begin": "शुरू करने के लिए मार्क्स की कैटेगरीज़ बनाओ। अगर ये क्लास पॉइंट सिस्टम का इस्तेमाल करे तो कैटेगरी बनाओ जिसका नाम कुछ &ldquo;Total&rdquo; जैसा है और उसको आपके ग्रेड का 100% मानो।",
+  "catInstruct": "अगर ये क्लास पॉइंट सिस्टम का इस्तेमाल करे तो कैटेगरी बनाओ जिसका नाम कुछ &ldquo;Total&rdquo; जैसा है और उसको आपके ग्रेड का 100% मानो।",
   "catNameExists": "पहले से इस नाम की एक कैटेगरी है",
   "catList": "<strong>किसी कैटेगरी को क्लिक करो</strong> कामों को डालने या निकालने के लिए और उस कैटेगरी का स्कोर देखने के लिए।<br><br>कैटेगरीज़:<br>",
   "catAvg": "$CATEGORY का औसत: $NUMBER%",
@@ -11,7 +11,7 @@ langData["hi"] = {
   "scoreNaN": "आपका डिनॉमिनेटर शून्य है या कोई और मसला हुआ है एक या एक से ज़्यादा कैटेगरीज़ में। कुछ कामों को डालने की कोशिश करो।",
   "rampalInstruct": "<b>हर एक काम के लिए ऐसे करो:</b><br>" +
     "काम पे क्लिक करो<br>$IMG1<br>" +
-    "<strong>\"Count as\"</strong> वाला नंबर देखके ऊपर लिख दो<br>$IMG2",
+    "<strong>&ldquo;Count as&rdquo;</strong> वाला नंबर देखके ऊपर लिख दो<br>$IMG2",
   "catsFound": "$NUMBER कैटेगरीज़ मिल गईं: $CATEGORIES",
   "catsFound1": "एक कैटेगरी मिल गई: $CATEGORIES",
   "pointCheck": "ये क्लास पॉइंट सिस्टम का है",
@@ -55,7 +55,7 @@ langData["hi"] = {
   "addAssignment": "काम डालो",
   "deleteAssignment": "काम निकालो",
   "editInstruct": "स्कोर/मुमकिन दाख़िल करो। जैसे: 5/6.0, 8.5/9, 3/3।<br>" +
-    "काम को निकालने के लिए, उसका स्कोर <strong>इसी तरह</strong> लिखके \"काम निकालो\" दबाओ।<br>" +
+    "काम को निकालने के लिए, उसका स्कोर <strong>इसी तरह</strong> लिखके &ldquo;काम निकालो&rdquo; दबाओ।<br>" +
     "<strong>काम का स्कोर बदलने के लिए</strong>, 0 पॉइंट्स का काम डालो या निकालो (जैसे: 5/0)।",
   "letterGrade": "लेटर ग्रेड:&nbsp;",
   "selectLetter": "लेटर ग्रेड चुन लो",
@@ -120,4 +120,46 @@ langData["hi"] = {
   "and": "और",
   "translateMotto": "नंबरों के दर्द से चैन तक"
 };
+
+function setFormal2_hi() {
+  referenceKeys("begin", ["बनाओ", "मानो"], ["बनाएँ", "मानें"]);
+  referenceKeys("catInstruct", ["बनाओ", "मानो"], ["बनाएँ", "मानें"]);
+  currentLangData["rampalInstruct"] = currentLangData["rampalInstruct"].replace("करो", "कीजिए").replaceAll("करो", "करें").replaceAll("दो", "दें");
+  ["catList", "scoreNaN", "submit", "apply", "add", "delete", "edit", "mailSent", "editInstruct",
+  "copyGradesInstruct", "dontWorry", "intro", "selectAbove", "addClassOption", "search"].forEach(
+    key => referenceKey(key, "करो", "करें"));
+  referenceKey("continue", "बढ़ो", "बढ़ें");
+  currentLangData["intro"] = currentLangData["intro"].replaceAll("चुन लो", "चुन लें").replace("करें", "कीजिए");;
+  referenceKey("notPossibleGrade", "रहो", "रहें");
+  referenceKey("fritzExam", "करोगे", "करेंगे");
+  ["mailSent", "manualButton", "addClassOption", "sethClassInstruct", "add", "addAssignment",
+  "editInstruct"].forEach(
+    key => referenceKey(key, "डालो", "डालें"));
+  referenceKey("jsSuccess", "हो", "हैं");
+  referenceKey("createCat", "बनाओ", "बनाएँ");
+  referenceKey("editInstruct", "दबाओ", "दबाएँ");
+  referenceKey("calcRequiredButton", "लगाओ", "लगाएँ");
+  referenceKey("changeWeightButton", "दो", "दें");
+  referenceKey("mobileCopyInstruct", "हो", "हैं");
+  referenceKey("pasteGradesInstruct", "दबाओ", "दबाएँ");
+  referenceKey("dontWorry", "सकते हो", "सकते हैं");
+  referenceKey("selClass", "चुनो", "चुनें");
+  referenceKey("selClassOption", "चुनो", "चुनें");
+  referenceKey("sethClassInstruct", "दबाओ", "दबाएँ");
+  referenceKey("pointSystemInstruct", "देखो", "देखें");
+  referenceKey("pointSystemInstruct2", "सकते हो", "सकते हैं");
+  referenceKey("enterNotes", "चाहो", "चाहें");
+  referenceKey("clearDataButton", "हटाओ", "हटाएँ");
+  referenceKeys("clearDataExp", ["आओगे", "रहने दो", "हटाओ", "ना हो"], ["आएँगे", "रहने दें", "हटाएँ", "ना हों"]);
+  referenceKey("getCreditButton", "देखो", "देखें");
+  referenceKeys("modifyCreditHeading", ["बदलो", "हटाओ"], ["बदलें", "हटाएँ"]);
+  referenceKey("pronunciation", "कह दो", "कह दीजिए");
+  referenceKey("deleteAssignment", "निकालो", "निकालें");
+  referenceKey("editInstruct", "निकालो", "निकालें");
+  referenceKey("delete", "निकालो", "निकालें");
+  referenceKey("selectLetter", "लो", "लें");
+  referenceKey("deleteCatButton", "ओ", "एँ");
+  referenceKey("validData", "करो", "कीजिए");
+}
+
 languageLoaded("hi");

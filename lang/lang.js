@@ -278,44 +278,7 @@ function setReference() {
     
     if (lang == "hi") {
       if (["mf2", "ff2"].indexOf(refer) != -1) {
-        referenceKeys("begin", ["बनाओ", "मानो"], ["बनाएँ", "मानें"]);
-        referenceKeys("catInstruct", ["बनाओ", "मानो"], ["बनाएँ", "मानें"]);
-        currentLangData["rampalInstruct"] = currentLangData["rampalInstruct"].replace("करो", "कीजिए").replaceAll("करो", "करें").replaceAll("दो", "दें");
-        ["catList", "scoreNaN", "submit", "apply", "add", "delete", "edit", "mailSent", "editInstruct",
-        "copyGradesInstruct", "dontWorry", "intro", "selectAbove", "addClassOption", "search"].forEach(
-          key => referenceKey(key, "करो", "करें"));
-        referenceKey("continue", "बढ़ो", "बढ़ें");
-        currentLangData["intro"] = currentLangData["intro"].replaceAll("चुन लो", "चुन लें").replace("करें", "कीजिए");;
-        referenceKey("notPossibleGrade", "रहो", "रहें");
-        referenceKey("fritzExam", "करोगे", "करेंगे");
-        ["mailSent", "manualButton", "addClassOption", "sethClassInstruct", "add", "addAssignment",
-        "editInstruct"].forEach(
-          key => referenceKey(key, "डालो", "डालें"));
-        referenceKey("jsSuccess", "हो", "हैं");
-        referenceKey("createCat", "बनाओ", "बनाएँ");
-        referenceKey("editInstruct", "दबाओ", "दबाएँ");
-        referenceKey("calcRequiredButton", "लगाओ", "लगाएँ");
-        referenceKey("changeWeightButton", "दो", "दें");
-        referenceKey("mobileCopyInstruct", "हो", "हैं");
-        referenceKey("pasteGradesInstruct", "दबाओ", "दबाएँ");
-        referenceKey("dontWorry", "सकते हो", "सकते हैं");
-        referenceKey("selClass", "चुनो", "चुनें");
-        referenceKey("selClassOption", "चुनो", "चुनें");
-        referenceKey("sethClassInstruct", "दबाओ", "दबाएँ");
-        referenceKey("pointSystemInstruct", "देखो", "देखें");
-        referenceKey("pointSystemInstruct2", "सकते हो", "सकते हैं");
-        referenceKey("enterNotes", "चाहो", "चाहें");
-        referenceKey("clearDataButton", "हटाओ", "हटाएँ");
-        referenceKeys("clearDataExp", ["आओगे", "रहने दो", "हटाओ", "ना हो"], ["आएँगे", "रहने दें", "हटाएँ", "ना हों"]);
-        referenceKey("getCreditButton", "देखो", "देखें");
-        referenceKeys("modifyCreditHeading", ["बदलो", "हटाओ"], ["बदलें", "हटाएँ"]);
-        referenceKey("pronunciation", "कह दो", "कह दीजिए");
-        referenceKey("deleteAssignment", "निकालो", "निकालें");
-        referenceKey("editInstruct", "निकालो", "निकालें");
-        referenceKey("delete", "निकालो", "निकालें");
-        referenceKey("selectLetter", "लो", "लें");
-        referenceKey("deleteCatButton", "ओ", "एँ");
-        referenceKey("validData", "करो", "कीजिए");
+        setFormal2_hi();
       }
       if (["mf0", "ff0"].indexOf(refer) != -1) {
         ["reqScore_0", "reqScore", "welcome", "intro", "copyGradesInstruct", "superAlgorithm",
@@ -339,44 +302,7 @@ function setReference() {
       }
     } else if (lang == "ur") {
       if (["mf2", "ff2"].indexOf(refer) != -1) {
-        referenceKeys("begin", ["بناؤ", "مانو"], ["بنائیں", "مانیں"]);
-        referenceKeys("catInstruct", ["بناؤ", "مانو"], ["بنائیں", "مانیں"]);
-        currentLangData["rampalInstruct"] = currentLangData["rampalInstruct"].replace("کرو", "کیجئے").replaceAll("کرو", "کریں").replaceAll("دو", "دیں");
-        ["catList", "scoreNaN", "submit", "apply", "add", "delete", "edit", "mailSent", "editInstruct",
-        "copyGradesInstruct", "dontWorry", "intro", "selectAbove", "addClassOption", "search"].forEach(
-          key => referenceKey(key, "کرو", "کریں"));
-        referenceKey("continue", "بڑھو", "بڑھیں");
-        currentLangData["intro"] = currentLangData["intro"].replaceAll("چن لو", "چن لیں").replace("کریں", "کیجئے");
-        referenceKey("notPossibleGrade", "رہو", "رہیں");
-        referenceKey("fritzExam", "کرو گے", "کریں گے");
-        ["mailSent", "manualButton", "addClassOption", "sethClassInstruct", "add", "addAssignment",
-        "editInstruct"].forEach(
-          key => referenceKey(key, "ڈالو", "ڈالیں"));
-        referenceKey("jsSuccess", "ہو", "ہیں");
-        referenceKey("createCat", "بناؤ", "بنائیں");
-        referenceKey("editInstruct", "دباؤ", "دبائیں");
-        referenceKey("calcRequiredButton", "لگاؤ", "لگائیں");
-        referenceKey("changeWeightButton", "دو", "دیں");
-        referenceKey("mobileCopyInstruct", "ہو", "ہیں");
-        referenceKey("pasteGradesInstruct", "دباؤ", "دبائیں");
-        referenceKey("dontWorry", "سکتے ہو", "سکتے ہیں");
-        referenceKey("selClass", "چنو", "چنیں");
-        referenceKey("selClassOption", "چنو", "چنیں");
-        referenceKey("sethClassInstruct", "دباؤ", "دبائیں");
-        referenceKey("pointSystemInstruct", "دیکھو", "دیکھیں");
-        referenceKey("pointSystemInstruct2", "سکتے ہو", "سکتے ہیں");
-        referenceKey("enterNotes", "چاہو", "چاہیں");
-        referenceKey("clearDataButton", "ہٹاؤ", "ہٹائیں");
-        referenceKeys("clearDataExp", ["آؤ گے", "رہنے دو", "ہٹاؤ", "نہ ہو"], ["آئیں گے", "رہنے دیں", "ہٹائیں", "نہ ہوں"]);
-        referenceKey("getCreditButton", "دیکھو", "دیکھیں");
-        referenceKeys("modifyCreditHeading", ["بدلو", "ہٹاؤ"], ["بدلیں", "ہٹائیں"]);
-        referenceKey("pronunciation", "کہہ دو", "کہہ دیجئے");
-        referenceKey("deleteAssignment", "نکالو", "نکالیں");
-        referenceKey("delete", "نکالو", "نکالیں");
-        referenceKey("editInstruct", "نکالو", "نکالیں");
-        referenceKey("selectLetter", "لو", "لیں");
-        referenceKey("deleteCatButton", "ؤ", "ئیں");
-        referenceKey("validData", "کرو", "کیجئے");
+        setFormal2_ur();
       }
       if (["mf0", "ff0"].indexOf(refer) != -1) {
         ["reqScore_0", "reqScore", "welcome", "intro", "copyGradesInstruct", "superAlgorithm",
@@ -418,35 +344,7 @@ function setReference() {
     document.getElementById("refer_es_friend").innerHTML = "¿Cómo debo llamar"+{"nf0": "te", "mf0": "te", "ff0": "te", "nf1": "lo/la", "mf1": "lo", "ff1": "la"}[refer] + "?";
     
     if (["mf1", "ff1", "nf1"].indexOf(refer) != -1) {
-      referenceKeys("begin", ["crea", "haz", "considéra", "tu nota"], ["cree", "haga", "considére", "su nota"]);
-      referenceKeys("catInstruct", ["haz", "hagas", "considéra", "tu nota"], ["haga", "haga", "considére", "su nota"]);
-      referenceKey("catList", "Haz", "Haga");
-      referenceKeys("scoreNaN", ["tienes", "trata"], ["tiene", "trate"]);
-      referenceKeys("rampalInstruct", ["Haz", "Mira", "introdúce"], ["Haga", "Mire", "introdúzca"]);
-      referenceKey("notPossibleGrade", "para ti", "para usted");
-      referenceKey("fritzExam", "hagas", "haga");
-      referenceKey("validData", "introduce", "introduzca");
-      referenceKeys("mailSent", ["Tu res", "vuelve", "ponte", "tu sol"], ["Su res", "vuelva", "póngase", "su sol"]);
-      referenceKey("reqScore_0", "Debes", "Debe");
-      referenceKey("reqScore", "Debes", "Debe");
-      referenceKeys("welcome", ["tienes", "tengas", "sabes", "te preocupes", "por ti"], ["tiene", "tenga", "sabe", "se preocupe", "por usted"]);
-      referenceKeys("jsSuccess", ["estás", "tienes", "puedes"], ["usted está", "tiene", "puede"]);
-      referenceKeys("intro", ["ponte en", "encuentras", "Añade", "puedas", "selecciona"], ["póngase en", "encuentra", "Añada", "pueda", "seleccione"]);
-      referenceKeys("editInstruct", ["introduce tu", "haz", "añade", "borra"], ["introduzca su", "haga", "añada", "borre"]);
-      referenceKey("selectLetter", "Selecciona", "Seleccione");
-      referenceKey("copyGradesInstruct", "copia tus", "copie sus");
-      referenceKeys("mobileCopyInstruct", ["estás", "puedes"], ["está", "puede"]);
-      referenceKeys("pasteGradesInstruct", ["péga", "haz"], ["pégue", "haga"]);
-      referenceKey("superAlgorithm", "tus ", "sus ");
-      referenceKey("dontWorry", "te preocupes", "se preocupe");
-      referenceKey("selClass", "Selecciona", "Seleccione");
-      referenceKeys("sethClassInstruct", ["introduce", "marca"], ["introduzca", "marque"]);
-      referenceKey("pointSystemInstruct", "mira", "mire");
-      referenceKey("pointSystemInstruct2", "teclea", "teclee");
-      referenceKey("selectAbove", "Selecciona", "Seleccione");
-      referenceKeys("clearDataExp", ["te oblig", "visites", "dejas", "estás", "tu GPA"], ["lo/la oblig", "visite", "deja", "está", "su GPA"]);
-      referenceKeys("confirm", ["Estás", "quieres"], ["Está", "quiere"]);
-      referenceKey("pronunciation", "Di ", "Diga ");
+      setFormal_es();
     }
     if (["mf0", "mf1"].indexOf(refer) != -1) {
       referenceKey("welcome", "Bienvenidos", "Bienvenido");
@@ -469,39 +367,7 @@ function setReference() {
     document.getElementById("refer_fa_friend").innerHTML = "چگونه باید با " + pronoun + " صحبت کنم؟";
     
     if (refer == "f0") {
-      referenceKeys("begin", ["کنید", "نمرهٔ شما"], ["کن", "نمرهٔ تو"]);
-      referenceKeys("catInstruct", ["کنید", "نمرهٔ شما"], ["کن", "نمرهٔ تو"]);
-      referenceKey("catList", "بکنید", "بکن");
-      referenceKeys("scoreNaN", ["رج شما", "کنید"], ["رجت", "کن"]);
-      referenceKeys("rampalInstruct", ["کنید", "بنویسین"], ["کن", "بنویس"]);
-      referenceKeys("notPossibleGrade", ["برای شما", "بدهید"], ["برای تو", "بده"]);
-      referenceKey("fritzExam", "نکنید", "نکن");
-      referenceKey("validData", "بکنید", "بکن");
-      referenceKeys("mailSent", ["سخ شما", "تشکر", "بگردید", "کنید", "بگیرید", "خاست شما"], ["سخت", "مرسی", "بگرد", "کن", "بگیر", "خاستت"]);
-      referenceKeys("reqScore_0", ["شما ", "بگیرید"], ["", "بگیر"]);
-      referenceKeys("reqScore", ["شما ", "بگیرید"], ["", "بگیر"]);
-      referenceKeys("welcome", ["ببینید", "شما", "دارید", "بدانید", "نباشید", "دانید"], ["ببین", "تو", "داری", "بدان", "نباش", "دانی"]);
-      referenceKeys("jsSuccess", ["شما ", "دارید", "توانید", "خوانید", "کنید"], ["", "داری", "توانی", "خوانی", "کن"]);
-      referenceKeys("intro", ["کنید", "شما ", "بگیرید", "توانید"], ["کن", "", "بگیر", "توانی"]);
-      referenceKeys("editInstruct", ["کنید", "نویسید"], ["کن", "نویس"]);
-      referenceKey("selectLetter", "کنید", "کن");
-      referenceKeys("copyGradesInstruct", ["کنید", "ت شما"], ["کن", "تت"]);
-      referenceKeys("mobileCopyInstruct", ["شما ", "هستید", "توانید", "کنید"], ["", "هستی", "توانی", "کن"]);
-      referenceKeys("pasteGradesInstruct", ["بچسبونید", "کنید"], ["بچسبون", "کن"]);
-      referenceKey("superAlgorithm", "ت شما", "تت");
-      referenceKey("dontWorry", ["نباشید", "توانید", "کنید"], ["نباش", "توانی", "کن"]);
-      referenceKeys("selClass", ["کنید", "توانید"], ["کن", "توانی"]);
-      referenceKey("sethClassInstruct", "کنید", "کن");
-      referenceKey("pointSystemInstruct", "ببینید", "ببین");
-      referenceKey("pointSystemInstruct2", ["توانید", "نویسید"], ["توانی", "نویش"]);
-      referenceKey("minGrade", "توانید", "توانی");
-      referenceKey("fritzExam", "توانید", "توانی");
-      referenceKey("selectAbove", "کنید", "کن");
-      referenceKeys("clearDataExp", ["شما را", "آیید", "GPA شما",
-      "کنید","گذارید", "نیستید"], ["تو را", "آیی", "GPAت",
-      "کن", "گذار", "نیستی"]);
-      referenceKeys("confirm", ["خوانید", "کنید"], ["خوانی", "کن"]);
-      referenceKey("pronunciation", "بگویید", "بگو");
+      setInformal_fa();
     }
   }
 }
@@ -529,6 +395,10 @@ function setDialect() {
       referenceKey("setPoint", "Grading", "Scoring");
       referenceKey("shouldContinue", "Should", "Shall");
       referenceKey("ritvikHonor", "honor", "honour");
+      referenceKeys("rampalButton", ["Mr.", "Dr."], ["Mr", "Dr"]);
+      referenceKey("superAlgorithm", "super cool", "bloody brilliant");
+      ["begin", "catInstruct", "rampalInstruct", "editInstruct", "pointSystemInstruct2"].forEach(
+        key => referenceKeys(key, ["&ldquo;", "&rdquo;"], ["&lsquo;", "&rsquo;"]));
     } else if (dialect == "ASCII") {
       var keys = Object.keys(currentLangData);
       currentLangData["pronunciation"] = "Say: HAH-riss DAHL-vee";
@@ -717,6 +587,8 @@ function setDialect() {
     if (dialect == "ES") {
       referenceKey("intro", "computadoras", "ordenadores");
       referenceKeys("superAlgorithm", ["simplificó", "genial"], ["ha simplificado", "guay"]);
+      ["begin", "catInstruct", "rampalInstruct", "editInstruct", "pointSystemInstruct2", "footer"].forEach(
+        key => referenceKeys(key, ["&ldquo;", "&rdquo;"], ["&laquo;", "&raquo;"]));
     }
   } else {
     document["dialect_es"].style.display = "none";
@@ -729,16 +601,41 @@ function setDialect() {
       // Imperial Persian vs Hijri Zodiac and Gregorian French- vs English-derived months
       referenceKeys("footer", ["مهر ۲۵۷۸ شاهنشاهی", "تیر ۲۵۸۰ شاهنشاهی", "اکتبر", "ژوئیه"],
       ["میزان ۱۳۹۸ هجری", "سرطان ۱۴۰۰ هجری", "اکتوبر", "جولای"]);
-      referenceKeys("jsSuccess", ["استفاده", "دارید می"], ["استعمال", "می"]);
+      referenceKeys("jsSuccess", ["استفاده کنید", "دارید می", "می&zwnj;توان", "داری می"], ["", "می", "استعمال کرده می&zwnj;توان", "می"]);
+      referenceKey("jsSuccess", " استفاده کنی", "");
       referenceKey("begin", "استفاده", "استعمال");
       referenceKey("catInstruct", "استفاده", "استعمال");
       referenceKey("dontWorry", "استفاده", "استعمال");
       referenceKey("creditCathy", "ایده", "فکر");
-      referenceKey("selClass", "ایده", "فکر");
-      referenceKeys("pronunciation", ["هاریس دالْوی", "hɒːɾiːs dɒːlviː"], ["هَرِیس دَلْوِی", "haɾiːs dalwiː"]);
-      referenceKey("ritvikCalc", "ریتویک تیگاواراپو", "رِیتوِیک تِیگَوَرَپو");
-      referenceKey("ritvikHonor", "ریتویک تیگاواراپو", "رِیتوِیک تِیگَوَرَپو");
+      referenceKeys("selClass", ["ایده", "بطور اتوماتیک"], ["فکر", "اتوماتیکلی"]);
+      referenceKeys("pronunciation", ["هاریس دالْوی", "hɒːɾiːs dɒːlviː"], ["هارِیس دَلْوِی", "hɒːɾiːs dalwiː"]);
+      referenceKey("ritvikCalc", "ریتویک تیگاواراپو", "رِیتوِیک تِیگَوَرَپُو");
+      referenceKey("ritvikHonor", "ریتویک تیگاواراپو", "ریتویک تیگورپو");
       referenceKey("rampalButton", "دکتر", "داکتر");
+      ["catNameExists", "pointCheck", "mailSent", "intro", "mobileCopyInstruct",
+      "dontWorry", "manualButton", "sethClassInstruct", "pointSystemInstruct",
+      "semWithExam", "ritvikHonor", "clearDataExp", "ahsWeighted"].forEach(
+        key => referenceKey(key, "با ", "کتی "));
+      referenceKey("intro", "کتی وجود", "علیرغم");
+      referenceKey("intro", "بتوانید آن را به آسانی پیدا کنید", "آن را به آسانی پیدا کرده بتوانید");
+      referenceKey("intro", "بتوانی آن را به آسانی پیدا کنی", "آن را به آسانی پیدا کرده بتوانی");
+      referenceKey("mobileCopyInstruct", " می&zwnj;توانید", "");
+      referenceKey("mobileCopyInstruct", " می&zwnj;توانی", "");
+      referenceKey("mobileCopyInstruct", "انتخاب کنید", "انتخاب کرده می&zwnj;توانید");
+      referenceKey("mobileCopyInstruct", "انتخاب کنی", "انتخاب کرده می&zwnj;توانی");
+      ["begin", "catInstruct", "catNameExists", "catName", "nameOfClass",
+      "pointSystemInstruct2", "enterCatNames", "ritvikHonor"].forEach(
+        key => referenceKey(key, "اسم", "نام"));
+      referenceKey("rampalInstruct", "نگاه", "سیل");
+      referenceKey("intro", "اشتباه", "غلط");
+      referenceKeys("minGrade", ["بگیرید", "می&zwnj;ت", "بگیری"], ["", "گرفته می&zwnj;ت", ""]);
+      referenceKeys("fritzExam", ["بگیرید", "می&zwnj;ت", "بگیری"], ["", "گرفته می&zwnj;ت", ""]);
+      referenceKeys("selClass", [" بتوانید", " بتوانی"], ["", ""]);
+      referenceKeys("selClass", ["پر کنید", "پر کنی"], ["پر کرده بتوانید", "پر کرده بتوانی"]);
+      referenceKeys("pointSystemInstruct2", [" می&zwnj;توانید", "بنویسید۔"], ["", "نوشته می&zwnj;توانید۔"]);
+      referenceKeys("pointSystemInstruct2", [" می&zwnj;توانی ", "بنویسی۔"], ["", "نوشته می&zwnj;توانی۔"]);
+      referenceKeys("dontWorry", ["می&zwnj;توانید ", "اضافه کنید"], ["", "اضافه کرده می&zwnj;توانید"]);
+      referenceKeys("dontWorry", ["می&zwnj;توانید ", "اضافه کنی"], ["", "اضافه کرده می&zwnj;توانی"]);
     }
   } else {
     document["dialect_fa"].style.display = "none";
@@ -779,12 +676,6 @@ function setDialect() {
       var devanagari_vowels = ["अ", "आ", "इ", "ई", "उ", "ऊ", "ए", "ऐ", "ओ", "औ", "ऋ"];
       var devanagari_matras = ["ां", "ाः", "िं", "िः", "ीं", "ीः", "ुं", "ुः", "ूं", "ूः", "ें", "ेः", "ैं", "ैः", "ों", "ोः", "ौं", "ौः",
         "्", "ा", "ि", "ी", "ु", "ू", "े", "ै", "ो", "ौ", "ृ", "ं", "ः"];
-      var iast_consonants = ["k", "kh", "g", "gh", "ṅ", "c", "ch", "j", "jh", "ñ",
-        "ṭ", "ṭh", "ḍ", "ḍh", "ṇ", "t", "th", "d", "dh", "n",
-        "p", "ph", "b", "bh", "m", "y", "r", "l", "v", "ś", "ṣ", "s", "h", "ḷ"];
-      var iast_vowels = ["a", "ā", "i", "i", "u", "u", "e", "ai", "o", "au", "ṛ"];
-      var iast_matras = ["āṃ", "āḥ", "iṃ", "iḥ", "īṃ", "īḥ", "uṃ", "uḥ", "ūm", "ūḥ", "eṃ", "eḥ", "aiṃ", "aiḥ", "oṃ", "oḥ", "auṃ", "auḥ",
-        "", "ā", "i", "ī", "u", "ū", "e", "ai", "o", "au", "ṛ", "aṃ", "aḥ"];
       for (var k = 0; k < keys.length; k++) {
         if (["languages", "numbers"].indexOf(keys[k]) == -1) {
           for (var i = 0; i < devanagari_consonants.length; i++) {
