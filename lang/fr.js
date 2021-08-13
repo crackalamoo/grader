@@ -30,9 +30,9 @@ langData["fr"] = {
   "notPossibleGrade": "Malheureusement, cette note n'est pas possible pour vous ce semestre. Bon chance pour le prochain semestre!",
   "minGrade": "Note minimum nécessaire dans l'examen du semestre: $MIN% (entre comme $LETTER/$NUMBER%)",
   "fritzExam": "Note minimum nécessaire dans l'examen du semestre: $MIN% (j'espère que vous ne ferez pas tellement de Fritz dans l'examen)",
-  "validData": "Introduisez information valide s'il vous plait.",
+  "validData": "Introduisez information valide s'il vous plaît.",
   "mailSent": "Votre réponse a été envoyé et la classe devra être disponible bientôt. Merci!" +
-    "<br>Pour l'instant, retournez et introduisez las pondérations par la main.<br>Si la classe n'est pas disponible dans environ trois jours, s'il vous plait " +
+    "<br>Pour l'instant, retournez et introduisez las pondérations par la main.<br>Si la classe n'est pas disponible dans environ trois jours, s'il vous plaît " +
     " contactez-moi à $EMAIL; peut-être que j'ai des problèmes en comprendre votre requête.",
   "semGrade": "Note du semestre: $LETTER ($NUMBER%)",
   "gpaClass": "$INDEX: $GPA ($GRADE, $LEVEL, $CREDITS crédits)",
@@ -44,7 +44,7 @@ langData["fr"] = {
     "JavaScript. Si vous ne savez pas ce que c'est, n'inquiétez-vous pas. Je vais le faire pour vous:",
   "jsSuccess": "Si vous lisez ce message, vous avez JavaScript et vous pouvez utiliser cette page.",
   "quarterGrades": "Notes du trimestre",
-  "intro": "<b>NOTE:</b> malgré mon amor pour les ordinateurs, je suis humain aussi. S'il vous plait contactez-moi à $EMAIL si vous trouvez une erreur." +
+  "intro": "<b>NOTE:</b> malgré mon amour pour les ordinateurs, je suis humain aussi. S'il vous plaît contactez-moi à $EMAIL si vous trouvez une erreur." +
     "<br><strong>Ajoutez cette page aux favoris</strong> afin que vous puissiez la trouver facilement." +
     "<br><br>Pour commencer, sélectionnez un calcul:",
   "semGradesButton": "Notes du semestre/examen",
@@ -77,12 +77,13 @@ langData["fr"] = {
     " N'inquiétez-vous pas, vous pouvez ajouter cette catégorie par la main après le calcul. Également n'inquiétez-vous pas si cette classe" +
     " est basé sur le <strong>système de points</strong> au lieu de catégories.",
   "shouldContinue": "Dois continuer?",
-  "rampalButton": "Classe de M. Rampal ou Dr. Kimpton",
+  "rampalButton": "Classe de M. Rampal",
+  "rampalExp": "Si une note n'est pas correcte, essayez-la avec &laquo;Classe de M. Rampal&raquo;.",
   "manualButton": "Introduire notes par la main",
   "selClass": "<strong>Sélectionnez une classe</strong> pour remplir pourcentages/pondérations automatiquement. (Crédit à <span id=\"seth\">Seth</span> Groper pour cette idée)",
   "selClassOption": "Sélectionner une classe",
   "addClassOption": "Ajouter o corriger une classe",
-  "sethClassInstruct": "S'il vous plait introduisez un pourcentage pour chaque catégorie <strong><i>ou</i></strong> cochez que cette classe utilise le système de points:",
+  "sethClassInstruct": "S'il vous plaît introduisez un pourcentage pour chaque catégorie <strong><i>ou</i></strong> cochez que cette classe utilise le système de points:",
   "pointSystemInstruct": "Pour savoir si une classe utilise le système de points ou catégories, voyez combien valent quiz, devoirs de la maison et examens." +
     " Si valent environ le même nombre de points dans chaque catégorie, est catégories. Si non, peut-être qu'est le système de points.",
   "nameOfClass": "Nom de la classe:&nbsp;",
@@ -113,13 +114,13 @@ langData["fr"] = {
   "ahsWeighted": "GPA pondérée (pondération d'AHS)",
   "5scale": "Barème 5.0",
   "4scale": "Barème 4.0",
-  "footer": "Harys Dalvi<br>octobre de 2019&ndash;juillet de 2021",
+  "footer": "Dalvi<br>octobre de 2019&ndash;août de 2021",
   "languages": ["anglais", "espagnol", "portugais", "français", "hindi", "ourdou", "bengali",
   "persan", "latin", "sanskrit"],
   "numbers": ["un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix"],
   "setPoint": "La notation est réglée au système de points",
   "search": "Rechercher",
-  "pronunciation": "Dites comme: Haryss Dalvi /aʁis dalvi/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]",
+  "pronunciation": "Dites comme: /dalvi/ [ˈd̪əɭ.viː]",
   "and": "&amp;",
   "translateMotto": "<i>De la douleur des nombres à la paix</i>"
 };

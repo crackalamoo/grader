@@ -76,7 +76,8 @@ langData["pt"] = {
     " Não se preocupe, pode adicionar essa categoria à mão depois do cálculo. Também não se preocupe se esta classe" +
     " é baseada no <strong>sistema de pontos</strong> em vez de categorias.",
   "shouldContinue": "Devo continuar?",
-  "rampalButton": "Classe de Mr. Rampal ou Dr. Kimpton",
+  "rampalButton": "Classe de Mr. Rampal",
+  "rampalExp": "Se uma nota é incorreta, teste-a com &ldquo;Classe de Mr. Rampal&rdquo;.",
   "manualButton": "Inserir notas à mão",
   "selClass": "<strong>Seleciona uma classe</strong> para preencher percentagens/ponderações automaticamente. (Crédito para <span id=\"seth\">Seth</span> Groper por esta ideia)",
   "selClassOption": "Selecionar uma classe",
@@ -112,13 +113,13 @@ langData["pt"] = {
   "ahsWeighted": "GPA ponderado (ponderação de AHS)",
   "5scale": "Escala 5.0",
   "4scale": "Escala 4.0",
-  "footer": "Harys Dalvi<br>outubre de 2019&ndash;julho de 2021",
+  "footer": "Dalvi<br>outubre de 2019&ndash;agosto de 2021",
   "languages": ["inglês", "espanhol", "português", "francês", "hindi", "urdu", "bengali",
   "persa", "latim", "sânscrito"],
   "numbers": ["um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez"],
   "setPoint": "A classificação foi definida como sistema de pontos",
   "search": "Pesquisar",
-  "pronunciation": "Diga como: Háris Dâlvi /ˈaɾis ˈdɐlvi/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]",
+  "pronunciation": "Diga como: Dâlvi /ˈdɐlvi/ [ˈd̪əɭ.viː]",
   "and": "e",
   "translateMotto": "<i>Da dor dos números à paz</i>"
 };

@@ -76,7 +76,8 @@ langData["en"] = {
     " Don't worry, you can manually add that category after the calculation. Also don't worry if this class" +
     " is based on <strong>point system</strong> rather than categories.",
   "shouldContinue": "Should I continue?",
-  "rampalButton": "Mr. Rampal or Dr. Kimpton's class",
+  "rampalButton": "Mr. Rampal's class",
+  "rampalExp": "If a grade isn't correct, try it with &ldquo;Mr. Rampal's class&rdquo;.",
   "manualButton": "Manually enter grades",
   "selClass": "<strong>Select a class</strong> to automatically fill in percentages/weighting. (Credit to <span id=\"seth\">Seth</span> Groper for this idea)",
   "selClassOption": "Select a class",
@@ -113,13 +114,13 @@ langData["en"] = {
   "5scale": "5.0 scale",
   "4scale": "4.0 scale",
   "announcements": "",
-  "footer": "Harys Dalvi<br>October 2019&ndash;July 2021",
+  "footer": "Dalvi<br>October 2019&ndash;August 2021",
   "languages": ["English", "Spanish", "Portuguese", "French", "Hindi", "Urdu", "Bengali",
   "Persian", "Latin", "Sanskrit"],
   "numbers": ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"],
   "setPoint": "Grading set to point system",
   "search": "Search",
-  "pronunciation": "Say: HAH-riss DAHL-vee /ˈhɑːrɪs ˈdɑːlvi/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]",
+  "pronunciation": "Say: DAHL-vee /ˈdɑːlvi/ [ˈd̪əɭ.viː]",
   "and": "and",
   "translateMotto": "<i>From the pain of the numbers to peace</i>"
 };

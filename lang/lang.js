@@ -30,16 +30,12 @@ function languageLoaded(l) {
   document.setLanguage.language.value = lang;
   document.getElementById("javascript").innerHTML = d.jsSuccess;
   langHTML("langSelect", "setLang");
-  langHTML("welcome");
   if (document.getElementById("manualInput").style.display == "block")
     langHTML("autoCalculation", "newClass");
   else
     langHTML("autoCalculation", "quarterGrades");
-  langHTML("help");
   document.getElementById("intro").innerHTML = langReplace("intro", ["$EMAIL"],
     ['<a href="mailto:'+MY_EMAIL+'?subject=Grade calculator issue">'+MY_EMAIL+'</a>']);
-  langHTML("semGradesButton");
-  langHTML("gpaCalcButton");
   langHTML("manualBack", "back");
   langHTML("categoryBack", "back");
   langHTML("autoBack", "back");
@@ -47,80 +43,45 @@ function languageLoaded(l) {
   langHTML("semesterBack", "back");
   langHTML("gpaBack", "back");
   langHTML("mailBack", "back");
-  langHTML("newCatButton");
-  langHTML("catInstruct");
-  langHTML("catName");
-  langHTML("catPercent");
-  langHTML("createCat");
   langHTML("doneEditCat", "done");
-  langHTML("editInstruct");
   langHTML("editLetter", "letterGrade");
   langHTML("editLetter2", "letterGrade");
   langHTML("addAssignmentButton", "addAssignment");
   langHTML("delAssignmentButton", "deleteAssignment");
-  langHTML("creditCathy");
-  langHTML("whatNeed");
-  langHTML("desiredGrade");
-  langHTML("numPointsWorth");
-  langHTML("calcRequiredButton");
-  langHTML("changeWeightButton");
-  langHTML("deleteCatButton");
   document.editCategory.letter.options[0].innerHTML = "-- " + d.selectLetter + " --";
   document.editCategory.letter2.options[0].innerHTML = "-- " + d.selectLetter + " --";
-  langHTML("copyGradesInstruct");
-  langHTML("mobileCopyInstruct");
-  langHTML("pasteGradesInstruct");
   langHTML("autoNext", "next");
-  langHTML("superAlgorithm");
-  langHTML("dontWorry");
-  langHTML("shouldContinue");
-  langHTML("rampalButton");
-  langHTML("manualButton");
   langHTML("autoContinue", "continue");
   document.getElementById("selClass").innerHTML = d.selClass + " <img id=\"seth_img\" src=\"SETH.JPG\">";
   document.classes.class.options[0].innerHTML = "-- " + d.selClassOption + " --";
   document.classes.class.options[1].innerHTML = d.addClassOption;
-  langHTML("sethClassInstruct");
-  langHTML("pointSystemInstruct");
-  langHTML("pointSystemInstruct2");
-  langHTML("nameOfClass");
-  langHTML("enterCatNames");
-  langHTML("enterWeights");
-  langHTML("enterNotes")
-  langHTML("sendMailButton", "submit");
-  langHTML("minExam");
-  langHTML("wantAtLeast");
+  ["sethClassInstruct", "pointSystemInstruct", "pointSystemInstruct2", "nameOfClass", "enterCatNames",
+  "enterWeights", "enterNotes", "minExam", "wantAtLeast", "ahsWeighted", "5scale", "4scale",
+  "ritvikCalc", "ritvikHonor", "rampalButton", "manualButton", "dontWorry", "shouldContinue",
+  "superAlgorithm", "pasteGradesInstruct", "mobileCopyInstruct", "copyGradesInstruct",
+  "deleteCatButton", "changeWeightButton", "numPointsWorth", "desiredGrade", "whatNeed",
+  "creditCathy", "createCat", "editInstruct", "newCatButton", "catInstruct", "catName",
+  "catPercent", "semGradesButton", "gpaCalcButton", "welcome", "semWithExam",
+  "clearDataExp", "clearDataButton", "getCreditButton", "creditNum", "announcements",
+  "footer", "pronunciation", "translateMotto", "help", "rampalExp", "calcRequiredButton"].forEach(
+      id => langHTML(id));
   calculateSemester();
   document.getElementById("semesterGrade").innerHTML += "<br>" + d.selectAbove;
-  langHTML("semWithExam");
   calculateExam();
   document.getElementById("examGrade").innerHTML += "<br>" + d.selectAbove;
   document.modifyCredit.numCredits.options[0].innerHTML = d.semester;
   document.modifyCredit.numCredits.options[1].innerHTML = d.quarter;
   document.addCredit.numCredits.options[0].innerHTML = d.semester;
   document.addCredit.numCredits.options[1].innerHTML = d.quarter;
-  langHTML("ahsWeighted");
-  langHTML("5scale");
-  langHTML("4scale");
-  langHTML("ritvikCalc");
-  langHTML("ritvikHonor");
   langHTML("editCreditButton", "apply");
   langHTML("deleteCreditButton", "delete");
-  langHTML("clearDataExp");
-  langHTML("clearDataButton");
-  langHTML("getCreditButton");
   langHTML("addCreditButton", "add");
   langHTML("modifyCreditHeading");
-  langHTML("creditNum");
   langHTML("q13sem", "quarter13");
   langHTML("q13exam", "quarter13");
   langHTML("q24sem", "quarter24");
   langHTML("q24exam", "quarter24");
   langHTML("semExam", "examGrade");
-  langHTML("announcements");
-  langHTML("footer");
-  langHTML("pronunciation");
-  langHTML("translateMotto");
   document.exam.exam.options[12].innerHTML = d.noExam;
   document.getElementById("manualInput").innerHTML = d.edit;
   document.classes.search.placeholder = d.search;
@@ -397,16 +358,18 @@ function setDialect() {
       referenceKey("ritvikHonor", "honor", "honour");
       referenceKeys("rampalButton", ["Mr.", "Dr."], ["Mr", "Dr"]);
       referenceKey("superAlgorithm", "super cool", "bloody brilliant");
-      ["begin", "catInstruct", "rampalInstruct", "editInstruct", "pointSystemInstruct2"].forEach(
+      ["begin", "catInstruct", "rampalInstruct", "editInstruct", "pointSystemInstruct2",
+      "rampalExp"].forEach(
         key => referenceKeys(key, ["&ldquo;", "&rdquo;"], ["&lsquo;", "&rsquo;"]));
+      referenceKey("creditCathy", "T.", "T");
     } else if (dialect == "ASCII") {
       var keys = Object.keys(currentLangData);
-      currentLangData["pronunciation"] = "Say: HAH-riss DAHL-vee";
+      currentLangData["pronunciation"] = "Say: DAHL-vee";
       for (var k = 0; k < keys.length; k++) {
         if (["languages", "numbers"].indexOf(keys[k]) == -1) {
           var tag = 0;
           var inVar = false;
-          referenceKeys(keys[k], ["&nbsp;", "&ldquo;", "&rdquo;"], [" ", '"', '"']);
+          referenceKeys(keys[k], ["&nbsp;", "&ldquo;", "&rdquo;", "&ndash;"], [" ", '"', '"', "-"]);
           for (var i = currentLangData[keys[k]].length; i >= 1; i--) {
             var char = currentLangData[keys[k]].substring(i-1,i);
             if (char == ">") {
@@ -482,6 +445,7 @@ function setDialect() {
       referenceKey("deleteAssignment", "Delete", "Remove");
       referenceKeys("editInstruct", ["Delete", "delete", "the same way"], ["Remove", "remove", "this very manner"]);
       referenceKey("clearDataButton", "Data", "Information");
+      referenceKey("rampalExp", "grade isn't correct", "Grade be not Precise");
       currentLangData["confirm"] = "Art thou certain thou dost wish to do this?";
       var keys = Object.keys(currentLangData);
       for (var k = 0; k < keys.length; k++) {
@@ -527,7 +491,7 @@ function setDialect() {
           referenceKeys(keys[k], ["required", "Required"], ["necessary", "Necessary"]);
         }
       }
-      currentLangData["pronunciation"] = "Say: HAH-riss DAHL-vee";
+      currentLangData["pronunciation"] = "Say: DAHL-vee";
       referenceKeys("dontWorry", ["been entreed yet", "Don't worry", "don't worry", "you can manually", "category after"],
       ["yet been entered", "Grieve not", "grieve not", "thou canst", "category by hand after"]);
     } else if (dialect == "Anglish") {
@@ -554,7 +518,7 @@ function setDialect() {
       "changed": "bent", "change": "bend", "calculate": "reckon", "figure out": "find out", "quizzes": "smalltests",
       "numbers": "telling", "number": "telling", "modify": "bend", "incognito mode": "unnamed mood", "are you sure you": "do you truly",
       "scale": "reckoning", "grading": "scoring", "search": "hunt", "use": "work", "idea": "thought",
-      "pain": "soreness", "peace": "shelter", "correct": "right", "image": "drawing"};
+      "pain": "soreness", "peace": "shelter", "correct": "right", "image": "drawing", "try": "see to"};
       var english_words = Object.keys(anglish_english);
       for (var k = 0; k < keys.length; k++) {
         if (["languages", "numbers"].indexOf(keys[k]) == -1) {
@@ -568,7 +532,7 @@ function setDialect() {
       referenceKey("mobileCopyInstruct", "Chore", "Assignment");
       referenceKey("dontWorry", "by hand put in that set", "put in that set by hand");
       referenceKey("clearDataExp", "re-put in your GPA", "put in your GPA again");
-      referenceKeys("footer", ["October", "June"], ["Fall", "Summer"]);
+      referenceKeys("footer", ["October", "August"], ["Fall", "Summer"]);
       referenceKeys("catInstruct", ["Do don't", "an existing name"], ["Don't", "a name from before"]);
       referenceKey("selClass", "automatically fill in byhundreds/weighting", "have byhundreds/weighting fill in by themselves");
       currentLangData["manualButton"] = "Put in grades by hand";
@@ -587,7 +551,8 @@ function setDialect() {
     if (dialect == "ES") {
       referenceKey("intro", "computadoras", "ordenadores");
       referenceKeys("superAlgorithm", ["simplificó", "genial"], ["ha simplificado", "guay"]);
-      ["begin", "catInstruct", "rampalInstruct", "editInstruct", "pointSystemInstruct2", "footer"].forEach(
+      ["begin", "catInstruct", "rampalInstruct", "editInstruct", "pointSystemInstruct2", "footer",
+      "rampalExp"].forEach(
         key => referenceKeys(key, ["&ldquo;", "&rdquo;"], ["&laquo;", "&raquo;"]));
     }
   } else {
@@ -599,8 +564,8 @@ function setDialect() {
     if (dialect == "AF") {
       referenceKey("mailSent", "مرسی!", "تشکر!");
       // Imperial Persian vs Hijri Zodiac and Gregorian French- vs English-derived months
-      referenceKeys("footer", ["مهر ۲۵۷۸ شاهنشاهی", "تیر ۲۵۸۰ شاهنشاهی", "اکتبر", "ژوئیه"],
-      ["میزان ۱۳۹۸ هجری", "سرطان ۱۴۰۰ هجری", "اکتوبر", "جولای"]);
+      referenceKeys("footer", ["مهر ۲۵۷۸ شاهنشاهی", "مرداد ۲۵۸۰ شاهنشاهی", "اکتبر", "اوت"],
+      ["میزان ۱۳۹۸ هجری", "اسد ۱۴۰۰ هجری", "اکتوبر", "اگست"]);
       referenceKeys("jsSuccess", ["استفاده کنید", "دارید می", "می&zwnj;توان", "داری می"], ["", "می", "استعمال کرده می&zwnj;توان", "می"]);
       referenceKey("jsSuccess", " استفاده کنی", "");
       referenceKey("begin", "استفاده", "استعمال");
@@ -608,13 +573,13 @@ function setDialect() {
       referenceKey("dontWorry", "استفاده", "استعمال");
       referenceKey("creditCathy", "ایده", "فکر");
       referenceKeys("selClass", ["ایده", "بطور اتوماتیک"], ["فکر", "اتوماتیکلی"]);
-      referenceKeys("pronunciation", ["هاریس دالْوی", "hɒːɾiːs dɒːlviː"], ["هارِیس دَلْوِی", "hɒːɾiːs dalwiː"]);
+      referenceKeys("pronunciation", ["دَلْوی", "dælviː"], ["دَلْوِی", "dalwiː"]);
       referenceKey("ritvikCalc", "ریتویک تیگاواراپو", "رِیتوِیک تِیگَوَرَپُو");
       referenceKey("ritvikHonor", "ریتویک تیگاواراپو", "ریتویک تیگورپو");
       referenceKey("rampalButton", "دکتر", "داکتر");
       ["catNameExists", "pointCheck", "mailSent", "intro", "mobileCopyInstruct",
       "dontWorry", "manualButton", "sethClassInstruct", "pointSystemInstruct",
-      "semWithExam", "ritvikHonor", "clearDataExp", "ahsWeighted"].forEach(
+      "semWithExam", "ritvikHonor", "clearDataExp", "ahsWeighted", "rampalExp"].forEach(
         key => referenceKey(key, "با ", "کتی "));
       referenceKey("intro", "کتی وجود", "علیرغم");
       referenceKey("intro", "بتوانید آن را به آسانی پیدا کنید", "آن را به آسانی پیدا کرده بتوانید");
