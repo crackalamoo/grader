@@ -76,7 +76,8 @@ langData["es"] = {
     " No te preocupes, se puede añadir esa categoría a mano después del cálculo. Tampoco te preocupes si esta clase" +
     " está basada en el <strong>sistema de puntos</strong> en vez de categorías.",
   "shouldContinue": "¿Debo continuar?",
-  "rampalButton": "Clase de Mr. Rampal o Dr. Kimpton",
+  "rampalButton": "Clase de Mr. Rampal",
+  "rampalExp": "Si una nota es incorrecta, próbala con &ldquo;Clase de Mr. Rampal&rdquo;.",
   "manualButton": "Introducir notas a mano",
   "selClass": "<strong>Selecciona una clase</strong> para llenar porcentajes/ponderaciones automaticamente. (Crédito a <span id=\"seth\">Seth</span> Groper por esta idea)",
   "selClassOption": "Seleccionar una clase",
@@ -112,13 +113,13 @@ langData["es"] = {
   "ahsWeighted": "GPA ponderado (ponderación de AHS)",
   "5scale": "Escala 5.0",
   "4scale": "Escala 4.0",
-  "footer": "Harys &ldquo;Hacer&rdquo; Dalvi<br>octubre de 2019&ndash;julio de 2021",
+  "footer": "&ldquo;Hacer&rdquo; Dalvi<br>octubre de 2019&ndash;agosto de 2021",
   "languages": ["inglés", "español", "portugués", "francés", "hindi", "urdu", "bengalí",
   "persa", "latín", "sánscrito"],
   "numbers": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"],
   "setPoint": "La calificación fue establecida a sistema de puntos",
   "search": "Buscar",
-  "pronunciation": "Di como: Járis Dálvi /ˈxaɾis ˈdalβi/ [ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː]",
+  "pronunciation": "Di como: Dálvi /ˈdalβi/ [ˈd̪əɭ.viː]",
   "and": "y",
   "translateMotto": "<i>Del dolor de los números a la paz</i>"
 };
@@ -153,6 +154,7 @@ function setFormal_es() {
   referenceKeys("clearDataExp", ["te oblig", "visites", "dejas", "estás", "tu GPA"], ["lo/la oblig", "visite", "deja", "está", "su GPA"]);
   referenceKeys("confirm", ["Estás", "quieres"], ["Está", "quiere"]);
   referenceKey("pronunciation", "Di ", "Diga ");
+  referenceKey("rampalExp", "próbalo", "próbelo");
 }
 
 languageLoaded("es");

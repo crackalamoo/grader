@@ -76,7 +76,8 @@ langData["la"] = {
     " Noli metue, illud genus per manus potes addere post calculationem. Etiam noli metue si in hanc disciplinam" +
     " fundatur <strong>ratio punctorum</strong> in loco generum.",
   "shouldContinue": "Debeone pergere?",
-  "rampalButton": "Disciplina Magistri Rampal vel Doctoris Kimpton",
+  "rampalButton": "Disciplina Magistri Rampal",
+  "rampalExp": "Si nota propria non est, cum &ldquo;Disciplina Magistri Rampal&rdquo; tenta.",
   "manualButton": "Notas per manus scribere",
   "selClass": "<strong>Elige disciplinam</strong> ut per centum &amp; ponderationes per se complere. (Gratias ago ad <span id=\"seth\">Seth</span> Groper pro hanc ideam)",
   "selClassOption": "Disciplinam elige",
@@ -112,13 +113,13 @@ langData["la"] = {
   "ahsWeighted": "GPA ponderatur (ponderatio AHS)",
   "5scale": "Lanx 5.0",
   "4scale": "Lanx 4.0",
-  "footer": "Haris Dalvii<br>Mensis Octobris anno MMXIX&ndash;Mensis Ivlivs anno MMXXI<br>MMDCCLXXII&ndash;MMDCCLXXIV ab vrbe condita",
+  "footer": "Dalvii<br>Mensis octobris anno MMXIX&ndash;mensis avgvstvs anno MMXXI<br>MMDCCLXXII&ndash;MMDCCLXXIV ab vrbe condita",
   "languages": ["lingua anglica", "lingua hispanica", "lingua lusitana", "lingua francogallica", "lingua hindica", "lingua urdu",
   "lingua bengalica", "lingua persica", "lingua latina", "lingua sanscrita"],
   "numbers": ["unum", "duo", "tria", "quattuor", "quinque", "sex", "septem", "octo", "novem", "decem"],
   "setPoint": "Taxatio rationem punctorum factus est",
   "search": "Quaerere",
-  "pronunciation": "Nomen latinum: Haris Dalvius",
+  "pronunciation": "Nomen latinum: Dalvius",
   "and": "&amp;",
   "translateMotto": "<span class=\"smallCaps\">Ab Dolore Nvmerorvm ad Pacem</span>"
 };

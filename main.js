@@ -144,6 +144,8 @@ function formatInt(num, nativeDigits=true, upper=false, gender=null, writeNum=tr
       if (num == 1) {
         n = {"es": ["un", "una"], "pt": ["um", "uma"],
         "fr": ["un", "une"]}[lang][gender];
+      } if (num == 2 && lang == "pt") {
+        n = "duas";
       }
     }
     if (upper)

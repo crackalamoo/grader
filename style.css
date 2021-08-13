@@ -336,7 +336,7 @@ div#motto p:lang(ang) {
   font-family: "Apple Symbols", "Geneva";
 }
 div#motto p:lang(fa) {
-  font-family: "Diwan Kufi", nastaliq, "Times New Roman";
+  font-family: "Noto Nastaliq Urdu", nastaliq, "Times New Roman";
 }
 div#motto p:lang(ar) {
   font-family: "Diwan Kufi", "Diwan Thuluth", "KufiStandardGK", "Sana",

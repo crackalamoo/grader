@@ -78,7 +78,8 @@ langData["ur"] = {
     "فقر مت کرو، آپ ہاتھ سے اُس کو ڈال سکتے ہو حساب کے بعد۔ اور اگر کلاس کیٹیگریز کے بجائے" +
     " <strong>پوئنٹ سِسٹَم</strong> کا استعمال کرے تو یہ بھی کوئی بڑی بات نہیں ہے۔",
   "shouldContinue": "آگے بڑھوں؟",
-  "rampalButton": "مسٹر رامپال یا ڈاکٹر کِمپٹَن کا کلاس",
+  "rampalButton": "مسٹر رامپال کا کلاس",
+  "rampalExp": "اگر کوئی گریڈ غلط ہو تو &rdquo;مسٹر رامپال کا کلاس&ldquo; کے ساتھ دیکھو۔",
   "manualButton": "ہاتھ سے مارکس ڈالو",
   "selClass": "<strong>ایک کلاس چنو</strong> آٹومَیٹِکلی پرسنٹیج اور ویٹِنگ کو بھرنے کے لئے۔ (<span id=\"seth\">سیتھ</span> گروپَر کو اِس آئڈیا کے لئے شکریہ)",
   "selClassOption": "ایک کلاس چنو",
@@ -113,7 +114,7 @@ langData["ur"] = {
   "ahsWeighted": "ویٹڈ GPA &#1564;(AHS کی ویٹنگ)",
   "5scale": "5.0 سکیل",
   "4scale": "4.0 سکیل",
-  "footer": "حارث دلوی<br>اکتوبر ۲۰۱۹ء&ndash;جولائی ۲۰۲۱ء<br>اسوج سموت ۱۹۴۱&ndash;اساڑھ سموت ۱۹۴۳",
+  "footer": "دلوی<br>اکتوبر ۲۰۱۹ء&ndash;اگست ۲۰۲۱ء<br>اسوج سموت ۱۹۴۱&ndash;ساون سموت ۱۹۴۳",
   "languages": ["انگریزی",
     "سپینش",
     "پرتگالی",
@@ -127,7 +128,7 @@ langData["ur"] = {
   "numbers": ["ایک", "دو", "تین", "چار", "پانچ", "چھ", "سات", "آٹھ", "نو", "دس"],
   "setPoint": "گریڈنگ پوئنٹ سسٹم بن گئی",
   "search": "تلاش کرو",
-  "pronunciation": "کہہ دو: ہَارِس دَلْوِی &#x202d;[ˈɦäː.ɾɪs̪ ˈd̪əɭ.viː] /haːɾɪs dəlʋiː/&#x202c;",
+  "pronunciation": "کہہ دو: دَلوِی &#x202d;[ˈd̪əɭ.viː] /dəlʋiː/&#x202c;",
   "and": "اور",
   "translateMotto": "نمبروں کے درد سے چَین تک"
 };
@@ -171,6 +172,7 @@ function setFormal2_ur() {
   referenceKey("selectLetter", "لو", "لیں");
   referenceKey("deleteCatButton", "ؤ", "ئیں");
   referenceKey("validData", "کرو", "کیجئے");
+  referenceKey("rampalExp", "کرو", "کیجئے");
 }
 
 languageLoaded("ur");
