@@ -136,7 +136,7 @@ langData["ur"] = {
 function setFormal2_ur() {
   referenceKeys("begin", ["بناؤ", "مانو"], ["بنائیں", "مانیں"]);
   referenceKeys("catInstruct", ["بناؤ", "مانو"], ["بنائیں", "مانیں"]);
-  currentLangData["rampalInstruct"] = currentLangData["rampalInstruct"].replace("کرو", "کیجئے").replaceAll("کرو", "کریں").replaceAll("دو", "دیں");
+  currentLangData["rampalInstruct"] = currentLangData["rampalInstruct"].replaceAll("کرو", "کیجئے").replaceAll("دو", "دیجئے");
   ["catList", "scoreNaN", "submit", "apply", "add", "delete", "edit", "mailSent", "editInstruct",
   "copyGradesInstruct", "dontWorry", "intro", "selectAbove", "addClassOption", "search"].forEach(
     key => referenceKey(key, "کرو", "کریں"));
@@ -172,7 +172,7 @@ function setFormal2_ur() {
   referenceKey("selectLetter", "لو", "لیں");
   referenceKey("deleteCatButton", "ؤ", "ئیں");
   referenceKey("validData", "کرو", "کیجئے");
-  referenceKey("rampalExp", "کرو", "کیجئے");
+  referenceKey("rampalExp", "دیکھو", "دیکھئے");
 }
 
 languageLoaded("ur");

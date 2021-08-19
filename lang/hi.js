@@ -125,7 +125,7 @@ langData["hi"] = {
 function setFormal2_hi() {
   referenceKeys("begin", ["बनाओ", "मानो"], ["बनाएँ", "मानें"]);
   referenceKeys("catInstruct", ["बनाओ", "मानो"], ["बनाएँ", "मानें"]);
-  currentLangData["rampalInstruct"] = currentLangData["rampalInstruct"].replace("करो", "कीजिए").replaceAll("करो", "करें").replaceAll("दो", "दें");
+  currentLangData["rampalInstruct"] = currentLangData["rampalInstruct"].replaceAll("करो", "कीजिए").replaceAll("दो", "दीजिए");
   ["catList", "scoreNaN", "submit", "apply", "add", "delete", "edit", "mailSent", "editInstruct",
   "copyGradesInstruct", "dontWorry", "intro", "selectAbove", "addClassOption", "search"].forEach(
     key => referenceKey(key, "करो", "करें"));
@@ -161,7 +161,7 @@ function setFormal2_hi() {
   referenceKey("selectLetter", "लो", "लें");
   referenceKey("deleteCatButton", "ओ", "एँ");
   referenceKey("validData", "करो", "कीजिए");
-  referenceKey("rampalExp", "करो", "कीजिए");
+  referenceKey("rampalExp", "देखो", "देखिए");
 }
 
 languageLoaded("hi");
