@@ -342,12 +342,14 @@ function autoGrade(rampal=false) {
   if (rampal) {
     document.getElementById("rampalButton").style.display = "none";
     document.getElementById("rampalmemes").style.display = "flex";
+    document.getElementById("rampalExp").style.display = "none";
     lazyLoad("rampal");
     RAMPAL = true;
   } else {
     previousInput = document.getElementById("inputGrades").value;
     document.getElementById("rampalButton").style.display = "block";
     document.getElementById("rampalmemes").style.display = "none";
+    document.getElementById("rampalExp").style.display = "";
     RAMPAL = false;
   }
   autoCalc = previousInput.split("\n");
