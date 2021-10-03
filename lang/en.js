@@ -15,6 +15,7 @@ langData["en"] = {
   "catsFound": "$NUMBER categories found: $CATEGORIES",
   "catsFound1": "One category found: $CATEGORIES",
   "pointCheck": "This class is point system",
+  "percentCheck": "This class is percent system",
   "next": "Next",
   "back": "Back",
   "done": "Done",
@@ -120,7 +121,7 @@ langData["en"] = {
   "numbers": ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"],
   "setPoint": "Grading set to point system",
   "search": "Search",
-  "pronunciation": "Say: DAHL-vee /ˈdɑːlvi/ [ˈd̪əɭ.viː]",
+  "pronunciation": "Say: HAH-riss DAHL-vee",
   "and": "and",
   "translateMotto": "<i>From the pain of the numbers to peace</i>"
 };

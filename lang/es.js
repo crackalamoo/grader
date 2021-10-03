@@ -15,6 +15,7 @@ langData["es"] = {
   "catsFound": "$NUMBER categorías se encontraron: $CATEGORIES",
   "catsFound1": "Una categoría se encontró: $CATEGORIES",
   "pointCheck": "Esta clase usa el sistema de puntos",
+  "percentCheck": "Esta clase usa el sistema de porcentajes",
   "next": "Siguiente",
   "back": "Atrás",
   "done": "Listo",
@@ -119,7 +120,7 @@ langData["es"] = {
   "numbers": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"],
   "setPoint": "La calificación fue establecida a sistema de puntos",
   "search": "Buscar",
-  "pronunciation": "Di como: Dálvi /ˈdalβi/ [ˈd̪əɭ.viː]",
+  "pronunciation": "Di como: Járis (Hacer) Dálvi",
   "and": "y",
   "translateMotto": "<i>Del dolor de los números a la paz</i>"
 };

@@ -17,6 +17,7 @@ langData["ur"] = {
   "catsFound": "$NUMBER کیٹیگریز مل گئیں: $CATEGORIES",
   "catsFound1": "ایک کیٹیگری مل گئی: $CATEGORIES",
   "pointCheck": "یہ کلاس پوئنٹ سسٹم کا ہے",
+  "percentCheck": "یہ کلاس پرسنٹ سسٹم کا ہے",
   "next": "آگے",
   "back": "واپس",
   "done": "ہو گیا",
@@ -128,7 +129,7 @@ langData["ur"] = {
   "numbers": ["ایک", "دو", "تین", "چار", "پانچ", "چھ", "سات", "آٹھ", "نو", "دس"],
   "setPoint": "گریڈنگ پوئنٹ سسٹم بن گئی",
   "search": "تلاش کرو",
-  "pronunciation": "کہہ دو: دَلوِی &#x202d;[ˈd̪əɭ.viː] /dəlʋiː/&#x202c;",
+  "pronunciation": "کہہ دو: حارِث دَلوِی",
   "and": "اور",
   "translateMotto": "نمبروں کے درد سے چَین تک"
 };

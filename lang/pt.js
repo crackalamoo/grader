@@ -15,6 +15,7 @@ langData["pt"] = {
   "catsFound": "$NUMBER categorias encontradas: $CATEGORIES",
   "catsFound1": "Uma categoria encontrada: $CATEGORIES",
   "pointCheck": "Esta classe usa o sistema de pontos",
+  "percentCheck": "Esta classe usa o sistema de percentagens",
   "next": "Seguinte",
   "back": "Atrás",
   "done": "Terminar",
@@ -119,7 +120,7 @@ langData["pt"] = {
   "numbers": ["um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez"],
   "setPoint": "A classificação foi definida como sistema de pontos",
   "search": "Pesquisar",
-  "pronunciation": "Diga como: Dâlvi /ˈdɐlvi/ [ˈd̪əɭ.viː]",
+  "pronunciation": "Diga como: Háriss Dâlvi",
   "and": "e",
   "translateMotto": "<i>Da dor dos números à paz</i>"
 };

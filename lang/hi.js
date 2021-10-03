@@ -15,6 +15,7 @@ langData["hi"] = {
   "catsFound": "$NUMBER कैटेगरीज़ मिल गईं: $CATEGORIES",
   "catsFound1": "एक कैटेगरी मिल गई: $CATEGORIES",
   "pointCheck": "ये क्लास पॉइंट सिस्टम का है",
+  "percentCheck": "ये क्लास परसेंट सिस्टम का है",
   "next": "आगे",
   "back": "वापस",
   "done": "हो गया",
@@ -117,7 +118,7 @@ langData["hi"] = {
   "numbers": ["एक", "दो", "तीन", "चार", "पाँच", "छह", "सात", "आठ", "नौ", "दस"],
   "setPoint": "ग्रेडिंग पॉइंट सिस्टम बन गई",
   "search": "तलाश करो",
-  "pronunciation": "कह दो: दलवी /dəlʋiː/ [ˈd̪əɭ.viː]",
+  "pronunciation": "कह दो: हारिस दलवी",
   "and": "और",
   "translateMotto": "नंबरों के दर्द से चैन तक"
 };
