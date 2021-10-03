@@ -16,6 +16,7 @@ langData["fr"] = {
   "catsFound": "$NUMBER catégories trouvées: $CATEGORIES",
   "catsFound1": "Une catégorie trouvé: $CATEGORIES",
   "pointCheck": "Cette classe utilise le système de points",
+  "percentCheck": "Cette classe utilise le système de pourcentages",
   "next": "Suivant",
   "back": "Retour",
   "done": "Fini",
@@ -120,7 +121,7 @@ langData["fr"] = {
   "numbers": ["un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix"],
   "setPoint": "La notation est réglée au système de points",
   "search": "Rechercher",
-  "pronunciation": "Dites comme: /dalvi/ [ˈd̪əɭ.viː]",
+  "pronunciation": "",
   "and": "&amp;",
   "translateMotto": "<i>De la douleur des nombres à la paix</i>"
 };

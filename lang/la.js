@@ -15,6 +15,7 @@ langData["la"] = {
   "catsFound": "$NUMBER genera inventus sunt: $CATEGORIES",
   "catsFound1": "Unum genus inventus est: $CATEGORIES",
   "pointCheck": "In hanc disciplinam fundatur ratio punctorum",
+  "percentCheck": "In hanc disciplinam fundatur ratio per centum",
   "next": "Deinde",
   "back": "Retro",
   "done": "Factus",

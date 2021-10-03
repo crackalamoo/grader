@@ -364,7 +364,7 @@ function setDialect() {
       referenceKey("creditCathy", "T.", "T");
     } else if (dialect == "ASCII") {
       var keys = Object.keys(currentLangData);
-      currentLangData["pronunciation"] = "Say: DAHL-vee";
+      currentLangData["pronunciation"] = "Say: HAH-riss DAHL-vee";
       for (var k = 0; k < keys.length; k++) {
         if (["languages", "numbers"].indexOf(keys[k]) == -1) {
           var tag = 0;
@@ -491,7 +491,7 @@ function setDialect() {
           referenceKeys(keys[k], ["required", "Required"], ["necessary", "Necessary"]);
         }
       }
-      currentLangData["pronunciation"] = "Say: DAHL-vee";
+      currentLangData["pronunciation"] = "Say: HAH-riss DAHL-vee";
       referenceKeys("dontWorry", ["been entreed yet", "Don't worry", "don't worry", "you can manually", "category after"],
       ["yet been entered", "Grieve not", "grieve not", "thou canst", "category by hand after"]);
     } else if (dialect == "Anglish") {
@@ -564,8 +564,8 @@ function setDialect() {
     if (dialect == "AF") {
       referenceKey("mailSent", "مرسی!", "تشکر!");
       // Imperial Persian vs Hijri Zodiac and Gregorian French- vs English-derived months
-      referenceKeys("footer", ["مهر ۲۵۷۸ شاهنشاهی", "مرداد ۲۵۸۰ شاهنشاهی", "اکتبر", "اوت"],
-      ["میزان ۱۳۹۸ هجری", "اسد ۱۴۰۰ هجری", "اکتوبر", "اگست"]);
+      referenceKeys("footer", ["مهر", "مرداد", "اکتبر", "اوت"],
+      ["میزان", "اسد", "اکتوبر", "اگست"]);
       referenceKeys("jsSuccess", ["استفاده کنید", "دارید می", "می&zwnj;توان", "داری می"], ["", "می", "استعمال کرده می&zwnj;توان", "می"]);
       referenceKey("jsSuccess", " استفاده کنی", "");
       referenceKey("begin", "استفاده", "استعمال");
@@ -573,7 +573,7 @@ function setDialect() {
       referenceKey("dontWorry", "استفاده", "استعمال");
       referenceKey("creditCathy", "ایده", "فکر");
       referenceKeys("selClass", ["ایده", "بطور اتوماتیک"], ["فکر", "اتوماتیکلی"]);
-      referenceKeys("pronunciation", ["دَلْوی", "dælviː"], ["دَلْوِی", "dalwiː"]);
+      referenceKey("pronunciation", "دَلْوی", "دَلْوِی");
       referenceKey("ritvikCalc", "ریتویک تیگاواراپو", "رِیتوِیک تِیگَوَرَپُو");
       referenceKey("ritvikHonor", "ریتویک تیگاواراپو", "ریتویک تیگورپو");
       referenceKey("rampalButton", "دکتر", "داکتر");
@@ -745,8 +745,6 @@ function setDialect() {
       for (var k = 0; k < TITLES.length; k++)
         currentLangData[TITLES[k]] = TITLE_START + currentLangData[TITLES[k]] + TITLE_END;
       referenceKey("confirm", "&#8203;", "​"); // unicode zero width space in quotes
-      referenceKey("pronunciation", "ɾɪs&#8203;d", "ɾɪs d");
-      referenceKey("pronunciation", "ɾɪs̪&#8203;ˈd̪", "ɾɪs̪ ˈd̪");
       referenceKey("rampalInstruct", "Count&#8203;as", "Count as");
     }
     currentLangData["languages"] = [];

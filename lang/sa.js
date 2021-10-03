@@ -16,6 +16,7 @@ langData["sa"] = {
   "catsFound1": "एकोवर्गोऽविन्द्यत&nbsp;। $CATEGORIES&nbsp;॥",
   "catsFound2": "द्वौवर्गावविन्द्येताम्&nbsp;। $CATEGORIES&nbsp;॥",
   "pointCheck": "एष विषयो गणक्रमस्योपयोगं करोति&nbsp;।",
+  "percentCheck": "एष विषयो प्रतिशतक्रमस्योपयोगं करोति&nbsp;।",
   "next": "अग्रिमे",
   "back": "प्रतिगच्छ",
   "done": "समाप्तम्",
@@ -127,7 +128,7 @@ langData["sa"] = {
   "l_bn": "वङ्गभाषा",
   "setPoint": "अङ्का गणक्रमो भवन्ति&nbsp;।",
   "search": "अन्वेषणम्",
-  "pronunciation": "दळ्वी&nbsp;। एवं वदस्व&nbsp;॥",
+  "pronunciation": "हारिस् दळ्वी&nbsp;। एवं वदस्व&nbsp;॥",
   "and": "च",
   "sanskrit": "संस्कृतम्",
   "translateMotto": "सङ्ख्यानां&#8203;पीडायाः&#8203;शान्तिम्"

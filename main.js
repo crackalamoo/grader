@@ -375,6 +375,7 @@ function autoGrade(rampal=false) {
     temp.push(splitArray[0]);
     temp.push(splitArray[1]);
     temp.push(splitArray[2]);
+    temp.push(splitArray[3].slice(0, -1));
     if (["", " ", "P", "EXC", "EX", "PEND"].indexOf(temp[1]) == -1)
       temp2.push(temp);
     if (["", " ", "P", "PEND"].indexOf(temp[1]) != -1)
@@ -417,9 +418,11 @@ function autoCats() {
     form.innerHTML += cats[i] + ": <span dir=\"ltr\"><input name='" + i + "' type='number'></input>%</span><br>";
   }
   form.innerHTML += '<input type="checkbox" name="point"></input> ' + currentLangData.pointCheck + '<br>'
+  form.innerHTML += '<input type="checkbox" name="percent"></input> ' + currentLangData.percentCheck + '<br>';
   form.innerHTML += '<br><div class="button" onclick="autoCalc2();" id="continueClass">' + currentLangData.next + '</div>';
   if (RAMPAL) {
     form.point.checked = false;
+    form.percent.checked = false;
   }
   window.scrollBy(0, -300);
 }
@@ -445,7 +448,14 @@ function autoCalc2() {
     for (var i = 0; i < autoCalc.length; i++) {
       if (RAMPAL) countAs = new Number(document.gradesList[i].value);
       else countAs = 1.0;
-      categoryByName(autoCalc[i][0]).add(autoCalc[i][1], autoCalc[i][2], countAs);
+      if (document.autoCategories.percent.checked) {
+        if (autoCalc[i][3] == '')
+          categoryByName(autoCalc[i][0]).add(autoCalc[i][1], 100, countAs);
+        else
+          categoryByName(autoCalc[i][0]).add(autoCalc[i][3], 100, countAs);
+      } else {
+        categoryByName(autoCalc[i][0]).add(autoCalc[i][1], autoCalc[i][2], countAs);
+      }
     }
     currentCategory = null;
   }

@@ -17,6 +17,7 @@ langData["fa"] = {
   "catsFound": "$NUMBER کتگوری پیدا شدند: $CATEGORIES",
   "catsFound1": "یک کتگوری پیدا شد: $CATEGORIES",
   "pointCheck": "این کلاس با سیستم پوینت است",
+  "percentCheck": "این کلاس با سیستم درصد است",
   "next": "بعدی",
   "back": "برگشتن",
   "done": "تمام",
@@ -114,7 +115,7 @@ langData["fa"] = {
   "ahsWeighted": "GPA با وزن (وزن AHS)",
   "5scale": "سکل 5.0",
   "4scale": "سکل 4.0",
-  "footer": "دلوی<br>اکتبر ۲۰۱۹&ndash;اوت ۲۰۲۱<br>مهر ۲۵۷۸ شاهنشاهی&ndash;مرداد ۲۵۸۰ شاهنشاهی", // Different in Dari
+  "footer": "دلوی<br>اکتبر ۲۰۱۹&ndash;اوت ۲۰۲۱<br>مهر ۱۳۹۸&ndash;مرداد ۱۴۰۰", // Different in Dari
   "languages": ["انگلیسی",
     "اسپانیایی",
     "پرتغالی",
@@ -128,7 +129,7 @@ langData["fa"] = {
   "numbers": ["یک", "دو", "سه", "چهار", "پنج", "شش", "هفت", "هشت", "نه", "ده"],
   "setPoint": "نمرات سیستم پوینت شده اند",
   "search": "جستجو کردن",
-  "pronunciation": "بگویید: دَلْوی &#x202d;[ˈd̪əɭ.viː] /dælviː/&#x202c;",
+  "pronunciation": "بگویید: حارث دَلْوی",
   "and": "و",
   "translateMotto": "از درد شمار‌ها به آرام"
 };
