@@ -405,10 +405,10 @@ function autoGrade(rampal=false) {
     ["<img src=\"rampal/rampal1.png\">", "<img src=\"rampal/rampal2.png\">"]);
   changeMode("finalAuto");
 }
-document.getElementById("inputGrades").addEventListener('paste', (event) => {setTimeout(function() {
+/* document.getElementById("inputGrades").addEventListener('paste', (event) => {setTimeout(function() {
   autoGrade();
   window.scrollBy(0, -300);
-}, 5)});
+}, 5)}); */
 
 function autoCats() {
   var form = document.autoCategories;
@@ -472,9 +472,6 @@ function autoCalc2() {
 var classes = {
   "ap lang meyer": [["a", "g", "q", "t"], [false, 5, 20, 25, 50]],
   "ap chem": [["h", "l", "q", "t"], [false, 10, 25, 15, 50]],
-  "bio": [[], [true]],
-  "ap enviro": [[], [true]],
-  "ap physics 1": [[], [true]],
   "spanish 4": [["f", "pe", "po"], [false, 25, 35, 40]],
   "research": [[], [true]],
   "precalc": [[], [true]],
@@ -492,7 +489,6 @@ var classes = {
   "ap gov": [["h", "f", "q", "t"], [false, 10, 25, 20, 45]],
   "ap comparative": [["c", "q", "t", "f", "p"], [false, 10, 20, 40, 20, 10]],
   "ap world": [["e", "h", "q", "t"], [false, 15, 20, 25, 40]],
-  "physics h": [[], [true]],
   "stats adv": [["a", "g", "m", "t"], [false, 2, 20, 18, 60]],
   "intro code": [["h", "q", "t", "p"], [false, 20, 20, 30, 30]],
   "chem q3": [["h", "l", "q", "s", "t"], [false, 10, 35, 15, 20, 20]],
@@ -513,7 +509,9 @@ var classes = {
   "alg 2 comp": [["h", "q", "t"], [false, 10, 30, 60]],
   "spanish lit": [["f", "q", "e"], [false, 25, 35, 40]],
   "world": [["h", "q", "t"], [false, 20, 25, 40]],
-  "pre alg": [["a", "q", "t"], [false, 30, 30, 40]]
+  "pre alg": [["a", "q", "t"], [false, 30, 30, 40]],
+  "apcsa": [["h", "t"], [false, 15, 85]],
+  "env health": [["q", "t", "l", "h", "c"], [false, 15, 40, 30, 5, 10]]
 };
 function setclass() {
   var classVal = document.classes.class.value;
