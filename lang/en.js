@@ -120,6 +120,7 @@ langData["en"] = {
   "Persian", "Latin", "Sanskrit"],
   "numbers": ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"],
   "setPoint": "Grading set to point system",
+  "setPercent": "Grading set to percent system",
   "search": "Search",
   "pronunciation": "Say: HAH-riss DAHL-vee",
   "and": "and",

@@ -470,48 +470,50 @@ function autoCalc2() {
   window.scrollBy(0, -300);
 }
 var classes = {
-  "ap lang meyer": [["a", "g", "q", "t"], [false, 5, 20, 25, 50]],
-  "ap chem": [["h", "l", "q", "t"], [false, 10, 25, 15, 50]],
-  "spanish 4": [["f", "pe", "po"], [false, 25, 35, 40]],
-  "research": [[], [true]],
-  "precalc": [[], [true]],
-  "mandarin 3": [["h", "p", "q", "t"], [false, 10, 30, 25, 35]],
-  "stats": [["f", "s", "t"], [false, 5, 25, 70]],
-  "java hh": [["a", "h", "p", "t"], [false, 25, 20, 20, 35]],
-  "ap macro": [["f", "t", "h", "p"], [false, 30, 45, 15, 10]],
-  "american history": [["h", "p", "q", "t"], [false, 20, 10, 30, 40]],
-  "apush": [["c", "f", "q", "t"], [false, 20, 20, 20, 40]],
-  "english 2": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
-  "english 3 cp": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
-  "calc": [["h", "t"], [false, 10, 90]],
-  "calc ab": [["h", "t"], [false, 15, 85]],
-  "ap lit": [["c", "q", "t"], [false, 15, 35, 50]],
-  "ap gov": [["h", "f", "q", "t"], [false, 10, 25, 20, 45]],
-  "ap comparative": [["c", "q", "t", "f", "p"], [false, 10, 20, 40, 20, 10]],
-  "ap world": [["e", "h", "q", "t"], [false, 15, 20, 25, 40]],
-  "stats adv": [["a", "g", "m", "t"], [false, 2, 20, 18, 60]],
-  "intro code": [["h", "q", "t", "p"], [false, 20, 20, 30, 30]],
-  "chem q3": [["h", "l", "q", "s", "t"], [false, 10, 35, 15, 20, 20]],
-  "spanish 3": [["h", "p", "q", "t"], [false, 10, 30, 25, 35]],
-  "principles": [["c", "t", "w"], [false, 50, 20, 30]],
-  "english 1": [["c", "l", "s", "w"], [false, 25, 35, 5, 35]],
-  "ap human": [["h", "p", "q", "t"], [false, 10, 20, 30, 40]],
-  "ap psych": [["h", "p", "q", "t"], [false, 25, 10, 25, 40]],
-  "precalc adv": [["h", "t", "s"], [false, 20, 75, 5]],
-  "physics c": [["c", "l", "t"], [false, 10, 25, 65]],
-  "honors gov": [["h", "q", "t", "p"], [false, 20, 30, 40, 10]],
-  "ap mandarin": [["i", "q", "p"], [false, 20, 35, 45]],
-  "honors econ": [["h", "q", "t", "d"], [false, 20, 25, 40, 15]],
-  "english 4 h": [["c", "l", "w"], [false, 20, 40, 40]],
-  "stats h": [["g", "s", "t"], [false, 5, 25, 70]],
-  "sociology": [["h", "p", "t", "q"], [false, 25, 10, 40, 25]],
-  "alg 2": [["c", "h", "q", "t"], [false, 15, 15, 30, 40]],
-  "alg 2 comp": [["h", "q", "t"], [false, 10, 30, 60]],
-  "spanish lit": [["f", "q", "e"], [false, 25, 35, 40]],
-  "world": [["h", "q", "t"], [false, 20, 25, 40]],
-  "pre alg": [["a", "q", "t"], [false, 30, 30, 40]],
-  "apcsa": [["h", "t"], [false, 15, 85]],
-  "env health": [["q", "t", "l", "h", "c"], [false, 15, 40, 30, 5, 10]]
+  "ap lang meyer": [["a", "g", "q", "t"], [0, 5, 20, 25, 50]],
+  "ap chem": [["h", "l", "q", "t"], [0, 10, 25, 15, 50]],
+  "spanish 4": [["f", "pe", "po"], [0, 25, 35, 40]],
+  "research": [[], [1]],
+  "precalc": [[], [1]],
+  "mandarin 3": [["h", "p", "q", "t"], [0, 10, 30, 25, 35]],
+  "stats": [["f", "s", "t"], [0, 5, 25, 70]],
+  "java hh": [["a", "h", "p", "t"], [0, 25, 20, 20, 35]],
+  "ap macro": [["f", "t", "h", "p"], [0, 30, 45, 15, 10]],
+  "american history": [["h", "p", "q", "t"], [0, 20, 10, 30, 40]],
+  "apush": [["c", "f", "q", "t"], [0, 20, 20, 20, 40]],
+  "english 2": [["c", "l", "s", "w"], [0, 25, 35, 5, 35]],
+  "english 3 cp": [["c", "l", "s", "w"], [0, 25, 35, 5, 35]],
+  "calc": [["h", "t"], [0, 10, 90]],
+  "calc ab": [["h", "t"], [0, 15, 85]],
+  "ap lit": [["c", "q", "t"], [0, 15, 35, 50]],
+  "ap gov": [["h", "f", "q", "t"], [0, 10, 25, 20, 45]],
+  "ap comparative": [["c", "q", "t", "f", "p"], [0, 10, 20, 40, 20, 10]],
+  "ap world": [["e", "h", "q", "t"], [0, 15, 20, 25, 40]],
+  "stats adv": [["a", "g", "m", "t"], [0, 2, 20, 18, 60]],
+  "intro code": [["h", "q", "t", "p"], [0, 20, 20, 30, 30]],
+  "chem q3": [["h", "l", "q", "s", "t"], [0, 10, 35, 15, 20, 20]],
+  "spanish 3": [["h", "p", "q", "t"], [0, 10, 30, 25, 35]],
+  "principles": [["c", "t", "w"], [0, 50, 20, 30]],
+  "english 1": [["c", "l", "s", "w"], [0, 25, 35, 5, 35]],
+  "ap human": [["h", "p", "q", "t"], [0, 10, 20, 30, 40]],
+  "ap psych": [["h", "p", "q", "t"], [0, 25, 10, 25, 40]],
+  "precalc adv": [["h", "t", "s"], [0, 20, 75, 5]],
+  "physics c": [["c", "l", "t"], [0, 10, 25, 65]],
+  "honors gov": [["h", "q", "t", "p"], [0, 20, 30, 40, 10]],
+  "ap mandarin": [["i", "q", "p"], [0, 20, 35, 45]],
+  "honors econ": [["h", "q", "t", "d"], [0, 20, 25, 40, 15]],
+  "english 4 h": [["c", "l", "w"], [0, 20, 40, 40]],
+  "stats h": [["g", "s", "t"], [0, 5, 25, 70]],
+  "sociology": [["h", "p", "t", "q"], [0, 25, 10, 40, 25]],
+  "alg 2": [["c", "h", "q", "t"], [0, 15, 15, 30, 40]],
+  "alg 2 comp": [["h", "q", "t"], [0, 10, 30, 60]],
+  "spanish lit": [["f", "q", "e"], [0, 25, 35, 40]],
+  "world": [["h", "q", "t"], [0, 20, 25, 40]],
+  "pre alg": [["a", "q", "t"], [0, 30, 30, 40]],
+  "apcsa": [["h", "t"], [0, 15, 85]],
+  "env health": [["q", "t", "l", "h", "c"], [0, 15, 40, 30, 5, 10]],
+  "alg 1": [["a", "q", "t"], [0, 20, 30, 45]],
+  "physics 1": [["q", "t", "h", "l"], [2, 15, 55, 10, 20]]
 };
 function setclass() {
   var classVal = document.classes.class.value;
@@ -524,7 +526,8 @@ function setclass() {
     var catData = classes[classVal][1];
     var classCats = findCategories(autoCalc);
     var meme = document.getElementById("classmeme");
-    document.autoCategories.point.checked = catData[0];
+    document.autoCategories.point.checked = (catData[0] == 1);
+    document.autoCategories.percent.checked = (catData[0] == 2);
     for (var i = 0; i < catLetters.length; i++) {
       try {
         for (var j = 0; j < classCats.length; j++) {
@@ -558,10 +561,15 @@ function setclass() {
     } else {
       meme.innerHTML = "";
     }
-    if (catData[0]) {
-      document.getElementById("classError").innerHTML = currentLangData["setPoint"];
-    } else {
-      document.getElementById("classError").innerHTML = "";
+    switch(catData[0]) {
+      case 1:
+        langHtml("classError", "setPoint");
+        break;
+      case 2:
+        langHtml("classError", "setPercent");
+        break;
+      default:
+        document.getElementById("classError").innerHTML = "";
     }
     document.classes.class.value = "";
   }

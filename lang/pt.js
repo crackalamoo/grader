@@ -119,6 +119,7 @@ langData["pt"] = {
   "persa", "latim", "sânscrito"],
   "numbers": ["um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez"],
   "setPoint": "A classificação foi definida como sistema de pontos",
+  "setPercent": "A classificação foi definida como sistema de percentagens",
   "search": "Pesquisar",
   "pronunciation": "Diga como: Háriss Dâlvi",
   "and": "e",
