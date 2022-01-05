@@ -563,10 +563,10 @@ function setclass() {
     }
     switch(catData[0]) {
       case 1:
-        langHtml("classError", "setPoint");
+        langHTML("classError", "setPoint");
         break;
       case 2:
-        langHtml("classError", "setPercent");
+        langHTML("classError", "setPercent");
         break;
       default:
         document.getElementById("classError").innerHTML = "";
