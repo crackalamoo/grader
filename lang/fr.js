@@ -120,6 +120,7 @@ langData["fr"] = {
   "persan", "latin", "sanskrit"],
   "numbers": ["un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix"],
   "setPoint": "La notation est réglée au système de points",
+  "setPercent": "La notation est réglée au système de pourcentages",
   "search": "Rechercher",
   "pronunciation": "",
   "and": "&amp;",

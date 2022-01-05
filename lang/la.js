@@ -119,6 +119,7 @@ langData["la"] = {
   "lingua bengalica", "lingua persica", "lingua latina", "lingua sanscrita"],
   "numbers": ["unum", "duo", "tria", "quattuor", "quinque", "sex", "septem", "octo", "novem", "decem"],
   "setPoint": "Taxatio rationem punctorum factus est",
+  "setPercent": "Taxatio rationem per centum factus est",
   "search": "Quaerere",
   "pronunciation": "Nomen latinum: Dalvius",
   "and": "&amp;",

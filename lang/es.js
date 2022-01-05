@@ -119,6 +119,7 @@ langData["es"] = {
   "persa", "latín", "sánscrito"],
   "numbers": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"],
   "setPoint": "La calificación fue establecida a sistema de puntos",
+  "setPercent": "La calificación fue establecida a sistema de porcentajes",
   "search": "Buscar",
   "pronunciation": "Di como: Járis (Hacer) Dálvi",
   "and": "y",
