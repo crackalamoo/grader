@@ -72,20 +72,35 @@ function makeNumber(grade, possible=100.0) {
   return new Number(grade*possible/100.0);
 }
 class Category {
-  constructor(name, percentage) {
+  constructor(name, percentage, percentSystem=false) {
     this.name = name;
     this.percentage = percentage;
     this.total = 0.0;
     this.possible = 0.0;
+    this.percentSystem = percentSystem;
     categories.push(this);
   }
   add(total, possible, countAs=1.0) {
-    this.total += makeNumber(total, possible)*countAs;
-    this.possible += makeNumber(possible)*countAs;
+    var dTotal = makeNumber(total, possible)*countAs;
+    var dPossible = makeNumber(possible)*countAs;
+    if (this.percentSystem) {
+      this.total += dTotal/dPossible*100*countAs;
+      this.possible += 100;
+    } else {
+      this.total += dTotal;
+      this.possible += dPossible;
+    }
   }
   remove (total, possible) {
-    this.total -= makeNumber(total, possible);
-    this.possible -= makeNumber(possible);
+    var dTotal = makeNumber(total, possible);
+    var dPossible = makeNumber(possible);
+    if (this.percentSystem) {
+      this.total -= dTotal/dPossible*100;
+      this.possible -= 100;
+    } else {
+      this.total -= dTotal;
+      this.possible -= dPossible;
+    }
   }
   score() {
     return (this.total/this.possible)*100.0;
@@ -264,6 +279,7 @@ function createCategory() {
   }
   if (canCreate) {
     currentCategory = new Category(document.category.name.value, new Number(document.category.percent.value));
+    currentCategory.percentSystem = categories[0].percentSystem;
     document.category.name.value = "";
     document.category.percent.value = "";
     updateCategories();
@@ -436,13 +452,13 @@ function autoCalc2() {
   var cats = findCategories(autoCalc);
   categories = [];
   if (document.autoCategories.point.checked) {
-    currentCategory = new Category("Total", 100);
+    currentCategory = new Category("Total", 100, document.autoCategories.percent.checked);
     for (var i = 0; i < autoCalc.length; i++) {
       categories[0].add(autoCalc[i][1], autoCalc[i][2]);
     }
   } else {
     for (var i = 0; i < cats.length; i++) {
-      new Category(cats[i], new Number(document.autoCategories[new Number(i).toString()].value));
+      new Category(cats[i], new Number(document.autoCategories[new Number(i).toString()].value), document.autoCategories.percent.checked);
     }
     var countAs = 1.0;
     for (var i = 0; i < autoCalc.length; i++) {
@@ -470,7 +486,7 @@ function autoCalc2() {
   window.scrollBy(0, -300);
 }
 var classes = {
-  "ap lang meyer": [["a", "g", "q", "t"], [0, 5, 20, 25, 50]],
+  "ap lang": [["h", "q", "t"], [0, 20, 30, 50]],
   "ap chem": [["h", "l", "q", "t"], [0, 10, 25, 15, 50]],
   "spanish 4": [["f", "pe", "po"], [0, 25, 35, 40]],
   "research": [[], [1]],
@@ -513,7 +529,9 @@ var classes = {
   "apcsa": [["h", "t"], [0, 15, 85]],
   "env health": [["q", "t", "l", "h", "c"], [0, 15, 40, 30, 5, 10]],
   "alg 1": [["a", "q", "t"], [0, 20, 30, 45]],
-  "physics 1": [["q", "t", "h", "l"], [2, 15, 55, 10, 20]]
+  "physics 1": [["q", "t", "h", "l"], [2, 15, 55, 10, 20]],
+  "college alg": [[], [1]],
+  "bio h": [["h", "l", "p", "q", "t"], [2, 10, 20, 10, 15, 45]]
 };
 function setclass() {
   var classVal = document.classes.class.value;
