@@ -113,15 +113,18 @@ function languageLoaded(l) {
     if (document.setLanguage.language.options[i].value == l) {
       document.setLanguage.language.options[i].innerHTML = LANGUAGES[i];
       document.getElementsByClassName("button")[i].classList.add("selected");
-      if (l == "en")
-        document.title = "AHS Grade Calculator";
-      else if (l == "la")
-        document.title = "AHS Grade Calculator Latinus"
-      else if (l == "sa") {
-        document.title = "AHS Grade Calculator " + d["sanskrit"];
-        document.setLanguage.language.options[i].innerHTML = d["sanskrit"];
-      } else
-        document.title = "AHS Grade Calculator " + d.languages[i];
+      switch (l) {
+        case "en":
+          document.title = "AHS Grade Calculator"; break;
+        case "la":
+          document.title = "AHS Grade Calculator Latinus"; break;
+        case "sa":
+          document.title = "AHS Grade Calculator " + d["sanskrit"];
+          document.setLanguage.language.options[i].innerHTML = d["sanskrit"];
+          break;
+        default:
+          document.title = "AHS Grade Calculator " + d.languages[i];
+      }
     } else {
       document.getElementsByClassName("button")[i].classList.remove("selected");
       if (RTL_LANG.indexOf(document.setLanguage.language.options[i].value) != -1) {
@@ -474,24 +477,38 @@ function setDialect() {
               }
             }
           }
-          referenceKey(keys[k], "fſ", "fs");
-          referenceKey(keys[k], "ſſ", "ſs");
-          referenceKey(keys[k], " u", " v");
-          referenceKey(keys[k], " U", " V");
+          switch(keys[k].substring(0,1)) {
+            case "U":
+              keys[k] = "V"+keys[k].substring(1); break;
+            case "u":
+              keys[k] = "v"+keys[k].substring(1); break;
+          }
+          referenceKeys(keys[k], ["fſ", "ſſ", " u", " U"], ["fs", "ſs", " v", " V"]);
           referenceKey(keys[k], "JauaScript", "JavaScript");
           referenceKey(keys[k], "ahſchool", "ahschool");
-          referenceKey(keys[k], "point ſyſtem", "Point Syſtem");
-          referenceKey(keys[k], "grade", "Score");
-          referenceKey(keys[k], "Grade", "Score");
+          referenceKeys(keys[k], ["point ſyſtem", "percent ſyſtem"], ["Point Syſtem", "Percent Syſtem"]);
+          referenceKeys(keys[k], ["grade", "Grade"], ["Score", "Score"]);
           referenceKey(keys[k], "<i>Aſsignment</i>", "<i>Assignment</i>");
-          referenceKey(keys[k], "&nbſp;", "&nbsp;");
-          referenceKey(keys[k], "&ndaſh;", "&ndash;");
-          referenceKey(keys[k], "&mdaſh;", "&mdash;");
+          referenceKeys(keys[k], ["&nbſp;", "&ndaſh;", "&mdaſh;"], ["&nbsp;", "&ndash;", "&mdash;"]);
           referenceKeys(keys[k], ["enter", "Enter"], ["entre", "Entre"]);
-          referenceKeys(keys[k], ["required", "Required"], ["necessary", "Necessary"]);
+          referenceKeys(keys[k], ["required", "Required"], ["neceſsary", "Neceſsary"]);
         }
       }
       currentLangData["pronunciation"] = "Say: HAH-riss DAHL-vee";
+      for (var i = 0; i < currentLangData["languages"].length; i++) {
+        var langSpell = currentLangData["languages"][i];
+        switch(langSpell) {
+          case "English": langSpell = "Engliſh"; break;
+          case "Spanish": langSpell = "Spaniſh"; break;
+          case "Portuguese": langSpell = "Portugueſe"; break;
+          case "Urdu": langSpell = "Vrdu"; break;
+          case "Bengali": langSpell = "Bengalee"; break;
+          case "Sanskrit": langSpell = "Sanſcrit"; break;
+        }
+        currentLangData["languages"][i] = langSpell;
+      }
+      currentLangData["numbers"][4] = "fiue";
+      currentLangData["numbers"][6] = "seuen";
       referenceKeys("dontWorry", ["been entreed yet", "Don't worry", "don't worry", "you can manually", "category after"],
       ["yet been entered", "Grieve not", "grieve not", "thou canst", "category by hand after"]);
     } else if (dialect == "Anglish") {

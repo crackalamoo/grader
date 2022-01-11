@@ -760,8 +760,7 @@ function totalClassScore() {
 function calcRequired() {
   var initial_score = [currentCategory.total, currentCategory.possible];
   var req_grade = new Number(document.editCategory.keepGrade.value);
-  var worthPoints = new Number(document.editCategory.worthPoints.value);
-  var reqPoints = 0;
+  var worthPoints = currentCategory.percentSystem ? 100 : new Number(document.editCategory.worthPoints.value);
   let totalPercent = 0;
   for (var i = 0; i < categories.length; i++)
     totalPercent += categories[i].percentage;
