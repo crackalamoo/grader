@@ -158,5 +158,15 @@ function setFormal_es() {
   referenceKey("pronunciation", "Di ", "Diga ");
   referenceKey("rampalExp", "próbalo", "próbelo");
 }
+function setMasc_es() {
+  referenceKey("welcome", "Bienvenidos", "Bienvenido");
+  referenceKey("confirm", "seguro/a", "seguro");
+  referenceKey("clearDataExp", "lo/la oblig", "lo oblig");
+}
+function setFem_es() {
+  referenceKey("welcome", "Bienvenidos", "Bienvenida");
+  referenceKey("confirm", "seguro/a", "segura");
+  referenceKey("clearDataExp", "lo/la oblig", "la oblig");
+}
 
 languageLoaded("es");
