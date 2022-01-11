@@ -135,6 +135,19 @@ langData["ur"] = {
   "translateMotto": "نمبروں کے درد سے چَین تک"
 };
 
+function setFormal0_ur() {
+  ["reqScore_0", "reqScore", "welcome", "intro", "copyGradesInstruct", "superAlgorithm",
+  "clearDataExp"].forEach(
+    key => referenceKey(key, "آپ کو", "تمہیں"));
+  ["begin", "confirm"].forEach(
+    key => referenceKey(key, "آپ کو", "تم کو"));
+  ["begin", "scoreNaN", "notPossibleGrade", "mailSent", "welcome", "jsSuccess"].forEach(
+    key => referenceKeys(key, ["آپ کا", "آپ کی", "آپ کے"], ["تمہارا", "تمہاری", "تمہارے"]));
+  ["fritzExam", "welcome", "jsSuccess", "clearDataExp"].forEach(
+    key => referenceKey(key, "آپ", "تم"));
+  ["mobileCopyInstruct", "dontWorry"].forEach(
+    key => referenceKey(key, "آپ ", ""));
+}
 function setFormal2_ur() {
   referenceKeys("begin", ["بناؤ", "مانو"], ["بنائیں", "مانیں"]);
   referenceKeys("catInstruct", ["بناؤ", "مانو"], ["بنائیں", "مانیں"]);
@@ -175,6 +188,13 @@ function setFormal2_ur() {
   referenceKey("deleteCatButton", "ؤ", "ئیں");
   referenceKey("validData", "کرو", "کیجئے");
   referenceKey("rampalExp", "دیکھو", "دیکھئے");
+}
+function setFem_ur() {
+  ["notPossibleGrade", "jsSuccess", "mobileCopyInstruct", "dontWorry", "pointSystemInstruct2"].forEach(
+    key => referenceKey(key, "تے", "تی"));
+  referenceKey("fritzExam", "گے)", "گی)");
+  referenceKeys("clearDataExp", ["آؤ گے", "آؤ گی"], ["آئیں گے", "آئیں گی"]);
+  referenceKey("jsSuccess", "رہے", "رہی");
 }
 
 languageLoaded("ur");

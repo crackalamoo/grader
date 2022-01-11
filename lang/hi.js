@@ -124,6 +124,19 @@ langData["hi"] = {
   "translateMotto": "नंबरों के दर्द से चैन तक"
 };
 
+function setFormal0_hi() {
+  ["reqScore_0", "reqScore", "welcome", "intro", "copyGradesInstruct", "superAlgorithm",
+  "clearDataExp"].forEach(
+    key => referenceKey(key, "आपको", "तुम्हें"));
+  ["begin", "confirm"].forEach(
+    key => referenceKey(key, "आपको", "तुमको"));
+  ["begin", "scoreNaN", "notPossibleGrade", "mailSent", "welcome", "jsSuccess"].forEach(
+    key => referenceKey(key, "आपक", "तुम्हार"));
+  ["fritzExam", "welcome", "jsSuccess", "clearDataExp"].forEach(
+    key => referenceKey(key, "आप", "तुम"));
+  ["mobileCopyInstruct", "dontWorry"].forEach(
+    key => referenceKey(key, "आप ", ""));
+}
 function setFormal2_hi() {
   referenceKeys("begin", ["बनाओ", "मानो"], ["बनाएँ", "मानें"]);
   referenceKeys("catInstruct", ["बनाओ", "मानो"], ["बनाएँ", "मानें"]);
@@ -164,6 +177,13 @@ function setFormal2_hi() {
   referenceKey("deleteCatButton", "ओ", "एँ");
   referenceKey("validData", "करो", "कीजिए");
   referenceKey("rampalExp", "देखो", "देखिए");
+}
+function setFem_hi() {
+  ["notPossibleGrade", "jsSuccess", "mobileCopyInstruct", "dontWorry", "pointSystemInstruct2"].forEach(
+    key => referenceKeys(key, ["ते", "इस्तीमाल"], ["ती", "इस्तेमाल"]));
+  referenceKey("fritzExam", "गे)", "गी)");
+  referenceKeys("clearDataExp", ["आओगे", "आएँगे"], ["आओगी", "आएँगी"]);
+  referenceKey("jsSuccess", "रहे", "रही");
 }
 
 languageLoaded("hi");

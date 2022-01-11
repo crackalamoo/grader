@@ -175,4 +175,46 @@ function setInformal_fa() {
   referenceKey("rampalExp", "کنید۔", "کن۔");
 }
 
+function setDari_fa() {
+  referenceKey("mailSent", "مرسی!", "تشکر!");
+  // Imperial Persian vs Hijri Zodiac and Gregorian French- vs English-derived months
+  referenceKeys("footer", ["مهر", "مرداد", "اکتبر", "اوت"],
+  ["میزان", "اسد", "اکتوبر", "اگست"]);
+  referenceKeys("jsSuccess", ["استفاده کنید", "دارید می", "می&zwnj;توان", "داری می"], ["", "می", "استعمال کرده می&zwnj;توان", "می"]);
+  referenceKey("jsSuccess", " استفاده کنی", "");
+  referenceKey("begin", "استفاده", "استعمال");
+  referenceKey("catInstruct", "استفاده", "استعمال");
+  referenceKey("dontWorry", "استفاده", "استعمال");
+  referenceKey("creditCathy", "ایده", "فکر");
+  referenceKeys("selClass", ["ایده", "بطور اتوماتیک"], ["فکر", "اتوماتیکلی"]);
+  referenceKey("pronunciation", "دَلْوی", "دَلْوِی");
+  referenceKey("ritvikCalc", "ریتویک تیگاواراپو", "رِیتوِیک تِیگَوَرَپُو");
+  referenceKey("ritvikHonor", "ریتویک تیگاواراپو", "ریتویک تیگورپو");
+  referenceKey("rampalButton", "دکتر", "داکتر");
+  ["catNameExists", "pointCheck", "mailSent", "intro", "mobileCopyInstruct",
+  "dontWorry", "manualButton", "sethClassInstruct", "pointSystemInstruct",
+  "semWithExam", "ritvikHonor", "clearDataExp", "ahsWeighted", "rampalExp"].forEach(
+    key => referenceKey(key, "با ", "کتی "));
+  referenceKey("intro", "کتی وجود", "علیرغم");
+  referenceKey("intro", "بتوانید آن را به آسانی پیدا کنید", "آن را به آسانی پیدا کرده بتوانید");
+  referenceKey("intro", "بتوانی آن را به آسانی پیدا کنی", "آن را به آسانی پیدا کرده بتوانی");
+  referenceKey("mobileCopyInstruct", " می&zwnj;توانید", "");
+  referenceKey("mobileCopyInstruct", " می&zwnj;توانی", "");
+  referenceKey("mobileCopyInstruct", "انتخاب کنید", "انتخاب کرده می&zwnj;توانید");
+  referenceKey("mobileCopyInstruct", "انتخاب کنی", "انتخاب کرده می&zwnj;توانی");
+  ["begin", "catInstruct", "catNameExists", "catName", "nameOfClass",
+  "pointSystemInstruct2", "enterCatNames", "ritvikHonor"].forEach(
+    key => referenceKey(key, "اسم", "نام"));
+  referenceKey("rampalInstruct", "نگاه", "سیل");
+  referenceKey("intro", "اشتباه", "غلط");
+  referenceKeys("minGrade", ["بگیرید", "می&zwnj;ت", "بگیری"], ["", "گرفته می&zwnj;ت", ""]);
+  referenceKeys("fritzExam", ["بگیرید", "می&zwnj;ت", "بگیری"], ["", "گرفته می&zwnj;ت", ""]);
+  referenceKeys("selClass", [" بتوانید", " بتوانی"], ["", ""]);
+  referenceKeys("selClass", ["پر کنید", "پر کنی"], ["پر کرده بتوانید", "پر کرده بتوانی"]);
+  referenceKeys("pointSystemInstruct2", [" می&zwnj;توانید", "بنویسید۔"], ["", "نوشته می&zwnj;توانید۔"]);
+  referenceKeys("pointSystemInstruct2", [" می&zwnj;توانی ", "بنویسی۔"], ["", "نوشته می&zwnj;توانی۔"]);
+  referenceKeys("dontWorry", ["می&zwnj;توانید ", "اضافه کنید"], ["", "اضافه کرده می&zwnj;توانید"]);
+  referenceKeys("dontWorry", ["می&zwnj;توانید ", "اضافه کنی"], ["", "اضافه کرده می&zwnj;توانی"]);
+}
+
 languageLoaded("fa");
