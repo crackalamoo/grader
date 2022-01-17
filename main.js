@@ -348,6 +348,8 @@ function isNotGrade(g) {
       return true;
     else
       return false;
+  } else if (g.toString().indexOf(".") == -1 && ["NTI", "AB", "EX", "EXC", "P", "PEND", "LATE"].indexOf(g) == -1) {
+    return true
   } else {
     return false;
   }
@@ -370,11 +372,14 @@ function autoGrade(rampal=false) {
   }
   autoCalc = previousInput.split("\n");
   document.getElementById("inputGrades").value = "";
-  while (autoCalc.indexOf("Comment") != -1 || autoCalc.indexOf("Missing Assignment") != -1)
+  while (autoCalc.indexOf("Comment") != -1 || autoCalc.indexOf("Missing Assignment") != -1 || autoCalc[0] == '')
     autoCalc.shift();
+  console.log(autoCalc);
   try {
     firstItem = autoCalc[0].trim().split("\t").filter(auto_filter);
     secondItem = autoCalc[1].trim().split("\t").filter(auto_filter);
+    console.log(firstItem);
+    console.log(secondItem);
     if (firstItem.length <= 2 && secondItem.length >= 3)
       lineSystem = 2;
     else
@@ -382,11 +387,15 @@ function autoGrade(rampal=false) {
   } catch(err) {
     lineSystem = 2;
   }
+  console.log(lineSystem);
   for (var i = lineSystem-1; i < autoCalc.length; i += lineSystem) {
     autoCalc[i] = autoCalc[i].trim();
     let splitArray = autoCalc[i].split("\t");
+    if (splitArray.length == 1) splitArray = autoCalc[i].split(" ");
+    console.log(splitArray);
     while (isNotGrade(splitArray[1]))
       splitArray.shift();
+    console.log(splitArray);
     temp = [];
     temp.push(splitArray[0]);
     temp.push(splitArray[1]);
