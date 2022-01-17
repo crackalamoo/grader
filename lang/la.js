@@ -87,7 +87,7 @@ langData["la"] = {
   "pointSystemInstruct": "Ut videre si disciplina ratio punctorum aut genera uitur, vide quanto valent probationes, pensa domus et examina." +
     " Si valent circa idem numerus punctorum in quoque genere, genera sunt. Si non, forsit ratio punctorum est.",
   "nameOfClass": "Nomen disciplinae:&nbsp;",
-  "pointSystemInstruct2": "Si <strong>ratio punctorum</strong> est, nominibus et ponderationibus &ldquo;ratio punctorum&rdquo; scribe.",
+  "pointSystemInstruct2": "Si <strong>ratio punctorum</strong> est, nominibus ponderationibusque &ldquo;ratio punctorum&rdquo; scribe.",
   "enterCatNames": "Nomina generum prorsus ut in MyBackpack videntur: &nbsp;",
   "enterWeights": "Ponderationes cuiusque generis per ordinem superum:&nbsp;",
   "enterNotes": "Notae (ad libitum):&nbsp;",
