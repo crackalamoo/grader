@@ -3,7 +3,7 @@ langData["es"] = {
   "catInstruct": "Si la clase está basada en el sistema de puntos, haz una categoría " +
     "llamado &ldquo;Total&rdquo; o algo así y considérala 100% de tu nota.",
   "catNameExists": "Ya hay una categoría con este nombre",
-  "catList": "<strong>Haz clic en una categoría</strong> para añadir o quitar tareas y para ver la nota de esa categoría.<br><br>Categorías:<br>",
+  "catList": "<strong>Haz clic en una categoría</strong> para ver la nota de esa categoría, añadir o quitar tareas y más.<br><br>Categorías:<br>",
   "catAvg": "Promedio en $CATEGORY: $NUMBER%",
   "avg": "<b>Nota hasta ahora en esta clase: $SCORE%</b> (Nota de letra: $LETTER)<br>" +
     "GPA sin ponderación: $GPA<br>Suma de todas las categorías: $SUM% (Debe ser 100%)<br>",
@@ -25,6 +25,7 @@ langData["es"] = {
   "apply": "Aplicar",
   "add": "Añadir",
   "delete": "Borrar",
+  "menu": "Menú",
   "edit": "Editar las notas",
   "newClass": "Nueva clase",
   "notPossibleGrade": "Por desgracia, esta nota no es posible para ti este semestre. ¡Buena suerte para el próximo semestre!",

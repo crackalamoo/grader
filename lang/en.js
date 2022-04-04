@@ -3,7 +3,7 @@ langData["en"] = {
   "catInstruct": "If the class is based on point system, make a category " +
     "called something like &ldquo;Total&rdquo; and consider it 100% of your grade.",
   "catNameExists": "There is already a category with this name",
-  "catList": "<strong>Click a category</strong> to add or remove assignments and to see that category's score.<br><br>Categories:<br>",
+  "catList": "<strong>Click a category</strong> to see that category's score, add or remove assignments, and more.<br><br>Categories:<br>",
   "catAvg": "Average in $CATEGORY: $NUMBER%",
   "avg": "<b>Score so far in this class: $SCORE%</b> (Letter grade: $LETTER)<br>" +
     "Unweighted GPA: $GPA<br>Sum of all categories: $SUM% (Should be 100%)<br>",
@@ -25,6 +25,7 @@ langData["en"] = {
   "apply": "Apply",
   "add": "Add",
   "delete": "Delete",
+  "menu": "Menu",
   "edit": "Edit grades",
   "newClass": "New class",
   "notPossibleGrade": "Unfortunately this grade is not possible for you this semester. Good luck for next semester!",
@@ -115,7 +116,7 @@ langData["en"] = {
   "5scale": "5.0 scale",
   "4scale": "4.0 scale",
   "announcements": "",
-  "footer": "Dalvi<br>October 2019&ndash;August 2021",
+  "footer": "Harys Dalvi<br>October 2019&ndash;August 2021",
   "languages": ["English", "Spanish", "Portuguese", "French", "Hindi", "Urdu", "Bengali",
   "Persian", "Latin", "Sanskrit"],
   "numbers": ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"],

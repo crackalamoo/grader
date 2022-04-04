@@ -38,13 +38,9 @@ function languageLoaded(l) {
     langHTML("autoCalculation", "quarterGrades");
   document.getElementById("intro").innerHTML = langReplace("intro", ["$EMAIL"],
     ['<a href="mailto:'+MY_EMAIL+'?subject=Grade calculator issue">'+MY_EMAIL+'</a>']);
-  langHTML("manualBack", "back");
-  langHTML("categoryBack", "back");
-  langHTML("autoBack", "back");
-  langHTML("faqBack", "back");
-  langHTML("semesterBack", "back");
-  langHTML("gpaBack", "back");
-  langHTML("mailBack", "back");
+  ["manualBack", "categoryBack", "autoBack", "finalAutoBack", "autoCatsBack", "faqBack",
+    "semesterBack", "gpaBack", "mailBack"].forEach(
+      id => langHTML(id, "back"));
   langHTML("doneEditCat", "done");
   langHTML("editLetter", "letterGrade");
   langHTML("editLetter2", "letterGrade");
@@ -63,7 +59,7 @@ function languageLoaded(l) {
   "superAlgorithm", "pasteGradesInstruct", "mobileCopyInstruct", "copyGradesInstruct",
   "deleteCatButton", "changeWeightButton", "numPointsWorth", "desiredGrade", "whatNeed",
   "creditCathy", "createCat", "editInstruct", "newCatButton", "catInstruct", "catName",
-  "catPercent", "semGradesButton", "gpaCalcButton", "welcome", "semWithExam",
+  "catPercent", "semGradesButton", "gpaCalcButton", "welcome", "semWithExam", "menu",
   "clearDataExp", "clearDataButton", "getCreditButton", "creditNum", "announcements",
   "footer", "pronunciation", "translateMotto", "help", "rampalExp", "calcRequiredButton"].forEach(
       id => langHTML(id));

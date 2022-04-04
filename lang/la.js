@@ -3,7 +3,7 @@ langData["la"] = {
   "catInstruct": "Si in disciplinam fundatur ratio punctorum facito genus " +
     "nominatur alquid simile &ldquo;Total&rdquo; et eam 100% notae tuae arbitrator.",
   "catNameExists": "Iam exsistit genus cum hoc nomine",
-  "catList": "<strong>Generi click fac</strong> ut addere vel auferre pensa et ut notam eius generum videre.<br><br>Genera:<br>",
+  "catList": "<strong>Generi click fac</strong> ut notam eius generum videre, addere vel auferre pensa et magis.<br><br>Genera:<br>",
   "catAvg": "Medium in $CATEGORY: $NUMBER%",
   "avg": "<b>Nota hactenus in hoc genus: $SCORE%</b> (Nota litterae: $LETTER)<br>" +
     "GPA sine ponderatione: $GPA<br>Omnium generum summa: $SUM% (Debet esse 100%)<br>",
@@ -25,6 +25,7 @@ langData["la"] = {
   "apply": "Applicare",
   "add": "Addere",
   "delete": "Auferre",
+  "menu": "Index calculationum",
   "edit": "Notas recensere",
   "newClass": "Disciplina nova",
   "notPossibleGrade": "Infeliciter haec nota tibi possibilis non est in hoc semestri. Fortuna in deinde semestri.",

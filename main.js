@@ -60,13 +60,15 @@ function makeNumber(grade, possible=100.0) {
     case "F+": grade=58.5; break;
     case "F": grade=30; break;
     case "F-": grade=0; break;
-    case "NTI": grade = 0; break;
     case "LATE": grade = 50; break;
-    case "AB": grade = 0; break;
-    case "P": grade = 0; break;
-    case "PEND": grade = 0; break;
-    case "": grade = 0; break;
-    case " ": grade = 0; break;
+    case "NTI":
+    case "AB":
+    case "P":
+    case "PEND":
+    case "NA":
+    case "":
+    case " ":
+      grade = 0; break;
     default: return new Number(grade);
   }
   return new Number(grade*possible/100.0);
@@ -344,11 +346,11 @@ function auto_filter(el) {
 }
 function isNotGrade(g) {
   if (myNaN(makeNumber(g, 100.0))) {
-    if (["", " ", "P", "EXC", "EX", "PEND"].indexOf(g) == -1)
+    if (["", " ", "P", "EXC", "EX", "PEND", "NA"].indexOf(g) == -1)
       return true;
     else
       return false;
-  } else if (g.toString().indexOf(".") == -1 && ["NTI", "AB", "EX", "EXC", "P", "PEND", "LATE"].indexOf(g) == -1) {
+  } else if (g.toString().indexOf(".") == -1 && ["NTI", "AB", "EX", "EXC", "P", "PEND", "LATE", "NA"].indexOf(g) == -1) {
     return true
   } else {
     return false;
@@ -401,9 +403,9 @@ function autoGrade(rampal=false) {
     temp.push(splitArray[1]);
     temp.push(splitArray[2]);
     temp.push(splitArray[3].slice(0, -1));
-    if (["", " ", "P", "EXC", "EX", "PEND"].indexOf(temp[1]) == -1)
+    if (["", " ", "P", "EXC", "EX", "PEND", "NA"].indexOf(temp[1]) == -1)
       temp2.push(temp);
-    if (["", " ", "P", "PEND"].indexOf(temp[1]) != -1)
+    if (["", " ", "P", "PEND", "NA"].indexOf(temp[1]) != -1)
       if (splitArray[3] == "0.00%") temp2.push(temp);
   }
   autoCalc = temp2;
@@ -532,6 +534,7 @@ var classes = {
   "sociology": [["h", "p", "t", "q"], [0, 25, 10, 40, 25]],
   "alg 2": [["c", "h", "q", "t"], [0, 15, 15, 30, 40]],
   "alg 2 comp": [["h", "q", "t"], [0, 10, 30, 60]],
+  "alg 2 adv": [["a", "c", "h"], [0, 65, 15, 20]],
   "spanish lit": [["f", "q", "e"], [0, 25, 35, 40]],
   "world": [["h", "q", "t"], [0, 20, 25, 40]],
   "pre alg": [["a", "q", "t"], [0, 30, 30, 40]],
@@ -540,7 +543,8 @@ var classes = {
   "alg 1": [["a", "q", "t"], [0, 20, 30, 45]],
   "physics 1": [["q", "t", "h", "l"], [2, 15, 55, 10, 20]],
   "college alg": [[], [1]],
-  "bio h": [["h", "l", "p", "q", "t"], [2, 10, 20, 10, 15, 45]]
+  "bio h": [["h", "l", "p", "q", "t"], [2, 10, 20, 10, 15, 45]],
+  "calc adv": [["h", "t"], [0, 35, 65]]
 };
 function setclass() {
   var classVal = document.classes.class.value;
