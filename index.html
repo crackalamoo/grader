@@ -14,7 +14,7 @@
   </script>
   <link rel="shortcut icon" href="http://www.harysdalvi.com/sub/grader/favicon.ico">
   <link rel="icon" href="http://www.harysdalvi.com/sub/grader/favicon.ico">
- <base href="http://www.harysdalvi.com/sub/grader/">
+  <base href="http://www.harysdalvi.com/sub/grader/">
   <link rel="stylesheet" href="style.css">
   <script>
   var langData = {}, lang = "en";
@@ -51,6 +51,7 @@
   Orion-Cygnus Spiral Arm, Milky Way Galaxy, Local Group, Virgo Cluster, Laniakea Supercluster, Universe 33484.
   The use of images of living individuals is, in some jurisdictions, restricted by laws
   pertaining to personality rights, independent from their copyright status.
+  This website uses Google Analytics, which may collect cookies.
   &ldquo;Harys Dalvi's Aesthetically Pleasing AHS Grade Calculator&rdquo; should not be misconstrued as an attempt to usurp power and
   steal rights to administer American Heritage School or any of its affiliates.
 </p>
@@ -190,7 +191,7 @@
   <div id="bottomIntro" lang="en"><p><b>STAY HEALTHY!</b></p>
   <p>I will never use the information you give here to make fun of you. JavaScript is a &ldquo;client side&rdquo;
     programming language, which means most code here runs on your computer without transferring data anywhere else.
-    See details in my <a href="http://www.harysdalvi.com/single-file/privacy.html">Privacy Policy</a>.</p>
+    See details in my <a href="http://www.harysdalvi.com/sub/single-file/privacy.html">Privacy Policy</a>.</p>
   </p>
   <details>
     <summary><b>Letter grade to number grade correspondence</b></summary>
@@ -210,11 +211,13 @@
     </p>
   </details><br>
 
-  <p>Did you know that Fritzgerald Duvigneaud got into Caltech, MIT, and UChicago?</p>
-  <p>Did you know that Gabriel Sun got into BYCH (Brown, Yale, Cornell, and Harvard)?</p></div>
+  <p>Did you know that Fritzgerald Duvigneaud got into Caltech, MIT, and UChicago (CUM)?</p>
+  <p>Did you know that Gabriel Sun got into Brown, Yale, Cornell, and Harvard (BYCH)?</p>
+  </div>
 </div>
 <div class="main" id="manual">
-  <div class="button" onclick="changeMode('start')" id="manualBack">Back</div><br>
+  <div class="button" onclick="changeMode('start')" id="menu">Menu</div><br>
+  <div class="button" onclick="changeMode('autoCategories')" id="manualBack">Back</div><br>
   <p id="beginCategories"></p>
   <p id="manualCategory"></p>
   <div id="manualCategories"></div><br>
@@ -294,6 +297,7 @@
   <div class="button" onclick="autoGrade();" id="autoNext">Next</div>
 </div>
 <div class="main" id="finalAuto">
+  <div class="button" onclick="changeMode('auto')" id="finalAutoBack">Back</div>
   <p id="superAlgorithm"></p>
   <form name="gradesList"></form>
   <p id="dontWorry"></p><br>
@@ -308,6 +312,7 @@
   <p id="rampalExp"></p>
 </div>
 <div class="main" id="autoCategories">
+  <div class="button" onclick="changeMode('finalAuto')" id="autoCatsBack">Back</div>
   <p id="selClass"></p>
   <form name="classes" action="javascript:void(0)">
   <div id="seth_div">
@@ -320,6 +325,7 @@
   </div>
   <select name="class_hidden" id="classHidden">
     <option value="alg 1" data-alt="algebra i honors algebra 1 honors">Algebra I (H)</option>
+    <option value="alg 2 adv" data-alt="algebra ii advanced algebra 2 advanced">Algebra II (Advanced)</option>
     <option value="alg 2" data-alt="algebra ii honors algebra 2 honors">Algebra II (H)</option>
     <option value="alg 2 comp" data-alt="algebra ii comp algebra 2 comp">Algebra II Competition (H)</option>
     <option value="honors gov" data-alt="honors gov">American Government (H)</option>
@@ -327,6 +333,7 @@
     <option value="american history" data-alt="honors american history honors us history">American History (H)</option>
     <option value="apush" data-alt="apush ap american history ap us">American History (AP)</option>
     <option value="bio h" data-alt = "honors biology honors bio honors">Biology (H)</option>
+    <option value="calc adv" data-alt="adv calculus advanced calculus">Calculus (Advanced)</option>
     <option value="calc" data-alt="honors calculus honors calc honors">Calculus (H, AP BC)</option>
     <option value="calc ab" data-alt="ap calc">Calculus AB (AP)</option>
     <option value="chem q3" data-alt="honors chemistry h chemistry">Chemistry (H, Q3)</option>

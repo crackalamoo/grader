@@ -3,7 +3,7 @@ langData["pt"] = {
   "catInstruct": "Se a classe é baseada no sistema de pontos, faça uma categoria " +
     "chamado &ldquo;Total&rdquo; ou algo assim e considere-a 100% da sua nota.",
   "catNameExists": "Já há uma categoria com este nome",
-  "catList": "<strong>Clique em uma categoria</strong> para adicionar ou remover tarefas e para ver a nota dessa categoria.<br><br>Categorias:<br>",
+  "catList": "<strong>Clique em uma categoria</strong> para ver a nota dessa categoria, adicionar ou remover tarefas e mais.<br><br>Categorias:<br>",
   "catAvg": "Média em $CATEGORY: $NUMBER%",
   "avg": "<b>Nota até agora nesta classe: $SCORE%</b> (Nota de letra: $LETTER)<br>" +
     "GPA sem ponderação: $GPA<br>Soma de todas as categorias: $SUM% (Deve ser 100%)<br>",
@@ -114,7 +114,7 @@ langData["pt"] = {
   "ahsWeighted": "GPA ponderado (ponderação de AHS)",
   "5scale": "Escala 5.0",
   "4scale": "Escala 4.0",
-  "footer": "Dalvi<br>outubre de 2019&ndash;agosto de 2021",
+  "footer": "Harys Dalvi<br>outubre de 2019&ndash;agosto de 2021",
   "languages": ["inglês", "espanhol", "português", "francês", "hindi", "urdu", "bengali",
   "persa", "latim", "sânscrito"],
   "numbers": ["um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez"],
