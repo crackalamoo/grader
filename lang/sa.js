@@ -205,4 +205,91 @@ const SANSKRIT_SCRIPT = {
   "Mlym": "ലിപിഃ (Script) "
 };
 
+const SKT_DIGIT_CONST = {
+  "Deva": ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"],
+  "Brah": ["𑁦", "𑁧", "𑁨", "𑁩", "𑁪", "𑁫", "𑁬", "𑁭", "𑁮", "𑁯"],
+  "Latn": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+  "Telu": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+  "Bali": ["᭐", "᭑", "᭒", "᭓", "᭔", "᭕", "᭖", "᭗", "᭘", "᭙"],
+  "Tibt": ["༠", "༡", "༢", "༣", "༤", "༥", "༦", "༧", "༨", "༩"],
+  "Khmr": ["០", "១", "២", "៣", "៤", "៥", "៦", "៧", "៨", "៩"],
+  "Mlym": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+};
+
+function brahmic_key(keys, k, d, n_l, n_s) {
+  if (["Bali", "Tibt"].indexOf(d) != -1) {
+    referenceKey(keys[k], "&nbsp;।", "।");
+    referenceKey(keys[k], "&nbsp;॥", "॥");
+  }
+  if (["Khmr"].indexOf(d) != -1) {
+    referenceKey(keys[k], "। ", "।&nbsp;");
+    referenceKey(keys[k], "॥ ", "॥&nbsp;");
+  }
+  for (var i = 0; i < DEVANAGARI.length; i++)
+    referenceKey(keys[k], DEVANAGARI[i], n_l[i]);
+  for (var i = 0; i < currentLangData[keys[k]].length; i++) {
+    if (SANSKRIT_DIGITS.concat("%").indexOf(currentLangData[keys[k]].substring(i,i+1)) != -1) {
+      if (i == currentLangData[keys[k]].length ||
+      SANSKRIT_DIGITS.concat([".","%"]).indexOf(currentLangData[keys[k]].substring(i+1,i+2)) == -1) {
+        currentLangData[keys[k]] = currentLangData[keys[k]].substring(0,i+1) + n_s +
+        currentLangData[keys[k]].substring(i+1);
+        i += n_s.length;
+      }
+      if (i == 0 || SANSKRIT_DIGITS.concat([".","%"]).indexOf(currentLangData[keys[k]].substring(i-1,i)) == -1) {
+        currentLangData[keys[k]] = currentLangData[keys[k]].substring(0,i) + n_s +
+        currentLangData[keys[k]].substring(i);
+        i += n_s.length;
+      }
+    }
+  }
+  referenceKey(keys[k], "$NUMBER", n_s+"$NUMBER"+n_s);
+  referenceKey(keys[k], n_s+"$NUMBER"+n_s+"%", n_s+"$NUMBER%"+n_s);
+  referenceKey(keys[k], "$SCORE%", n_s+"$SCORE%"+n_s);
+  referenceKey(keys[k], "$MIN%", n_s+"$MIN%"+n_s);
+  referenceKey(keys[k], "$WEIGHT%", n_s+"$WEIGHT%"+n_s);
+  referenceKey(keys[k], "$PTS/$TOT", n_s+"$PTS/$TOT"+n_s);
+  referenceKey(keys[k], "AHS&#8203;GPA", "AHS GPA");
+  switch(d) {
+    case "Bali":
+      referenceKey(keys[k], "᭞&#8203;", "᭞ ");
+      referenceKey(keys[k], "᭟&#8203;", "᭟ ");
+      break;
+    case "Tibt":
+      referenceKeys(keys[k],["ང།", "ང༎"], ["ང༌།", "ང༌༎"]);
+      referenceKeys(keys[k], ["ཀ།", "ཀ༎"], ["ཀ&nbsp;།", "ཀ&nbsp;༎"]);
+      referenceKeys(keys[k], ["ག།", "ག༎"], ["ག&nbsp;།", "ག&nbsp;༎"]);
+      referenceKeys(keys[k], ["།&#8203;", "༎&#8203;"], ["།&ensp;", "༎&ensp;"]);
+      for (var i = 0xF40; i <= 0xF67; i++)
+        referenceKey(keys[k], "྄"+String.fromCharCode(i), String.fromCharCode(i+0x50));
+      break;
+    case "Khmr":
+      referenceKeys(keys[k], ["្&#8203;", "្&nbsp;"], ["៑&#8203;", "៑&nbsp;"]);
+      if (currentLangData[keys[k]].endsWith("្")) {
+        currentLangData[keys[k]] = currentLangData[keys[k]].substring(0,
+        currentLangData[keys[k]].length-1) + "៑";
+      }
+      break;
+    case "Mlym":
+      referenceKeys(keys[k], ["ണ് ", "ണ്&nbsp", "ന് ", "ന്&nbsp"], ["ൺ ", "ൺ&nbsp;", "ൻ ", "ൻ&nbsp;"]);
+      referenceKeys(keys[k], ["ല് ", "ല്&nbsp", "ള് ", "ള്&nbsp"], ["ൽ ", "ൽ&nbsp;", "ൾ ", "ൾ&nbsp;"]);
+      referenceKeys(keys[k], ["ക് ", "ക്&nbsp"], ["ൿ ", "ൿ&nbsp;"]);
+      break;
+  }
+}
+function sa_latin_key(keys, k) {
+  for (var i = 0; i < devanagari_consonants.length; i++) {
+    for (var j = 0; j < devanagari_matras.length; j++) {
+      referenceKey(keys[k], devanagari_consonants[i]+devanagari_matras[j],
+        iast_consonants[i]+iast_matras[j]);
+    }
+  }
+  for (var i = 0; i < devanagari_vowels.length; i++)
+    referenceKey(keys[k], devanagari_vowels[i], iast_vowels[i]);
+  for (var i = 0; i < devanagari_consonants.length; i++)
+    referenceKey(keys[k], devanagari_consonants[i], iast_consonants[i]+"a");
+  for (var i = 0; i <= 9; i++)
+    referenceKey(keys[k], ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"][i], ""+i);
+  referenceKeys(keys[k], ["ऽ", "।", "॥"], ["'", "|", "||"]);
+}
+
 languageLoaded("sa");

@@ -508,7 +508,7 @@ var classes = {
   "ap macro": [["f", "t", "h", "p"], [0, 30, 45, 15, 10]],
   "american history": [["h", "p", "q", "t"], [0, 20, 10, 30, 40]],
   "apush": [["c", "f", "q", "t"], [0, 20, 20, 20, 40]],
-  "english 2": [["c", "l", "s", "w"], [0, 25, 35, 5, 35]],
+  "english 2": [["c", "l", "w"], [0, 30, 35, 35]],
   "english 3 cp": [["c", "l", "s", "w"], [0, 25, 35, 5, 35]],
   "calc": [["h", "t"], [0, 10, 90]],
   "calc ab": [["h", "t"], [0, 15, 85]],
@@ -544,7 +544,12 @@ var classes = {
   "physics 1": [["q", "t", "h", "l"], [2, 15, 55, 10, 20]],
   "college alg": [[], [1]],
   "bio h": [["h", "l", "p", "q", "t"], [2, 10, 20, 10, 15, 45]],
-  "calc adv": [["h", "t"], [0, 35, 65]]
+  "calc adv": [["h", "t"], [0, 35, 65]],
+  "english 3 h": [["h", "l", "w"], [0, 30, 35, 35]],
+  "lit 8": [[], [1]],
+  "alg 1 comp": [["c", "h", "q"], [0, 15, 15, 70]],
+  "spanish 1": [["f", "p", "s"], [0, 25, 40, 35]]
+
 };
 function setclass() {
   var classVal = document.classes.class.value;

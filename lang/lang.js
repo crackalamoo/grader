@@ -61,7 +61,8 @@ function languageLoaded(l) {
   "creditCathy", "createCat", "editInstruct", "newCatButton", "catInstruct", "catName",
   "catPercent", "semGradesButton", "gpaCalcButton", "welcome", "semWithExam", "menu",
   "clearDataExp", "clearDataButton", "getCreditButton", "creditNum", "announcements",
-  "footer", "pronunciation", "translateMotto", "help", "rampalExp", "calcRequiredButton"].forEach(
+  "footer", "pronunciation", "translateMotto", "help", "rampalExp", "calcRequiredButton",
+  "modifyCreditHeading"].forEach(
       id => langHTML(id));
   calculateSemester();
   document.getElementById("semesterGrade").innerHTML += "<br>" + d.selectAbove;
@@ -74,7 +75,6 @@ function languageLoaded(l) {
   langHTML("editCreditButton", "apply");
   langHTML("deleteCreditButton", "delete");
   langHTML("addCreditButton", "add");
-  langHTML("modifyCreditHeading");
   langHTML("q13sem", "quarter13");
   langHTML("q13exam", "quarter13");
   langHTML("q24sem", "quarter24");
@@ -84,27 +84,29 @@ function languageLoaded(l) {
   document.getElementById("manualInput").innerHTML = d.edit;
   document.classes.search.placeholder = d.search;
   for (var i = 0; i < SCRIPT_ID.length; i++) {
-    if (l == "ur") {
-      document.getElementById(SCRIPT_ID[i]).style.direction = "rtl";
-      document.getElementById(SCRIPT_ID[i]).style.fontFamily = 'nastaliq';
-    } else if (["hi"].indexOf(l) != -1) {
-      document.getElementById(SCRIPT_ID[i]).style.direction = "";
-      document.getElementById(SCRIPT_ID[i]).style.fontFamily = 'devanagari';
-    } else if (l == "bn") {
-      document.getElementById(SCRIPT_ID[i]).style.direction = "";
-      document.getElementById(SCRIPT_ID[i]).style.fontFamily = 'bengali';
-    } else if (l == "sa") {
-      document.getElementById(SCRIPT_ID[i]).style.direction = "";
-      document.getElementById(SCRIPT_ID[i]).style.fontFamily = '"Times New Roman", "Devanagari MT", devanagari, tibetan, balinese';
-    } else if (l == "fa") {
-      document.getElementById(SCRIPT_ID[i]).style.direction = "rtl";
-      document.getElementById(SCRIPT_ID[i]).style.fontFamily = '';
-    } else if (l == "en" && dialect == "ASCII") {
-      document.getElementById(SCRIPT_ID[i]).style.direction = "";
-      document.getElementById(SCRIPT_ID[i]).style.fontFamily = '"Courier", monospace';
-    } else {
-      document.getElementById(SCRIPT_ID[i]).style.direction = "";
-      document.getElementById(SCRIPT_ID[i]).style.fontFamily = "";
+    document.getElementById(SCRIPT_ID[i]).style.direction = "";
+    document.getElementById(SCRIPT_ID[i]).style.fontFamily = "";
+    switch(l) {
+      case "ur":
+        document.getElementById(SCRIPT_ID[i]).style.direction = "rtl";
+        document.getElementById(SCRIPT_ID[i]).style.fontFamily = 'nastaliq';
+        break;
+      case "fa":
+        document.getElementById(SCRIPT_ID[i]).style.direction = "rtl";
+        break;
+      case "hi":
+        document.getElementById(SCRIPT_ID[i]).style.fontFamily = 'devanagari';
+        break;
+      case "bn":
+        document.getElementById(SCRIPT_ID[i]).style.fontFamily = 'bengali';
+        break;
+      case "sa":
+        document.getElementById(SCRIPT_ID[i]).style.fontFamily = '"Times New Roman", "Devanagari MT", devanagari, tibetan, balinese';
+        break;
+      case "en":
+        if (dialect == "ASCII")
+          document.getElementById(SCRIPT_ID[i]).style.fontFamily = '"Courier", monospace';
+        break;
     }
   }
   for (var i = 0; i < LANGUAGES.length; i++) {
@@ -115,7 +117,8 @@ function languageLoaded(l) {
         case "en":
           document.title = "AHS Grade Calculator"; break;
         case "la":
-          document.title = "AHS Grade Calculator Latinus"; break;
+          document.title = "AHS Grade Calculator Latinus";
+          break;
         case "sa":
           document.title = "AHS Grade Calculator " + d["sanskrit"];
           document.setLanguage.language.options[i].innerHTML = d["sanskrit"];
@@ -134,8 +137,7 @@ function languageLoaded(l) {
             "&#x2067;" + d.languages[i] + "&#x2069;";
         }
       } else {
-        document.setLanguage.language.options[i].innerHTML = LANGUAGES[i] + " &mdash; " +
-          d.languages[i];
+        document.setLanguage.language.options[i].innerHTML = LANGUAGES[i] + " &mdash; " + d.languages[i];
       }
     }
   }
@@ -199,12 +201,12 @@ function setReference() {
       case "ur": switch(refer) {
         case "mf0":
         case "ff0":
-          pronoun = "تم";
+          pronoun = "تمہیں";
           break;
         default:
-          pronoun = "آپ";
+          pronoun = "آپ کو";
       }
-      document.getElementById("refer_hi-ur_friend").innerHTML = {"آپ": "آپ کو", "تم": "تمہیں"}[pronoun] + " کیسے بولوں؟";
+      document.getElementById("refer_hi-ur_friend").innerHTML = pronoun+" کیسے بولوں؟";
       buttonVals = [
         "تم میرے دوست ہو",
         "تم میری دوست ہو",
@@ -219,12 +221,12 @@ function setReference() {
       case "hi": switch(refer) {
         case "mf0":
         case "ff0":
-          pronoun = "तुम";
+          pronoun = "तुम्हें";
           break;
         default:
-          pronoun = "आप";
+          pronoun = "आपको";
       }
-      document.getElementById("refer_hi-ur_friend").innerHTML = {"आप": "आपको", "तुम": "तुम्हें"}[pronoun] + " कैसे बोलूँ?";
+      document.getElementById("refer_hi-ur_friend").innerHTML = pronoun+" कैसे बोलूँ?";
       buttonVals = [
         "तुम मेरे दोस्त हो",
         "तुम मेरी दोस्त हो",
@@ -262,14 +264,19 @@ function setReference() {
     refer = rForm.value;
     var pronoun;
     switch(refer) {
+      case "nf1":
+        pronoun = "lo/la";
+        break;
       case "mf1":
+        pronoun = "lo";
+        break;
       case "ff1":
-        pronoun = "usted";
+        pronoun = "la";
         break;
       default:
-        pronoun = "tú";
+        pronoun = "te";
     }
-    document.getElementById("refer_es_friend").innerHTML = "¿Cómo debo llamar"+{"nf0": "te", "mf0": "te", "ff0": "te", "nf1": "lo/la", "mf1": "lo", "ff1": "la"}[refer] + "?";
+    document.getElementById("refer_es_friend").innerHTML = "¿Cómo debo llamar"+pronoun+"?";
     
     if (["mf1", "ff1", "nf1"].indexOf(refer) != -1)
       setFormal_es();
@@ -284,7 +291,7 @@ function setReference() {
     document["refer_fa"].style.display = "";
     rForm = document["refer_fa"]["r_fa"];
     refer = rForm.value;
-    var pronoun = {"f0": "تو", "f1": "شما"}[refer];
+    var pronoun = {"f0":"تو", "f1":"شما"}[refer];
     document.getElementById("refer_fa_friend").innerHTML = "چگونه باید با " + pronoun + " صحبت کنم؟";
     if (refer == "f0")
       setInformal_fa();
@@ -308,7 +315,7 @@ function setDialect() {
       "mobileCopyInstruct", "manualButton", "minExam",
       "copyGradesInstruct", "dontWorry"].forEach(
           key => currentLangData[key]=currentLangData[key].replaceAll("grade", "mark"));
-      referenceKey("welcome", "you need to make", "you've got to make");
+      referenceKey("welcome", "u need to make", "u've got to make");
       referenceKey("begin", "grades", "marks");
       referenceKey("examGrade", "grade", "score");
       referenceKey("setPoint", "Grading", "Scoring");
@@ -330,13 +337,14 @@ function setDialect() {
           referenceKeys(keys[k], ["&nbsp;", "&ldquo;", "&rdquo;", "&ndash;"], [" ", '"', '"', "-"]);
           for (var i = currentLangData[keys[k]].length; i >= 1; i--) {
             var char = currentLangData[keys[k]].substring(i-1,i);
-            if (char == ">") {
-              tag++;
-            } else if (char == "<") {
-              tag--;
-            } else if (char == "$") {
-              inVar = true;
-            } else {
+            switch(char) {
+            case ">":
+              tag++; break;
+            case "<":
+              tag--; break;
+            case "$":
+              inVar = true; break;
+            default:
               inVar = false;
               for (var j = i-1; j >= 1; j--) {
                 var char2 = currentLangData[keys[k]].substring(j-1,j);
@@ -354,10 +362,7 @@ function setDialect() {
                 currentLangData[keys[k]] = currentLangData[keys[k]].substring(0, i-1) + 
                 bin + " " + currentLangData[keys[k]].substring(i);
               }
-            }
-          }
-        }
-      }
+      }}}}
       currentLangData["numbers"] = ["0001", "0010", "0011", "0100", "0101", "0110", "0111", "1000", "1001", "1010"];
       document.getElementById("d_en_dialect").innerHTML = "01000100 01101001 01100001 01101100 01100101 01100011 01110100 00111010";
     } else if (dialect == "1600") {
@@ -478,7 +483,7 @@ function setDialect() {
       "semester": "halfyear", "quarter": "season", "minimum": "least", "required": "needed", "examples": "like", "exam": "test",
       "valid": "sound", "response": "answer", "available": "at hand", "contact": "write to",
       "request": "wish", "cumulative": "gathered", "receive": "get", "language": "tongue", "calculator": "reckoner",
-      "make sure you": "see to it that you", "message": "writ", "NOTE:": "WRIT:", "despite": "notwithstanding",
+      "make sure you": "see to it that you", " message": "", "NOTE:": "WRIT:", "despite": "notwithstanding",
       "human": "flesh and blood", "selecting": "choosing", "selected": "chosen", "select": "choose", "calculation": "reckoning",
       "percentage": "byhundred", "percent": "byhundred", "(ex:": "(like:", "point": "mark", "letter": "rune",
       "credit to": "thanks to", "credit": "schooltime", "note": "writ", "type": "write", "EXACT": "WORD FOR WORD",
@@ -542,16 +547,7 @@ function setDialect() {
     document["script_sa"].style.display = "";
     dialect = document["script_sa"]["s_sa"].value; // really script, not dialect
     var keys = Object.keys(currentLangData);
-    SANSKRIT_DIGITS = {
-      "Deva": ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"],
-      "Brah": ["𑁦", "𑁧", "𑁨", "𑁩", "𑁪", "𑁫", "𑁬", "𑁭", "𑁮", "𑁯"],
-      "Latn": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
-      "Telu": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
-      "Bali": ["᭐", "᭑", "᭒", "᭓", "᭔", "᭕", "᭖", "᭗", "᭘", "᭙"],
-      "Tibt": ["༠", "༡", "༢", "༣", "༤", "༥", "༦", "༧", "༨", "༩"],
-      "Khmr": ["០", "១", "២", "៣", "៤", "៥", "៦", "៧", "៨", "៩"],
-      "Mlym": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    }[dialect];
+    SANSKRIT_DIGITS = SKT_DIGIT_CONST[dialect];
     document.getElementById("script_sa_lipi").innerHTML = SANSKRIT_SCRIPT[dialect];
     const TITLES = ["minExam", "semWithExam", "ritvikCalc", "ritvikHonor"];
     if (dialect == "Deva") {
@@ -559,26 +555,8 @@ function setDialect() {
         currentLangData[TITLES[k]] = "॥ " + currentLangData[TITLES[k]] + " ॥";
     } else if (dialect == "Latn") {
       for (var k = 0; k < keys.length; k++) {
-        if (["languages", "numbers"].indexOf(keys[k]) == -1) {
-          for (var i = 0; i < devanagari_consonants.length; i++) {
-            for (var j = 0; j < devanagari_matras.length; j++) {
-              referenceKey(keys[k], devanagari_consonants[i]+devanagari_matras[j],
-                iast_consonants[i]+iast_matras[j]);
-            }
-          }
-          for (var i = 0; i < devanagari_vowels.length; i++) {
-            referenceKey(keys[k], devanagari_vowels[i], iast_vowels[i]);
-          }
-          for (var i = 0; i < devanagari_consonants.length; i++) {
-            referenceKey(keys[k], devanagari_consonants[i], iast_consonants[i]+"a");
-          }
-          for (var i = 0; i <= 9; i++) {
-            referenceKey(keys[k], ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"][i], ""+i);
-          }
-          referenceKey(keys[k], "ऽ", "'");
-          referenceKey(keys[k], "।", "|");
-          referenceKey(keys[k], "॥", "||");
-        }
+        if (["languages", "numbers"].indexOf(keys[k]) == -1)
+          sa_latin_key(keys, k);
       }
       for (var k = 0; k < TITLES.length; k++)
         currentLangData[TITLES[k]] = currentLangData[TITLES[k]].toUpperCase();
@@ -588,70 +566,8 @@ function setDialect() {
       var TITLE_START = {"Brah": "𑁈 ", "Telu": "॥ ", "Bali": "᭚", "Tibt": "༄༎", "Khmr": "៙", "Mlym": "॥ "}[dialect];
       var TITLE_END = {"Brah": " 𑁈", "Telu": " ॥", "Bali": "", "Tibt": "", "Khmr": "", "Mlym": " ॥"}[dialect];
       for (var k = 0; k < keys.length; k++) {
-        if (["languages", "numbers"].indexOf(keys[k]) == -1) {
-          if (["Bali", "Tibt"].indexOf(dialect) != -1) {
-            referenceKey(keys[k], "&nbsp;।", "।");
-            referenceKey(keys[k], "&nbsp;॥", "॥");
-          }
-          if (["Khmr"].indexOf(dialect) != -1) {
-            referenceKey(keys[k], "। ", "।&nbsp;");
-            referenceKey(keys[k], "॥ ", "॥&nbsp;");
-          }
-          for (var i = 0; i < DEVANAGARI.length; i++)
-            referenceKey(keys[k], DEVANAGARI[i], new_letters[i]);
-          for (var i = 0; i < currentLangData[keys[k]].length; i++) {
-            if (SANSKRIT_DIGITS.concat("%").indexOf(currentLangData[keys[k]].substring(i,i+1)) != -1) {
-              if (i == currentLangData[keys[k]].length ||
-              SANSKRIT_DIGITS.concat([".","%"]).indexOf(currentLangData[keys[k]].substring(i+1,i+2)) == -1) {
-                currentLangData[keys[k]] = currentLangData[keys[k]].substring(0,i+1) + numberSep +
-                currentLangData[keys[k]].substring(i+1);
-                i += numberSep.length;
-              }
-              if (i == 0 || SANSKRIT_DIGITS.concat([".","%"]).indexOf(currentLangData[keys[k]].substring(i-1,i)) == -1) {
-                currentLangData[keys[k]] = currentLangData[keys[k]].substring(0,i) + numberSep +
-                currentLangData[keys[k]].substring(i);
-                i += numberSep.length;
-              }
-            }
-          }
-          referenceKey(keys[k], "$NUMBER", numberSep+"$NUMBER"+numberSep);
-          referenceKey(keys[k], numberSep+"$NUMBER"+numberSep+"%", numberSep+"$NUMBER%"+numberSep);
-          referenceKey(keys[k], "$SCORE%", numberSep+"$SCORE%"+numberSep);
-          referenceKey(keys[k], "$MIN%", numberSep+"$MIN%"+numberSep);
-          referenceKey(keys[k], "$WEIGHT%", numberSep+"$WEIGHT%"+numberSep);
-          referenceKey(keys[k], "$PTS/$TOT", numberSep+"$PTS/$TOT"+numberSep);
-          referenceKey(keys[k], "AHS&#8203;GPA", "AHS GPA");
-          if (dialect == "Bali") {
-            referenceKey(keys[k], "᭞&#8203;", "᭞ ");
-            referenceKey(keys[k], "᭟&#8203;", "᭟ ");
-          }
-          if (dialect == "Tibt") {
-            referenceKey(keys[k], "ང།", "ང༌།");
-            referenceKey(keys[k], "ང༎", "ང༌༎");
-            referenceKey(keys[k], "ཀ།", "ཀ&nbsp;།");
-            referenceKey(keys[k], "ཀ༎", "ཀ&nbsp;༎");
-            referenceKey(keys[k], "ག།", "ག&nbsp;།");
-            referenceKey(keys[k], "ག༎", "ག&nbsp;༎");
-            referenceKey(keys[k], "།&#8203;", "།&ensp;");
-            referenceKey(keys[k], "༎&#8203;", "༎&ensp;");
-            for (var i = 0xF40; i <= 0xF67; i++)
-              referenceKey(keys[k], "྄"+String.fromCharCode(i), String.fromCharCode(i+0x50))
-          }
-          if (dialect == "Khmr") {
-            referenceKeys(keys[k], ["្&#8203;", "្&nbsp;"], ["៑&#8203;", "៑&nbsp;"]);
-            if (currentLangData[keys[k]].endsWith("្")) {
-              currentLangData[keys[k]] = currentLangData[keys[k]].substring(0,
-              currentLangData[keys[k]].length-1) + "៑";
-            }
-          }
-          if (dialect == "Mlym") {
-            referenceKeys(keys[k], ["ണ് ", "ണ്&nbsp"], ["ൺ ", "ൺ&nbsp;"]);
-            referenceKeys(keys[k], ["ന് ", "ന്&nbsp"], ["ൻ ", "ൻ&nbsp;"]);
-            referenceKeys(keys[k], ["ല് ", "ല്&nbsp"], ["ൽ ", "ൽ&nbsp;"]);
-            referenceKeys(keys[k], ["ള് ", "ള്&nbsp"], ["ൾ ", "ൾ&nbsp;"]);
-            referenceKeys(keys[k], ["ക് ", "ക്&nbsp"], ["ൿ ", "ൿ&nbsp;"]);
-          }
-        }
+        if (["languages", "numbers"].indexOf(keys[k]) == -1)
+          brahmic_key(keys, k, dialect, new_letters, numberSep);
       }
       for (var k = 0; k < TITLES.length; k++)
         currentLangData[TITLES[k]] = TITLE_START + currentLangData[TITLES[k]] + TITLE_END;
