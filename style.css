@@ -105,11 +105,11 @@ div#footer {
 }
 div#footer:lang(hi),div#footer:lang(sa) {
   font-style: normal;
-  font-family: devanagari;
+  font-family: "Noto Serif Devanagari", devanagari;
 }
 div#footer:lang(ur) {
   font-style: normal;
-  font-family: nastaliq;
+  font-family: "Scheherazade New", nastaliq;
 }
 div#footer:lang(fa) {
   font-style: normal;
@@ -205,53 +205,25 @@ select.rtl {
 }
 @font-face {
   font-family: devanagari;
-  src: local("ITF Devanagari"), url('http://www.harysdalvi.com/sub/fonts/ITFDevanagari-Regular-01.ttf') format("truetype");
-  font-weight: normal;
-  unicode-range: U+900-97F;
-  font-display: swap;
-}
-@font-face {
-  font-family: devanagari;
-  src: local("ITF Devanagari"), url('http://www.harysdalvi.com/sub/fonts/ITFDevanagari-Bold-02.ttf') format("truetype");
-  font-weight: bold;
-  unicode-range: U+900-97F;
-  font-display: swap;
-}
-@font-face {
-  font-family: devanagari;
-  src: local("Baskerville"), local("Times New Roman");
-  unicode-range: U+0-599;
+  src: local("Noto Serif Devanagari"), local("Baskerville"), local("Times New Roman");
+  unicode-range: U+0-599, U+900-97F;
 }
 @font-face {
   font-family: balinese;
-  src: url('http://www.harysdalvi.com/sub/fonts/AksaraBali.ttf') format("truetype");
+  src: local("Aksara Bali"), local("Noto Sans Balinese");
   unicode-range: U+1B00-1B7F;
   font-display: swap;
 }
 @font-face {
   font-family: tibetan;
-  src: url('http://www.harysdalvi.com/sub/fonts/TibMachUni-1.901b.ttf') format("truetype");
+  src: url('https://www.harysdalvi.com/fonts/tibetan-machine-uni/TibMachUni-1.901b.ttf') format("truetype");
   unicode-range: U+F00-FFF;
   font-display: swap;
 }
 @font-face {
   font-family: nastaliq;
-  src: url('http://www.harysdalvi.com/sub/fonts/jameelnoorinastaleeq.ttf') format("truetype");
-  font-weight: normal;
-  unicode-range: U+600-6FF;
-  font-display: swap;
-}
-@font-face {
-  font-family: nastaliq;
-  src: url('http://www.harysdalvi.com/sub/fonts/jameelnoorikasheeda.ttf') format("truetype");
-  font-weight: bold;
-  unicode-range: U+600-6FF;
-  font-display: swap;
-}
-@font-face {
-  font-family: nastaliq;
-  src: local("Baskerville"), local("Times New Roman");
-  unicode-range: U+0-599;
+  src: local("Scheherazade New"), local("Geeza Pro"), local("Baskerville"), local("Times New Roman");
+  unicode-range: U+0-599, U+600-6FF;
 }
 @font-face {
   font-family: bengali;
@@ -271,13 +243,13 @@ select.rtl {
   unicode-range: U+0-599;
 }
 .button:lang(hi) {
-  font-family: devanagari;
+  font-family: "Noto Serif Devanagari", devanagari;
 }
 .button:lang(sa) {
-  font-family: "Times New Roman", "Devanagari MT", devanagari, tibetan, balinese;
+  font-family: "Times New Roman", "Devanagari MT", "Noto Serif Devanagari", devanagari, tibetan, balinese;
 }
 .button:lang(ur) {
-  font-family: nastaliq;
+  font-family: "Scheherazade New", nastaliq;
 }
 .button:lang(bn) {
   font-family: bengali;
@@ -295,16 +267,16 @@ div#languageButtons span div.button:lang(sa),div#languageButtons span div.button
   font-family: "Times New Roman";
 }
 #pronunciation:lang(hi) {
-  font-family: "Times New Roman", devanagari;
+  font-family: "Times New Roman", "Noto Serif Devanagari", devanagari;
 }
 #pronunciation:lang(sa) {
-  font-family: "Times New Roman", "Devanagari MT", devanagari;
+  font-family: "Times New Roman", "Devanagari MT", "Noto Serif Devanagari", devanagari;
 }
 #pronunciation:lang(bn) {
   font-family: "Times New Roman", bengali;
 }
 #pronunciation:lang(ur) {
-  font-family: "Times New Roman", nastaliq;
+  font-family: "Times New Roman", "Scheherazade New", nastaliq;
 }
 :lang(sa) strong,:lang(sa) b {
   font-weight: normal;
@@ -330,13 +302,13 @@ div#motto p:lang(la), .smallCaps {
   font-variant: small-caps;
 }
 div#motto p:lang(sa) {
-  font-family: "Devanagari MT", "ITF Devanagari", devanagari;
+  font-family: "Devanagari MT", "Noto Serif Devanagari", devanagari;
 }
 div#motto p:lang(ang) {
   font-family: "Apple Symbols", "Geneva";
 }
 div#motto p:lang(fa) {
-  font-family: "Noto Nastaliq Urdu", nastaliq, "Times New Roman";
+  font-family: "Noto Nastaliq Urdu", "Scheherazade New", nastaliq, "Times New Roman";
 }
 div#motto p:lang(ar) {
   font-family: "Diwan Kufi", "Diwan Thuluth", "KufiStandardGK", "Sana",
